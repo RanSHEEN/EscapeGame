@@ -31,12 +31,45 @@ int main() {
             // update the window
             SDL_UpdateWindowSurface(window);
 
-            // wait 2 seconds
+            // wait 10 seconds
             SDL_Delay(10000);
         }
     }
 
-    // destroy the window
+    // create a renderer
+    SDL_Renderer *ren = SDL_CreateRenderer(window , -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if(ren == NULL)
+    {
+        SDL_DestroyWindow(window);
+        printf("SDL_CreateRenderer Error.\n");
+        return 1;
+    }
+
+    // load a bmp image
+    SDL_Surface *bmp = SDL_LoadBMP("hello.bmp");
+    if(bmp == NULL)
+    {
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(window);
+        printf("SDL_LoadBMP Error.\n");
+        SDL_Quit();
+        return 1;
+    }
+
+    // load the texture
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, bmp);
+    SDL_FreeSurface(bmp);
+    if (tex == NULL){
+        SDL_DestroyRenderer(ren);
+        SDL_DestroyWindow(window);
+        printf("SDL_CreateTextureFromSurface Error.\n");
+        SDL_Quit();
+        return 1;
+    }
+
+    // destroy
+    SDL_DestroyTexture(tex);
+    SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(window);
     // quit SDL
     SDL_Quit();
