@@ -7,8 +7,9 @@ LDFLAGS= -lSDL2
 
 all: main 
 
-main: main.o 
+main: main.o window.o renderer.o
 	$(CC) $^ -o $@ $(LDFLAGS)
+	g++ render.c -lSDL2 -lGL
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
