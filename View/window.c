@@ -71,5 +71,5 @@ void fullScreen(SDL_Window *window, SDL_Event e){
 }
 
 void restoreWindow(SDL_Window *window){
-
+    SDL_RestoreWindow(window);
 }

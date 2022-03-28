@@ -100,6 +100,13 @@ build CMakeFiles/View.dir/texture.c.o: C_COMPILER__View_Debug /home/gracesheenxi
   OBJECT_DIR = CMakeFiles/View.dir
   OBJECT_FILE_DIR = CMakeFiles/View.dir
 
+build CMakeFiles/View.dir/event.c.o: C_COMPILER__View_Debug /home/gracesheenxinran/escapegameproject/View/event.c || cmake_object_order_depends_target_View
+  DEP_FILE = CMakeFiles/View.dir/event.c.o.d
+  FLAGS = -g -std=gnu99
+  INCLUDES = -I/home/gracesheenxinran/SDL/include -I/home/gracesheenxinran/mesa-22.0.0/include
+  OBJECT_DIR = CMakeFiles/View.dir
+  OBJECT_FILE_DIR = CMakeFiles/View.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target View
@@ -108,7 +115,7 @@ build CMakeFiles/View.dir/texture.c.o: C_COMPILER__View_Debug /home/gracesheenxi
 #############################################
 # Link the executable View
 
-build View: C_EXECUTABLE_LINKER__View_Debug CMakeFiles/View.dir/main.c.o CMakeFiles/View.dir/window.c.o CMakeFiles/View.dir/renderer.c.o CMakeFiles/View.dir/texture.c.o
+build View: C_EXECUTABLE_LINKER__View_Debug CMakeFiles/View.dir/main.c.o CMakeFiles/View.dir/window.c.o CMakeFiles/View.dir/renderer.c.o CMakeFiles/View.dir/texture.c.o CMakeFiles/View.dir/event.c.o
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/home/gracesheenxinran/SDL/lib:/home/gracesheenxinran/mesa-22.0.0/lib  -lSDL2  -lGL
   LINK_PATH = -L/home/gracesheenxinran/SDL/lib   -L/home/gracesheenxinran/mesa-22.0.0/lib

@@ -17,4 +17,7 @@
 // for installing the glut tool
 // we should put glut.h in the package of include folder in mesa/OpenGL
 
+
 int initialRenderer(SDL_Window *window, SDL_Renderer *ren);
+int clearRenderer(SDL_Renderer *ren);
+int setWindowColor(SDL_Renderer *renderer, SDL_Color color);

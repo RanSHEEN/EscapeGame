@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 
 #include "SDL2/SDL.h"
 #include <SDL2/SDL_opengl.h>
 
 #include "window.h"
 #include "renderer.h"
+#include "texture.h"
+#include "event.h"
 
 typedef int32_t i32;
 typedef uint32_t u32;
@@ -21,9 +22,9 @@ int main() {
     SDL_Surface *screenSurface = NULL;
     SDL_Event e;
 
-    b32 Running = 1;
-    b32 FullScreen = 0;
-    u32 WindowFlags = SDL_WINDOW_OPENGL;
+//    b32 Running = 1;
+//    b32 FullScreen = 0;
+//    u32 WindowFlags = SDL_WINDOW_OPENGL;
 
     // initialize SDL
     if (0 != SDL_Init(SDL_INIT_VIDEO)) {
@@ -31,8 +32,7 @@ int main() {
         return EXIT_FAILURE;
     } else {
         // create a window
-        window = SDL_CreateWindow("Escape Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
-                                  SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        window = SDL_CreateWindow("Escape Game",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SCREEN_WIDTH,SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
         if (window == NULL) {
             printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         } else {
@@ -40,7 +40,7 @@ int main() {
             screenSurface = SDL_GetWindowSurface(window);
 
             // fill the surface with white color
-            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+            SDL_FillRect(screenSurface,NULL,SDL_MapRGB(screenSurface->format,0xFF,0xFF,0xFF));
 
             // update the window
             SDL_UpdateWindowSurface(window);
@@ -53,8 +53,8 @@ int main() {
 //    setWindowTitle(window,e);
 
     // create a renderer
-    SDL_Renderer *ren = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
+    SDL_Renderer *ren = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    initialRenderer(window,ren);
 
     // load a bmp image
     SDL_Surface *bmp = SDL_LoadBMP("hello.bmp");
@@ -66,8 +66,10 @@ int main() {
         return 1;
     }
 
+
+
     // load the texture
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, bmp);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(ren,bmp);
     SDL_FreeSurface(bmp);
     if (tex == NULL) {
         SDL_DestroyRenderer(ren);
@@ -76,6 +78,11 @@ int main() {
         SDL_Quit();
         return 1;
     }
+
+    SDL_Rect rect = {50,50,SCREEN_WIDTH,SCREEN_HEIGHT};
+
+    initialTexture(ren,tex,rect);
+    circle(e,ren,tex,rect);
 
     // destroy
     SDL_DestroyTexture(tex);

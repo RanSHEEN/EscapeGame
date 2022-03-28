@@ -21,3 +21,4 @@ git rm --cached -r .idea
 
 TO INSTALL RENDERER OpenGL
 https://archive.mesa3d.org//
+pour 3D, pour nous pas necessaire
