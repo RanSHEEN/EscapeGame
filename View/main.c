@@ -54,21 +54,10 @@ int main() {
 
     // create a renderer
     SDL_Renderer *ren = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    initialRenderer(window,ren);
-
-    // load a bmp image
-    SDL_Surface *bmp = SDL_LoadBMP("hello.bmp");
-    if (bmp == NULL) {
-        SDL_DestroyRenderer(ren);
-        SDL_DestroyWindow(window);
-        printf("SDL_LoadBMP Error.\n");
-        SDL_Quit();
-        return 1;
-    }
-
-
+//    initialRenderer(window,ren);
 
     // load the texture
+    SDL_Surface *bmp = SDL_LoadBMP("test.bmp");
     SDL_Texture *tex = SDL_CreateTextureFromSurface(ren,bmp);
     SDL_FreeSurface(bmp);
     if (tex == NULL) {
@@ -81,8 +70,12 @@ int main() {
 
     SDL_Rect rect = {50,50,SCREEN_WIDTH,SCREEN_HEIGHT};
 
-    initialTexture(ren,tex,rect);
-    circle(e,ren,tex,rect);
+    /* here not compiled successfully */
+//    initialTexture(ren,tex,rect);
+//    circle(e,ren,tex,rect);
+//
+//    // load a bmp image
+//    loadImage(ren,tex,bmp);
 
     // destroy
     SDL_DestroyTexture(tex);

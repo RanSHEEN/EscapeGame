@@ -58,15 +58,16 @@ int iconWindow(SDL_Window *window, SDL_Surface *surface)
     return 0;
 }
 
-void loadImage(SDL_Renderer *ren,SDL_Texture *texture)
+int loadImage(SDL_Renderer *ren,SDL_Texture *texture,SDL_Surface *surface)
 {
-    SDL_Surface *surface = NULL;
     SDL_Texture *tmp = NULL;
-    surface = SDL_LoadBMP("test.bmp");
 
     if(NULL == surface)
     {
-        fprintf(stderr, "Error SDL_LoadBMP : %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_LoadBMP : %s\n", SDL_GetError());
+        SDL_DestroyRenderer(ren);
+        SDL_Quit();
+        return 1;
     }
 
     tmp = SDL_CreateTextureFromSurface(ren, surface);
@@ -86,7 +87,7 @@ void drawImage(SDL_Renderer *ren,SDL_Texture *tex)
     SDL_Texture *tmp = NULL;
     surface = SDL_LoadBMP("test.bmp");
 
-    loadImage(ren,tmp);
+    loadImage(ren,tmp,tex);
     tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, surface->w, surface->h);
 
     SDL_SetRenderTarget(ren, tex); /* La cible de rendu est maintenant texture. */

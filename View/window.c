@@ -20,7 +20,7 @@ void setWindowTitle(SDL_Window *window, SDL_Event e){
 
     // Enter the main loop. Press any key or hit the x to exit.
     for( ; e.type!=SDL_QUIT && e.type!=SDL_KEYDOWN; SDL_PollEvent(&e)){
-        static int i = 0, t = 0;
+        static long unsigned int i = 0, t = 0;
 
         if(!(++t%9)){ // every 9th frame...
             // loop through the array of titles

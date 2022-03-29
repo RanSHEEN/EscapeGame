@@ -16,6 +16,5 @@ int initialTexture(SDL_Renderer *ren,SDL_Texture *tex,SDL_Rect rect);
 int displayTexture(SDL_Renderer *ren,SDL_Texture *tex);
 int colorSurface(const int width,const int height);
 
-
-void loadImage(SDL_Renderer *ren,SDL_Texture *texture);
+int loadImage(SDL_Renderer *ren,SDL_Texture *texture,SDL_Surface *surface);
 void drawImage(SDL_Renderer *ren,SDL_Texture *tex);
