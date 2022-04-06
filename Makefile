@@ -4,7 +4,6 @@ LDFLAGS= -L./lib -lmodel -lview -lSDL2 -lSDL2_image
 
 all: make_model make_view main
 
-
 make_model:
 	make -C ./Model
 	make -C  ./Model clean
