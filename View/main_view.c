@@ -7,7 +7,7 @@ const int SCREEN_HEIGHT = 984;
 
 /* this function initialises the window and creates the texture/renderer for the menu  */
 
-int main()
+int Launch_view()
 {
     /* Initialisation bibliothèques */
     if(0 != SDL_Init(SDL_INIT_VIDEO))
@@ -21,18 +21,18 @@ int main()
     int status = EXIT_FAILURE;
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
-    tmp = IMG_Load("img/MENU.jpg");
+    tmp = IMG_Load("../img/MENU.jpg");
     if (NULL == tmp) {
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         goto Quit;
     }
-
     if (0 != SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_RENDERER_ACCELERATED, & escape_menu.window,& escape_menu.renderer))
     {
         fprintf(stderr, "Erreur SDL_CreateWindowAndRenderer : %s", SDL_GetError());
         goto Quit;
     }
 
+    SDL_SetWindowTitle(escape_menu.window, "Launcher Menu");
     texture = SDL_CreateTextureFromSurface(escape_menu.renderer, tmp);
     SDL_FreeSurface(tmp); /* On libère la surface, on n’en a plus besoin */
     if (NULL == texture) {

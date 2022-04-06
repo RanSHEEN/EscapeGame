@@ -1,0 +1,26 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD
+LDFLAGS =
+DLIB = ../lib
+
+all: libcontroller.a
+
+libcontroller.a :controller.o 
+	ar -rv $(DLIB)/$@ $^
+
+main_controller: controller.o 
+	$(CC) $^  $(LDFLAGS) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o *.d
+
+
+libclean :
+	rm ../lib/libcontroller.a
+
+
+include $(wildcart .d)
+

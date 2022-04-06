@@ -13,20 +13,24 @@
 enum Window {
     Menu,
     Rules,
-    Credits
+    Credits,
+    Play,
 };
+
 typedef struct {
     SDL_Window *window;
     SDL_Renderer *renderer;
     SDL_Texture *Menu;
-    SDL_Rect  Return_b;
-    SDL_Rect  my_button[4] ;
+    SDL_Rect  Return_b; //return from one window to another
+    SDL_Rect  my_buttons[4] ; //navigate btw windows
 }Menu_windows;
 
 int init_menu(Menu_windows * escape);
 /*initializes a menu window and deals with potential errors*/
 int free_menu (Menu_windows * escape);
 /*deletes menu window, frees memory and deals with potential errors*/
-
+int init_button();
+/*initializes a button and deals with potential errors*/
+int define_button();
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
