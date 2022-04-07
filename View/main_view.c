@@ -5,7 +5,8 @@
 const int SCREEN_WIDTH = 1746;
 const int SCREEN_HEIGHT = 984;
 
-/* this function initialises the window and creates the texture/renderer for the menu  */
+/* this function initialises the window and creates the texture/renderer for the menu
+ * + allows to close it using the close tab button */
 
 int Launch_view()
 {
@@ -62,5 +63,62 @@ int Launch_view()
         IMG_Quit();
 
    status = EXIT_SUCCESS;
+    return status;
+}
+
+int Game_Window(){
+
+    /* Initialisation bibliothèques */
+    if(0 != SDL_Init(SDL_INIT_VIDEO))
+    {   fprintf(stderr, "Erreur SDL_Init : %s", SDL_GetError());
+        goto Quit;    }
+    if(0 == IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
+    {   fprintf(stderr, "Erreur IMG_Init : %s", SDL_GetError());
+        goto Quit;    }
+
+    Menu_windows game_window;
+    int status = EXIT_FAILURE;
+    SDL_Surface *tmp = NULL;
+    SDL_Texture *texture = NULL;
+    tmp = IMG_Load("./img/MENU.jpg");
+    if (NULL == tmp) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        goto Quit;
+    }
+    if (0 != SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_RENDERER_ACCELERATED, & game_window.window,& game_window.renderer))
+    {
+        fprintf(stderr, "Erreur SDL_CreateWindowAndRenderer : %s", SDL_GetError());
+        goto Quit;
+    }
+
+    SDL_SetWindowTitle(game_window.window, "Escape this Room !");
+    texture = SDL_CreateTextureFromSurface(game_window.renderer, tmp);
+    SDL_FreeSurface(tmp); /* On libère la surface, on n’en a plus besoin */
+    if (NULL == texture) {
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        goto Quit;
+    }
+
+    SDL_RenderCopy(game_window.renderer,texture,NULL,NULL);
+    SDL_RenderPresent(game_window.renderer);
+
+    int isRunning = 1;
+    SDL_Event ev;
+
+    while(isRunning==1){
+        while(SDL_PollEvent(&ev)!=0){
+            if (ev.type==SDL_QUIT) {
+                isRunning =0;
+            }
+        }
+        SDL_UpdateWindowSurface(game_window.window);
+    }
+
+    Quit:
+    SDL_DestroyRenderer(game_window.renderer);
+    SDL_DestroyWindow(game_window.window);
+    SDL_Quit();
+    IMG_Quit();
+    status = EXIT_SUCCESS;
     return status;
 }
