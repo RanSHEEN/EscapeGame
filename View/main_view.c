@@ -7,7 +7,7 @@ const int SCREEN_HEIGHT = 984;
 
 /* this function initialises the window and creates the texture/renderer for the menu  */
 
-int Launch_view()
+int main()
 {
     /* Initialisation bibliothèques */
     if(0 != SDL_Init(SDL_INIT_VIDEO))
@@ -42,7 +42,18 @@ int Launch_view()
 
     SDL_RenderCopy(escape_menu.renderer,texture,NULL,NULL);
     SDL_RenderPresent(escape_menu.renderer);
-    while(1){   }
+
+    int isRunning = 1;
+    SDL_Event ev;
+
+    while(isRunning==1){
+      while(SDL_PollEvent(&ev)!=0){
+          if (ev.type==SDL_QUIT) {
+              isRunning =0;
+          }
+      }
+        SDL_UpdateWindowSurface(escape_menu.window);
+    }
 
     Quit:
         SDL_DestroyRenderer(escape_menu.renderer);
@@ -51,7 +62,5 @@ int Launch_view()
         IMG_Quit();
 
    status = EXIT_SUCCESS;
-
-
     return status;
 }
