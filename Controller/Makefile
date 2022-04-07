@@ -1,14 +1,14 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD
-LDFLAGS =
+CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD -I../View -I../Model
+LDFLAGS = -L../lib -lmodel -lview -lSDL2 -lSDL2_image
 DLIB = ../lib
 
 all: libcontroller.a
 
-libcontroller.a : main_controller.o  controller.o
+libcontroller.a : main_controller.o  controller.o event.o
 	ar -rv $(DLIB)/$@ $^
 
-main_controller: main_controller.o controller.o
+main_controller: main_controller.o controller.o event.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c

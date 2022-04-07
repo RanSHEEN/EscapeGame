@@ -11,8 +11,5 @@
 
 
 
-void initGame_(){
-    Launch_view();
-    //il faudra ajouter ici tout ce qui démarre à l'initialisation du jeu (lecture de fichier par exemple)
-}
+
 
