@@ -5,6 +5,12 @@
 #ifndef ESCAPEGAMEPROJECT_PERSONNAGE_H
 #define ESCAPEGAMEPROJECT_PERSONNAGE_H
 
+<<<<<<< HEAD
+=======
+#include <stdio.h>
+#include <stdlib.h>
+
+>>>>>>> be348f2db29d26e4d6189f5ad4b0ae1d216506a8
 typedef struct Personage {
     int x_position;
     int y_position;
