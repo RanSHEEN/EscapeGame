@@ -6,7 +6,7 @@ all: make_model make_view main
 
 
 make_model:
-	make -C ./Model
+	make -C  ./Model
 	make -C  ./Model clean
 
 make_view:

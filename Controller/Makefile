@@ -1,14 +1,14 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD
-LDFLAGS =
+LDFLAGS = -L./lib -lmodel -lview -lSDL2 -lSDL2_image
 DLIB = ../lib
 
-all: libmodel.a
+all: libcontroller.a
 
-libmodel.a : main_model.o object.o personnage.o
+libcontroller.a : main_controller.o  controller.o
 	ar -rv $(DLIB)/$@ $^
 
-main_model: main_model.o object.o personnage.o
+main_controller: main_controller.o controller.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c
@@ -19,7 +19,7 @@ clean:
 
 
 libclean :
-	rm ../lib/libmodel.a
+	rm ../lib/libcontroller.a
 
 
 include $(wildcart .d)

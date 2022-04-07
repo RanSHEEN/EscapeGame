@@ -1,3 +1,0 @@
-/home/gracesheenxinran/escapegameproject/View/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/gracesheenxinran/escapegameproject/View/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/gracesheenxinran/escapegameproject/View/cmake-build-debug/CMakeFiles/View.dir
