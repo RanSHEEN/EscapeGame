@@ -6,8 +6,8 @@
 #define ESCAPEGAMEPROJECT_CONTROLLER_H
 #include <stdio.h>
 #include <stdlib.h>
-#include "../View/main_view.h"
 
-int initGame();
+
+
 
 #endif //ESCAPEGAMEPROJECT_CONTROLLER_H
