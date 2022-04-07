@@ -8,7 +8,7 @@
 
 int main(){
     initGame();
-
+    //Launch_view();
     return 0;
 }
 
