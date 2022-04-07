@@ -21,7 +21,7 @@ int Launch_view()
     int status = EXIT_FAILURE;
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
-    tmp = IMG_Load("../img/MENU.jpg");
+    tmp = IMG_Load("./img/MENU.jpg");
     if (NULL == tmp) {
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         goto Quit;

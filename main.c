@@ -3,7 +3,12 @@
 //
 #include "./Controller/controller.h"
 
+
+
+
 int main(){
+    initGame();
 
     return 0;
 }
+

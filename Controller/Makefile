@@ -5,10 +5,10 @@ DLIB = ../lib
 
 all: libcontroller.a
 
-libcontroller.a :controller.o 
+libcontroller.a : main_controller.o  controller.o
 	ar -rv $(DLIB)/$@ $^
 
-main_controller: controller.o 
+main_controller: main_controller.o controller.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c

@@ -4,5 +4,10 @@
 
 #ifndef ESCAPEGAMEPROJECT_CONTROLLER_H
 #define ESCAPEGAMEPROJECT_CONTROLLER_H
+#include <stdio.h>
+#include <stdlib.h>
+#include "../View/main_view.h"
+
+void initGame_();
 
 #endif //ESCAPEGAMEPROJECT_CONTROLLER_H
