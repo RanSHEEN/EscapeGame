@@ -7,8 +7,8 @@
 
 
 int main(){
-    initGame();
-    //Launch_view();
+    //initGame();
+    Launch_view();
     return 0;
 }
 
