@@ -8,7 +8,7 @@ all: libview.a
 libview.a : main_view.o
 	ar -rv $(DLIB)/$@ $^
 
-main_view: main_view.o
+main_view: main_view.o Launch_Game.o Launch_menu.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c
