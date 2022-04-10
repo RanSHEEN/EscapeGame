@@ -52,4 +52,7 @@ int getDimension(int a,int b);
 frame ** CreateFraming();
 void printFraming(frame ** tab);
 
+//delete Framing
+void deleteFraming(frame ** tab);
+
 #endif //MODEL_OBJECT_H

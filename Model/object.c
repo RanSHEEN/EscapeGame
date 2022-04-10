@@ -88,3 +88,12 @@ void printFraming(frame ** tab){
     }
 
 }
+
+
+//delete framing
+void deleteFraming(frame ** tab){
+    int y = getAxesDimension(5,SCREEN_H) ;// nombre de ligne du tableau
+    for(int i = 0 ; i < y ; ++i)
+        free((frame *)tab[i]);
+    free((frame *)tab);
+}

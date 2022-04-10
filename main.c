@@ -11,7 +11,6 @@ int init(){
 }
 
 int main(){
-    init();
-
+    //init();
 }
 
