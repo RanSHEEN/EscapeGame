@@ -5,12 +5,21 @@
 #include "./View/main_view.h"
 #include "./Model/main_model.h"
 
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include <cmocka.h>
+
+
+
 int init(){
     return Launch_view();
     //il faudra ajouter ici tout ce qui démarre à l'initialisation du jeu (lecture de fichier par exemple)
 }
 
-int main(){
-    //init();
+
+int main_EG(){
+    init();
+    return 0;
 }
 

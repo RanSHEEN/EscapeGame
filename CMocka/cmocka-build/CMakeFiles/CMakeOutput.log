@@ -1,0 +1,1394 @@
+The system is: Linux - 5.13.0-39-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/3.16.3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9723d/fast && /usr/bin/make -f CMakeFiles/cmTC_9723d.dir/build.make CMakeFiles/cmTC_9723d.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_9723d.dir/testCCompiler.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_9723d.dir/testCCompiler.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_9723d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9723d.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_9723d.dir/testCCompiler.c.o  -o cmTC_9723d 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c8405/fast && /usr/bin/make -f CMakeFiles/cmTC_c8405.dir/build.make CMakeFiles/cmTC_c8405.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -fPIE   -v -o CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+OFFLOAD_TARGET_NAMES=nvptx-none:hsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.4.0-1ubuntu1~20.04.1' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-Av3uEd/gcc-9-9.4.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/9/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o -version -fPIE -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccI8FVSU.s
+GNU C17 (Ubuntu 9.4.0-1ubuntu1~20.04.1) version 9.4.0 (x86_64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version isl-0.22.1-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-linux-gnu/9/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C17 (Ubuntu 9.4.0-1ubuntu1~20.04.1) version 9.4.0 (x86_64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version isl-0.22.1-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: c0c95c0b4209efec1c1892d5ff24030b
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o /tmp/ccI8FVSU.s
+GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_c8405
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8405.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o  -o cmTC_c8405 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none:hsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.4.0-1ubuntu1~20.04.1' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-Av3uEd/gcc-9-9.4.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8405' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/9/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/cccY5p7l.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c8405 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8405' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-linux-gnu/9/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/9/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/9/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/9/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_c8405/fast && /usr/bin/make -f CMakeFiles/cmTC_c8405.dir/build.make CMakeFiles/cmTC_c8405.dir/build]
+  ignore line: [make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -fPIE   -v -o CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:hsa]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.4.0-1ubuntu1~20.04.1' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-Av3uEd/gcc-9-9.4.0/debian/tmp-nvptx/usr hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/9/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o -version -fPIE -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccI8FVSU.s]
+  ignore line: [GNU C17 (Ubuntu 9.4.0-1ubuntu1~20.04.1) version 9.4.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version isl-0.22.1-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/9/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (Ubuntu 9.4.0-1ubuntu1~20.04.1) version 9.4.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version isl-0.22.1-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: c0c95c0b4209efec1c1892d5ff24030b]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o /tmp/ccI8FVSU.s]
+  ignore line: [GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_c8405]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8405.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o  -o cmTC_c8405 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:hsa]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.4.0-1ubuntu1~20.04.1' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-Av3uEd/gcc-9-9.4.0/debian/tmp-nvptx/usr hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8405' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/9/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/cccY5p7l.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c8405 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cccY5p7l.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_c8405] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/9] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/9]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/9/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../..]
+    arg [CMakeFiles/cmTC_c8405.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/9] ==> [/usr/lib/gcc/x86_64-linux-gnu/9]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/9/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/9;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+Performing C SOURCE FILE Test REQUIRED_FLAGS_WERROR succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3f149/fast && /usr/bin/make -f CMakeFiles/cmTC_3f149.dir/build.make CMakeFiles/cmTC_3f149.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3f149.dir/src.c.o
+/usr/bin/cc   -DREQUIRED_FLAGS_WERROR -fPIE   -Werror -o CMakeFiles/cmTC_3f149.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_3f149
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f149.dir/link.txt --verbose=1
+/usr/bin/cc  -DREQUIRED_FLAGS_WERROR    CMakeFiles/cmTC_3f149.dir/src.c.o  -o cmTC_3f149 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_STD_GNU99_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c8793/fast && /usr/bin/make -f CMakeFiles/cmTC_c8793.dir/build.make CMakeFiles/cmTC_c8793.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c8793.dir/src.c.o
+/usr/bin/cc   -DWITH_STD_GNU99_FLAG -Werror -fPIE   -std=gnu99 -o CMakeFiles/cmTC_c8793.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c8793
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8793.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_STD_GNU99_FLAG -Werror    CMakeFiles/cmTC_c8793.dir/src.c.o  -o cmTC_c8793 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WPEDANTIC_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7630b/fast && /usr/bin/make -f CMakeFiles/cmTC_7630b.dir/build.make CMakeFiles/cmTC_7630b.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7630b.dir/src.c.o
+/usr/bin/cc   -DWITH_WPEDANTIC_FLAG -Werror -fPIE   -Wpedantic -o CMakeFiles/cmTC_7630b.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7630b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7630b.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WPEDANTIC_FLAG -Werror    CMakeFiles/cmTC_7630b.dir/src.c.o  -o cmTC_7630b 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WALL_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e8fc6/fast && /usr/bin/make -f CMakeFiles/cmTC_e8fc6.dir/build.make CMakeFiles/cmTC_e8fc6.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e8fc6.dir/src.c.o
+/usr/bin/cc   -DWITH_WALL_FLAG -Werror -fPIE   -Wall -o CMakeFiles/cmTC_e8fc6.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e8fc6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8fc6.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WALL_FLAG -Werror    CMakeFiles/cmTC_e8fc6.dir/src.c.o  -o cmTC_e8fc6 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSHADOW_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_77ad7/fast && /usr/bin/make -f CMakeFiles/cmTC_77ad7.dir/build.make CMakeFiles/cmTC_77ad7.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_77ad7.dir/src.c.o
+/usr/bin/cc   -DWITH_WSHADOW_FLAG -Werror -fPIE   -Wshadow -o CMakeFiles/cmTC_77ad7.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_77ad7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77ad7.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WSHADOW_FLAG -Werror    CMakeFiles/cmTC_77ad7.dir/src.c.o  -o cmTC_77ad7 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WMISSING_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1cadb/fast && /usr/bin/make -f CMakeFiles/cmTC_1cadb.dir/build.make CMakeFiles/cmTC_1cadb.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1cadb.dir/src.c.o
+/usr/bin/cc   -DWITH_WMISSING_PROTOTYPES_FLAG -Werror -fPIE   -Wmissing-prototypes -o CMakeFiles/cmTC_1cadb.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1cadb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1cadb.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WMISSING_PROTOTYPES_FLAG -Werror    CMakeFiles/cmTC_1cadb.dir/src.c.o  -o cmTC_1cadb 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WCAST_ALIGN_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ecdef/fast && /usr/bin/make -f CMakeFiles/cmTC_ecdef.dir/build.make CMakeFiles/cmTC_ecdef.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ecdef.dir/src.c.o
+/usr/bin/cc   -DWITH_WCAST_ALIGN_FLAG -Werror -fPIE   -Wcast-align -o CMakeFiles/cmTC_ecdef.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ecdef
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ecdef.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WCAST_ALIGN_FLAG -Werror    CMakeFiles/cmTC_ecdef.dir/src.c.o  -o cmTC_ecdef 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_ADDRESS_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_36e45/fast && /usr/bin/make -f CMakeFiles/cmTC_36e45.dir/build.make CMakeFiles/cmTC_36e45.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_36e45.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_ADDRESS_FLAG -Werror -fPIE   -Werror=address -o CMakeFiles/cmTC_36e45.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_36e45
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36e45.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_ADDRESS_FLAG -Werror    CMakeFiles/cmTC_36e45.dir/src.c.o  -o cmTC_36e45 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSTRICT_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8c88d/fast && /usr/bin/make -f CMakeFiles/cmTC_8c88d.dir/build.make CMakeFiles/cmTC_8c88d.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8c88d.dir/src.c.o
+/usr/bin/cc   -DWITH_WSTRICT_PROTOTYPES_FLAG -Werror -fPIE   -Wstrict-prototypes -o CMakeFiles/cmTC_8c88d.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8c88d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c88d.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WSTRICT_PROTOTYPES_FLAG -Werror    CMakeFiles/cmTC_8c88d.dir/src.c.o  -o cmTC_8c88d 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_STRICT_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9ac1f/fast && /usr/bin/make -f CMakeFiles/cmTC_9ac1f.dir/build.make CMakeFiles/cmTC_9ac1f.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9ac1f.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_STRICT_PROTOTYPES_FLAG -Werror -fPIE   -Werror=strict-prototypes -o CMakeFiles/cmTC_9ac1f.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_9ac1f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ac1f.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_STRICT_PROTOTYPES_FLAG -Werror    CMakeFiles/cmTC_9ac1f.dir/src.c.o  -o cmTC_9ac1f 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WWRITE_STRINGS_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9885f/fast && /usr/bin/make -f CMakeFiles/cmTC_9885f.dir/build.make CMakeFiles/cmTC_9885f.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9885f.dir/src.c.o
+/usr/bin/cc   -DWITH_WWRITE_STRINGS_FLAG -Werror -fPIE   -Wwrite-strings -o CMakeFiles/cmTC_9885f.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_9885f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9885f.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WWRITE_STRINGS_FLAG -Werror    CMakeFiles/cmTC_9885f.dir/src.c.o  -o cmTC_9885f 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_WRITE_STRINGS_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_771b2/fast && /usr/bin/make -f CMakeFiles/cmTC_771b2.dir/build.make CMakeFiles/cmTC_771b2.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_771b2.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_WRITE_STRINGS_FLAG -Werror -fPIE   -Werror=write-strings -o CMakeFiles/cmTC_771b2.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_771b2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_771b2.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_WRITE_STRINGS_FLAG -Werror    CMakeFiles/cmTC_771b2.dir/src.c.o  -o cmTC_771b2 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ebb00/fast && /usr/bin/make -f CMakeFiles/cmTC_ebb00.dir/build.make CMakeFiles/cmTC_ebb00.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ebb00.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG -Werror -fPIE   -Werror-implicit-function-declaration -o CMakeFiles/cmTC_ebb00.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ebb00
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ebb00.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG -Werror    CMakeFiles/cmTC_ebb00.dir/src.c.o  -o cmTC_ebb00 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WPOINTER_ARITH_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d0c83/fast && /usr/bin/make -f CMakeFiles/cmTC_d0c83.dir/build.make CMakeFiles/cmTC_d0c83.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d0c83.dir/src.c.o
+/usr/bin/cc   -DWITH_WPOINTER_ARITH_FLAG -Werror -fPIE   -Wpointer-arith -o CMakeFiles/cmTC_d0c83.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d0c83
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d0c83.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WPOINTER_ARITH_FLAG -Werror    CMakeFiles/cmTC_d0c83.dir/src.c.o  -o cmTC_d0c83 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_POINTER_ARITH_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_64965/fast && /usr/bin/make -f CMakeFiles/cmTC_64965.dir/build.make CMakeFiles/cmTC_64965.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_64965.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_POINTER_ARITH_FLAG -Werror -fPIE   -Werror=pointer-arith -o CMakeFiles/cmTC_64965.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_64965
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_64965.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_POINTER_ARITH_FLAG -Werror    CMakeFiles/cmTC_64965.dir/src.c.o  -o cmTC_64965 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WDECLARATION_AFTER_STATEMENT_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f69ce/fast && /usr/bin/make -f CMakeFiles/cmTC_f69ce.dir/build.make CMakeFiles/cmTC_f69ce.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f69ce.dir/src.c.o
+/usr/bin/cc   -DWITH_WDECLARATION_AFTER_STATEMENT_FLAG -Werror -fPIE   -Wdeclaration-after-statement -o CMakeFiles/cmTC_f69ce.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f69ce
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f69ce.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WDECLARATION_AFTER_STATEMENT_FLAG -Werror    CMakeFiles/cmTC_f69ce.dir/src.c.o  -o cmTC_f69ce 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6e95e/fast && /usr/bin/make -f CMakeFiles/cmTC_6e95e.dir/build.make CMakeFiles/cmTC_6e95e.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6e95e.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG -Werror -fPIE   -Werror=declaration-after-statement -o CMakeFiles/cmTC_6e95e.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6e95e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e95e.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG -Werror    CMakeFiles/cmTC_6e95e.dir/src.c.o  -o cmTC_6e95e 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WRETURN_TYPE_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_05320/fast && /usr/bin/make -f CMakeFiles/cmTC_05320.dir/build.make CMakeFiles/cmTC_05320.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_05320.dir/src.c.o
+/usr/bin/cc   -DWITH_WRETURN_TYPE_FLAG -Werror -fPIE   -Wreturn-type -o CMakeFiles/cmTC_05320.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_05320
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05320.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WRETURN_TYPE_FLAG -Werror    CMakeFiles/cmTC_05320.dir/src.c.o  -o cmTC_05320 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_RETURN_TYPE_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_48bbc/fast && /usr/bin/make -f CMakeFiles/cmTC_48bbc.dir/build.make CMakeFiles/cmTC_48bbc.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48bbc.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_RETURN_TYPE_FLAG -Werror -fPIE   -Werror=return-type -o CMakeFiles/cmTC_48bbc.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_48bbc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48bbc.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_RETURN_TYPE_FLAG -Werror    CMakeFiles/cmTC_48bbc.dir/src.c.o  -o cmTC_48bbc 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WUNINITIALIZED_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2edcf/fast && /usr/bin/make -f CMakeFiles/cmTC_2edcf.dir/build.make CMakeFiles/cmTC_2edcf.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2edcf.dir/src.c.o
+/usr/bin/cc   -DWITH_WUNINITIALIZED_FLAG -Werror -fPIE   -Wuninitialized -o CMakeFiles/cmTC_2edcf.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_2edcf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2edcf.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WUNINITIALIZED_FLAG -Werror    CMakeFiles/cmTC_2edcf.dir/src.c.o  -o cmTC_2edcf 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_UNINITIALIZED_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5acce/fast && /usr/bin/make -f CMakeFiles/cmTC_5acce.dir/build.make CMakeFiles/cmTC_5acce.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5acce.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_UNINITIALIZED_FLAG -Werror -fPIE   -Werror=uninitialized -o CMakeFiles/cmTC_5acce.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5acce
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5acce.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_UNINITIALIZED_FLAG -Werror    CMakeFiles/cmTC_5acce.dir/src.c.o  -o cmTC_5acce 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WIMPLICIT_FALLTHROUGH_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e64d0/fast && /usr/bin/make -f CMakeFiles/cmTC_e64d0.dir/build.make CMakeFiles/cmTC_e64d0.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e64d0.dir/src.c.o
+/usr/bin/cc   -DWITH_WIMPLICIT_FALLTHROUGH_FLAG -Werror -fPIE   -Wimplicit-fallthrough -o CMakeFiles/cmTC_e64d0.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e64d0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e64d0.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WIMPLICIT_FALLTHROUGH_FLAG -Werror    CMakeFiles/cmTC_e64d0.dir/src.c.o  -o cmTC_e64d0 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_STRICT_OVERFLOW_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_be98b/fast && /usr/bin/make -f CMakeFiles/cmTC_be98b.dir/build.make CMakeFiles/cmTC_be98b.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_be98b.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_STRICT_OVERFLOW_FLAG -Werror -fPIE   -Werror=strict-overflow -o CMakeFiles/cmTC_be98b.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_be98b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be98b.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_STRICT_OVERFLOW_FLAG -Werror    CMakeFiles/cmTC_be98b.dir/src.c.o  -o cmTC_be98b 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSTRICT_OVERFLOW_2_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_82503/fast && /usr/bin/make -f CMakeFiles/cmTC_82503.dir/build.make CMakeFiles/cmTC_82503.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_82503.dir/src.c.o
+/usr/bin/cc   -DWITH_WSTRICT_OVERFLOW_2_FLAG -Werror -fPIE   -Wstrict-overflow=2 -o CMakeFiles/cmTC_82503.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_82503
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_82503.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WSTRICT_OVERFLOW_2_FLAG -Werror    CMakeFiles/cmTC_82503.dir/src.c.o  -o cmTC_82503 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WNO_FORMAT_ZERO_LENGTH_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fe2a8/fast && /usr/bin/make -f CMakeFiles/cmTC_fe2a8.dir/build.make CMakeFiles/cmTC_fe2a8.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe2a8.dir/src.c.o
+/usr/bin/cc   -DWITH_WNO_FORMAT_ZERO_LENGTH_FLAG -Werror -fPIE   -Wno-format-zero-length -o CMakeFiles/cmTC_fe2a8.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_fe2a8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe2a8.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WNO_FORMAT_ZERO_LENGTH_FLAG -Werror    CMakeFiles/cmTC_fe2a8.dir/src.c.o  -o cmTC_fe2a8 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5cb9d/fast && /usr/bin/make -f CMakeFiles/cmTC_5cb9d.dir/build.make CMakeFiles/cmTC_5cb9d.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5cb9d.dir/src.c.o
+/usr/bin/cc   -DWITH_WMISSING_FIELD_INITIALIZERS_FLAG -Werror -fPIE   -Wmissing-field-initializers -o CMakeFiles/cmTC_5cb9d.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5cb9d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5cb9d.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WMISSING_FIELD_INITIALIZERS_FLAG -Werror    CMakeFiles/cmTC_5cb9d.dir/src.c.o  -o cmTC_5cb9d 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test REQUIRED_FLAGS_WFORMAT succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_70ffe/fast && /usr/bin/make -f CMakeFiles/cmTC_70ffe.dir/build.make CMakeFiles/cmTC_70ffe.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_70ffe.dir/src.c.o
+/usr/bin/cc   -DREQUIRED_FLAGS_WFORMAT -Werror -fPIE   -Wformat -o CMakeFiles/cmTC_70ffe.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_70ffe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70ffe.dir/link.txt --verbose=1
+/usr/bin/cc  -DREQUIRED_FLAGS_WFORMAT -Werror    CMakeFiles/cmTC_70ffe.dir/src.c.o  -o cmTC_70ffe 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WFORMAT_SECURITY_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_05d4f/fast && /usr/bin/make -f CMakeFiles/cmTC_05d4f.dir/build.make CMakeFiles/cmTC_05d4f.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_05d4f.dir/src.c.o
+/usr/bin/cc   -DWITH_WFORMAT_SECURITY_FLAG -Werror -Wformat -fPIE   -Wformat-security -o CMakeFiles/cmTC_05d4f.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_05d4f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05d4f.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WFORMAT_SECURITY_FLAG -Werror -Wformat    CMakeFiles/cmTC_05d4f.dir/src.c.o  -o cmTC_05d4f 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_FORMAT_SECURITY_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6fb85/fast && /usr/bin/make -f CMakeFiles/cmTC_6fb85.dir/build.make CMakeFiles/cmTC_6fb85.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6fb85.dir/src.c.o
+/usr/bin/cc   -DWITH_WERROR_FORMAT_SECURITY_FLAG -Werror -Wformat -fPIE   -Werror=format-security -o CMakeFiles/cmTC_6fb85.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6fb85
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6fb85.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_WERROR_FORMAT_SECURITY_FLAG -Werror -Wformat    CMakeFiles/cmTC_6fb85.dir/src.c.o  -o cmTC_6fb85 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_FNO_COMMON_FLAG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d343a/fast && /usr/bin/make -f CMakeFiles/cmTC_d343a.dir/build.make CMakeFiles/cmTC_d343a.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d343a.dir/src.c.o
+/usr/bin/cc   -DWITH_FNO_COMMON_FLAG -Werror -Wformat -fPIE   -fno-common -o CMakeFiles/cmTC_d343a.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d343a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d343a.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_FNO_COMMON_FLAG -Werror -Wformat    CMakeFiles/cmTC_d343a.dir/src.c.o  -o cmTC_d343a 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_STACK_PROTECTOR_STRONG succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bd9a2/fast && /usr/bin/make -f CMakeFiles/cmTC_bd9a2.dir/build.make CMakeFiles/cmTC_bd9a2.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bd9a2.dir/src.c.o
+/usr/bin/cc   -DWITH_STACK_PROTECTOR_STRONG -fstack-protector-strong -fPIE   -o CMakeFiles/cmTC_bd9a2.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_bd9a2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bd9a2.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_STACK_PROTECTOR_STRONG -fstack-protector-strong    CMakeFiles/cmTC_bd9a2.dir/src.c.o  -o cmTC_bd9a2 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+Performing C SOURCE FILE Test WITH_STACK_CLASH_PROTECTION succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_583c6/fast && /usr/bin/make -f CMakeFiles/cmTC_583c6.dir/build.make CMakeFiles/cmTC_583c6.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_583c6.dir/src.c.o
+/usr/bin/cc   -DWITH_STACK_CLASH_PROTECTION -fstack-clash-protection -fPIE   -o CMakeFiles/cmTC_583c6.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_583c6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_583c6.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_STACK_CLASH_PROTECTION -fstack-clash-protection    CMakeFiles/cmTC_583c6.dir/src.c.o  -o cmTC_583c6 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+Performing C SOURCE FILE Test WITH_VISIBILITY_HIDDEN succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2b64d/fast && /usr/bin/make -f CMakeFiles/cmTC_2b64d.dir/build.make CMakeFiles/cmTC_2b64d.dir/build
+make[1]: Entering directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2b64d.dir/src.c.o
+/usr/bin/cc   -DWITH_VISIBILITY_HIDDEN -fPIE   -fvisibility=hidden -o CMakeFiles/cmTC_2b64d.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_2b64d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b64d.dir/link.txt --verbose=1
+/usr/bin/cc  -DWITH_VISIBILITY_HIDDEN    CMakeFiles/cmTC_2b64d.dir/src.c.o  -o cmTC_2b64d 
+make[1]: Leaving directory '/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file assert.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b98c6/fast && /usr/bin/make -f CMakeFiles/cmTC_b98c6.dir/build.make CMakeFiles/cmTC_b98c6.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_b98c6.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_b98c6.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b98c6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b98c6.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_b98c6.dir/CheckIncludeFile.c.o  -o cmTC_b98c6 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c2312/fast && /usr/bin/make -f CMakeFiles/cmTC_c2312.dir/build.make CMakeFiles/cmTC_c2312.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_c2312.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_c2312.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c2312
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2312.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_c2312.dir/CheckIncludeFile.c.o  -o cmTC_c2312 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ba678/fast && /usr/bin/make -f CMakeFiles/cmTC_ba678.dir/build.make CMakeFiles/cmTC_ba678.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_ba678.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_ba678.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ba678
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba678.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_ba678.dir/CheckIncludeFile.c.o  -o cmTC_ba678 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_630be/fast && /usr/bin/make -f CMakeFiles/cmTC_630be.dir/build.make CMakeFiles/cmTC_630be.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_630be.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_630be.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_630be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_630be.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_630be.dir/CheckIncludeFile.c.o  -o cmTC_630be 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file setjmp.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_04254/fast && /usr/bin/make -f CMakeFiles/cmTC_04254.dir/build.make CMakeFiles/cmTC_04254.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_04254.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_04254.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_04254
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04254.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_04254.dir/CheckIncludeFile.c.o  -o cmTC_04254 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5c454/fast && /usr/bin/make -f CMakeFiles/cmTC_5c454.dir/build.make CMakeFiles/cmTC_5c454.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_5c454.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_5c454.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5c454
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c454.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_5c454.dir/CheckIncludeFile.c.o  -o cmTC_5c454 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a9a8e/fast && /usr/bin/make -f CMakeFiles/cmTC_a9a8e.dir/build.make CMakeFiles/cmTC_a9a8e.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_a9a8e.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_a9a8e.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a9a8e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9a8e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_a9a8e.dir/CheckIncludeFile.c.o  -o cmTC_a9a8e 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_588b0/fast && /usr/bin/make -f CMakeFiles/cmTC_588b0.dir/build.make CMakeFiles/cmTC_588b0.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_588b0.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_588b0.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_588b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_588b0.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_588b0.dir/CheckIncludeFile.c.o  -o cmTC_588b0 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c1b82/fast && /usr/bin/make -f CMakeFiles/cmTC_c1b82.dir/build.make CMakeFiles/cmTC_c1b82.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_c1b82.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_c1b82.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c1b82
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1b82.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_c1b82.dir/CheckIncludeFile.c.o  -o cmTC_c1b82 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_552f8/fast && /usr/bin/make -f CMakeFiles/cmTC_552f8.dir/build.make CMakeFiles/cmTC_552f8.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_552f8.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_552f8.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_552f8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_552f8.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_552f8.dir/CheckIncludeFile.c.o  -o cmTC_552f8 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_21d6e/fast && /usr/bin/make -f CMakeFiles/cmTC_21d6e.dir/build.make CMakeFiles/cmTC_21d6e.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_21d6e.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_21d6e.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_21d6e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_21d6e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_21d6e.dir/CheckIncludeFile.c.o  -o cmTC_21d6e 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e8bc4/fast && /usr/bin/make -f CMakeFiles/cmTC_e8bc4.dir/build.make CMakeFiles/cmTC_e8bc4.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_e8bc4.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_e8bc4.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e8bc4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8bc4.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_e8bc4.dir/CheckIncludeFile.c.o  -o cmTC_e8bc4 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1acb3/fast && /usr/bin/make -f CMakeFiles/cmTC_1acb3.dir/build.make CMakeFiles/cmTC_1acb3.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_1acb3.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_1acb3.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_1acb3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1acb3.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_1acb3.dir/CheckIncludeFile.c.o  -o cmTC_1acb3 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96aa3/fast && /usr/bin/make -f CMakeFiles/cmTC_96aa3.dir/build.make CMakeFiles/cmTC_96aa3.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_96aa3.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_96aa3.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_96aa3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96aa3.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_96aa3.dir/CheckIncludeFile.c.o  -o cmTC_96aa3 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_03f2f/fast && /usr/bin/make -f CMakeFiles/cmTC_03f2f.dir/build.make CMakeFiles/cmTC_03f2f.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_03f2f.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_03f2f.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_03f2f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03f2f.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_03f2f.dir/CheckIncludeFile.c.o  -o cmTC_03f2f 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file time.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2e396/fast && /usr/bin/make -f CMakeFiles/cmTC_2e396.dir/build.make CMakeFiles/cmTC_2e396.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_2e396.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_2e396.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2e396
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e396.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_2e396.dir/CheckIncludeFile.c.o  -o cmTC_2e396 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9cc09/fast && /usr/bin/make -f CMakeFiles/cmTC_9cc09.dir/build.make CMakeFiles/cmTC_9cc09.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_9cc09.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_9cc09.dir/CheckIncludeFile.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9cc09
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9cc09.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_9cc09.dir/CheckIncludeFile.c.o  -o cmTC_9cc09 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_TIMESPEC succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_912a3/fast && /usr/bin/make -f CMakeFiles/cmTC_912a3.dir/build.make CMakeFiles/cmTC_912a3.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_912a3.dir/src.c.o
+/usr/bin/cc   -DHAVE_STRUCT_TIMESPEC -fPIE   -o CMakeFiles/cmTC_912a3.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_912a3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_912a3.dir/link.txt --verbose=1
+/usr/bin/cc  -DHAVE_STRUCT_TIMESPEC    CMakeFiles/cmTC_912a3.dir/src.c.o  -o cmTC_912a3 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+Source file was:
+
+#include <time.h>
+
+int main()
+{
+  (void)sizeof(((struct timespec *)0)->tv_sec);
+  return 0;
+}
+
+Determining if the function calloc exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ccd30/fast && /usr/bin/make -f CMakeFiles/cmTC_ccd30.dir/build.make CMakeFiles/cmTC_ccd30.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_ccd30.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=calloc -fPIE   -o CMakeFiles/cmTC_ccd30.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘calloc’; expected ‘void *(long unsigned int,  long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘calloc’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_ccd30
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccd30.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=calloc    CMakeFiles/cmTC_ccd30.dir/CheckFunctionExists.c.o  -o cmTC_ccd30 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function exit exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2b2f1/fast && /usr/bin/make -f CMakeFiles/cmTC_2b2f1.dir/build.make CMakeFiles/cmTC_2b2f1.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_2b2f1.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=exit -fPIE   -o CMakeFiles/cmTC_2b2f1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘exit’; expected ‘void(int)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘exit’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_2b2f1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b2f1.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=exit    CMakeFiles/cmTC_2b2f1.dir/CheckFunctionExists.c.o  -o cmTC_2b2f1 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function fprintf exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b7469/fast && /usr/bin/make -f CMakeFiles/cmTC_b7469.dir/build.make CMakeFiles/cmTC_b7469.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_b7469.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=fprintf -fPIE   -o CMakeFiles/cmTC_b7469.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘fprintf’; expected ‘int(void *, const char *, ...)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘fprintf’ is declared in header ‘<stdio.h>’
+  +++ |+#include <stdio.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_b7469
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7469.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=fprintf    CMakeFiles/cmTC_b7469.dir/CheckFunctionExists.c.o  -o cmTC_b7469 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function free exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8073f/fast && /usr/bin/make -f CMakeFiles/cmTC_8073f.dir/build.make CMakeFiles/cmTC_8073f.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_8073f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=free -fPIE   -o CMakeFiles/cmTC_8073f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘free’; expected ‘void(void *)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘free’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_8073f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8073f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=free    CMakeFiles/cmTC_8073f.dir/CheckFunctionExists.c.o  -o cmTC_8073f 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function longjmp exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9a266/fast && /usr/bin/make -f CMakeFiles/cmTC_9a266.dir/build.make CMakeFiles/cmTC_9a266.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_9a266.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=longjmp -fPIE   -o CMakeFiles/cmTC_9a266.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9a266
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a266.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=longjmp    CMakeFiles/cmTC_9a266.dir/CheckFunctionExists.c.o  -o cmTC_9a266 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function siglongjmp exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e2f32/fast && /usr/bin/make -f CMakeFiles/cmTC_e2f32.dir/build.make CMakeFiles/cmTC_e2f32.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_e2f32.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=siglongjmp -fPIE   -o CMakeFiles/cmTC_e2f32.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e2f32
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2f32.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=siglongjmp    CMakeFiles/cmTC_e2f32.dir/CheckFunctionExists.c.o  -o cmTC_e2f32 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function malloc exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_932bd/fast && /usr/bin/make -f CMakeFiles/cmTC_932bd.dir/build.make CMakeFiles/cmTC_932bd.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_932bd.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=malloc -fPIE   -o CMakeFiles/cmTC_932bd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘malloc’; expected ‘void *(long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘malloc’ is declared in header ‘<stdlib.h>’
+  +++ |+#include <stdlib.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_932bd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_932bd.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=malloc    CMakeFiles/cmTC_932bd.dir/CheckFunctionExists.c.o  -o cmTC_932bd 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function memcpy exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_acc4e/fast && /usr/bin/make -f CMakeFiles/cmTC_acc4e.dir/build.make CMakeFiles/cmTC_acc4e.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_acc4e.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memcpy -fPIE   -o CMakeFiles/cmTC_acc4e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘memcpy’; expected ‘void *(void *, const void *, long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘memcpy’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_acc4e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acc4e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=memcpy    CMakeFiles/cmTC_acc4e.dir/CheckFunctionExists.c.o  -o cmTC_acc4e 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function memset exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c06ff/fast && /usr/bin/make -f CMakeFiles/cmTC_c06ff.dir/build.make CMakeFiles/cmTC_c06ff.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_c06ff.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memset -fPIE   -o CMakeFiles/cmTC_c06ff.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘memset’; expected ‘void *(void *, int,  long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘memset’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_c06ff
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c06ff.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=memset    CMakeFiles/cmTC_c06ff.dir/CheckFunctionExists.c.o  -o cmTC_c06ff 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function printf exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_611cd/fast && /usr/bin/make -f CMakeFiles/cmTC_611cd.dir/build.make CMakeFiles/cmTC_611cd.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_611cd.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=printf -fPIE   -o CMakeFiles/cmTC_611cd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘printf’; expected ‘int(const char *, ...)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘printf’ is declared in header ‘<stdio.h>’
+  +++ |+#include <stdio.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_611cd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_611cd.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=printf    CMakeFiles/cmTC_611cd.dir/CheckFunctionExists.c.o  -o cmTC_611cd 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function setjmp exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_30c9f/fast && /usr/bin/make -f CMakeFiles/cmTC_30c9f.dir/build.make CMakeFiles/cmTC_30c9f.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_30c9f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=setjmp -fPIE   -o CMakeFiles/cmTC_30c9f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_30c9f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30c9f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=setjmp    CMakeFiles/cmTC_30c9f.dir/CheckFunctionExists.c.o  -o cmTC_30c9f 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function signal exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ff315/fast && /usr/bin/make -f CMakeFiles/cmTC_ff315.dir/build.make CMakeFiles/cmTC_ff315.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_ff315.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=signal -fPIE   -o CMakeFiles/cmTC_ff315.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ff315
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff315.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=signal    CMakeFiles/cmTC_ff315.dir/CheckFunctionExists.c.o  -o cmTC_ff315 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function strsignal exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_29e36/fast && /usr/bin/make -f CMakeFiles/cmTC_29e36.dir/build.make CMakeFiles/cmTC_29e36.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_29e36.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strsignal -fPIE   -o CMakeFiles/cmTC_29e36.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_29e36
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29e36.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strsignal    CMakeFiles/cmTC_29e36.dir/CheckFunctionExists.c.o  -o cmTC_29e36 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function strcmp exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_72d72/fast && /usr/bin/make -f CMakeFiles/cmTC_72d72.dir/build.make CMakeFiles/cmTC_72d72.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_72d72.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strcmp -fPIE   -o CMakeFiles/cmTC_72d72.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘strcmp’; expected ‘int(const char *, const char *)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘strcmp’ is declared in header ‘<string.h>’
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_72d72
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72d72.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=strcmp    CMakeFiles/cmTC_72d72.dir/CheckFunctionExists.c.o  -o cmTC_72d72 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function clock_gettime exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8a300/fast && /usr/bin/make -f CMakeFiles/cmTC_8a300.dir/build.make CMakeFiles/cmTC_8a300.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_8a300.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=clock_gettime -fPIE   -o CMakeFiles/cmTC_8a300.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8a300
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a300.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=clock_gettime    CMakeFiles/cmTC_8a300.dir/CheckFunctionExists.c.o  -o cmTC_8a300 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function sprintf exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b1e66/fast && /usr/bin/make -f CMakeFiles/cmTC_b1e66.dir/build.make CMakeFiles/cmTC_b1e66.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_b1e66.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sprintf -fPIE   -o CMakeFiles/cmTC_b1e66.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘sprintf’; expected ‘int(char *, const char *, ...)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘sprintf’ is declared in header ‘<stdio.h>’
+  +++ |+#include <stdio.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_b1e66
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b1e66.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sprintf    CMakeFiles/cmTC_b1e66.dir/CheckFunctionExists.c.o  -o cmTC_b1e66 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the function vsnprintf exists passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_45dbc/fast && /usr/bin/make -f CMakeFiles/cmTC_45dbc.dir/build.make CMakeFiles/cmTC_45dbc.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_45dbc.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=vsnprintf -fPIE   -o CMakeFiles/cmTC_45dbc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘vsnprintf’; expected ‘int(char *, long unsigned int,  const char *, __va_list_tag *)’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.16/Modules/CheckFunctionExists.c:1:1: note: ‘vsnprintf’ is declared in header ‘<stdio.h>’
+  +++ |+#include <stdio.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_45dbc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45dbc.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=vsnprintf    CMakeFiles/cmTC_45dbc.dir/CheckFunctionExists.c.o  -o cmTC_45dbc 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Performing C SOURCE FILE Test HAVE_GCC_THREAD_LOCAL_STORAGE succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5da9c/fast && /usr/bin/make -f CMakeFiles/cmTC_5da9c.dir/build.make CMakeFiles/cmTC_5da9c.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_5da9c.dir/src.c.o
+/usr/bin/cc   -DHAVE_GCC_THREAD_LOCAL_STORAGE -fPIE   -o CMakeFiles/cmTC_5da9c.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5da9c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5da9c.dir/link.txt --verbose=1
+/usr/bin/cc  -DHAVE_GCC_THREAD_LOCAL_STORAGE    CMakeFiles/cmTC_5da9c.dir/src.c.o  -o cmTC_5da9c 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+Source file was:
+
+__thread int tls;
+
+int main(void) {
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_CLOCK_REALTIME succeeded with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_56e5c/fast && /usr/bin/make -f CMakeFiles/cmTC_56e5c.dir/build.make CMakeFiles/cmTC_56e5c.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_56e5c.dir/src.c.o
+/usr/bin/cc   -DHAVE_CLOCK_REALTIME -fPIE   -o CMakeFiles/cmTC_56e5c.dir/src.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_56e5c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56e5c.dir/link.txt --verbose=1
+/usr/bin/cc  -DHAVE_CLOCK_REALTIME    CMakeFiles/cmTC_56e5c.dir/src.c.o  -o cmTC_56e5c  /usr/lib/x86_64-linux-gnu/librt.so 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+Source file was:
+
+#include <time.h>
+
+int main(void) {
+    struct timespec ts;
+
+    clock_gettime(CLOCK_REALTIME, &ts);
+
+    return 0;
+}
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1cec6/fast && /usr/bin/make -f CMakeFiles/cmTC_1cec6.dir/build.make CMakeFiles/cmTC_1cec6.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_1cec6.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_1cec6.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_1cec6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1cec6.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_1cec6.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_1cec6 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_89f5d/fast && /usr/bin/make -f CMakeFiles/cmTC_89f5d.dir/build.make CMakeFiles/cmTC_89f5d.dir/build
+make[1] : on entre dans le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_89f5d.dir/TestEndianess.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_89f5d.dir/TestEndianess.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_89f5d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_89f5d.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_89f5d.dir/TestEndianess.c.o  -o cmTC_89f5d 
+make[1] : on quitte le répertoire « /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/CMakeFiles/CMakeTmp »
+
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+

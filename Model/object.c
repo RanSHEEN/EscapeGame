@@ -6,16 +6,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void createObject(char id, int x, int y, char file_name){
+//Object
+Object * createObject(char * id, int x, int y, char * file_name){
     Object * o= (Object *) malloc(sizeof(Object));
     o->id=id;
     o->file_name=file_name; //nom du png correspondant à l'image
-    o->x=x;
-    o->y=y;
+    if (x>SCREEN_W || y>SCREEN_H){
+        o->x=0;
+        o->y=0;
+    }else {
+        o->x = x;
+        o->y = y;
+    }
 }
 
-void createDoor(char id, int x, int y, char file_name){
+void freeObject(Object *o){
+    free(o);
+}
+
+//Door
+Door * createDoor(char * id, int x, int y, char * file_name){
     Door* d= (Door *) malloc(sizeof(Door));
     d->id=id;
     d->file_name=file_name;
@@ -32,6 +42,9 @@ void changeAccess(Door *D){
     }
 }
 
+void freeDoor(Door * D){
+    free(D);
+}
 /*
 * cadrillage model:
 * tableau de cases:
@@ -51,6 +64,7 @@ int getAxesDimension(int a,int b){
         a=a+1;
         N=N+1;
     }
+    return b;
 }
 
 frame ** CreateFraming(){

@@ -11,25 +11,27 @@
 #define SCREEN_H 984
 
 typedef struct Object{
-    char id;
+    char * id;
     int x;
     int y;
-    char file_name;
+    char * file_name;
 }Object;
 
 
 typedef struct Door{
-    char id;
+    char * id;
     int x;
     int y;
-    char file_name;
+    char * file_name;
     int access;
 }Door;
 
-void createObject(char id, int x, int y, char file_name);
-void createDoor(char id, int x, int y, char file_name);
+Object * createObject(char * id, int x, int y, char * file_name);
+Door * createDoor(char * id, int x, int y, char * file_name);
 void changeAccess(Door *D);
 
+void freeObject(Object *o);
+void freeDoor(Door * D);
 /*
 * cadrillage model:
 * tableau de cases:

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/simple_test.c
+stdarg.h
+-
+stddef.h
+-
+setjmp.h
+-
+stdint.h
+-
+cmocka.h
+-
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include/cmocka.h
+

@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
-LDFLAGS= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image
+LDFLAGS= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image -lcmocka
 
 all: make_model make_view make_controller main
 
@@ -16,7 +16,7 @@ make_controller:
 	make -C ./Controller
 	make -C  ./Controller clean
 
-main: main.o
+main: main.o UTest.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 
@@ -29,5 +29,7 @@ clean:
 
 distclean :
 	rm -f ./lib/*.a
+
+
 
 include $(wildcart .d)
