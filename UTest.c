@@ -62,12 +62,16 @@ static void test_Door(void **state){
     freeDoor(D);
 }
 
+static void test_EdgeList(void **state){
+
+}
+
 int main(void){
-    const struct CMUnitTest tests[]={
+    const struct CMUnitTest tests_POD[]={
             cmocka_unit_test(test_Personnage),
             cmocka_unit_test(test_Object),
             cmocka_unit_test(test_Door)
     };
 
-    return cmocka_run_group_tests_name("test",tests,NULL,NULL);
+    return cmocka_run_group_tests_name("test element du jeu",tests_POD,NULL,NULL);
 }

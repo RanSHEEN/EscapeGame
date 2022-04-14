@@ -6,6 +6,7 @@
 #define ESCAPEGAMEPROJECT_MAIN_MODEL_H
 #include "object.h"
 #include "personnage.h"
+#include "graph.h"
 
 
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H
