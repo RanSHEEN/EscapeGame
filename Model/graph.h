@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * Graph : "Machine d'état" du scénario
@@ -71,36 +72,44 @@ void deleteEdgeList(EdgeList * c);
 /*
  * Structures
  */
-
 struct Vertex{
     char * label;
-    EdgeList * connect;
+    EdgeList * connect;//vide de base
     int enigma_number;
     Vertex * next_v;
     int enigma_solved; //à 0 de base
 };
-
 struct VertexList{
     Vertex *first;
     Vertex *current;
     Vertex *last;
 };
 /*
- * Fonction Gestion de Liste Vertex List
+ * Fonction Gestion de Liste Edge List
  */
-//TODO
+void initGraph(VertexList * g);
+int isEmptyVertexList(VertexList * g);
+void insertFirstVertex(VertexList * g,char * label,int enigma_number);
+void insertLastVertex(VertexList * g,char * label,int enigma_number);
+void addLink(Vertex * v1, Vertex * v2, char * obj_label);
+
 /*
  * "travel in the List"
  */
-//TODO
+void setOnFirstVertex(VertexList * g);
+void setOnLastVertex(VertexList * g);
+void setOnNextVertex(VertexList * g);
+Vertex * findVertex(VertexList * g,char * label);
 /*
- * Print Vertex List
+ * Print Edge List
  */
-//TODO
+void printGraph(VertexList * g);
+
 /*
- * Delete Vertex
+ * Delete Edge
  */
-//TODO
+void deleteFirstVertex(VertexList * g);
+void deleteGraph(VertexList * g);
 
 /**
  * State Change

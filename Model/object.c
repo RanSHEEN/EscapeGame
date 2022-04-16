@@ -18,6 +18,7 @@ Object * createObject(char * id, int x, int y, char * file_name){
         o->x = x;
         o->y = y;
     }
+    return o;
 }
 
 void freeObject(Object *o){
@@ -32,6 +33,7 @@ Door * createDoor(char * id, int x, int y, char * file_name){
     d->x=x;
     d->y=y;
     d->access=0;
+    return d;
 }
 
 void changeAccess(Door *D){

@@ -16,7 +16,7 @@ make_controller:
 	make -C ./Controller
 	make -C  ./Controller clean
 
-main: main.o UTest.o
+main: main.o UTest.o UTest_graph.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 
