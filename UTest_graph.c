@@ -22,20 +22,20 @@ static Vertex * CreateVertex(){
 /*
  * def test Edge List
  */
-static void test_EdgeList_Init(void **state){
+static void test_EdgeList_Init(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     assert_false(c->first!=NULL);
     assert_false(c->last!=NULL);
     assert_true(c->current==NULL);
 }
-static void test_EdgeList_Empty_true(void **state){
+static void test_EdgeList_Empty_true(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     assert_true(isEmptyEdgeList(c));
     assert_false(!isEmptyEdgeList(c));
 }
-static void test_EdgeList_add_Empty1(void **state){
+static void test_EdgeList_add_Empty1(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj[]= "Object2";
@@ -45,7 +45,7 @@ static void test_EdgeList_add_Empty1(void **state){
     assert_string_equal(c->first->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object2");
 }
-static void test_EdgeList_add_Empty2(void **state){
+static void test_EdgeList_add_Empty2(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj[]= "Object2";
@@ -55,7 +55,7 @@ static void test_EdgeList_add_Empty2(void **state){
     assert_string_equal(c->first->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object2");
 }
-static void test_EdgeList_Empty_false(void **state){
+static void test_EdgeList_Empty_false(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj[]= "Object2";
@@ -64,7 +64,7 @@ static void test_EdgeList_Empty_false(void **state){
     assert_false(isEmptyEdgeList(c));
     assert_true(!isEmptyEdgeList(c));
 }
-static void test_EdgeList_addFirst(void **state){
+static void test_EdgeList_addFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -75,7 +75,7 @@ static void test_EdgeList_addFirst(void **state){
     assert_string_equal(c->first->obj_label,"Object1");
     assert_string_equal(c->last->obj_label,"Object2");
 }
-static void test_EdgeList_addLast(void **state){
+static void test_EdgeList_addLast(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -89,7 +89,7 @@ static void test_EdgeList_addLast(void **state){
     assert_string_equal(c->first->next_e->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object3");
 }
-static void test_EdgeList_setFirst(void **state){
+static void test_EdgeList_setFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -102,7 +102,7 @@ static void test_EdgeList_setFirst(void **state){
     setOnFirstEdge(c);
     assert_string_equal(c->current->obj_label,"Object1");
 }
-static void test_EdgeList_setNext(void **state){
+static void test_EdgeList_setNext(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -116,7 +116,7 @@ static void test_EdgeList_setNext(void **state){
     setOnNextEdge(c);
     assert_string_equal(c->current->obj_label,"Object2");
 }
-static void test_EdgeList_setLast(void **state){
+static void test_EdgeList_setLast(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -130,7 +130,7 @@ static void test_EdgeList_setLast(void **state){
     assert_string_equal(c->current->obj_label,"Object3");
 
 }
-static void test_EdgeList_find(void **state){
+static void test_EdgeList_find(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -147,7 +147,7 @@ static void test_EdgeList_find(void **state){
     e= findEdge(c,obj3);
     assert_string_equal(e->obj_label,"Object3");
 }
-static void test_EdgeList_deleteFirst(void **state){
+static void test_EdgeList_deleteFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj2[]= "Object2";
@@ -160,7 +160,7 @@ static void test_EdgeList_deleteFirst(void **state){
     deleteFirstEdge(c);
     assert_string_not_equal(c->first->obj_label,"Object1");
 }
-static void test_EdgeList_deleteFirst_toAnEmpty(void **state){
+static void test_EdgeList_deleteFirst_toAnEmpty(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     char obj1[]= "Object1";
@@ -190,20 +190,20 @@ static void test_print(){
 /*
  * def test Vertex List
  */
-static void test_VertexList_Init(void **state){
+static void test_VertexList_Init(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     assert_true(g->current==NULL);
     assert_true(g->first==NULL);
     assert_true(g->last==NULL);
 }
-static void test_VertexList_EmptyTrue(void **state){
+static void test_VertexList_EmptyTrue(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     assert_true(isEmptyVertexList(g));
     assert_false(!isEmptyVertexList(g));
 }
-static void test_VertexList_addEmpty1(void **state){
+static void test_VertexList_addEmpty1(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label="Vertex2";
@@ -217,7 +217,7 @@ static void test_VertexList_addEmpty1(void **state){
     assert_true(g->first->connect->current==NULL);
     assert_true(g->first->connect->last==NULL);
 }
-static void test_VertexList_addEmpty2(void **state){
+static void test_VertexList_addEmpty2(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label="Vertex2";
@@ -231,7 +231,7 @@ static void test_VertexList_addEmpty2(void **state){
     assert_true(g->first->connect->current==NULL);
     assert_true(g->first->connect->last==NULL);
 }
-static void test_VertexList_EmptyFalse(void **state){
+static void test_VertexList_EmptyFalse(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label="Vertex2";
@@ -239,7 +239,7 @@ static void test_VertexList_EmptyFalse(void **state){
     assert_true(!isEmptyVertexList(g));
     assert_false(isEmptyVertexList(g));
 }
-static void test_VertexList_addFirst(void **state){
+static void test_VertexList_addFirst(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -249,7 +249,7 @@ static void test_VertexList_addFirst(void **state){
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex2");
 }
-static void test_VertexList_addLast(void **state){
+static void test_VertexList_addLast(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -261,7 +261,7 @@ static void test_VertexList_addLast(void **state){
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex3");
 }
-static void test_VertexList_setFirst(void **state){
+static void test_VertexList_setFirst(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -273,7 +273,7 @@ static void test_VertexList_setFirst(void **state){
     setOnFirstVertex(g);
     assert_string_equal(g->current->label,"Vertex1");
 }
-static void test_VertexList_setLast(void **state){
+static void test_VertexList_setLast(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -286,7 +286,7 @@ static void test_VertexList_setLast(void **state){
     setOnNextVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
 }
-static void test_VertexList_setNext(void **state){
+static void test_VertexList_setNext(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -298,7 +298,7 @@ static void test_VertexList_setNext(void **state){
     setOnLastVertex(g);
     assert_string_equal(g->current->label,"Vertex3");
 }
-static void test_VertexList_find(void **state){
+static void test_VertexList_find(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -314,7 +314,7 @@ static void test_VertexList_find(void **state){
     v= findVertex(g,label3);
     assert_string_equal(v->label,"Vertex3");
 }
-static void test_VertexList_addLink(void **state){
+static void test_VertexList_addLink(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -333,7 +333,7 @@ static void test_VertexList_addLink(void **state){
     assert_string_equal(v->connect->first->v_next->label,"Vertex2");
     assert_string_equal(v->connect->last->v_next->label,"Vertex3");
 }
-static void test_VertexList_deleteFirst(void **state){
+static void test_VertexList_deleteFirst(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label2="Vertex2";
@@ -346,7 +346,7 @@ static void test_VertexList_deleteFirst(void **state){
     assert_string_equal(g->first->label,"Vertex2");
     assert_string_equal(g->last->label,"Vertex3");
 }
-static void test_VertexList_delete_toAnEmpty(void **state){
+static void test_VertexList_delete_toAnEmpty(){
     VertexList * g= (VertexList *) malloc(sizeof(VertexList));
     initGraph(g);
     char * label="Vertex2";
@@ -382,11 +382,86 @@ static void Test_Print(){
 }
 
 
-int main_TestG(void){
+/*
+ * def change State tests
+ */
+static VertexList * ForTest(){
+    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
+    initGraph(g);
+    char * label2="Vertex2";
+    char * label1="Vertex1";
+    char * label3="Vertex3";
+    char * w="win";
+    insertFirstVertex(g,label2,1);
+    insertFirstVertex(g,label1,2);
+    insertLastVertex(g,label3,1);
+    insertLastVertex(g,w,0);
+    char * obj1="Object1";
+    char * obj2="Object2";
+    char * obj3="Object3";
+    char * obj4="Object4";
+    addLink(findVertex(g,label1),findVertex(g,label2),obj1);
+    addLink(findVertex(g,label1),findVertex(g,label3),obj2);
+    addLink(findVertex(g,label3),findVertex(g,w),obj3);
+    addLink(findVertex(g,label2),findVertex(g,w),obj4);
+    setOnFirstVertex(g);
+    return g;
+}
+static void Test_Change_inf(){
+    VertexList * g = ForTest();
+    char id[] = "Object1";
+    int x = 5;
+    int y = 50;
+    char file_name[] = "file_Test";
+    Object * o = createObject( id, x, y, file_name);
+    int a = SolvedEnigma(g,o);
+    assert_int_equal(a,0);
+}
+static void Test_Change_sup(){
+    VertexList * g = ForTest();
+    char id[] = "Object1";
+    int x = 5;
+    int y = 50;
+    char file_name[] = "file_Test";
+    Object * o = createObject( id, x, y, file_name);
+    g->current->enigma_solved=3;
+    int a = changeState(g,o);
+    assert_int_equal(a,-1);
+}
+static void Test_Change_egal_one_win(){
+    VertexList * g = ForTest();
+    setOnNextVertex(g); //Vertex2
+    char id[] = "Object4";
+    int x = 5;
+    int y = 50;
+    char file_name[] = "file_Test";
+    Object * o = createObject( id, x, y, file_name);
+    int a = SolvedEnigma(g,o);
+    assert_int_equal(a,1);
+}
+static void Test_Change_egal_more(){
+    VertexList * g = ForTest();
+    char id[] = "Object1";
+    int x = 5;
+    int y = 50;
+    char file_name[] = "file_Test";
+    Object * o = createObject( id, x, y, file_name);
+
+    int a = SolvedEnigma(g,o);
+    assert_int_equal(a,0);
+    int b= SolvedEnigma(g,o);
+    assert_int_equal(b,1);
+}
+
+
+
+
+
+int main(void){
     /**
      * Test Graph : EdgeList
      */
-   /* const struct CMUnitTest tests_EdgeList[]={
+   /*const struct CMUnitTest tests_EdgeList[]={
             cmocka_unit_test(test_EdgeList_Init),
             cmocka_unit_test(test_EdgeList_Empty_true),
             cmocka_unit_test(test_EdgeList_add_Empty1),
@@ -406,7 +481,7 @@ int main_TestG(void){
     /**
      * Test Graph : VertexList
      */
-    const struct CMUnitTest tests_VertexList[]= {
+   /* const struct CMUnitTest tests_VertexList[]= {
             cmocka_unit_test(test_VertexList_Init),
             cmocka_unit_test(test_VertexList_EmptyTrue),
             cmocka_unit_test(test_VertexList_addEmpty1),
@@ -423,5 +498,16 @@ int main_TestG(void){
             cmocka_unit_test(test_VertexList_addLink)
     };
     Test_Print();
-    return cmocka_run_group_tests_name("test VertexList",tests_VertexList,NULL,NULL);
+    return cmocka_run_group_tests_name("test VertexList",tests_VertexList,NULL,NULL);*/
+
+   /**
+    * Change State Test
+    */
+    const struct CMUnitTest tests_changeState[]= {
+            cmocka_unit_test(Test_Change_inf),
+            cmocka_unit_test(Test_Change_sup),
+            cmocka_unit_test(Test_Change_egal_one_win),
+            cmocka_unit_test(Test_Change_egal_more)
+    };
+    return cmocka_run_group_tests_name("test Change State",tests_changeState,NULL,NULL);
 }

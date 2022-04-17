@@ -6,7 +6,7 @@ all: make_model make_view make_controller main
 
 make_model:
 	make -C ./Model
-	make -C  ./Model clean
+	make -C ./Model clean
 
 make_view:
 	make -C ./View

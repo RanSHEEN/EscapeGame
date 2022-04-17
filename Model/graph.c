@@ -264,5 +264,41 @@ void deleteGraph(VertexList * g){
 }
 
 
+/**
+ * State Change
+ * Notre graph s'apparente à uns machine d'état
+ * quand on résout les énigmes de l'étape on change d'état
+ */
+
+int changeState(VertexList * g,Object * o){
+    //return 0 si état inchangé, 1 si il change, -1 si erreur
+    //Changement d'état autorisé? (enigma nb==solved)
+    if(g->current->enigma_solved<g->current->enigma_number){
+        return 0;
+    }else if(g->current->enigma_solved>g->current->enigma_number){
+        return -1;
+    }else {
+        if (g->current->connect->last==g->current->connect->first){
+            // si un seul Edge
+            g->current=g->current->connect->first->v_next;
+            printf("one\n");
+        }else{
+            //si plusieurs Edges
+            Edge * e=findEdge(g->current->connect,o->id);
+            g->current=e->v_next;
+            printf("more\n");
+        }
+        //si nouveau Vertex.label = win print "GG"
+        if(strcmp(g->current->label,"win")==0){
+            printf("You Win\n");
+        }
+        return 1;
+    }
+}
+
+int SolvedEnigma(VertexList * g, Object *o){
+    g->current->enigma_solved++;
+    return changeState(g,o);
+}
 
 

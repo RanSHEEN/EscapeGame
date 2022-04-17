@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "main_model.h"
 
 /**
  * Graph : "Machine d'état" du scénario
@@ -116,5 +117,8 @@ void deleteGraph(VertexList * g);
  * Notre graph s'apparente à uns machine d'état
  * quand on résout les énigmes de l'étape on change d'état
  */
+
+int changeState(VertexList * g,Object * o);
+int SolvedEnigma(VertexList * g, Object *o);
 
 #endif //GRAPH_H
