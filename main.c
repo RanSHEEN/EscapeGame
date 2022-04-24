@@ -13,7 +13,7 @@
 int main(){
     //initGame();
     Launch_view();
-
+    //Launch_event();
     return 0;
 }
 

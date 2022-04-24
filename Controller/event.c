@@ -8,7 +8,6 @@
 
 int Launch_event(SDL_Event e) {
     int quit = 0;
-
     while (!quit) {
         while (SDL_PollEvent(&e)) {
             switch (e.type) {
@@ -16,7 +15,7 @@ int Launch_event(SDL_Event e) {
                     quit = 1;
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-
+                    printf("Click\n ");
                     break;
                 /*case SDL_MOUSEMOTION:
                     if (e.motion.state & SDL_BUTTON_LMASK) {

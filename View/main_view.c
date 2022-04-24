@@ -1,5 +1,6 @@
 
 #include "main_view.h"
+#include "/home/eii/Documents/Git_KL/escapegameproject/Controller/event.h"
 
 
 const int SCREEN_WIDTH = 1746;
@@ -42,7 +43,19 @@ int Launch_view()
 
     SDL_RenderCopy(escape_menu.renderer,texture,NULL,NULL);
     SDL_RenderPresent(escape_menu.renderer);
-    while(1){   }
+    int isRunning = 1;
+    SDL_Event ev;
+
+    while(isRunning==1){
+        while(SDL_PollEvent(&ev)!=0) {
+            if (ev.type == SDL_QUIT) {
+                isRunning = 0;
+            }else{
+                isRunning = !Launch_event(ev);
+            }
+            SDL_UpdateWindowSurface(escape_menu.window);
+        }
+    }
 
     Quit:
         SDL_DestroyRenderer(escape_menu.renderer);

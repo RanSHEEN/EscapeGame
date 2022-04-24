@@ -27,10 +27,8 @@ typedef struct {
 
 int Launch_view();
 
-int init_menu(Menu_windows * escape);
-/*initializes a menu window and deals with potential errors*/
-int free_menu (Menu_windows * escape);
-/*deletes menu window, frees memory and deals with potential errors*/
+int launch_menu();
+
 int init_button();
 /*initializes a button and deals with potential errors*/
 int define_button();
