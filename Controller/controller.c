@@ -12,7 +12,7 @@
 
 
 int initGame(){
-   return Launch_view();
+    return 0;
     //il faudra ajouter ici tout ce qui démarre à l'initialisation du jeu (lecture de fichier par exemple)
 }
 

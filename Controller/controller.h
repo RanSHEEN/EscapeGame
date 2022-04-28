@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "../View/main_view.h"
 
-int initGame();
+int main_controller(View_app *view_app);
+
 
 #endif //ESCAPEGAMEPROJECT_CONTROLLER_H

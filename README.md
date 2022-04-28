@@ -1,2 +1,5 @@
 Escape Game
 Marie Margot Ran Kuilong
+
+
+DO NOT FORGET TO BUILD THE LIB DIRECTORY IF NEEDED
