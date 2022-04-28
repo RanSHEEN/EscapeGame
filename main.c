@@ -18,7 +18,7 @@ int init(){
 }
 
 
-int main_EG(){
+int main(){
     init();
     return 0;
 }

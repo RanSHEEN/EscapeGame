@@ -1,6 +1,6 @@
 
 #include "main_view.h"
-#include "/home/eii/Documents/Git_KL/escapegameproject/Controller/event.h"
+#include "../Controller/event.h"
 
 
 const int SCREEN_WIDTH = 1746;
