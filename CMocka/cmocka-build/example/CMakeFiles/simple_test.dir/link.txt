@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/simple_test.dir/simple_test.c.o  -o simple_test  -Wl,-rpath,/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/src ../src/libcmocka.so.0.7.0 /usr/lib/x86_64-linux-gnu/librt.so 

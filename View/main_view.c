@@ -64,7 +64,5 @@ int Launch_view()
         IMG_Quit();
 
    status = EXIT_SUCCESS;
-
-
     return status;
 }

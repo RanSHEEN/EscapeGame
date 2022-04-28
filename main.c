@@ -2,18 +2,24 @@
 // Created by eii on 06/04/2022.
 //
 #include "./Controller/controller.h"
-#include "./Controller/event.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
+#include "./View/main_view.h"
+#include "./Model/main_model.h"
+
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include <cmocka.h>
 
 
 
-int main(){
-    //initGame();
-    Launch_view();
-    //Launch_event();
+int init(){
+    return Launch_view();
+    //il faudra ajouter ici tout ce qui démarre à l'initialisation du jeu (lecture de fichier par exemple)
+}
+
+
+int main_EG(){
+    init();
     return 0;
 }
 

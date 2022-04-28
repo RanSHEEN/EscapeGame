@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/proc_uptime.h
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/test_uptime.c
+stdarg.h
+-
+stddef.h
+-
+stdint.h
+-
+setjmp.h
+-
+cmocka.h
+-
+uptime.c
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/uptime.c
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/uptime.c
+stdio.h
+-
+stdlib.h
+-
+stdint.h
+-
+string.h
+-
+time.h
+-
+sys/time.h
+-
+proc_uptime.h
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/proc_uptime.h
+
+/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include/cmocka.h
+
