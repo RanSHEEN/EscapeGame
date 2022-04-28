@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD
-LDFLAGS= -lSDL2 -lSDL2_image
+LDFLAGS =-lSDL2 -lSDL2_image
 DLIB = ../lib
 
 all: libview.a

@@ -11,7 +11,7 @@ make_model:
 
 make_view:
 	make -C ./View
-	make -C  ./View clean
+	make -C ./View clean
 
 main: main.o
 	$(CC) $^  $(LDFLAGS) -o $@

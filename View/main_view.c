@@ -4,12 +4,12 @@
 const int SCREEN_WIDTH = 1746;
 const int SCREEN_HEIGHT = 984;
 
+
 /* this function initialises the window and creates the texture/renderer for the menu
  * + allows to close it using the close tab button */
-
 int Launch_view()
 {
-    /* Initialisation bibliothèques */
+    /* Initialisation library */
     if(0 != SDL_Init(SDL_INIT_VIDEO))
     {
         fprintf(stderr, "Error SDL_Init : %s", SDL_GetError());
@@ -49,7 +49,7 @@ int Launch_view()
     SDL_RenderCopy(escape_menu.renderer,texture,NULL,NULL);
     SDL_RenderPresent(escape_menu.renderer);
 
-    //personWalk(texture,escape_menu.renderer); //try personnage display (work !)
+    personWalkRight(texture,escape_menu.renderer); //try person display (work !)
 
     //SDL_Delay(10000);
 
@@ -79,7 +79,7 @@ int Launch_view()
 
 int Person_view()
 {
-    /* Initialisation bibliothèques */
+    /* Initialisation library */
     if(0 != SDL_Init(SDL_INIT_VIDEO))
     {   fprintf(stderr, "Error SDL_Init : %s\n", SDL_GetError());
         goto Quit;    }
@@ -92,7 +92,7 @@ int Person_view()
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
 
-    personWalk(texture, person_window.renderer);
+    personWalkLeft(texture, person_window.renderer);
 
     int isRunning = 1;
     SDL_Event ev;
