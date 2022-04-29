@@ -98,7 +98,7 @@ static void test_Door_Change_Access(void **state){
 
 
 
-int main_POD(void){
+int main(void){
    /**
     * Test Personnage and Object
     */

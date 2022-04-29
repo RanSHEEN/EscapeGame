@@ -457,7 +457,7 @@ static void Test_Change_egal_more(){
 
 
 
-int main_tg(void){
+int main(void){
     /**
      * Test Graph : EdgeList
      */
