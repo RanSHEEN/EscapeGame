@@ -2,11 +2,11 @@
 // Created by Kuilong on 2/27/22.
 //
 
-#include "personnage.h"
+#include "main_model.h"
 Personage * CreatePersonage(){
     Personage * p = (Personage *) malloc(sizeof(Personage));
     p->x_position = 0;
-    p->y_position = HEIGHT;
+    p->y_position = SCREEN_H;
     return p;
 }
 

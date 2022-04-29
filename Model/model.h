@@ -1,15 +1,89 @@
 //
-// Created by eii on 10/04/2022.
+// Created by eii on 07/04/2022.
 //
 
-#ifndef GRAPH_H
-#define GRAPH_H
-
+#ifndef ESCAPEGAMEPROJECT_MAIN_MODEL_H
+#define ESCAPEGAMEPROJECT_MAIN_MODEL_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "main_model.h"
+#define SCREEN_W 1851
+#define SCREEN_H 1040
 
+/**
+ * definition des objets
+ */
+typedef struct Object{
+    char * id;
+    int x;
+    int y;
+    char * file_name;
+}Object;
+
+
+typedef struct Door{
+    char * id;
+    int x;
+    int y;
+    char * file_name;
+    int access;
+}Door;
+
+Object * createObject(char * id, int x, int y, char * file_name);
+Door * createDoor(char * id, int x, int y, char * file_name);
+void changeAccess(Door *D);
+
+void freeObject(Object *o);
+void freeDoor(Door * D);
+
+
+/***
+ * definition Frame
+ */
+typedef struct frame frame;
+
+struct frame{
+    int Pos_x; //position height
+    int Pos_y; //position Width
+    Object * o; //=NULL par defaut
+    int h;
+    int w; //taille de la case
+};
+
+
+int getDimension(int a,int b);
+
+//Create Framing
+frame ** CreateFraming();
+void printFraming(frame ** tab);
+
+//delete Framing
+void deleteFraming(frame ** tab);
+
+
+/**
+ * definition Personnage
+ */
+typedef struct Personage {
+    int x_position;
+    int y_position;
+    //Face begin_face;
+}Personage;
+
+/* face of the personage in which direction */
+//typedef enum {UP,DOWN,LEFT,RIGHT} Face;
+
+Personage * CreatePersonage();
+void DeletePersonage(Personage * p);
+
+void move_up(Personage * p);
+void move_down(Personage * p);
+void move_left(Personage * p);
+void move_right(Personage * p);
+
+/**
+ * definition des graph
+ */
 /**
  * Graph : "Machine d'état" du scénario
  */
@@ -121,4 +195,5 @@ void deleteGraph(VertexList * g);
 int changeState(VertexList * g,Object * o);
 int SolvedEnigma(VertexList * g, Object *o);
 
-#endif //GRAPH_H
+
+#endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H

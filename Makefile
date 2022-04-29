@@ -30,7 +30,11 @@ Test_graph: UTest_graph.o
 	
 clean:
 	rm -f *.o *.d
-	rm main
+
+clean_exc:
+	rm -f main
+	rm -f Test
+	rm -f Test_graph
 
 distclean :
 	rm -f ./lib/*.a

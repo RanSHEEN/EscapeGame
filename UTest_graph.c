@@ -461,7 +461,7 @@ int main(void){
     /**
      * Test Graph : EdgeList
      */
-   /*const struct CMUnitTest tests_EdgeList[]={
+   const struct CMUnitTest tests[]={
             cmocka_unit_test(test_EdgeList_Init),
             cmocka_unit_test(test_EdgeList_Empty_true),
             cmocka_unit_test(test_EdgeList_add_Empty1),
@@ -474,14 +474,7 @@ int main(void){
             cmocka_unit_test(test_EdgeList_setLast),
             cmocka_unit_test(test_EdgeList_find),
             cmocka_unit_test(test_EdgeList_deleteFirst),
-            cmocka_unit_test(test_EdgeList_deleteFirst_toAnEmpty)
-    };
-    test_print();
-    return cmocka_run_group_tests_name("test Door",tests_EdgeList,NULL,NULL);*/
-    /**
-     * Test Graph : VertexList
-     */
-   /* const struct CMUnitTest tests_VertexList[]= {
+            cmocka_unit_test(test_EdgeList_deleteFirst_toAnEmpty),
             cmocka_unit_test(test_VertexList_Init),
             cmocka_unit_test(test_VertexList_EmptyTrue),
             cmocka_unit_test(test_VertexList_addEmpty1),
@@ -495,19 +488,12 @@ int main(void){
             cmocka_unit_test(test_VertexList_find),
             cmocka_unit_test(test_VertexList_delete_toAnEmpty),
             cmocka_unit_test(test_VertexList_deleteFirst),
-            cmocka_unit_test(test_VertexList_addLink)
-    };
-    Test_Print();
-    return cmocka_run_group_tests_name("test VertexList",tests_VertexList,NULL,NULL);*/
-
-   /**
-    * Change State Test
-    */
-    const struct CMUnitTest tests_changeState[]= {
+            cmocka_unit_test(test_VertexList_addLink),
             cmocka_unit_test(Test_Change_inf),
             cmocka_unit_test(Test_Change_sup),
             cmocka_unit_test(Test_Change_egal_one_win),
             cmocka_unit_test(Test_Change_egal_more)
     };
-    return cmocka_run_group_tests_name("test Change State",tests_changeState,NULL,NULL);
+    Test_Print();
+    return cmocka_run_group_tests_name("test Graph",tests,NULL,NULL);
 }
