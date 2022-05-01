@@ -2,21 +2,29 @@
 // Created by gracesheenxinran on 4/7/22.
 //
 
+//
 #include "personnage.h"
 
 const int WALK_PICTURE_NUMBER = 8;
-const int SPEED = 90;
+const int SPEED = 60;
 
 
-void personStatic(SDL_Texture *texture, SDL_Renderer *rend) {
+void personStatic(SDL_Renderer *rend) {
     SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * img = IMG_Load("walkTest.png");
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotWalkRight.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    texture = SDL_CreateTextureFromSurface(rend, img);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
     rect.x = 0;
     rect.y = 0;
@@ -29,15 +37,22 @@ void personStatic(SDL_Texture *texture, SDL_Renderer *rend) {
     walks[1].y = 0;
 }
 
-void personWalkRight(SDL_Texture *texture,SDL_Renderer *rend) {
+void personWalkRight(SDL_Renderer *rend) {
     SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * img = IMG_Load("./img/walkTest.png");
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotWalkRight.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    texture = SDL_CreateTextureFromSurface(rend, img);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
     rect.x = 0;
     rect.y = 0;
@@ -62,6 +77,7 @@ void personWalkRight(SDL_Texture *texture,SDL_Renderer *rend) {
             }
         }
         SDL_RenderClear(rend);
+        SDL_RenderCopy(rend, tex, NULL, NULL);
         SDL_RenderCopy(rend, texture, &walks[i], &rect);
         i = (i + 1) % WALK_PICTURE_NUMBER;
         rect.x = (rect.x + 5) % (rect.w * WALK_PICTURE_NUMBER); //situation go right
@@ -70,18 +86,25 @@ void personWalkRight(SDL_Texture *texture,SDL_Renderer *rend) {
     }
 }
 
-void personWalkLeft(SDL_Texture *texture, SDL_Renderer *rend) {
+void personWalkLeft(SDL_Renderer *rend) {
     SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * img = IMG_Load("./img/walkTest.png");
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotWalkLeft.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    texture = SDL_CreateTextureFromSurface(rend, img);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
-    rect.x = 900;
-    rect.y = 900;
+    rect.x = 200;
+    rect.y = 200;
     rect.h = img->h;
     rect.w = img->w / WALK_PICTURE_NUMBER;
 
@@ -90,7 +113,7 @@ void personWalkLeft(SDL_Texture *texture, SDL_Renderer *rend) {
     {
         walks[i].w = img->w / WALK_PICTURE_NUMBER;
         walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
+        walks[i].x = rect.x + i*walks[i].w;
         walks[i].y = 0;
     }
 
@@ -103,6 +126,7 @@ void personWalkLeft(SDL_Texture *texture, SDL_Renderer *rend) {
             }
         }
         SDL_RenderClear(rend);
+        SDL_RenderCopy(rend, tex, NULL, NULL);
         SDL_RenderCopy(rend, texture, &walks[i], &rect);
         i = (i + 1) % 8;
         rect.x = (rect.x - 5) % (rect.w * WALK_PICTURE_NUMBER); //situation go left
@@ -111,15 +135,22 @@ void personWalkLeft(SDL_Texture *texture, SDL_Renderer *rend) {
     }
 }
 
-void personWalkUp(SDL_Texture *texture, SDL_Renderer *rend) {
+void personWalkUp(SDL_Renderer *rend) {
     SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
     SDL_Surface * img = IMG_Load("./img/walkTest.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    texture = SDL_CreateTextureFromSurface(rend, img);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
     rect.x = 900;
     rect.y = 900;
@@ -144,6 +175,7 @@ void personWalkUp(SDL_Texture *texture, SDL_Renderer *rend) {
             }
         }
         SDL_RenderClear(rend);
+        SDL_RenderCopy(rend, tex, NULL, NULL);
         SDL_RenderCopy(rend, texture, &walks[i], &rect);
         i = (i + 1) % 8;
         rect.y = (rect.y - 5) % (rect.h * WALK_PICTURE_NUMBER); //situation go up
@@ -152,18 +184,25 @@ void personWalkUp(SDL_Texture *texture, SDL_Renderer *rend) {
     }
 }
 
-void personWalkDown(SDL_Texture *texture, SDL_Renderer *rend){
+void personWalkDown(SDL_Renderer *rend){
     SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * img = IMG_Load("./img/walkTest.png");
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotWalkFront.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    texture = SDL_CreateTextureFromSurface(rend, img);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
-    rect.x = 900;
-    rect.y = 900;
+    rect.x = 0;
+    rect.y = 0;
     rect.h = img->h;
     rect.w = img->w / WALK_PICTURE_NUMBER;
 
@@ -172,7 +211,8 @@ void personWalkDown(SDL_Texture *texture, SDL_Renderer *rend){
     {
         walks[i].w = img->w / WALK_PICTURE_NUMBER;
         walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
+        //walks[i].x = rect.x - i*walks[i].w;
+        walks[i].x = rect.x - i;
         walks[i].y = 0;
     }
 
@@ -185,10 +225,11 @@ void personWalkDown(SDL_Texture *texture, SDL_Renderer *rend){
             }
         }
         SDL_RenderClear(rend);
+        SDL_RenderCopy(rend, tex, NULL, NULL);
         SDL_RenderCopy(rend, texture, &walks[i], &rect);
         i = (i + 1) % 8;
-        rect.y = (rect.y + 5) % (rect.h * WALK_PICTURE_NUMBER); //situation go down
+        rect.y = (rect.y + 1) % (rect.h * WALK_PICTURE_NUMBER); //situation go down
         SDL_RenderPresent(rend); //situation state
-        SDL_Delay(SPEED);
+        SDL_Delay(SPEED/10);
     }
 }

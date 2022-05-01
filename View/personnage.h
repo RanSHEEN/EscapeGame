@@ -14,8 +14,8 @@
 #include "SDL2/SDL_image.h"
 
 
-void personStatic(SDL_Texture *texture,SDL_Renderer *rend);
-void personWalkRight(SDL_Texture *texture,SDL_Renderer *rend;
-void personWalkLeft(SDL_Texture *texture,SDL_Renderer *rend);
-void personWalkUp(SDL_Texture *texture, SDL_Renderer *rend);
-void personWalkDown(SDL_Texture *texture, SDL_Renderer *rend);
+void personStatic(SDL_Renderer *rend);
+void personWalkRight(SDL_Renderer *rend);
+void personWalkLeft(SDL_Renderer *rend);
+void personWalkUp(SDL_Renderer *rend);
+void personWalkDown(SDL_Renderer *rend);

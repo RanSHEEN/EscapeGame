@@ -24,6 +24,10 @@
 //        return 0;
 //    }
 //}
+//void createRenderer(SDL_Window *window){
+//    SDL_Renderer *ren = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+//    return ren;
+//}
 
 int clearRenderer(SDL_Renderer *ren) {
     if (0 != SDL_RenderClear(ren)) {
