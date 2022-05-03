@@ -2,7 +2,7 @@
 // Created by Kuilong on 2/27/22.
 //
 
-#include "main_model.h"
+#include "model.h"
 Personage * CreatePersonage(){
     Personage * p = (Personage *) malloc(sizeof(Personage));
     p->x_position = 0;

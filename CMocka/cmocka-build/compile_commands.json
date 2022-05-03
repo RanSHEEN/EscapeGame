@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/src",
+  "command": "/usr/bin/cc -Dcmocka_EXPORTS -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/src -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/src -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIC   -std=gnu99 -Wpedantic -Wall -Wshadow -Wmissing-prototypes -Wcast-align -Werror=address -Wstrict-prototypes -Werror=strict-prototypes -Wwrite-strings -Werror=write-strings -Werror-implicit-function-declaration -Wpointer-arith -Werror=pointer-arith -Wdeclaration-after-statement -Werror=declaration-after-statement -Wreturn-type -Werror=return-type -Wuninitialized -Werror=uninitialized -Wimplicit-fallthrough -Werror=strict-overflow -Wstrict-overflow=2 -Wno-format-zero-length -Wmissing-field-initializers -Wformat -Wformat-security -Werror=format-security -fno-common -fstack-protector-strong -fstack-clash-protection -DHAVE_CONFIG_H -o CMakeFiles/cmocka.dir/cmocka.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/src/cmocka.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/src/cmocka.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/assert_macro_test.dir/assert_macro.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_macro.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_macro.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_macro_test.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_macro_test.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -DUNIT_TESTING=1 -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/allocate_module_test.dir/allocate_module.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/allocate_module.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/allocate_module.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/allocate_module_test.dir/allocate_module_test.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/allocate_module_test.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/allocate_module_test.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -DUNIT_TESTING=1 -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/assert_module_test.dir/assert_module.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_module.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_module.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/assert_module_test.dir/assert_module_test.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_module_test.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/assert_module_test.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -std=gnu99 -Wpedantic -Wall -Wshadow -Wmissing-prototypes -Wcast-align -Werror=address -Wstrict-prototypes -Werror=strict-prototypes -Wwrite-strings -Werror=write-strings -Werror-implicit-function-declaration -Wpointer-arith -Werror=pointer-arith -Wdeclaration-after-statement -Werror=declaration-after-statement -Wreturn-type -Werror=return-type -Wuninitialized -Werror=uninitialized -Wimplicit-fallthrough -Werror=strict-overflow -Wstrict-overflow=2 -Wno-format-zero-length -Wmissing-field-initializers -Wformat -Wformat-security -Werror=format-security -fno-common -fstack-protector-strong -fstack-clash-protection -o CMakeFiles/simple_test.dir/simple_test.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/simple_test.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/simple_test.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/chef_wrap",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/chef_wrap -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/waiter_test_wrap.dir/waiter_test_wrap.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap/waiter_test_wrap.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap/waiter_test_wrap.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/chef_wrap",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/chef_wrap -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -o CMakeFiles/waiter_test_wrap.dir/chef.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap/chef.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/chef_wrap/chef.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/include  -fPIE   -std=gnu99 -Wpedantic -Wall -Wshadow -Wmissing-prototypes -Wcast-align -Werror=address -Wstrict-prototypes -Werror=strict-prototypes -Wwrite-strings -Werror=write-strings -Werror-implicit-function-declaration -Wpointer-arith -Werror=pointer-arith -Wdeclaration-after-statement -Werror=declaration-after-statement -Wreturn-type -Werror=return-type -Wuninitialized -Werror=uninitialized -Wimplicit-fallthrough -Werror=strict-overflow -Wstrict-overflow=2 -Wno-format-zero-length -Wmissing-field-initializers -Wformat -Wformat-security -Werror=format-security -fno-common -fstack-protector-strong -fstack-clash-protection -o CMakeFiles/test_uptime.dir/test_uptime.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/test_uptime.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/test_uptime.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime  -fPIE   -std=gnu99 -Wpedantic -Wall -Wshadow -Wmissing-prototypes -Wcast-align -Werror=address -Wstrict-prototypes -Werror=strict-prototypes -Wwrite-strings -Werror=write-strings -Werror-implicit-function-declaration -Wpointer-arith -Werror=pointer-arith -Wdeclaration-after-statement -Werror=declaration-after-statement -Wreturn-type -Werror=return-type -Wuninitialized -Werror=uninitialized -Wimplicit-fallthrough -Werror=strict-overflow -Wstrict-overflow=2 -Wno-format-zero-length -Wmissing-field-initializers -Wformat -Wformat-security -Werror=format-security -fno-common -fstack-protector-strong -fstack-clash-protection -o CMakeFiles/uptime.dir/uptime.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/uptime.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/uptime.c"
+},
+{
+  "directory": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime",
+  "command": "/usr/bin/cc  -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-build/example/mock/uptime -I/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime  -fPIC   -o CMakeFiles/proc_uptime.dir/proc_uptime.c.o   -c /home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/proc_uptime.c",
+  "file": "/home/eii/Bureau/Escape_game/escapegameproject/CMocka/cmocka-1.1.5/example/mock/uptime/proc_uptime.c"
+}
+]

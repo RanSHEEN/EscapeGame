@@ -6,7 +6,15 @@
 #define ESCAPEGAMEPROJECT_CONTROLLER_H
 #include <stdio.h>
 #include <stdlib.h>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_events.h"
+#include "SDL2/SDL_rect.h"
+#include "../View/main_view.h"
+#include "../Model/model.h"
 
+int Launch_event(SDL_Event e);
+
+int main_controller(View_app *view_app);
 
 
 

@@ -3,23 +3,28 @@
 //
 #include "./Controller/controller.h"
 #include "./View/main_view.h"
-#include "./Model/main_model.h"
+#include "./Model/model.h"
 
 #include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
-#include <cmocka.h>
 
-
-
-int init(){
-    return Launch_view();
-    //il faudra ajouter ici tout ce qui démarre à l'initialisation du jeu (lecture de fichier par exemple)
-}
 
 
 int main(){
-    init();
-    return 0;
+    //declaring our windows
+    View_app app;
+
+    if (init_SDL()!=EXIT_SUCCESS){
+        fprintf(stderr, "error init_Window : %s", SDL_GetError());
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+    main_controller(&app);
+
+    free_view (&app);
+
+    return EXIT_SUCCESS;
 }
 

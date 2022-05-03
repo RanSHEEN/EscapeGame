@@ -2,7 +2,7 @@
 // Created by eii on 10/04/2022.
 //
 
-#include "main_model.h"
+#include "model.h"
 /**
  * EdgeList: liste de lien entre le Vertex et ses successeurs
  */

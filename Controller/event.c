@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include "SDL2/SDL.h"
-#include "event.h"
+#include "controller.h"
 
 int Launch_event(SDL_Event e) {
     int quit = 0;

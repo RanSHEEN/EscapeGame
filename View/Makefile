@@ -1,3 +1,4 @@
+
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD
 LDFLAGS= -lSDL2 -lSDL2_image
@@ -5,10 +6,10 @@ DLIB = ../lib
 
 all: libview.a
 
-libview.a : main_view.o
+libview.a : main_view.o Launch_Game.o
 	ar -rv $(DLIB)/$@ $^
 
-main_view: main_view.o
+view: main_view.o Launch_Game.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c
