@@ -10,7 +10,7 @@ make_model:
 
 make_view:
 	make -C ./View
-	make -C  ./View clean
+	make -C ./View clean
 
 make_controller:
 	make -C ./Controller
@@ -38,7 +38,5 @@ clean_exc:
 
 distclean :
 	rm -f ./lib/*.a
-
-
 
 include $(wildcart .d)

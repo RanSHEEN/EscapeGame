@@ -1,5 +1,5 @@
-
 #include "main_view.h"
+
 
 /* initializes the SDL library +sub libraries */
 int init_SDL(){
@@ -319,6 +319,8 @@ int init_game(Windows  * game_window){
     SDL_RenderPresent(game_window->renderer);
     //renderer is all pretty and ready :)
 
+    //initialize the button
+    // x=1516 y=4 w=170 h=70
     SDL_Rect return_but = {1690,1,160,76};
     game_window->Return_b = return_but;
 

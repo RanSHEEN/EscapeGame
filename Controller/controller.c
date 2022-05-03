@@ -1,14 +1,13 @@
-//
+
 // Created by Margot on 06/04/2022.
-//
+
 
 #include "controller.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "../View/main_view.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-
-
 
 
 int main_controller(View_app *view_app){
@@ -127,11 +126,24 @@ int main_controller(View_app *view_app){
                         }
                     }
                     break;
-
+                case SDL_KEYDOWN:
+                    if (ev.key.keysym.sym == SDLK_LEFT) {
+                        printf("SDLK_LEFT...personnage move left... ");
+                    } else if (ev.key.keysym.sym == SDLK_RIGHT) {
+                        printf("SDLK_RIGHT...personnage move right...");
+                    } else if (ev.key.keysym.sym == SDLK_UP) {
+                        printf("SDLK_UP...personnage move up...");
+                    } else if (ev.key.keysym.sym == SDLK_DOWN) {
+                        printf("SDLK_DOWN...personnage move down...");
+                    }else if (ev.key.keysym.sym == SDLK_SPACE) {
+                        printf("SDLK_SPACE...read the information");
+                        printf("display the information");
+                    }
+                    printf("scancode=%d\n", ev.key.keysym.scancode);
+                    break;
             }
         }
         status=EXIT_FAILURE;
-
     }
     status=EXIT_SUCCESS;
     return status;

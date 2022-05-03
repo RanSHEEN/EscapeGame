@@ -6,6 +6,7 @@
 #define ESCAPEGAMEPROJECT_CONTROLLER_H
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_events.h"
 #include "SDL2/SDL_rect.h"

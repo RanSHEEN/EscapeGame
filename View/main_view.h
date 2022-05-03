@@ -18,7 +18,6 @@ enum type {
     Play,
 };
 
-
 typedef struct {
     SDL_Window *window;
     SDL_Renderer *renderer;
@@ -28,7 +27,6 @@ typedef struct {
     SDL_Rect  Return_b; //return from one window to menu
     SDL_Rect  my_buttons[4] ; //navigate btw windows in the menu
 }Windows;
-
 
 
 typedef struct {
@@ -55,8 +53,31 @@ int launch_Game(Windows * game_window);
 void free_Windows(Windows * window);
 void free_view (View_app *view_app);
 
-
 int init_View(View_app *view_app);
 
+
+struct square {
+    SDL_Rect rect;
+    Uint32 colour;
+};
+
+int initialTexture(SDL_Renderer *ren,SDL_Texture *tex,SDL_Rect rect);
+int displayTexture(SDL_Renderer *ren,SDL_Texture *tex);
+int colorSurface(const int width,const int height);
+
+int loadImage(SDL_Renderer *ren,SDL_Texture *texture,SDL_Surface *surface);
+void drawImage(SDL_Renderer *ren,SDL_Texture *tex);
+
+void personStatic(SDL_Renderer *rend);
+void personWalkRight(SDL_Renderer *rend);
+void personWalkLeft(SDL_Renderer *rend);
+void personWalkUp(SDL_Renderer *rend);
+void personWalkDown(SDL_Renderer *rend);
+
+
+// for installing the glut tool
+// we should put glut.h in the package of include folder in mesa/OpenGL
+int clearRenderer(SDL_Renderer *ren);
+int setWindowColor(SDL_Renderer *renderer, SDL_Color color);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
