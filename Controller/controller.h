@@ -13,7 +13,7 @@
 #include "../View/main_view.h"
 #include "../Model/model.h"
 
-int Launch_event(SDL_Event e);
+void move_robot(View_app *view_app);
 
 int main_controller(View_app *view_app);
 

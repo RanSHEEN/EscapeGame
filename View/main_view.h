@@ -28,56 +28,58 @@ typedef struct {
     SDL_Rect  my_buttons[4] ; //navigate btw windows in the menu
 }Windows;
 
+typedef struct {
+    int WALK_PICTURE_NUMBER;
+    int SPEED;
+    int anim_state;
+    SDL_Texture * move_R;
+    SDL_Texture * move_L;
+    SDL_Texture * move_F;
+    SDL_Rect walks_R[8];
+    SDL_Rect walks_L[8];
+    SDL_Rect walks_F[8];
+    SDL_Rect Position ;
+} Character;
 
 typedef struct {
    Windows Menu;
    Windows Rules;
    Windows Game;
    Windows Credits;
+   Character Robot;
    enum type Actual;
-
 }View_app;
-
 
 
 int init_SDL();
 void get_Tittle(enum type Type , char* title);
-int init_window(Windows * window, int SCREEN_WIDTH, int SCREEN_HEIGHT );
-
+//windows
 int init_menu(Windows * escape_menu);
 int init_credits(Windows * credits_window);
 int init_rules(Windows * rules_window);
 int init_game(Windows *game_window);
-int launch_Game(Windows * game_window);
+
+
+
+
+/* useless
+ * struct square {
+    SDL_Rect rect;
+    Uint32 colour;
+};*/
+
+//personnage
+int init_character (View_app * app);
+
+void personStatic(View_app * app);
+void personWalkRight(View_app * app);
+void personWalkLeft(View_app * app);
+void personWalkUp(View_app * app);
+void personWalkDown(View_app * app);
 
 void free_Windows(Windows * window);
 void free_view (View_app *view_app);
 
 int init_View(View_app *view_app);
-
-
-struct square {
-    SDL_Rect rect;
-    Uint32 colour;
-};
-
-int initialTexture(SDL_Renderer *ren,SDL_Texture *tex,SDL_Rect rect);
-int displayTexture(SDL_Renderer *ren,SDL_Texture *tex);
-int colorSurface(const int width,const int height);
-
-int loadImage(SDL_Renderer *ren,SDL_Texture *texture,SDL_Surface *surface);
-void drawImage(SDL_Renderer *ren,SDL_Texture *tex);
-
-void personStatic(SDL_Renderer *rend);
-void personWalkRight(SDL_Renderer *rend);
-void personWalkLeft(SDL_Renderer *rend);
-void personWalkUp(SDL_Renderer *rend);
-void personWalkDown(SDL_Renderer *rend);
-
-
-// for installing the glut tool
-// we should put glut.h in the package of include folder in mesa/OpenGL
-int clearRenderer(SDL_Renderer *ren);
-int setWindowColor(SDL_Renderer *renderer, SDL_Color color);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H

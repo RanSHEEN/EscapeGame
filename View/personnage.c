@@ -3,233 +3,100 @@
 //
 
 //
-#include "personnage.h"
-
-const int WALK_PICTURE_NUMBER = 8;
-const int SPEED = 60;
+#include "main_view.h"
 
 
-void personStatic(SDL_Renderer *rend) {
-    SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkRight.png");
-    if (map == NULL)
+int init_character (View_app * app){
+    app->Robot.SPEED = 60;
+    app->Robot.WALK_PICTURE_NUMBER =8;
+    app->Robot.anim_state=0;
+    app->Robot.Position.x=900;
+    app->Robot.Position.y=500;
+
+    //get image robot right
+    SDL_Surface * Robot_right = IMG_Load("./img/RobotWalkRight.png");
+    if (Robot_right == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
+        return EXIT_FAILURE;
     }
-    if (img == NULL)
+
+    //init rect in which robot exists
+    app->Robot.Position.h=Robot_right->h;
+    app->Robot.Position.w=Robot_right->w / app->Robot.WALK_PICTURE_NUMBER;
+
+    //creates robot right texture in the rectangle
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer, Robot_right);
+    if (texture == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
+        return EXIT_FAILURE;
     }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
-    rect.x = 0;
-    rect.y = 0;
-    rect.h = img->h;
-    rect.w = img->w / WALK_PICTURE_NUMBER;
+    SDL_SetRenderTarget(app->Game.renderer,app->Robot.move_R);
+    SDL_RenderCopy(app->Game.renderer,texture,NULL,NULL);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_Rect rect={0,0,Robot_right->w/app->Robot.WALK_PICTURE_NUMBER,Robot_right->h};
 
-    walks[1].w = img->w / WALK_PICTURE_NUMBER;
-    walks[1].h = img->h;
-    walks[1].x = walks[1].w;
-    walks[1].y = 0;
+    //defines Robot walks r rectangle
+    for (int i = 0; i<app->Robot.WALK_PICTURE_NUMBER; i++)
+    {
+        app->Robot.walks_R[i].w = Robot_right->w / app->Robot.WALK_PICTURE_NUMBER;
+        app->Robot.walks_R[i].h = Robot_right->h;
+        app->Robot.walks_R[i].x = rect.x + i*app->Robot.walks_R[i].w;
+        app->Robot.walks_R[i].y = 0;
+    }
+
+    SDL_FreeSurface(Robot_right);
+    SDL_DestroyTexture(texture);
+
+
+    SDL_Surface * Robot_still_FB = IMG_Load("./img/RobotWalkFront.png");
+    if (Robot_still_FB == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_SetRenderTarget(app->Game.renderer,app->Robot.move_F);
+    SDL_RenderCopy(app->Game.renderer,texture,NULL,NULL);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_Rect rect2={0,0,Robot_still_FB->w/app->Robot.WALK_PICTURE_NUMBER,Robot_still_FB->h};
+
+    //defines Robot walks fbs rectangle
+    for (int i = 0; i<app->Robot.WALK_PICTURE_NUMBER; i++)
+    {
+        app->Robot.walks_F[i].w = Robot_still_FB->w / app->Robot.WALK_PICTURE_NUMBER;
+        app->Robot.walks_F[i].h = Robot_still_FB->h;
+        app->Robot.walks_F[i].x = rect2.x + i*app->Robot.walks_F[i].w;
+        app->Robot.walks_F[i].y = 0;
+    }
+
+    SDL_FreeSurface(Robot_right);
+    SDL_DestroyTexture(texture);
+
+
+    SDL_Surface * Robot_left = IMG_Load("./img/RobotWalkLeft.png");
+    if (Robot_left == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_SetRenderTarget(app->Game.renderer,app->Robot.move_L);
+    SDL_RenderCopy(app->Game.renderer,texture,NULL,NULL);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_Rect rect3={0,0,Robot_left->w/app->Robot.WALK_PICTURE_NUMBER,Robot_left->h};
+
+    //defines Robot walks fbs rectangle
+    for (int i = 0; i<app->Robot.WALK_PICTURE_NUMBER; i++)
+    {
+        app->Robot.walks_L[i].w = Robot_still_FB->w / app->Robot.WALK_PICTURE_NUMBER;
+        app->Robot.walks_L[i].h = Robot_still_FB->h;
+        app->Robot.walks_L[i].x = rect3.x + i*app->Robot.walks_L[i].w;
+        app->Robot.walks_L[i].y = 0;
+    }
+    SDL_FreeSurface(Robot_right);
+    SDL_DestroyTexture(texture);
+return EXIT_SUCCESS;
 }
 
-void personWalkRight(SDL_Renderer *rend) {
-    SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkRight.png");
-    if (map == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    if (img == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
 
-    rect.x = 0;
-    rect.y = 0;
-    rect.h = img->h;
-    rect.w = img->w / WALK_PICTURE_NUMBER;
-
-    int i;
-    for (i = 0; i<WALK_PICTURE_NUMBER; i++)
-    {
-        walks[i].w = img->w / WALK_PICTURE_NUMBER;
-        walks[i].h = img->h;
-        walks[i].x = rect.x + i*walks[i].w;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning==1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                isRunning = 0;
-            }
-        }
-        SDL_RenderClear(rend);
-        SDL_RenderCopy(rend, tex, NULL, NULL);
-        SDL_RenderCopy(rend, texture, &walks[i], &rect);
-        i = (i + 1) % WALK_PICTURE_NUMBER;
-        rect.x = (rect.x + 5) % (rect.w * WALK_PICTURE_NUMBER); //situation go right
-        SDL_RenderPresent(rend); //situation state
-        SDL_Delay(SPEED);
-    }
-}
-
-void personWalkLeft(SDL_Renderer *rend) {
-    SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkLeft.png");
-    if (map == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    if (img == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
-
-    rect.x = 200;
-    rect.y = 200;
-    rect.h = img->h;
-    rect.w = img->w / WALK_PICTURE_NUMBER;
-
-    int i;
-    for (i = 0; i<WALK_PICTURE_NUMBER; i++)
-    {
-        walks[i].w = img->w / WALK_PICTURE_NUMBER;
-        walks[i].h = img->h;
-        walks[i].x = rect.x + i*walks[i].w;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning==1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                isRunning = 0;
-            }
-        }
-        SDL_RenderClear(rend);
-        SDL_RenderCopy(rend, tex, NULL, NULL);
-        SDL_RenderCopy(rend, texture, &walks[i], &rect);
-        i = (i + 1) % 8;
-        rect.x = (rect.x - 5) % (rect.w * WALK_PICTURE_NUMBER); //situation go left
-        SDL_RenderPresent(rend); //situation state
-        SDL_Delay(SPEED);
-    }
-}
-
-void personWalkUp(SDL_Renderer *rend) {
-    SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/walkTest.png");
-    if (map == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    if (img == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
-
-    rect.x = 900;
-    rect.y = 900;
-    rect.h = img->h;
-    rect.w = img->w / WALK_PICTURE_NUMBER;
-
-    int i;
-    for (i = 0; i<WALK_PICTURE_NUMBER; i++)
-    {
-        walks[i].w = img->w / WALK_PICTURE_NUMBER;
-        walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning==1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                isRunning = 0;
-            }
-        }
-        SDL_RenderClear(rend);
-        SDL_RenderCopy(rend, tex, NULL, NULL);
-        SDL_RenderCopy(rend, texture, &walks[i], &rect);
-        i = (i + 1) % 8;
-        rect.y = (rect.y - 5) % (rect.h * WALK_PICTURE_NUMBER); //situation go up
-        SDL_RenderPresent(rend); //situation state
-        SDL_Delay(SPEED);
-    }
-}
-
-void personWalkDown(SDL_Renderer *rend){
-    SDL_Rect rect, walks[WALK_PICTURE_NUMBER];
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkFront.png");
-    if (map == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    if (img == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_Quit();
-    }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(rend,map);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, img);
-
-    rect.x = 0;
-    rect.y = 0;
-    rect.h = img->h;
-    rect.w = img->w / WALK_PICTURE_NUMBER;
-
-    int i;
-    for (i = 0; i<WALK_PICTURE_NUMBER; i++)
-    {
-        walks[i].w = img->w / WALK_PICTURE_NUMBER;
-        walks[i].h = img->h;
-        //walks[i].x = rect.x - i*walks[i].w;
-        walks[i].x = rect.x - i;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning==1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                isRunning = 0;
-            }
-        }
-        SDL_RenderClear(rend);
-        SDL_RenderCopy(rend, tex, NULL, NULL);
-        SDL_RenderCopy(rend, texture, &walks[i], &rect);
-        i = (i + 1) % 8;
-        rect.y = (rect.y + 1) % (rect.h * WALK_PICTURE_NUMBER); //situation go down
-        SDL_RenderPresent(rend); //situation state
-        SDL_Delay(SPEED/10);
-    }
-}

@@ -30,6 +30,7 @@ Test_graph: UTest_graph.o
 	
 clean:
 	rm -f *.o *.d
+	rm -f main
 
 clean_exc:
 	rm -f main
