@@ -10,24 +10,35 @@
 #define SCREEN_W 1851
 #define SCREEN_H 1040
 
+typedef struct frame frame;
+typedef struct Room Room;
+
+typedef struct Object Object;
+typedef struct Door Door;
+typedef struct Personage Personage;
+
+typedef struct Edge Edge;
+typedef struct EdgeList EdgeList;
+typedef struct Vertex Vertex;
+typedef struct VertexList VertexList;
 /**
  * definition des objets
  */
-typedef struct Object{
+struct Object{
     char * id;
-    int x;
-    int y;
+    int j;
+    int i;
     char * file_name;
-}Object;
+};
 
 
-typedef struct Door{
+struct Door{
     char * id;
-    int x;
-    int y;
+    int i;
+    int j;
     char * file_name;
     int access;
-}Door;
+};
 
 Object * createObject(char * id, int x, int y, char * file_name);
 Door * createDoor(char * id, int x, int y, char * file_name);
@@ -40,62 +51,53 @@ void freeDoor(Door * D);
 /***
  * definition Frame
  */
-typedef struct frame frame;
 
 struct frame{
     int Pos_x; //position height
     int Pos_y; //position Width
     Object * o; //=NULL par defaut
+    Door * d;
+};
+struct Room{
     int h;
     int w; //taille de la case
+    int nb_j;
+    int nb_i;
+    char * name;
+    char * filename;
+    frame ** framing;
 };
 
-
 int getDimension(int a,int b);
-
+//Create Room
+Room * CreateRoom();
 //Create Framing
 frame ** CreateFraming();
 void printFraming(frame ** tab);
 
 //delete Framing
 void deleteFraming(frame ** tab);
-
+void deleteRoom(Room * R);
 
 /**
  * definition Personnage
  */
-typedef struct Personage {
+struct Personage {
     int x_position;
     int y_position;
-    //Face begin_face;
-}Personage;
-
-/* face of the personage in which direction */
-//typedef enum {UP,DOWN,LEFT,RIGHT} Face;
+};
 
 Personage * CreatePersonage();
 void DeletePersonage(Personage * p);
 
-void move_up(Personage * p);
-void move_down(Personage * p);
-void move_left(Personage * p);
-void move_right(Personage * p);
+void move_up(Personage * p, int n);
+void move_down(Personage * p, int n);
+void move_left(Personage * p, int n);
+void move_right(Personage * p, int n);
 
 /**
  * definition des graph
- */
-/**
  * Graph : "Machine d'état" du scénario
- */
-
-//definitions des structures
-
-typedef struct Edge Edge;
-typedef struct EdgeList EdgeList;
-
-typedef struct Vertex Vertex;
-typedef struct VertexList VertexList;
-/**
  * EdgeList: liste de lien entre le Vertex et ses successeurs
  */
 /*

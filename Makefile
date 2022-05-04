@@ -44,6 +44,4 @@ clean_exc:
 distclean :
 	rm -f ./lib/*.a
 
-
-
 include $(wildcart .d)

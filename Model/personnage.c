@@ -6,7 +6,7 @@
 Personage * CreatePersonage(){
     Personage * p = (Personage *) malloc(sizeof(Personage));
     p->x_position = 0;
-    p->y_position = SCREEN_H;
+    p->y_position = 0;
     return p;
 }
 
@@ -15,15 +15,15 @@ void DeletePersonage(Personage * p){
 }
 
 
-void move_up(Personage * p){
-    p->y_position = p->y_position + 1;
+void move_up(Personage * p, int n){
+    p->y_position = p->y_position - n;
 }
-void move_down(Personage * p){
-    p->y_position = p->y_position - 1;
+void move_down(Personage * p, int n){
+    p->y_position = p->y_position + n;
 }
-void move_left(Personage * p){
-    p->x_position = p->x_position - 1;
+void move_left(Personage * p, int n){
+    p->x_position = p->x_position - n;
 }
-void move_right(Personage * p){
-    p->x_position = p->x_position + 1;
+void move_right(Personage * p, int n){
+    p->x_position = p->x_position + n;
 }
