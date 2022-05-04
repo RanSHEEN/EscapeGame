@@ -24,11 +24,15 @@ typedef struct VertexList VertexList;
 /**
  * definition des objets
  */
+enum obj_type { Button, to_look, code };
+
+
 struct Object{
     char * id;
     int j;
     int i;
     char * file_name;
+    enum obj_type type;
 };
 
 
@@ -40,7 +44,7 @@ struct Door{
     int access;
 };
 
-Object * createObject(char * id, int x, int y, char * file_name);
+Object * createObject(char * id, int x, int y, char * file_name, enum obj_type type);
 Door * createDoor(char * id, int x, int y, char * file_name);
 void changeAccess(Door *D);
 
@@ -79,6 +83,9 @@ void printFraming(frame ** tab);
 void deleteFraming(frame ** tab);
 void deleteRoom(Room * R);
 
+// ajouter un objet dans la pièce
+void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type);
+void addDoor(Room *R, char * id, int i, int j,char *file_name);
 /**
  * definition Personnage
  */

@@ -8,15 +8,15 @@
 
 
 //Object
-Object * createObject(char * id, int j, int i, char * file_name){
+Object * createObject(char * id, int j, int i, char * file_name, enum obj_type type){
     Object * o= (Object *) malloc(sizeof(Object));
     o->id=id;
     o->file_name=file_name; //nom du png correspondant à l'image
     o->j = j;
     o->i = i;
+    o->type= type;
     return o;
 }
-
 void freeObject(Object *o){
     free(o);
 }
@@ -31,7 +31,6 @@ Door * createDoor(char * id, int j, int i, char * file_name){
     d->access=0;
     return d;
 }
-
 void changeAccess(Door *D){
     if (D->access==0){
         D->access=1;
@@ -39,7 +38,6 @@ void changeAccess(Door *D){
         D->access=0;
     }
 }
-
 void freeDoor(Door * D){
     free(D);
 }
@@ -116,8 +114,28 @@ void deleteFraming(frame ** tab){
         free((frame *)tab[i]);
     free((frame *)tab);
 }
-
 void deleteRoom(Room * R){
     deleteFraming(R->framing);
     free(R);
 }
+
+// ajouter un objet dans la pièce
+void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type type){
+    if(R->framing[i][j].d!=NULL){
+        fprintf(stderr, "there is a door here");
+    }else{
+        R->framing[i][j].o= createObject(id,j,i,file_name,type);
+    }
+}
+
+void addDoor(Room *R, char * id, int i, int j,char *file_name){
+    if ((i!=R->nb_i||i!=0)||(j!=R->nb_j||j!=0)) {
+        fprintf(stderr, "a door without wall ?");
+    }else if (R->framing[i][j].o!=NULL){
+        fprintf(stderr, "there is an object here");
+    } else{
+        R->framing[i][j].d= createDoor(id,j,i,file_name);
+    }
+}
+
+

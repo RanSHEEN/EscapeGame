@@ -14,7 +14,6 @@ void DeletePersonage(Personage * p){
     free(p);
 }
 
-
 void move_up(Personage * p, int n){
     p->y_position = p->y_position - n;
 }
