@@ -1,8 +1,17 @@
 Escape Game
 Marie Margot Ran Kuilong
 
-
-<<<<<<< HEAD
-=======
 DO NOT FORGET TO BUILD THE LIB DIRECTORY IF NEEDED
->>>>>>> origin/View_Margot
+
+
+To build the project :
+
+make all
+
+To execute the menu launcher 
+
+./main
+
+To clean it all : 
+
+make clean

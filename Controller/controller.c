@@ -10,7 +10,7 @@
 #include "SDL2/SDL_image.h"
 
 int move_robot(View_app *view_app) {
-    fprintf (stderr, "in move robot \n");
+    SDL_Point point;
 
     int isRunning = 1;
     int status = EXIT_FAILURE;
@@ -20,79 +20,52 @@ int move_robot(View_app *view_app) {
         fprintf (stderr, "failed init character \n");
         return EXIT_FAILURE;
     }
-    SDL_Rect pos_robot = {900,500,100,100};
-
-    view_app->Robot.Position = pos_robot;
-
-    personStatic(view_app);
-    fprintf (stderr, "in case play 3 \n");
-    move_robot(view_app);
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        view_app->Robot.anim_state = 0;
-                        printf("SDLK_LEFT...personnage move left... ");
-                        while (ev.key.state == SDL_PRESSED) {
-                            personWalkRight(view_app);
-                            if (view_app->Robot.Position.y >= 0) {
-                                view_app->Robot.Position.x = (view_app->Robot.Position.x - 5) %
-                                                             (view_app->Robot.Position.w *
-                                                              view_app->Robot.WALK_PICTURE_NUMBER);
-                            }
+                        if (view_app->Robot.Position.x >= 0) {
+                            personWalkLeft(view_app);
                         }
-
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
-                        view_app->Robot.anim_state = 0;
-                        printf("SDLK_RIGHT...personnage move right...");
-                        while (ev.key.state == SDL_PRESSED) {
-                            personWalkRight(view_app);
-                            if (view_app->Robot.Position.y <= 1851) {
-                                view_app->Robot.Position.x = (view_app->Robot.Position.x + 5) %
-                                                             (view_app->Robot.Position.w *
-                                                              view_app->Robot.WALK_PICTURE_NUMBER);
-                            }
-                        }
+                     if (view_app->Robot.Position.x <= 1164) {
+                         personWalkRight(view_app);
+                     }
 
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
-                        view_app->Robot.anim_state = 0;
-                        printf("SDLK_UP...personnage move up...");
-                        while (ev.key.state == SDL_PRESSED) {
-                            personWalkRight(view_app);
-                            if (view_app->Robot.Position.y >= 0) {
-                                view_app->Robot.Position.y = (view_app->Robot.Position.y - 5) %
-                                                             (view_app->Robot.Position.h *
-                                                              view_app->Robot.WALK_PICTURE_NUMBER);
-                            }
+                        if (view_app->Robot.Position.y >= 0) {
+                            personWalkUp(view_app);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
-                        view_app->Robot.anim_state = 0;
-                        printf("SDLK_DOWN...personnage move down...");
-                        while (ev.key.state == SDL_PRESSED) {
-                            personWalkRight(view_app);
-                            if (view_app->Robot.Position.y <= 1040) {
-                                view_app->Robot.Position.y = (view_app->Robot.Position.y + 5) %
-                                                             (view_app->Robot.Position.h *
-                                                              view_app->Robot.WALK_PICTURE_NUMBER);
-                            }
+                        if (view_app->Robot.Position.y <= 594) {
+                            personWalkDown(view_app);
                         }
-
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
                         printf("SDLK_SPACE...read the information");
                         printf("display the information");
                     }
-                    printf("scancode=%d\n", ev.key.keysym.scancode);
+                break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if (ev.button.button == SDL_BUTTON_LEFT) {
+                        //check if release & get coordinates
+                        point.x = ev.button.x;
+                        point.y = ev.button.y;
+                        if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
+                            if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
+                                isRunning=SDL_FALSE;
+                            }
+                        }
+                    }
                 break;
             }
         }
-        isRunning=SDL_FALSE;
-        status =EXIT_SUCCESS;
     }
+    status =EXIT_SUCCESS;
     return status;
 }
 
@@ -104,10 +77,6 @@ int main_controller(View_app *view_app){
     view_app->Actual=Menu;
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
-        return EXIT_FAILURE;
-    }
-    if (init_character(view_app) != EXIT_SUCCESS) {
-        fprintf (stderr, "failed init character \n");
         return EXIT_FAILURE;
     }
     //boucle faisant tourner le menu
@@ -140,6 +109,15 @@ int main_controller(View_app *view_app){
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Play;
+                                        move_robot(view_app);
+                                        free_Windows(&view_app->Game);
+                                        //executing menu window initialisation and checking it worked
+                                        if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
+                                            fprintf(stderr, "error init_Window : %s", SDL_GetError());
+                                            free_Windows(&view_app->Menu);
+                                            return EXIT_FAILURE;
+                                        }
+                                        view_app->Actual = Menu;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[1])) {
                                         //credits
@@ -201,27 +179,13 @@ int main_controller(View_app *view_app){
                                 }
                                 break;
                             case Play:
-                                if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
-                                   fprintf (stderr, "in case play \n");
-                                    if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
-                                        free_Windows(&view_app->Game);
-                                        //executing menu window initialisation and checking it worked
-                                        if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
-                                            fprintf(stderr, "error init_Window : %s", SDL_GetError());
-                                            free_Windows(&view_app->Menu);
-                                            return EXIT_FAILURE;
-                                        }
-                                        view_app->Actual = Menu;
-                                        fprintf (stderr, "in case play 2 \n");
-                                    }
-                                }
-                        }
-                        break;
+                                break;
                     }
                 break;
              }
         }
         status=EXIT_FAILURE;
+    }
     }
     status=EXIT_SUCCESS;
     return status;

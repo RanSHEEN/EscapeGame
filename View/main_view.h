@@ -30,7 +30,7 @@ typedef struct {
 
 typedef struct {
     int SPEED;
-    SDL_Texture * robot;
+    SDL_Texture * texture;
     SDL_Rect Position ;
 } Character;
 
@@ -52,27 +52,15 @@ int init_credits(Windows * credits_window);
 int init_rules(Windows * rules_window);
 int init_game(Windows *game_window);
 
-/* useless
- * struct square {
-    SDL_Rect rect;
-    Uint32 colour;
-};*/
-
 //personnage
 
 int init_character (View_app * app);
-
-int init_character_F_img(View_app * app);
-int init_character_R_img(View_app * app);
-int init_character_L_img(View_app * app);
-
-
-void personStatic(View_app * app);
 void personWalkRight(View_app * app);
 void personWalkLeft(View_app * app);
 void personWalkUp(View_app * app);
 void personWalkDown(View_app * app);
 
+void free_character(Character * Robot);
 void free_Windows(Windows * window);
 void free_view (View_app *view_app);
 
