@@ -9,10 +9,24 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
-void move_robot(View_app *view_app) {
+int move_robot(View_app *view_app) {
+    fprintf (stderr, "in move robot \n");
+
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
+
+    if (init_character(view_app) != EXIT_SUCCESS) {
+        fprintf (stderr, "failed init character \n");
+        return EXIT_FAILURE;
+    }
+    SDL_Rect pos_robot = {900,500,100,100};
+
+    view_app->Robot.Position = pos_robot;
+
+    personStatic(view_app);
+    fprintf (stderr, "in case play 3 \n");
+    move_robot(view_app);
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
@@ -77,7 +91,9 @@ void move_robot(View_app *view_app) {
             }
         }
         isRunning=SDL_FALSE;
+        status =EXIT_SUCCESS;
     }
+    return status;
 }
 
 int main_controller(View_app *view_app){
@@ -88,6 +104,10 @@ int main_controller(View_app *view_app){
     view_app->Actual=Menu;
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    if (init_character(view_app) != EXIT_SUCCESS) {
+        fprintf (stderr, "failed init character \n");
         return EXIT_FAILURE;
     }
     //boucle faisant tourner le menu
@@ -111,6 +131,7 @@ int main_controller(View_app *view_app){
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Menu.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[0])) {
                                         //play
+
                                         free_Windows(&view_app->Menu);
 
                                         if (init_game(&view_app->Game) != EXIT_SUCCESS) {
@@ -181,6 +202,7 @@ int main_controller(View_app *view_app){
                                 break;
                             case Play:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
+                                   fprintf (stderr, "in case play \n");
                                     if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
@@ -190,11 +212,8 @@ int main_controller(View_app *view_app){
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Menu;
+                                        fprintf (stderr, "in case play 2 \n");
                                     }
-                                    else if (init_character(view_app) != EXIT_SUCCESS) {
-                                        return EXIT_FAILURE;
-                                    }
-                                    move_robot(view_app);
                                 }
                         }
                         break;

@@ -59,9 +59,6 @@ int init_credits(Windows * credits_window);
 int init_rules(Windows * rules_window);
 int init_game(Windows *game_window);
 
-
-
-
 /* useless
  * struct square {
     SDL_Rect rect;
@@ -69,7 +66,13 @@ int init_game(Windows *game_window);
 };*/
 
 //personnage
+
 int init_character (View_app * app);
+
+int init_character_F_img(View_app * app);
+int init_character_R_img(View_app * app);
+int init_character_L_img(View_app * app);
+
 
 void personStatic(View_app * app);
 void personWalkRight(View_app * app);
