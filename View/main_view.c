@@ -328,7 +328,20 @@ int init_game(Windows  * game_window){
     return status;
 }
 
+int init_character(View_app * app){
+    app->Robot.SPEED = 60;
+    SDL_Rect temp = {900,500,70,100 };
+    app->Robot.Position = temp;
+    SDL_Surface * Robot_dst = IMG_Load("./img/Robot.png");
+    if (Robot_dst == NULL)
+    {
+        fprintf(stderr,"Error IMG_load: %s\n",SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_FillRect(Robot_dst,app->Robot.Position,250, 194, 90);
+}
 
+/*
 int init_character_F_img(View_app * app) {
     SDL_Surface * Robot_still_FB = IMG_Load("./img/RobotWalkFront.png");
     if (Robot_still_FB == NULL)
@@ -484,6 +497,8 @@ void personWalkDown(View_app * app){
     SDL_Delay(app->Robot.SPEED);
     app->Robot.anim_state = (app->Robot.anim_state + 1) % app->Robot.WALK_PICTURE_NUMBER;
 }
+*/
+
 
 int init_View(View_app *view_app){
     //executing SDL initialisation and checking it worked

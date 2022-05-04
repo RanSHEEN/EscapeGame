@@ -29,15 +29,8 @@ typedef struct {
 }Windows;
 
 typedef struct {
-    int WALK_PICTURE_NUMBER;
     int SPEED;
-    int anim_state;
-    SDL_Texture * move_R;
-    SDL_Texture * move_L;
-    SDL_Texture * move_F;
-    SDL_Rect walks_R[8];
-    SDL_Rect walks_L[8];
-    SDL_Rect walks_F[8];
+    SDL_Texture * robot;
     SDL_Rect Position ;
 } Character;
 
