@@ -3,7 +3,7 @@
 //
 #include "./Controller/controller.h"
 #include "./View/main_view.h"
-#include "./Model/main_model.h"
+#include "./Model/model.h"
 
 #include <stdarg.h>
 #include <stddef.h>
