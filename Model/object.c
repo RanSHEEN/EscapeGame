@@ -115,9 +115,9 @@ void deleteRoom(Room * R){
 // ajouter un objet dans la pièce
 void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type type){
     if(R->framing[i][j].d!=NULL){
-        fprintf(stderr, "there is a door here");
-    }else if(i>R->nb_i||j>R->nb_j||i<0||j<0){
-        fprintf(stderr, "you are out of the room");
+        printf( "there is a door here\n");
+    }else if(i<0||j<0){
+        printf( "you are out of the room\n");
     }else{
         R->framing[i][j].o= createObject(id,j,i,file_name,type);
     }
@@ -125,10 +125,12 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
 
 void addDoor(Room *R, char * id, int i, int j,char *file_name){
     if ((i!=R->nb_i||i!=0)||(j!=R->nb_j||j!=0)) {
-        fprintf(stderr, "a door without wall ?");
+        printf("a door without wall ?\n");
     }else if (R->framing[i][j].o!=NULL){
-        fprintf(stderr, "there is an object here");
-    } else{
+        printf("there is an object here\n");
+    }else if (i<0||j<0){
+        printf("you are out of the room\n");
+    }else{
         R->framing[i][j].d= createDoor(id,j,i,file_name);
     }
 }
