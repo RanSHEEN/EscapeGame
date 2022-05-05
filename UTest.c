@@ -144,6 +144,7 @@ static void test_addObject(void **state){
     assert_true(R->framing[0][0].o!=NULL);
     assert_true(R->framing[4][8].o!=NULL);
     assert_true(R->framing[-2][-6].o==NULL);
+    deleteRoom(R);
 }
 static void test_addDoor(void **state){
     char * filename= "file";
@@ -160,18 +161,70 @@ static void test_addDoor(void **state){
     assert_true(R->framing[3][0].d!=NULL);
     assert_true(R->framing[3][8].d!=NULL);
     assert_true(R->framing[2][2].d==NULL);
+    deleteRoom(R);
 }
 static void test_addDoorOnObject(void **state){
-
+    char * filename= "file";
+    char * name="room 1";
+    Room * R = CreateRoom(filename,name);
+    char * id_d="door";
+    char * id_o ="obj";
+    addObject(R, id_o, 0, 3,filename, 1);
+    addDoor(R,id_d,0, 3,filename);
+    assert_true(R->framing[0][3].o!=NULL);
+    assert_true(R->framing[0][3].d==NULL);
+    deleteRoom(R);
 }
 static void test_addObjectOnDoor(void **state){
-
+    char * filename= "file";
+    char * name="room 1";
+    Room * R = CreateRoom(filename,name);
+    char * id_d="door";
+    char * id_o ="obj";
+    addDoor(R,id_d,0, 3,filename);
+    addObject(R, id_o, 0, 3,filename, 1);
+    assert_true(R->framing[0][3].d!=NULL);
+    assert_true(R->framing[0][3].o==NULL);
+    deleteRoom(R);
+}
+static void test_addDoorOnDoor(void **state){
+    char * filename= "file";
+    char * name="room 1";
+    Room * R = CreateRoom(filename,name);
+    char * id_d1="door1";
+    char * id_d2="door2";
+    addDoor(R,id_d1,0, 3,filename);
+    addDoor(R,id_d2,0, 3,filename);
+    assert_string_equal(R->framing[0][3].d->id,id_d1);
+    deleteRoom(R);
+}
+static void test_addObjectOnObject(void **state){
+    char * filename= "file";
+    char * name="room 1";
+    Room * R = CreateRoom(filename,name);
+    char * id_o1="obj1";
+    char * id_o2="obj2";
+    addObject(R, id_o1, 0, 0,filename, 1);
+    addObject(R, id_o2, 0, 0,filename, 1);
+    assert_string_equal(R->framing[0][0].o->id,id_o1);
+    deleteRoom(R);
 }
 void Test_notEmpty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
     Room * R = CreateRoom(filename,name);
+    char * id_d="door";
+    char * id_o ="obj";
+    addDoor(R,id_d,0, 3,filename);
+    addDoor(R,id_d,4, 3,filename);
+    addDoor(R,id_d,3, 0,filename);
+    addDoor(R,id_d,3, 8,filename);
+    addObject(R, id_o, 0, 0,filename, 1);
+    addObject(R, id_o, 4, 8,filename, 1);
+    addObject(R, id_o, 4, 4,filename, 1);
+    addObject(R, id_o, 2, 2,filename, 1);
     printRoom(R);
+    deleteRoom(R);
 }
 int main(void){
    /**
@@ -188,9 +241,13 @@ int main(void){
             cmocka_unit_test(test_CreateFraming),
             cmocka_unit_test(test_CreateRoom),
             cmocka_unit_test(test_addObject),
-            cmocka_unit_test(test_addDoor)
+            cmocka_unit_test(test_addDoor),
+            cmocka_unit_test(test_addObjectOnDoor),
+            cmocka_unit_test(test_addDoorOnObject),
+            cmocka_unit_test(test_addDoorOnDoor),
+            cmocka_unit_test(test_addObjectOnObject)
     };
-    Test_Empty_PrintRoom();
+    Test_notEmpty_PrintRoom();
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
 
 }
