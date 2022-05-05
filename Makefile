@@ -20,10 +20,16 @@ main: main.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 Test: UTest.o
-	$(CC) $^  $(LDFLAGS) -o $@
+	$(CC) $^  $(LDFLAGS) -lcmocka -o $@
+
+Test_Edge: UTest_Edge.o
+	$(CC) $^  $(LDFLAGS) -lcmocka -o $@
 
 Test_graph: UTest_graph.o
-	$(CC) $^  $(LDFLAGS) -o $@
+	$(CC) $^  $(LDFLAGS) -lcmocka -o $@
+
+Test_State: UTest_State.o
+	$(CC) $^  $(LDFLAGS) -lcmocka -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -34,8 +40,7 @@ clean: distclean
 
 clean_exc:
 	rm -f main
-	rm -f Test
-	rm -f Test_graph
+	rm -f Test*
 
 distclean :
 	rm -f ./lib/*.a

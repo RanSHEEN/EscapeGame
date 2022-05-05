@@ -1,17 +1,16 @@
 Escape Game
 Marie Margot Ran Kuilong
 
-DO NOT FORGET TO BUILD THE LIB DIRECTORY IF NEEDED
-
-
 To build the project :
+`make all
+`
 
-make all
+To execute the menu launcher
+`./main
+`
 
-To execute the menu launcher 
+To clean it all :
+`make clean`
 
-./main
 
-To clean it all : 
-
-make clean
+Tests unitaires ne fonctionnent pas encore sur tous les PC

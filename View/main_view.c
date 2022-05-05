@@ -1,5 +1,8 @@
-#include "main_view.h"
+//created by Margot
 
+#include "main_view.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /* initializes the SDL library +sub libraries */
 int init_SDL(){

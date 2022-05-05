@@ -3,6 +3,9 @@
 //
 
 #include "model.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /**
  * EdgeList: liste de lien entre le Vertex et ses successeurs
  */

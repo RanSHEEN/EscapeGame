@@ -7,7 +7,7 @@ DLIB = ../lib
 all: libview.a
 
 libview.a : main_view.o
-	ar -rv $(DLIB)/$@ $^
+	ar -rcsv $(DLIB)/$@ $^
 
 view: main_view.o
 	$(CC) $^  $(LDFLAGS) -o $@

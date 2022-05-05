@@ -5,8 +5,7 @@
 #ifndef PROJET_ESCAPE_MAIN_VIEW_H
 #define PROJET_ESCAPE_MAIN_VIEW_H
 
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 

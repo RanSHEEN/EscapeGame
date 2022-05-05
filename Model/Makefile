@@ -1,14 +1,15 @@
+
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD
+CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD
 LDFLAGS =
 DLIB = ../lib
 
 all: libmodel.a
 
-libmodel.a : object.o personnage.o graph.o
-	ar -rv $(DLIB)/$@ $^
+libmodel.a : model.o graph.o object.o
+	ar -rcsv $(DLIB)/$@ $^
 
-model: object.o personnage.o graph.o
+model: model.o graph.o object.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c
