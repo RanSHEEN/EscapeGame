@@ -124,14 +124,14 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
 }
 
 void addDoor(Room *R, char * id, int i, int j,char *file_name){
-    if ((i!=R->nb_i||i!=0)||(j!=R->nb_j||j!=0)) {
-        printf("a door without wall ?\n");
-    }else if (R->framing[i][j].o!=NULL){
+    if (R->framing[i][j].o!=NULL){
         printf("there is an object here\n");
     }else if (i<0||j<0){
         printf("you are out of the room\n");
-    }else{
+    }else if ((i==R->nb_i-1||i==0)||(j==R->nb_j-1||j==0)) {
         R->framing[i][j].d= createDoor(id,j,i,file_name);
+    }else{
+        printf("a door without wall ?\n");
     }
 }
 

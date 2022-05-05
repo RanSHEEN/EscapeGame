@@ -144,14 +144,27 @@ static void test_addObject(void **state){
     assert_true(R->framing[0][0].o!=NULL);
     assert_true(R->framing[4][8].o!=NULL);
     assert_true(R->framing[-2][-6].o==NULL);
-
 }
 static void test_addDoor(void **state){
     char * filename= "file";
     char * name="room 1";
     Room * R = CreateRoom(filename,name);
+    char * id ="door";
+    addDoor(R,id,0, 3,filename);
+    addDoor(R,id,4, 3,filename);
+    addDoor(R,id,2, 2,filename);
+    addDoor(R,id,3, 0,filename);
+    addDoor(R,id,3, 8,filename);
+    assert_true(R->framing[0][3].d!=NULL);
+    assert_true(R->framing[4][3].d!=NULL);
+    assert_true(R->framing[3][0].d!=NULL);
+    assert_true(R->framing[3][8].d!=NULL);
+    assert_true(R->framing[2][2].d==NULL);
 }
 static void test_addDoorOnObject(void **state){
+
+}
+static void test_addObjectOnDoor(void **state){
 
 }
 void Test_notEmpty_PrintRoom(){
@@ -174,7 +187,8 @@ int main(void){
             cmocka_unit_test(test_Personnage_move_right),
             cmocka_unit_test(test_CreateFraming),
             cmocka_unit_test(test_CreateRoom),
-            cmocka_unit_test(test_addObject)
+            cmocka_unit_test(test_addObject),
+            cmocka_unit_test(test_addDoor)
     };
     Test_Empty_PrintRoom();
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
