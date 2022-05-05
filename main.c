@@ -2,6 +2,7 @@
 // Created by eii on 06/04/2022.
 //
 #include "./Controller/controller.h"
+#include "./Model/model.h"
 
 int main(){
     //declaring our windows

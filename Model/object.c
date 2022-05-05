@@ -48,24 +48,9 @@ void freeDoor(Door * D){
  * struct case : position (x,y); objet (=NULL si il n'y a pas d'objet); taille (X,Y)
 */
 
-int getDimension(int a,int b){
-    //a=diviseur minimum
-    //b=taille que l'on veut diviser en entier
-    //return taille divisé (doit être un entier)
-    int N=0;
-    while(N!=25){
-        if (b%a==0){
-            printf("%d \n",a);
-            return a;
-        }
-        a=a+1;
-        N=N+1;
-    }
-    return b;
-}
 Room * CreateRoom(char * filename, char * name){
-    int nb_j = getDimension(14,SCREEN_W); //nombre de case en largeur
-    int nb_i = getDimension(5,SCREEN_H) ;// nombre de case en hauteur
+    int nb_j = 9; //nombre de case en largeur
+    int nb_i = 5;// nombre de case en hauteur
     int w=SCREEN_W/nb_j;//taille d'une case en largeur
     int h=SCREEN_H/nb_i;//taille d'une case en hauteur
     Room * R= (Room *) malloc(sizeof(Room));
@@ -87,20 +72,27 @@ frame ** CreateFraming(int nb_j, int nb_i, int w, int h){
             tab[i][j].o=NULL;
             tab[i][j].d=NULL;
             tab[i][j].Pos_x=j*w;
-            tab[i][j].Pos_y=SCREEN_H-i*h;
+            tab[i][j].Pos_y=i*h;
        }
     }
     return tab;
 }
 
-void printFraming(frame ** tab){
-    int x = getDimension(14,SCREEN_W); //nombre de case en largeur
-    int y = getDimension(5,SCREEN_H) ;// nombre de case en hauteur
+void printRoom(Room *R){
+    printf("%s\n",R->name);
+    printf("%s\n",R->filename);
 
     int i,j;
-    for(i=0;i<y;i++){
-        for(j=0;j<x;j++){
-            printf("(%d,%d) ; ",tab[i][j].Pos_x,tab[i][j].Pos_y);
+    for(i=0;i<R->nb_i;i++){
+        for(j=0;j<R->nb_j;j++){
+            printf("(%d,%d): ",R->framing[i][j].Pos_x,R->framing[i][j].Pos_y);
+            if(R->framing[i][j].o!=NULL){
+                printf("%s ; ",R->framing[i][j].o->id);
+            }else if(R->framing[i][j].d!=NULL){
+                printf("%s ; ",R->framing[i][j].d->id);
+            }else{
+                printf("vide ; ");
+            }
         }
         printf("\n");
     }
@@ -110,7 +102,7 @@ void printFraming(frame ** tab){
 
 //delete framing
 void deleteFraming(frame ** tab){
-    int y = getDimension(5,SCREEN_H) ;// nombre de ligne du tableau
+    int y = 5;// nombre de ligne du tableau
     for(int i = 0 ; i < y ; ++i)
         free((frame *)tab[i]);
     free((frame *)tab);
@@ -124,6 +116,8 @@ void deleteRoom(Room * R){
 void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type type){
     if(R->framing[i][j].d!=NULL){
         fprintf(stderr, "there is a door here");
+    }else if(i>R->nb_i||j>R->nb_j||i<0||j<0){
+        fprintf(stderr, "you are out of the room");
     }else{
         R->framing[i][j].o= createObject(id,j,i,file_name,type);
     }

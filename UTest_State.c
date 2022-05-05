@@ -42,7 +42,7 @@ static void Test_Change_inf(){
     int x = 5;
     int y = 50;
     char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name);
+    Object * o = createObject( id, x, y, file_name, 1);
     int a = SolvedEnigma(g,o);
     assert_int_equal(a,0);
 }
@@ -52,7 +52,7 @@ static void Test_Change_sup(){
     int x = 5;
     int y = 50;
     char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name);
+    Object * o = createObject( id, x, y, file_name,1);
     g->current->enigma_solved=3;
     int a = changeState(g,o);
     assert_int_equal(a,-1);
@@ -64,7 +64,7 @@ static void Test_Change_egal_one_win(){
     int x = 5;
     int y = 50;
     char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name);
+    Object * o = createObject( id, x, y, file_name,1);
     int a = SolvedEnigma(g,o);
     assert_int_equal(a,1);
 }
@@ -74,7 +74,7 @@ static void Test_Change_egal_more(){
     int x = 5;
     int y = 50;
     char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name);
+    Object * o = createObject( id, x, y, file_name,1);
 
     int a = SolvedEnigma(g,o);
     assert_int_equal(a,0);

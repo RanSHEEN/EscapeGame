@@ -1,6 +1,6 @@
-
+//
 // Created by Margot on 06/04/2022.
-
+//
 
 #include "controller.h"
 
@@ -16,7 +16,8 @@ int move_robot(View_app *view_app) {
         fprintf (stderr, "failed init character \n");
         return EXIT_FAILURE;
     }
-    Personage * p= CreatePersonage();
+
+    //Personage * p= CreatePersonage();
 
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
@@ -25,35 +26,26 @@ int move_robot(View_app *view_app) {
                     if (ev.key.keysym.sym == SDLK_LEFT) {
                         if (view_app->Robot.Position.x >= 0) {
                             personWalkLeft(view_app);
-                            move_left(p, 5);
-                            fprintf(stdout,"vue x %d y %d \n",view_app->Robot.Position.x,view_app->Robot.Position.y);
-                            fprintf(stdout,"model x %d y %d \n",p->x_position,p->y_position);
+                            //move_left(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
                         if (view_app->Robot.Position.x <= 1164) {
                             personWalkRight(view_app);
-                            move_right(p, 5);
-                            fprintf(stdout,"vue x %d y %d \n",view_app->Robot.Position.x,view_app->Robot.Position.y);
-                            fprintf(stdout,"model x %d y %d \n",p->x_position,p->y_position);
+                            //move_right(p, 5);
                      }
 
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
                         if (view_app->Robot.Position.y >= 0) {
                             personWalkUp(view_app);
-                            move_up(p, 5);
-                            fprintf(stdout,"vue x %d y %d \n",view_app->Robot.Position.x,view_app->Robot.Position.y);
-                            fprintf(stdout,"model x %d y %d \n",p->x_position,p->y_position);
-
+                            //move_up(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
                         if (view_app->Robot.Position.y <= 594) {
                             personWalkDown(view_app);
-                            move_down(p, 5);
-                            fprintf(stdout,"vue x %d y %d \n",view_app->Robot.Position.x,view_app->Robot.Position.y);
-                            fprintf(stdout,"model x %d y %d \n",p->x_position,p->y_position);
+                            //move_down(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {

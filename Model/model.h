@@ -5,8 +5,8 @@
 #ifndef ESCAPEGAMEPROJECT_MAIN_MODEL_H
 #define ESCAPEGAMEPROJECT_MAIN_MODEL_H
 
-#define SCREEN_W 1851
-#define SCREEN_H 1040
+#define SCREEN_W 1260
+#define SCREEN_H 700
 
 enum obj_type { Button, to_look, code };
 
@@ -65,12 +65,12 @@ void freeDoor(Door * D);
 /***
  * definition Frame
  */
-int getDimension(int a,int b);
+
 //Create Room
 Room * CreateRoom();
 //Create Framing
 frame ** CreateFraming();
-void printFraming(frame ** tab);
+void printRoom(Room *R);
 
 //delete Framing
 void deleteFraming(frame ** tab);
@@ -136,8 +136,6 @@ void printEdgeList(EdgeList *c);
  */
 void deleteFirstEdge(EdgeList *c);
 void deleteEdgeList(EdgeList * c);
-
-
 
 /**
  * VertexList: liste de vertex
