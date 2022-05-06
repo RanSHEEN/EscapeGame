@@ -1,5 +1,5 @@
 //
-// Created by eii on 12/04/2022.
+// Created by Marie on 12/04/2022.
 //
 
 #include "./Controller/controller.h"
@@ -7,8 +7,6 @@
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
-
-
 
 /*
  * Definitions des tests Personnages

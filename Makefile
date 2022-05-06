@@ -3,7 +3,7 @@ CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
 LDFLAGS= -L./lib -lAll -lSDL2 -lSDL2_image
 LDFLAGS_UT= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image
 
-all: make_model make_view make_controller main
+all: make_model make_view make_controller Test_files
 
 make_model:
 	make -C ./Model
@@ -31,6 +31,9 @@ Test_graph: UTest_graph.o
 	$(CC) $^  $(LDFLAGS_UT) -lcmocka -o $@
 
 Test_State: UTest_State.o
+	$(CC) $^  $(LDFLAGS_UT) -lcmocka -o $@
+
+Test_files: UTest_files.o
 	$(CC) $^  $(LDFLAGS_UT) -lcmocka -o $@
 
 %.o: %.c

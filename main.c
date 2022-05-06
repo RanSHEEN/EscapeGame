@@ -14,9 +14,6 @@ int main(void){
         return EXIT_FAILURE;
     }
     main_controller(&app);
-    Personage * p = CreatePersonage();
-
-    printf("%d\n", p->x_position);
 
     free_view (&app);
 

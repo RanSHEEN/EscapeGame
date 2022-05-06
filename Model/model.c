@@ -2,7 +2,7 @@
 // Created by Marie on 2/27/22.
 //
 #include "../Model/model.h"
-#include <stdlib.h>
+
 
 Personage * CreatePersonage(){
     Personage * p = (Personage *) malloc(sizeof(Personage));

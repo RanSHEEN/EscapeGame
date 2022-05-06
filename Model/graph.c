@@ -1,11 +1,9 @@
 //
-// Created by eii on 10/04/2022.
+// Created by Marie on 10/04/2022.
 //
 
 #include "../Model/model.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 /**
  * EdgeList: liste de lien entre le Vertex et ses successeurs
  */

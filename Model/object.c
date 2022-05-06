@@ -3,10 +3,6 @@
 //
 
 #include "../Model/model.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 
 //Object
 Object * createObject(char * id, int j, int i, char * file_name, enum obj_type type){

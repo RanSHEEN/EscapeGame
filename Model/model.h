@@ -4,9 +4,12 @@
 
 #ifndef ESCAPEGAMEPROJECT_MAIN_MODEL_H
 #define ESCAPEGAMEPROJECT_MAIN_MODEL_H
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #define SCREEN_W 1260
 #define SCREEN_H 700
+#define TMAX 100
 
 enum obj_type { Button, to_look, code };
 
@@ -191,6 +194,18 @@ void deleteGraph(VertexList * g);
 
 int changeState(VertexList * g,Object * o);
 int SolvedEnigma(VertexList * g, Object *o);
+
+/**
+ * Lecture de fichiers
+ */
+//open close
+FILE *openFileRead(char *nom);
+void closeFile(FILE *f);
+//read line
+char * readFileLine(FILE *f, char *tampon);
+//read Room file
+
+//read Graph File
 
 
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H
