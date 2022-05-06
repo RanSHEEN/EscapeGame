@@ -3,10 +3,7 @@
 //
 
 #include "./Controller/controller.h"
-#include "./View/main_view.h"
-#include "./Model/model.h"
 
-#include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model
+CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD -I./Model -I./View
 LDFLAGS = -L../lib -lmodel -lview -lSDL2 -lSDL2_image
 DLIB = ../lib
 

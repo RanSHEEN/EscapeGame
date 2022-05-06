@@ -2,9 +2,8 @@
 // Created by eii on 06/04/2022.
 //
 #include "./Controller/controller.h"
-#include "./Model/model.h"
 
-int main(){
+int main(void){
     //declaring our windows
     View_app app;
 
@@ -15,6 +14,9 @@ int main(){
         return EXIT_FAILURE;
     }
     main_controller(&app);
+    Personage * p = CreatePersonage();
+
+    printf("%d\n", p->x_position);
 
     free_view (&app);
 

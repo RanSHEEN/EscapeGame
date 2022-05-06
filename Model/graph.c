@@ -2,7 +2,7 @@
 // Created by eii on 10/04/2022.
 //
 
-#include "model.h"
+#include "../Model/model.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
