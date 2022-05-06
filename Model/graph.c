@@ -136,12 +136,14 @@ void deleteEdgeList(EdgeList * c){
 /*
  * Fonction Gestion de Liste Edge List
  */
-void initGraph(VertexList * g){
+VertexList * initGraph(){
+    VertexList * g=(VertexList *) malloc(sizeof(VertexList));
     if (g!=NULL){
         g->current=NULL;
         g->first=NULL;
         g->last=NULL;
     }
+    return g;
 }
 int isEmptyVertexList(VertexList * g){
     return (g->first==NULL)&&(g->last==NULL);

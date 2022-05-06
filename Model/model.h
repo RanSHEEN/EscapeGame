@@ -162,7 +162,7 @@ struct VertexList{
 /*
  * Fonction Gestion de Liste Edge List
  */
-void initGraph(VertexList * g);
+VertexList * initGraph();
 int isEmptyVertexList(VertexList * g);
 void insertFirstVertex(VertexList * g,char * label,int enigma_number);
 void insertLastVertex(VertexList * g,char * label,int enigma_number);
