@@ -1,0 +1,3 @@
+Vertex v1
+Vertex v2
+Edge v1->v2
