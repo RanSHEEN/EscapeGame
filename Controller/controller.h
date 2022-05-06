@@ -13,6 +13,7 @@
 
 #include "../View/main_view.h"
 #include "../Model/model.h"
+#include "SDL2/SDL_mixer.h"
 
 int move_robot(View_app *view_app);
 

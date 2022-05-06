@@ -8,10 +8,10 @@
 #include "../View/main_view.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "SDL2/SDL_mixer.h"
 
 int move_robot(View_app *view_app) {
     SDL_Point point;
-
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
@@ -75,6 +75,10 @@ int main_controller(View_app *view_app){
     SDL_Event ev;
     SDL_Point point;
     view_app->Actual=Menu;
+    //initialise the SDL mixer
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
+    //load bgm
+    Mix_Music *bgmP = Mix_LoadMUS("music/test.mp3");
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         return EXIT_FAILURE;
@@ -109,7 +113,11 @@ int main_controller(View_app *view_app){
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Play;
+                                        //play music in play
+                                        Mix_PlayMusic(bgmP,-1);
                                         move_robot(view_app);
+                                        //free music bgmP
+                                        Mix_FreeMusic(bgmP);
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -187,6 +195,7 @@ int main_controller(View_app *view_app){
         status=EXIT_FAILURE;
     }
     }
+    Mix_CloseAudio();
     status=EXIT_SUCCESS;
     return status;
 }
