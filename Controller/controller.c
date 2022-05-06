@@ -22,6 +22,10 @@ int move_robot(View_app *view_app) {
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
+                case SDL_QUIT:
+                    isRunning = SDL_FALSE;
+                break;
+
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
                         if (view_app->Robot.Position.x >= 0) {
@@ -49,8 +53,8 @@ int move_robot(View_app *view_app) {
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
-                        printf("SDLK_SPACE...read the information");
-                        printf("display the information");
+                        fprintf(stderr,"SDLK_SPACE...read the information");
+                        fprintf(stderr,"display the information");
                     }
                 break;
                 case SDL_MOUSEBUTTONDOWN:

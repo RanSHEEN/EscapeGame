@@ -43,7 +43,9 @@ void free_Windows(Windows * window){
 void free_character(Character * Robot){
     SDL_DestroyTexture(Robot->texture);
 }
-
+void free_object (View_Object * object){
+    SDL_DestroyTexture(object->texture);
+}
 void free_view (View_app *view_app){
     if(view_app->Menu.window!=NULL){
         free_Windows(&view_app->Menu);
@@ -51,6 +53,9 @@ void free_view (View_app *view_app){
     else if (view_app->Game.window!=NULL){
         free_Windows(&view_app->Game);
         free_character(&view_app->Robot);
+        for (int i=0 ; i<=NB_OF_OBJECTS; i++){
+            free_object(&view_app->object[i]);
+        }
     }
     else if (view_app->Credits.window!=NULL){
         free_Windows(&view_app->Credits);
@@ -273,13 +278,13 @@ int init_game(Windows  * game_window){
 
     int status = EXIT_FAILURE;
 
-    if (0 != SDL_CreateWindowAndRenderer(1234,694,SDL_RENDERER_ACCELERATED,&game_window->window,&game_window->renderer))
+    if (0 != SDL_CreateWindowAndRenderer(1260,700,SDL_RENDERER_ACCELERATED,&game_window->window,&game_window->renderer))
     {
         fprintf(stderr, "error SDL_CreateWindowAndRenderer : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(game_window->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    game_window->texture=SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
+    game_window->texture=SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1260,700);
 
     if(NULL== game_window->texture){
         fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
@@ -322,7 +327,7 @@ int init_game(Windows  * game_window){
 
     //initialize the button
     // x=1516 y=4 w=170 h=70
-    SDL_Rect return_but = {1128,1,106,51};
+    SDL_Rect return_but = {1160,1,100,50};
     game_window->Return_b = return_but;
 
     status = EXIT_SUCCESS;
@@ -364,7 +369,40 @@ int init_character(View_app * app){
     SDL_RenderPresent(app->Game.renderer);
     return EXIT_SUCCESS;
 }
+int init_object(View_app * app, int nb, char * filename){
+    //this function only initializes an object view wise but won't work without it being liked to the model through controller
+    app->object[nb].id = nb;
+    app->object[nb].texture= SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, app->object[nb].position.w, app->object[nb].position.h);
+    if(NULL== app->object[nb].texture)
+    {
+        fprintf(stderr, "Erreur SDL_CreateTexture : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_Surface *surface2 = NULL;
+    SDL_Texture *texture2 = NULL;
+    surface2 = IMG_Load(filename);
+    if (NULL == surface2) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
+    SDL_FreeSurface((SDL_Surface *) surface2);
+    if (NULL == texture2) {
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
+        SDL_DestroyTexture(texture2);
+        return EXIT_FAILURE;
+    }
+    SDL_SetRenderTarget(app->Game.renderer,app->object[nb].texture);
+    SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
+    SDL_DestroyTexture(texture2);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
 
+    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+    SDL_RenderCopy(app->Game.renderer,app->object[nb].texture,NULL,&app->object[nb].position);
+    SDL_RenderPresent(app->Game.renderer);
+    return EXIT_SUCCESS;
+}
 
 void personWalkRight(View_app * app){
     app->Robot.Position.x+= 5;
@@ -405,6 +443,5 @@ int init_View(View_app *view_app){
         IMG_Quit();
         return EXIT_FAILURE;
     }
-    //ici on pourra initialiser le personnage et les objets aussi par exemple
     return EXIT_SUCCESS;
 }
