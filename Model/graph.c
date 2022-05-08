@@ -204,9 +204,11 @@ void insertFirstVertex(VertexList * g,char * label,int enigma_number){
     initEdgeList(v->connect);
     if (isEmptyVertexList(g)){
         v->next_v=NULL;
+        v->previous_v=NULL;
         g->last=v;
         g->first=v;
     }else{
+        g->first->previous_v=v;
         v->next_v=g->first;
         g->first=v;
     }
@@ -225,10 +227,12 @@ void insertLastVertex(VertexList * g,char * label,int enigma_number){
     initEdgeList(v->connect);
     if (isEmptyVertexList(g)){
         v->next_v=NULL;
+        v->previous_v=NULL;
         g->last=v;
         g->first=v;
     }else{
         v->next_v=NULL;
+        v->previous_v=g->last;
         g->last->next_v=v;
         g->last=v;
     }
@@ -266,6 +270,14 @@ void setOnNextVertex(VertexList * g){
     */
     if(g!=NULL){
         g->current=g->current->next_v;
+    }
+}
+void setOnPreviousVertex(VertexList *g){
+    /**
+    * mets le pointeur Current sur le vertex précédent de la liste
+    */
+    if(g!=NULL){
+        g->current=g->current->previous_v;
     }
 }
 Vertex * findVertex(VertexList * g,char * label){
@@ -321,6 +333,7 @@ void deleteFirstVertex(VertexList * g){
     }else{
         Vertex *v  = g->first;
         g->first=v->next_v;
+        g->first->previous_v=NULL;
         free(v);
     }
 }

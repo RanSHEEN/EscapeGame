@@ -156,3 +156,7 @@ void readGraphFileLine(char * tampon , VertexList * g){
     free(type);
 }
 
+void associateRoomWithVertexList(VertexList *g,Room *R){
+    Vertex * v = findVertex(g,R->name);
+    v->R=R;
+}

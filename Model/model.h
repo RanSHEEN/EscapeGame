@@ -150,7 +150,9 @@ void deleteEdgeList(EdgeList * c);
 struct Vertex{
     char * label;
     EdgeList * connect;//vide de base
+    Room *R;
     int enigma_number;
+    Vertex * previous_v;
     Vertex * next_v;
     int enigma_solved; //à 0 de base
 };
@@ -174,6 +176,7 @@ void addLink(Vertex * v1, Vertex * v2, char * obj_label);
 void setOnFirstVertex(VertexList * g);
 void setOnLastVertex(VertexList * g);
 void setOnNextVertex(VertexList * g);
+void setOnPreviousVertex(VertexList *g);
 Vertex * findVertex(VertexList * g,char * label);
 /*
  * Print Edge List
@@ -210,4 +213,5 @@ void readRoomFileLine(char * tampon,Room *R);
 VertexList * readGraphFile(char * PATH);
 void readGraphFileLine(char * tampon, VertexList * g);
 
+void associateRoomWithVertexList(VertexList *g,Room *R);
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H

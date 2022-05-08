@@ -3,7 +3,7 @@ CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
 LDFLAGS= -L./lib -lAll -lSDL2 -lSDL2_image
 LDFLAGS_UT= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image
 
-all: make_model make_view make_controller Test_files
+all: make_model make_view make_controller main
 
 make_model:
 	make -C ./Model

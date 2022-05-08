@@ -87,7 +87,7 @@ static void test_VertexList_setFirst(){
     setOnFirstVertex(g);
     assert_string_equal(g->current->label,"Vertex1");
 }
-static void test_VertexList_setLast(){
+static void test_VertexList_setNext(){
     VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
@@ -99,7 +99,7 @@ static void test_VertexList_setLast(){
     setOnNextVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
 }
-static void test_VertexList_setNext(){
+static void test_VertexList_setLast(){
     VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
@@ -110,6 +110,19 @@ static void test_VertexList_setNext(){
     setOnLastVertex(g);
     assert_string_equal(g->current->label,"Vertex3");
 }
+static void test_VertexList_setPrevious(){
+    VertexList * g= initGraph();
+    char * label2="Vertex2";
+    char * label1="Vertex1";
+    char * label3="Vertex3";
+    insertFirstVertex(g,label2,2);
+    insertFirstVertex(g,label1,2);
+    insertLastVertex(g,label3,2);
+    setOnLastVertex(g);
+    setOnPreviousVertex(g);
+    assert_string_equal(g->current->label,"Vertex2");
+}
+
 static void test_VertexList_find(){
     VertexList * g= initGraph();
     char * label2="Vertex2";
@@ -190,9 +203,6 @@ static void Test_Print(){
 
 
 
-
-
-
 int main(void){
     /**
      * Test Graph : EdgeList
@@ -208,6 +218,7 @@ int main(void){
             cmocka_unit_test(test_VertexList_setFirst),
             cmocka_unit_test(test_VertexList_setLast),
             cmocka_unit_test(test_VertexList_setNext),
+            cmocka_unit_test(test_VertexList_setPrevious),
             cmocka_unit_test(test_VertexList_find),
             cmocka_unit_test(test_VertexList_delete_toAnEmpty),
             cmocka_unit_test(test_VertexList_deleteFirst),
