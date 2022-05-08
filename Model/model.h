@@ -208,6 +208,6 @@ void readRoomFile(char * PATH);
 void readRoomFileLine(FILE *f,Room *R);
 //read Graph File
 void readGraphFile(char * PATH);
-void readGraphFileLine(FILE *f, VertexList * g);
+void readGraphFileLine(char * tampon, VertexList * g);
 
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H

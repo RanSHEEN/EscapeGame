@@ -47,11 +47,43 @@ void readGraphFile(char * PATH){
      * Ouvre, lit le fichier au chemin PATH, et crée le Graph
      * et appelle la fonction read line pour y ajouter des Vertex/liens.
      */
+    int cppt=1;
+    char * tampon = (char *) malloc(sizeof(char)*TMAX);
+    VertexList * g = initGraph();
+    FILE * f= openFileRead(PATH);
+
+    rewind(f);
+    readFileLine(f,tampon);
+    if (strcmp(tampon,"GRAPH")){
+        printf("this document does'nt describe a Graph");
+    }
+    while(readFileLine(f,tampon)!=NULL){
+        cppt ++;
+        readGraphFileLine(tampon,g);
+    }
 }
-void readGraphFileLine(FILE *f, VertexList * g){
+void readGraphFileLine(char * tampon , VertexList * g){
     /**
     * Lit une ligne du fichier Graph (f) et la traite
     * pour ajouter des Vertex/liens dans le Graph (g)
     */
+    char * type, vert, status;
+    sscanf(tampon,"%s, %s, %s",type,vert,status);
+    if(strcmp(type,"Vertex")){
+        char * label;
+        int e_number;
+        sscanf(vert,"label : %s",label);
+        sscanf(status, "enigma_number : %d",e_number);
+        insertLastVertex(g,label,e_number);
+    }else if (strcmp(type,"Edge")){
+        char * label_v1, label_v2, obj_label;
+        sscanf(vert,"%s->%s",label_v1,label_v2);
+        sscanf(status, "obj_label : %s", obj_label);
+        Vertex * v1= findVertex(g,label_v1);
+        Vertex * v2= findVertex(g,label_v2);
+        insertLastEdge(v1->connect,obj_label,v2);
+    }else{
+        printf("type unknown");
+    }
 }
 
