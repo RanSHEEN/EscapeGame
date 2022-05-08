@@ -176,10 +176,10 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
      * Un objet ne peut pas être créé là où il y a déjà une porte ou un objet
      * Un objet ne peut pas être créé à l'extérieur de la pièce
      */
-    if(R->framing[i][j].d!=NULL){
+    if(i==2 && (j==0 || j==8)){
         printf( "there is a door here\n");
     }else if(R->framing[i][j].o!=NULL){
-        printf("there is an object here\n");
+        printf("there is an other object here\n");
     }else if(i<0||j<0){
         printf( "you are out of the room\n");
     }else{
@@ -190,20 +190,16 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
 void addDoor(Room *R, char * id, int i, int j,char *file_name){
     /**
      * Ajout d'une porte (d'identifiant id et d'image file_name) dans la room (R) à la position (i,j)
-     * Une porte ne peut pas être créé là où il y a déjà une porte ou un objet
-     * Une Porte ne peut pas être créé à l'extérieur de la pièce
-     * Une Porte ne peut pas être crée en dehors d'un mur
+     * Une porte ne peut pas être créé qu'en (2,0) ou en (2,8)
      */
-    if (R->framing[i][j].o!=NULL) {
-        printf("there is an object here\n");
-    }else if(R->framing[i][j].d!=NULL){
-        printf( "there is a door here\n");
-    }else if (i<0||j<0){
-        printf("you are out of the room\n");
-    }else if ((i==R->nb_i-1||i==0)||(j==R->nb_j-1||j==0)) {
-        R->framing[i][j].d= createDoor(id,j,i,file_name);
+    if (i==2 && (j==0 || j==8)) {
+        if(R->framing[i][j].d!=NULL) {
+            printf("there is already a door here\n");
+        }else {
+            R->framing[i][j].d= createDoor(id,j,i,file_name);
+        }
     }else{
-        printf("a door without wall ?\n");
+        printf("you can't put a door here\n");
     }
 }
 

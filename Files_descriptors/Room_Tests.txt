@@ -1,6 +1,7 @@
-Room_Name
-file_Name 
-Door : 
-Door : 
-Object :
-Object :
+ROOM
+Room_Name : Room 1
+file_Name : Path
+Door : id : door1; Position : (0,3); filename : Path;
+Door : id : door2; Position : (2,0); filename : Path;
+Object : id : obj1; Position : (0,0); filename : Path; Type : 1;
+Object : id : obj2; Position : (2,5); filename : Path; Type : 1;
