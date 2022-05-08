@@ -350,13 +350,13 @@ void deleteGraph(VertexList * g){
 
 /**
  * State Change
- * Notre graph s'apparente à uns machine d'état
+ * Notre graph s'apparente à uns machine d'état dont les état sont des salles
  * quand on résout les énigmes de l'étape on change d'état
  */
 
-int changeState(VertexList * g,Object * o){
+int changeStateAccess(VertexList * g,Object * o){
     /**
-     * Vérifie que le changement d'état peut être autorisée, et si c'est le cas change d'état
+     * Vérifie que le changement de salle peut être autorisée, et si c'est le cas change de salle
      */
     //return 0 si état inchangé, 1 si il change, -1 si erreur
     //Changement d'état autorisé? (enigma nb==solved)
@@ -365,22 +365,28 @@ int changeState(VertexList * g,Object * o){
     }else if(g->current->enigma_solved>g->current->enigma_number){
         return -1;
     }else {
-        if (g->current->connect->last==g->current->connect->first){
-            // si un seul Edge
-            g->current=g->current->connect->first->v_next;
-            printf("one\n");
-        }else{
-            //si plusieurs Edges
-            Edge * e=findEdge(g->current->connect,o->id);
-            g->current=e->v_next;
-            printf("more\n");
+        //plusieurs Edges possibles
+        if(g->current->R->framing[2][0].d!=NULL){
+            g->current->R->framing[2][0].d->access=1;
         }
+        if(g->current->R->framing[2][8].d!=NULL){
+            g->current->R->framing[2][8].d->access=1;
+        }
+        return 1;
+    }
+}
+
+int changeRoom(VertexList *g,Door *d){
+    if(d->access==1){
+        Edge * e=findEdge(g->current->connect,d->id);
+        g->current=e->v_next;
         //si nouveau Vertex.label = win print "GG"
         if(strcmp(g->current->label,"win")==0){
             printf("You Win\n");
         }
         return 1;
     }
+    return 0;
 }
 
 int SolvedEnigma(VertexList * g, Object *o){
@@ -388,7 +394,7 @@ int SolvedEnigma(VertexList * g, Object *o){
      * augmente de 1 le nombre d'énigme résolu et appelle la fonction state change pour vérifier si le changement d'état est possible
      */
     g->current->enigma_solved++;
-    return changeState(g,o);
+    return changeStateAccess(g,o);
 }
 
 
