@@ -61,29 +61,42 @@ void readGraphFile(char * PATH){
         cppt ++;
         readGraphFileLine(tampon,g);
     }
+    closeFile(f);
+    free(tampon);
 }
 void readGraphFileLine(char * tampon , VertexList * g){
     /**
     * Lit une ligne du fichier Graph (f) et la traite
     * pour ajouter des Vertex/liens dans le Graph (g)
     */
-    char * type, vert, status;
-    sscanf(tampon,"%s, %s, %s",type,vert,status);
-    if(strcmp(type,"Vertex")){
-        char * label;
+    char * type = (char *) malloc(sizeof(char)*20);
+
+    sscanf(tampon,"%s -\n",type);
+    //printf("%s\n",type);
+
+    if(strcmp(type,"Vertex")==0){
+        char * label = (char *) malloc(sizeof(char)*20);
         int e_number;
-        sscanf(vert,"label : %s",label);
-        sscanf(status, "enigma_number : %d",e_number);
+
+        sscanf(tampon,"Vertex - label:%s - enigma_number:%d\n",label,&e_number);
+
         insertLastVertex(g,label,e_number);
-    }else if (strcmp(type,"Edge")){
-        char * label_v1, label_v2, obj_label;
-        sscanf(vert,"%s->%s",label_v1,label_v2);
-        sscanf(status, "obj_label : %s", obj_label);
+
+    }else if (strcmp(type,"Edge")==0){
+        char * label_v1 = (char *) malloc(sizeof(char)*20);
+        char * label_v2 = (char *) malloc(sizeof(char)*20);
+        char * obj_label = (char *) malloc(sizeof(char)*20);
+
+        sscanf(tampon,"Edge - %s - %s - obj_label:%s\n",label_v1,label_v2,obj_label);
+
         Vertex * v1= findVertex(g,label_v1);
         Vertex * v2= findVertex(g,label_v2);
+
         insertLastEdge(v1->connect,obj_label,v2);
+
     }else{
-        printf("type unknown");
+        printf("type unknown\n");
     }
+    free(type);
 }
 
