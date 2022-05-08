@@ -16,7 +16,7 @@ int move_robot(View_app *view_app) {
     int status = EXIT_FAILURE;
     SDL_Event ev;
     //Load Chunk of move
-    Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_sound.wav");
+    Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_Sound.wav");
 
     if (init_character(view_app) != EXIT_SUCCESS) {
         fprintf (stderr, "failed init character \n");
@@ -35,20 +35,20 @@ int move_robot(View_app *view_app) {
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
                      if (view_app->Robot.Position.x <= 1164) {
-                         Mix_PlayChannel(-1,moveSound,-1);
+                         Mix_PlayChannel(-1,moveSound,0);
                          personWalkRight(view_app);
                      }
 
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
                         if (view_app->Robot.Position.y >= 0) {
-                            Mix_PlayChannel(-1,moveSound,-1);
+                            Mix_PlayChannel(-1,moveSound,0);
                             personWalkUp(view_app);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
                         if (view_app->Robot.Position.y <= 594) {
-                            Mix_PlayChannel(-1,moveSound,-1);
+                            Mix_PlayChannel(-1,moveSound,0);
                             personWalkDown(view_app);
                         }
                     }
