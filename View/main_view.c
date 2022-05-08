@@ -405,3 +405,4 @@ int init_View(View_app *view_app){
     //ici on pourra initialiser le personnage et les objets aussi par exemple
     return EXIT_SUCCESS;
 }
+
