@@ -195,9 +195,9 @@ void deleteGraph(VertexList * g);
  * quand on résout les énigmes de l'étape on change d'état
  */
 
-int changeStateAccess(VertexList * g,Object * o);
+int changeStateAccess(VertexList * g);
 int changeRoom(VertexList *g,Door *d);
-int SolvedEnigma(VertexList * g, Object *o);
+int SolvedEnigma(VertexList * g);
 
 /**
  * Lecture de fichiers

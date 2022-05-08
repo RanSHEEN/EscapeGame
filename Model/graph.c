@@ -354,7 +354,7 @@ void deleteGraph(VertexList * g){
  * quand on résout les énigmes de l'étape on change d'état
  */
 
-int changeStateAccess(VertexList * g,Object * o){
+int changeStateAccess(VertexList * g){
     /**
      * Vérifie que le changement de salle peut être autorisée, et si c'est le cas change de salle
      */
@@ -389,12 +389,12 @@ int changeRoom(VertexList *g,Door *d){
     return 0;
 }
 
-int SolvedEnigma(VertexList * g, Object *o){
+int SolvedEnigma(VertexList * g){
     /**
      * augmente de 1 le nombre d'énigme résolu et appelle la fonction state change pour vérifier si le changement d'état est possible
      */
     g->current->enigma_solved++;
-    return changeStateAccess(g,o);
+    return changeStateAccess(g);
 }
 
 

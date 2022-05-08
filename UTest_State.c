@@ -22,10 +22,10 @@ static VertexList * ForTest(){
     insertFirstVertex(g,label1,2);
     insertLastVertex(g,label3,1);
     insertLastVertex(g,w,0);
-    char * obj1="Object1";
-    char * obj2="Object2";
-    char * obj3="Object3";
-    char * obj4="Object4";
+    char * obj1="Door1";
+    char * obj2="Door2";
+    char * obj3="Door3";
+    char * obj4="Door4";
     addLink(findVertex(g,label1),findVertex(g,label2),obj1);
     addLink(findVertex(g,label1),findVertex(g,label3),obj2);
     addLink(findVertex(g,label3),findVertex(g,w),obj3);
@@ -33,49 +33,46 @@ static VertexList * ForTest(){
     setOnFirstVertex(g);
     return g;
 }
-static void Test_Change_inf(){
+static void Test_ChangeAccess_inf(){
     VertexList * g = ForTest();
-    char id[] = "Object1";
-    int x = 5;
-    int y = 50;
-    char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name, 1);
-    int a = SolvedEnigma(g,o);
+    int a = SolvedEnigma(g);
     assert_int_equal(a,0);
 }
-static void Test_Change_sup(){
-    VertexList * g = ForTest();
-    char id[] = "Object1";
-    int x = 5;
-    int y = 50;
-    char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name,1);
-    g->current->enigma_solved=3;
-    int a = changeState(g,o);
-    assert_int_equal(a,-1);
+static void Test_ChangeAccess_sup() {
+    VertexList *g = ForTest();
+    g->current->enigma_solved = 3;
+    int a = SolvedEnigma(g);
+    assert_int_equal(a, -1);
 }
-static void Test_Change_egal_one_win(){
-    VertexList * g = ForTest();
-    setOnNextVertex(g); //Vertex2
-    char id[] = "Object4";
-    int x = 5;
-    int y = 50;
-    char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name,1);
-    int a = SolvedEnigma(g,o);
-    assert_int_equal(a,1);
+static void Test_ChangeAccess_equal() {
+    VertexList *g = ForTest();
+    g->first->R=CreateRoom("PATH","name");
+    addDoor(g->first->R,"Door1",2,0,"file_name");
+    addDoor(g->first->R,"Door2",2,8,"file_name");
+    setOnFirstVertex(g);
+    g->current->enigma_solved=1;
+    SolvedEnigma(g);
+    assert_int_equal(g->current->R->framing[2][0].d->access,1);
+    assert_int_equal(g->current->R->framing[2][8].d->access,1);
 }
-static void Test_Change_egal_more(){
-    VertexList * g = ForTest();
-    char id[] = "Object1";
-    int x = 5;
-    int y = 50;
-    char file_name[] = "file_Test";
-    Object * o = createObject( id, x, y, file_name,1);
 
-    int a = SolvedEnigma(g,o);
+static void Test_Change_Room() {
+    VertexList *g = ForTest();
+    g->first->R=CreateRoom("PATH","name");
+    addDoor(g->first->R,"Door1",2,0,"file_name");
+    addDoor(g->first->R,"Door2",2,8,"file_name");
+    //printRoom(g->first->R);
+    setOnFirstVertex(g);
+    SolvedEnigma(g);
+    int a = changeRoom(g,g->current->R->framing[2][0].d);
+    int b = changeRoom(g,g->current->R->framing[2][8].d);
     assert_int_equal(a,0);
-    int b= SolvedEnigma(g,o);
+    assert_int_equal(b,0);
+    SolvedEnigma(g);
+    a = changeRoom(g,g->current->R->framing[2][0].d);
+    setOnFirstVertex(g);
+    b = changeRoom(g,g->current->R->framing[2][8].d);
+    assert_int_equal(a,1);
     assert_int_equal(b,1);
 }
 
@@ -84,10 +81,10 @@ int main(void){
      * Test Graph : EdgeList
      */
     const struct CMUnitTest tests[]={
-            cmocka_unit_test(Test_Change_inf),
-            cmocka_unit_test(Test_Change_sup),
-            cmocka_unit_test(Test_Change_egal_one_win),
-            cmocka_unit_test(Test_Change_egal_more)
+            cmocka_unit_test(Test_ChangeAccess_inf),
+            cmocka_unit_test(Test_ChangeAccess_sup),
+            cmocka_unit_test(Test_ChangeAccess_equal),
+            cmocka_unit_test(Test_Change_Room)
     };
     return cmocka_run_group_tests_name("test State",tests,NULL,NULL);
 }
