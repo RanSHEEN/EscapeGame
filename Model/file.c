@@ -14,7 +14,6 @@ FILE *openFileRead(char *PATH){
     }
     return pFile;
 }
-
 void closeFile(FILE *f){
     /**
      * ferme un fichier
@@ -29,17 +28,71 @@ char * readFileLine(FILE *f, char *tampon){
     return fgets(tampon,TMAX,f);
 }
 //read Room file
-void readRoomFile(char * PATH){
+Room * readRoomFile(char * PATH){
     /**
      * Ouvre, lit le fichier au chemin PATH, et crée la Room
      * et appelle la fonction read line pour y ajouter des objets/des portes
      */
+    int cppt=3;
+    char * tampon = (char *) malloc(sizeof(char)*TMAX);
+    FILE * f= openFileRead(PATH);
+
+    rewind(f);
+    readFileLine(f,tampon);
+    if (strcmp(tampon,"ROOM\n")!=0){
+        printf("this document does not describe a Graph \n");
+        return NULL;
+    }
+
+    readFileLine(f,tampon);
+    char * name = (char *) malloc(sizeof(char)*20);
+    sscanf(tampon,"Room_Name : %s",name);
+
+    readFileLine(f,tampon);
+    char * file_name = (char *) malloc(sizeof(char)*20);
+    sscanf(tampon,"file_Name : %s",file_name);
+
+    Room * R= CreateRoom(file_name,name);
+
+    while(readFileLine(f,tampon)!=NULL){
+        cppt ++;
+        readRoomFileLine(tampon,R);
+    }
+    closeFile(f);
+    free(tampon);
+    //printf("%d\n",cppt);
+    return R;
+
 }
-void readRoomFileLine(FILE *f, Room *R){
+void readRoomFileLine(char *tampon, Room *R){
     /**
      * Lit une ligne du fichier Room (f) et la traite
      * pour ajouter des objets/portes dans la Room (R)
      */
+    char * type = (char *) malloc(sizeof(char)*20);
+
+    sscanf(tampon,"%s -\n",type);
+
+    if(strcmp(type,"Door")==0){
+        char * id =(char *) malloc(sizeof(char)*20);
+        char * file_name =(char *) malloc(sizeof(char)*20);
+        int i, j;
+
+        sscanf(tampon,"Door - id : %s - Position : (%d;%d) - filename : %s",id,&i,&j,file_name);
+
+        addDoor(R,id,i,j,file_name);
+    }else if (strcmp(type,"Object")==0){
+        char * id =(char *) malloc(sizeof(char)*20);
+        char * file_name =(char *) malloc(sizeof(char)*20);
+        int i, j, t;
+
+        sscanf(tampon,"Object - id : %s - Position : (%d;%d) - filename : %s - Type : %d",id,&i,&j,file_name,&t);
+        addObject(R,id,i,j,file_name,t);
+
+    }else{
+        printf("type unknown\n");
+    }
+    free(type);
 }
 //read Graph File
 VertexList * readGraphFile(char * PATH){

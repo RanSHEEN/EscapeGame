@@ -204,8 +204,8 @@ void closeFile(FILE *f);
 //read line
 char * readFileLine(FILE *f, char *tampon);
 //read Room file
-void readRoomFile(char * PATH);
-void readRoomFileLine(FILE *f,Room *R);
+Room * readRoomFile(char * PATH);
+void readRoomFileLine(char * tampon,Room *R);
 //read Graph File
 VertexList * readGraphFile(char * PATH);
 void readGraphFileLine(char * tampon, VertexList * g);

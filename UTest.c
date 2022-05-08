@@ -186,10 +186,8 @@ void Test_notEmpty_PrintRoom(){
     Room * R = CreateRoom(filename,name);
     char * id_d="door";
     char * id_o ="obj";
-    addDoor(R,id_d,0, 3,filename);
-    addDoor(R,id_d,4, 3,filename);
-    addDoor(R,id_d,3, 0,filename);
-    addDoor(R,id_d,3, 8,filename);
+    addDoor(R,id_d,2, 0,filename);
+    addDoor(R,id_d,2, 8,filename);
     addObject(R, id_o, 0, 0,filename, 1);
     addObject(R, id_o, 4, 8,filename, 1);
     addObject(R, id_o, 4, 4,filename, 1);

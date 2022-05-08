@@ -65,15 +65,44 @@ static void test_readGraphFile(void **state){
     VertexList * g =readGraphFile(PATH);
     printGraph(g);
 }
+static void test_readRoomFileLine(void **state){
+    char * filename = "PATH";
+    char * name = "NAME";
+    Room * R =CreateRoom(filename,name);
+    char * tampon1="Door - id : door1 - Position : (2;0) - filename : Path";
+    char * tampon2="Door - id : door2 - Position : (2;8) - filename : Path";
+
+    readRoomFileLine(tampon1, R);
+    assert_true(R->framing[2][0].d!=NULL);
+    readRoomFileLine(tampon2, R);
+    assert_true(R->framing[2][8].d!=NULL);
+
+    char * tampon3="Object - id : obj1 - Position : (0;0) - filename : Path - Type : 1";
+    char * tampon4="Object - id : obj2 - Position : (2;5) - filename : Path - Type : 1";
+
+    readRoomFileLine(tampon3, R);
+    assert_true(R->framing[0][0].o!=NULL);
+    readRoomFileLine(tampon4, R);
+    assert_true(R->framing[2][5].o!=NULL);
+
+    printRoom(R);
+}
+static void test_readRoomFile(void **state){
+    char * PATH = "./Files_descriptors/Room_Tests.txt";
+    Room * R =readRoomFile(PATH);
+    printRoom(R);
+}
 
 int main(void){
 
-    const struct CMUnitTest tests_object_Door_Personnage[]={
+    const struct CMUnitTest tests_file[]={
             cmocka_unit_test(test_OpenCloseFiles),
             cmocka_unit_test(test_readLine),
             cmocka_unit_test(test_readLineGraph),
-            cmocka_unit_test(test_readGraphFile)
+            cmocka_unit_test(test_readGraphFile),
+            cmocka_unit_test(test_readRoomFileLine),
+            cmocka_unit_test(test_readRoomFile)
     };
-    return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
+    return cmocka_run_group_tests_name("test Objet",tests_file,NULL,NULL);
 
 }
