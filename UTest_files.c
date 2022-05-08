@@ -60,12 +60,19 @@ static void test_readLineGraph(void **state){
 
     printGraph(g);
 }
+static void test_readGraphFile(void **state){
+    char * PATH = "./Files_descriptors/Graph_Tests.txt";
+    VertexList * g =readGraphFile(PATH);
+    printGraph(g);
+}
+
 int main(void){
 
     const struct CMUnitTest tests_object_Door_Personnage[]={
             cmocka_unit_test(test_OpenCloseFiles),
             cmocka_unit_test(test_readLine),
-            cmocka_unit_test(test_readLineGraph)
+            cmocka_unit_test(test_readLineGraph),
+            cmocka_unit_test(test_readGraphFile)
     };
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
 

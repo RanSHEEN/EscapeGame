@@ -42,7 +42,7 @@ void readRoomFileLine(FILE *f, Room *R){
      */
 }
 //read Graph File
-void readGraphFile(char * PATH){
+VertexList * readGraphFile(char * PATH){
     /**
      * Ouvre, lit le fichier au chemin PATH, et crée le Graph
      * et appelle la fonction read line pour y ajouter des Vertex/liens.
@@ -54,8 +54,9 @@ void readGraphFile(char * PATH){
 
     rewind(f);
     readFileLine(f,tampon);
-    if (strcmp(tampon,"GRAPH")){
-        printf("this document does'nt describe a Graph");
+    if (strcmp(tampon,"GRAPH\n")!=0){
+        printf("this document does not describe a Graph \n");
+        return NULL;
     }
     while(readFileLine(f,tampon)!=NULL){
         cppt ++;
@@ -63,6 +64,8 @@ void readGraphFile(char * PATH){
     }
     closeFile(f);
     free(tampon);
+    printf("%d\n",cppt);
+    return g;
 }
 void readGraphFileLine(char * tampon , VertexList * g){
     /**

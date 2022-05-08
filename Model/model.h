@@ -207,7 +207,7 @@ char * readFileLine(FILE *f, char *tampon);
 void readRoomFile(char * PATH);
 void readRoomFileLine(FILE *f,Room *R);
 //read Graph File
-void readGraphFile(char * PATH);
+VertexList * readGraphFile(char * PATH);
 void readGraphFileLine(char * tampon, VertexList * g);
 
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H
