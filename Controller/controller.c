@@ -28,26 +28,26 @@ int move_robot(View_app *view_app) {
 
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        if (view_app->Robot.Position.x >= 0) {
+                        if (view_app->Robot.Position.x >= 145) {
                             personWalkLeft(view_app);
                             move_left(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
-                        if (view_app->Robot.Position.x <= 1164) {
+                        if (view_app->Robot.Position.x <= 1330) {
                             personWalkRight(view_app);
                             move_right(p, 5);
                      }
 
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
-                        if (view_app->Robot.Position.y >= 0) {
+                        if (view_app->Robot.Position.y >= 195) {
                             personWalkUp(view_app);
                             move_up(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
-                        if (view_app->Robot.Position.y <= 594) {
+                        if (view_app->Robot.Position.y <= 605) {
                             personWalkDown(view_app);
                             move_down(p, 5);
                         }

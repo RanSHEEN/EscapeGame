@@ -278,13 +278,13 @@ int init_game(Windows  * game_window){
 
     int status = EXIT_FAILURE;
 
-    if (0 != SDL_CreateWindowAndRenderer(1260,700,SDL_RENDERER_ACCELERATED,&game_window->window,&game_window->renderer))
+    if (0 != SDL_CreateWindowAndRenderer(1546,734,SDL_RENDERER_ACCELERATED,&game_window->window,&game_window->renderer))
     {
         fprintf(stderr, "error SDL_CreateWindowAndRenderer : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(game_window->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    game_window->texture=SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1260,700);
+    game_window->texture=SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1546,734);
 
     if(NULL== game_window->texture){
         fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
@@ -296,7 +296,7 @@ int init_game(Windows  * game_window){
 
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
-    tmp = IMG_Load("img/background.jpg");
+    tmp = IMG_Load("img/Framing.png");
     if (NULL == tmp) {
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(game_window->renderer);
@@ -327,7 +327,7 @@ int init_game(Windows  * game_window){
 
     //initialize the button
     // x=1516 y=4 w=170 h=70
-    SDL_Rect return_but = {1160,1,100,50};
+    SDL_Rect return_but = {1400,1,140,60};
     game_window->Return_b = return_but;
 
     status = EXIT_SUCCESS;
@@ -335,7 +335,7 @@ int init_game(Windows  * game_window){
 }
 int init_character(View_app * app){
     app->Robot.SPEED = 60;
-    SDL_Rect temp = {900,500,70,100 };
+    SDL_Rect temp = {140,460,70,100 };
     app->Robot.Position = temp;
 
     app->Robot.texture =SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 70, 100);
