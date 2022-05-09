@@ -5,7 +5,18 @@
 
 
 int main(){
-    //initGame();
-    Launch_view();
-    return 0;
+    //declaring our windows
+    View_app app;
+
+    if (init_View(&app)!=EXIT_SUCCESS){
+        fprintf(stderr, "error init_Window : %s", SDL_GetError());
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+    main_controller(&app);
+
+    free_view (&app);
+
+    return EXIT_SUCCESS;
 }

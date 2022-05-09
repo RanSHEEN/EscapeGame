@@ -9,30 +9,63 @@
 #include <stdlib.h>
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "SDL2/SDL_events.h"
 
-#include "personnage.h"
 
 
-enum Window {
+enum type {
     Menu,
     Rules,
-    Credits
+    Credits,
+    Play,
 };
 
 typedef struct {
     SDL_Window *window;
     SDL_Renderer *renderer;
-    SDL_Texture *Menu;
-    SDL_Rect  Return_b;
-    SDL_Rect  my_button[4] ;
-}Menu_windows;
+    SDL_Texture *texture;
+    char title[10];
+    enum type Type;
+    SDL_Rect  Return_b; //return from one window to menu
+    SDL_Rect  my_buttons[4] ; //navigate btw windows in the menu
+}Windows;
 
-int Launch_view();
+typedef struct {
+    int SPEED;
+    SDL_Texture * texture;
+    SDL_Rect Position;
+} Character;
 
-int init_menu(Menu_windows * escape);
-/*initializes a menu window and deals with potential errors*/
-int free_menu (Menu_windows * escape);
-/*deletes menu window, frees memory and deals with potential errors*/
+typedef struct {
+    Windows Menu;
+    Windows Rules;
+    Windows Game;
+    Windows Credits;
+    Character Robot;
+    enum type Actual;
+}View_app;
 
+
+int init_SDL();
+void get_Tittle(enum type Type, char* title);
+
+// windows
+int init_menu(Windows * escape_menu);
+int init_credits(Windows * credits_window);
+int init_rules(Windows * rules_window);
+int init_game(Windows *game_window);
+
+// personnage
+int init_character(View_app * app);
+void personWalkRight(View_app * app);
+void personWalkLeft(View_app * app);
+void personWalkUp(View_app * app);
+void personWalkDown(View_app * app);
+
+void free_character(Character * Robot);
+void free_Windows(Windows * window);
+void free_view (View_app *view_app);
+
+int init_View(View_app *view_app);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H

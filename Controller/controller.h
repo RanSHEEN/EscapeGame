@@ -6,8 +6,17 @@
 #define ESCAPEGAMEPROJECT_CONTROLLER_H
 #include <stdio.h>
 #include <stdlib.h>
-#include "../View/main_view.h"
 
-int initGame();
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_events.h"
+#include "SDL2/SDL_rect.h"
+
+#include "../View/main_view.h"
+#include "../Model/model.h"
+
+int move_robot(View_app *view_app);
+
+int main_controller(View_app *view_app);
+
 
 #endif //ESCAPEGAMEPROJECT_CONTROLLER_H

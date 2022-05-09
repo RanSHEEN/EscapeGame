@@ -5,10 +5,10 @@ DLIB = ../lib
 
 all: libview.a
 
-libview.a : main_view.o personnage.o
+libview.a : main_view.o
 	ar -rv $(DLIB)/$@ $^
 
-main_view: main_view.o personnage.o
+view: main_view.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c

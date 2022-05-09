@@ -5,10 +5,10 @@ DLIB = ../lib
 
 all: libmodel.a
 
-libmodel.a : main_model.o object.o personnage.o graph.o
+libmodel.a : object.o personnage.o graph.o
 	ar -rv $(DLIB)/$@ $^
 
-main_model: main_model.o object.o personnage.o graph.o
+model: object.o personnage.o graph.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c
