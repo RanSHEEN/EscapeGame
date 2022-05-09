@@ -1,5 +1,5 @@
 //
-// Created by eii on 12/04/2022.
+// Created by Marie on 12/04/2022.
 //
 
 #include "./Controller/controller.h"
@@ -7,8 +7,6 @@
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
-
-
 
 /*
  * Definitions des tests Personnages
@@ -137,9 +135,13 @@ static void test_addObject(void **state){
     char * id ="obj";
     addObject(R, id, 0, 0,filename, 1);
     addObject(R, id, 4, 8,filename, 1);
+    addObject(R, id, 2, 0,filename, 1);
+    addObject(R, id, 2, 8,filename, 1);
     addObject(R, id, -2, -6,filename, 1);
     assert_true(R->framing[0][0].o!=NULL);
     assert_true(R->framing[4][8].o!=NULL);
+    assert_true(R->framing[2][0].o==NULL);
+    assert_true(R->framing[2][8].o==NULL);
     assert_true(R->framing[-2][-6].o==NULL);
     deleteRoom(R);
 }
@@ -148,40 +150,12 @@ static void test_addDoor(void **state){
     char * name="room 1";
     Room * R = CreateRoom(filename,name);
     char * id ="door";
-    addDoor(R,id,0, 3,filename);
-    addDoor(R,id,4, 3,filename);
+    addDoor(R,id,2, 0,filename);
+    addDoor(R,id,2, 8,filename);
     addDoor(R,id,2, 2,filename);
-    addDoor(R,id,3, 0,filename);
-    addDoor(R,id,3, 8,filename);
-    assert_true(R->framing[0][3].d!=NULL);
-    assert_true(R->framing[4][3].d!=NULL);
-    assert_true(R->framing[3][0].d!=NULL);
-    assert_true(R->framing[3][8].d!=NULL);
+    assert_true(R->framing[2][0].d!=NULL);
+    assert_true(R->framing[2][8].d!=NULL);
     assert_true(R->framing[2][2].d==NULL);
-    deleteRoom(R);
-}
-static void test_addDoorOnObject(void **state){
-    char * filename= "file";
-    char * name="room 1";
-    Room * R = CreateRoom(filename,name);
-    char * id_d="door";
-    char * id_o ="obj";
-    addObject(R, id_o, 0, 3,filename, 1);
-    addDoor(R,id_d,0, 3,filename);
-    assert_true(R->framing[0][3].o!=NULL);
-    assert_true(R->framing[0][3].d==NULL);
-    deleteRoom(R);
-}
-static void test_addObjectOnDoor(void **state){
-    char * filename= "file";
-    char * name="room 1";
-    Room * R = CreateRoom(filename,name);
-    char * id_d="door";
-    char * id_o ="obj";
-    addDoor(R,id_d,0, 3,filename);
-    addObject(R, id_o, 0, 3,filename, 1);
-    assert_true(R->framing[0][3].d!=NULL);
-    assert_true(R->framing[0][3].o==NULL);
     deleteRoom(R);
 }
 static void test_addDoorOnDoor(void **state){
@@ -190,9 +164,9 @@ static void test_addDoorOnDoor(void **state){
     Room * R = CreateRoom(filename,name);
     char * id_d1="door1";
     char * id_d2="door2";
-    addDoor(R,id_d1,0, 3,filename);
-    addDoor(R,id_d2,0, 3,filename);
-    assert_string_equal(R->framing[0][3].d->id,id_d1);
+    addDoor(R,id_d1,2,0,filename);
+    addDoor(R,id_d2,2,0,filename);
+    assert_string_equal(R->framing[2][0].d->id,id_d1);
     deleteRoom(R);
 }
 static void test_addObjectOnObject(void **state){
@@ -212,10 +186,8 @@ void Test_notEmpty_PrintRoom(){
     Room * R = CreateRoom(filename,name);
     char * id_d="door";
     char * id_o ="obj";
-    addDoor(R,id_d,0, 3,filename);
-    addDoor(R,id_d,4, 3,filename);
-    addDoor(R,id_d,3, 0,filename);
-    addDoor(R,id_d,3, 8,filename);
+    addDoor(R,id_d,2, 0,filename);
+    addDoor(R,id_d,2, 8,filename);
     addObject(R, id_o, 0, 0,filename, 1);
     addObject(R, id_o, 4, 8,filename, 1);
     addObject(R, id_o, 4, 4,filename, 1);
@@ -239,8 +211,6 @@ int main(void){
             cmocka_unit_test(test_CreateRoom),
             cmocka_unit_test(test_addObject),
             cmocka_unit_test(test_addDoor),
-            cmocka_unit_test(test_addObjectOnDoor),
-            cmocka_unit_test(test_addDoorOnObject),
             cmocka_unit_test(test_addDoorOnDoor),
             cmocka_unit_test(test_addObjectOnObject)
     };

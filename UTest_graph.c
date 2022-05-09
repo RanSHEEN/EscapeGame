@@ -2,10 +2,7 @@
 // Created by Marie on 16/04/22.
 //
 #include "./Controller/controller.h"
-#include "./View/main_view.h"
-#include "./Model/model.h"
 
-#include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
@@ -16,21 +13,18 @@
  * def test Vertex List
  */
 static void test_VertexList_Init(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     assert_true(g->current==NULL);
     assert_true(g->first==NULL);
     assert_true(g->last==NULL);
 }
 static void test_VertexList_EmptyTrue(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     assert_true(isEmptyVertexList(g));
     assert_false(!isEmptyVertexList(g));
 }
 static void test_VertexList_addEmpty1(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label="Vertex2";
     insertFirstVertex(g,label,2);
     assert_int_equal(g->first,g->last);
@@ -43,8 +37,7 @@ static void test_VertexList_addEmpty1(){
     assert_true(g->first->connect->last==NULL);
 }
 static void test_VertexList_addEmpty2(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label="Vertex2";
     insertLastVertex(g,label,2);
     assert_int_equal(g->first,g->last);
@@ -57,16 +50,14 @@ static void test_VertexList_addEmpty2(){
     assert_true(g->first->connect->last==NULL);
 }
 static void test_VertexList_EmptyFalse(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label="Vertex2";
     insertLastVertex(g,label,2);
     assert_true(!isEmptyVertexList(g));
     assert_false(isEmptyVertexList(g));
 }
 static void test_VertexList_addFirst(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     insertFirstVertex(g,label2,2);
@@ -75,8 +66,7 @@ static void test_VertexList_addFirst(){
     assert_string_equal(g->last->label,"Vertex2");
 }
 static void test_VertexList_addLast(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -87,8 +77,7 @@ static void test_VertexList_addLast(){
     assert_string_equal(g->last->label,"Vertex3");
 }
 static void test_VertexList_setFirst(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -98,9 +87,8 @@ static void test_VertexList_setFirst(){
     setOnFirstVertex(g);
     assert_string_equal(g->current->label,"Vertex1");
 }
-static void test_VertexList_setLast(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+static void test_VertexList_setNext(){
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -111,9 +99,8 @@ static void test_VertexList_setLast(){
     setOnNextVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
 }
-static void test_VertexList_setNext(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+static void test_VertexList_setLast(){
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -123,9 +110,21 @@ static void test_VertexList_setNext(){
     setOnLastVertex(g);
     assert_string_equal(g->current->label,"Vertex3");
 }
+static void test_VertexList_setPrevious(){
+    VertexList * g= initGraph();
+    char * label2="Vertex2";
+    char * label1="Vertex1";
+    char * label3="Vertex3";
+    insertFirstVertex(g,label2,2);
+    insertFirstVertex(g,label1,2);
+    insertLastVertex(g,label3,2);
+    setOnLastVertex(g);
+    setOnPreviousVertex(g);
+    assert_string_equal(g->current->label,"Vertex2");
+}
+
 static void test_VertexList_find(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -140,8 +139,7 @@ static void test_VertexList_find(){
     assert_string_equal(v->label,"Vertex3");
 }
 static void test_VertexList_addLink(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -159,8 +157,7 @@ static void test_VertexList_addLink(){
     assert_string_equal(v->connect->last->v_next->label,"Vertex3");
 }
 static void test_VertexList_deleteFirst(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -172,8 +169,7 @@ static void test_VertexList_deleteFirst(){
     assert_string_equal(g->last->label,"Vertex3");
 }
 static void test_VertexList_delete_toAnEmpty(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label="Vertex2";
     insertLastVertex(g,label,2);
     deleteFirstVertex(g);
@@ -183,8 +179,7 @@ static void test_VertexList_delete_toAnEmpty(){
     deleteGraph(g);
 }
 static void Test_Print(){
-    VertexList * g= (VertexList *) malloc(sizeof(VertexList));
-    initGraph(g);
+    VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
@@ -208,9 +203,6 @@ static void Test_Print(){
 
 
 
-
-
-
 int main(void){
     /**
      * Test Graph : EdgeList
@@ -226,6 +218,7 @@ int main(void){
             cmocka_unit_test(test_VertexList_setFirst),
             cmocka_unit_test(test_VertexList_setLast),
             cmocka_unit_test(test_VertexList_setNext),
+            cmocka_unit_test(test_VertexList_setPrevious),
             cmocka_unit_test(test_VertexList_find),
             cmocka_unit_test(test_VertexList_delete_toAnEmpty),
             cmocka_unit_test(test_VertexList_deleteFirst),

@@ -6,10 +6,10 @@ DLIB = ../lib
 
 all: libmodel.a
 
-libmodel.a : model.o graph.o object.o
+libmodel.a : model.o graph.o object.o file.o
 	ar -rcsv $(DLIB)/$@ $^
 
-model: model.o graph.o object.o
+model: model.o graph.o object.o file.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
 %.o: %.c

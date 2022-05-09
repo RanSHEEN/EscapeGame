@@ -2,10 +2,7 @@
 // Created by Marie on 04/05/22.
 //
 #include "./Controller/controller.h"
-#include "./View/main_view.h"
-#include "./Model/model.h"
 
-#include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>

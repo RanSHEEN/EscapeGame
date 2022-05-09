@@ -33,6 +33,9 @@ Test_graph: UTest_graph.o
 Test_State: UTest_State.o
 	$(CC) $^  $(LDFLAGS_UT) -lcmocka -o $@
 
+Test_files: UTest_files.o
+	$(CC) $^  $(LDFLAGS_UT) -lcmocka -o $@
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 	
