@@ -53,6 +53,7 @@ int move_robot(View_app *view_app) {
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
+                        //is_interact_possible ?+
                         fprintf(stderr,"SDLK_SPACE...read the information");
                         fprintf(stderr,"display the information");
                     }

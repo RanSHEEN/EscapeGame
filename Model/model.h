@@ -11,7 +11,7 @@
 #define SCREEN_H 700
 #define TMAX 100
 
-enum obj_type { Button, to_look, code };
+enum obj_type { Button, clue, code };
 
 typedef struct {
     char * id;

@@ -433,8 +433,6 @@ void personWalkDown(View_app * app){
     SDL_RenderPresent(app->Game.renderer);
 }
 
-
-
 int init_View(View_app *view_app){
     //executing SDL initialisation and checking it worked
     if (init_SDL()!=EXIT_SUCCESS){
