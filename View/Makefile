@@ -1,3 +1,4 @@
+
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD
 LDFLAGS =-lSDL2 -lSDL2_image

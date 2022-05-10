@@ -125,6 +125,7 @@ void deleteFirstEdge(EdgeList *c){
     }
 }
 
+
 void deleteEdgeList(EdgeList * c){
     while(!isEmptyEdgeList(c)){
         deleteFirstEdge(c);

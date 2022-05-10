@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
-LDFLAGS= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image
+LDFLAGS= -L./lib -lmodel -lview -lcontroller -lSDL2 -lSDL2_image -lSDL2_mixer
+
 
 all: make_model make_view make_controller main
 
@@ -27,6 +28,7 @@ Test_graph: UTest_graph.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean: distclean
 	rm -f *.o *.d

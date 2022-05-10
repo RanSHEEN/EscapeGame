@@ -2,6 +2,7 @@
 // Created by Kuilong on 2/27/22.
 //
 
+
 #include "model.h"
 
 Personage * CreatePersonage(){
@@ -29,3 +30,4 @@ void move_left(Personage * p){
 void move_right(Personage * p){
     p->x_position = p->x_position + 1;
 }
+

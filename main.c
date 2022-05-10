@@ -2,6 +2,13 @@
 // Created by eii on 06/04/2022.
 //
 #include "./Controller/controller.h"
+#include "./View/main_view.h"
+#include "./Model/model.h"
+
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+
 
 
 int main(){
@@ -20,3 +27,4 @@ int main(){
 
     return EXIT_SUCCESS;
 }
+

@@ -12,7 +12,6 @@
 #include "SDL2/SDL_events.h"
 
 
-
 enum type {
     Menu,
     Rules,
