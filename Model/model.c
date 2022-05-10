@@ -7,13 +7,13 @@
 Personage * CreatePersonage(){
     /**
      * Crée et alloue un personnage
-     * en l'initialisant à la position (900;500)
+     * en l'initialisant à la position (0;320)
      * (Coins en haut à gauche)
      * la fonction retourne un pointeur vers le personnage
      */
     Personage * p = (Personage *) malloc(sizeof(Personage));
-    p->x_position = 900;
-    p->y_position = 500;
+    p->x_position = 0;
+    p->y_position = 320;
     return p;
 }
 

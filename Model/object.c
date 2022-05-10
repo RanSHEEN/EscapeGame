@@ -83,7 +83,7 @@ Room * CreateRoom(char * filename, char * name){
      * nb_i est le nombre de case en hauteur
      */
     int nb_j = 9; //nombre de case en largeur
-    int nb_i = 5;// nombre de case en hauteur
+    int nb_i = 4;// nombre de case en hauteur
     int w=SCREEN_W/nb_j;//taille d'une case en largeur
     int h=SCREEN_H/nb_i;//taille d'une case en hauteur
     Room * R= (Room *) malloc(sizeof(Room));
@@ -156,7 +156,7 @@ void deleteFraming(frame ** tab){
     /**
      * libère la mémoire liée au cadrillage (framing)
      */
-    int y = 5;// nombre de ligne du tableau
+    int y = 4;// nombre de ligne du tableau
     for(int i = 0 ; i < y ; ++i)
         free((frame *)tab[i]);
     free((frame *)tab);
@@ -203,4 +203,6 @@ void addDoor(Room *R, char * id, int i, int j,char *file_name){
     }
 }
 
+int isInteractionPossible(Personage *p, Room * R){
 
+}

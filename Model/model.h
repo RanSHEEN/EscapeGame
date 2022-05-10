@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define SCREEN_W 1260
-#define SCREEN_H 700
+#define SCREEN_H 560
 #define TMAX 100
 
 enum obj_type { Button, clue, code };
@@ -82,6 +82,8 @@ void deleteRoom(Room * R);
 // ajouter un objet dans la pièce
 void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type);
 void addDoor(Room *R, char * id, int i, int j,char *file_name);
+
+int isInteractionPossible(Personage *p, Room * R);
 /**
  * definition Personnage
  */
