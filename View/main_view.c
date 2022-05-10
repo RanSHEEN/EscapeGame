@@ -382,9 +382,9 @@ void personWalkRight(View_app * app){
 //    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
 //    SDL_RenderPresent(app->Game.renderer);
 
-    SDL_Rect rect, walks[8];
     SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkRight.png");
+    SDL_Surface * img = IMG_Load("./img/RobotRightSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotRightSide2.png");
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
@@ -395,56 +395,44 @@ void personWalkRight(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
-
-    rect.x = app->Robot.Position.x;
-    rect.y = app->Robot.Position.y;
-    rect.h = img->h;
-    rect.w = img->w/8;
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<8; i++)
+    for (i = 0; i<4; i++)
     {
-        walks[i].w = img->w/8;
-        walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning == 1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_KEYDOWN) {
-                SDL_RenderClear(app->Game.renderer);
-                SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
-                SDL_RenderCopy(app->Game.renderer, texture, &walks[i], &rect);
-                i = (i + 1) % 8;
-                if (rect.x < 1164) {
-                    rect.x += 5;
-                }
-                app->Robot.Position.x=rect.x;
-                app->Robot.Position.y=rect.y;
-                SDL_RenderPresent(app->Game.renderer); // situation state
-                SDL_Delay(SPEED);
-            }else{
-                isRunning = 0;
-            }
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.x < 1164) {
+            app->Robot.Position.x += 5;
         }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
     }
 }
 
 void personWalkLeft(View_app * app) {
 //    app->Robot.Position.x -= 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
 
-    SDL_Rect rect, walks[8];
     SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkLeft.png");
+    SDL_Surface * img = IMG_Load("./img/RobotLeftSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotLeftSide2.png");
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
@@ -455,56 +443,43 @@ void personWalkLeft(View_app * app) {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
-
-    rect.x = app->Robot.Position.x;
-    rect.y = app->Robot.Position.y;
-    rect.h = img->h;
-    rect.w = img->w/8;
-
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
     int i;
-    for (i = 0; i<8; i++)
+    for (i = 0; i<4; i++)
     {
-        walks[i].w = img->w/8;
-        walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
-        walks[i].y = 0;
-    }
-
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning == 1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_KEYDOWN) {
-                SDL_RenderClear(app->Game.renderer);
-                SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
-                SDL_RenderCopy(app->Game.renderer, texture, &walks[i], &rect);
-                i = (i + 1) % 8;
-                if (rect.x > 0) {
-                    rect.x -= 5;
-                }
-                app->Robot.Position.x=rect.x;
-                app->Robot.Position.y=rect.y;
-                SDL_RenderPresent(app->Game.renderer); // situation state
-                SDL_Delay(SPEED);
-            }else{
-                isRunning = 0;
-            }
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.x > 0) {
+            app->Robot.Position.x -= 5;
         }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
     }
 }
 
 void personWalkUp(View_app * app){
 //    app->Robot.Position.y -= 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
 
-    SDL_Rect rect, walks[8];
     SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkBack.png");
+    SDL_Surface * img = IMG_Load("./img/RobotBack1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotBack2.png");
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
@@ -515,56 +490,45 @@ void personWalkUp(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
-
-    rect.x = app->Robot.Position.x;
-    rect.y = app->Robot.Position.y;
-    rect.h = img->h;
-    rect.w = img->w/8;
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<8; i++)
+    for (i = 0; i<4; i++)
     {
-        walks[i].w = img->w/8;
-        walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
-        walks[i].y = 0;
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.y >= 0) {
+            app->Robot.Position.y -= 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
     }
 
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning == 1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_KEYDOWN) {
-                SDL_RenderClear(app->Game.renderer);
-                SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
-                SDL_RenderCopy(app->Game.renderer, texture, &walks[i], &rect);
-                i = (i + 1) % 8;
-                if (rect.y >= 0) {
-                    rect.y -= 5;
-                }
-                app->Robot.Position.x=rect.x;
-                app->Robot.Position.y=rect.y;
-                SDL_RenderPresent(app->Game.renderer); // situation state
-                SDL_Delay(SPEED);
-            }else{
-                isRunning = 0;
-            }
-        }
-    }
 }
 
 void personWalkDown(View_app * app){
 //    app->Robot.Position.y += 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
 
-    SDL_Rect rect, walks[8];
     SDL_Surface * map = IMG_Load("./img/background.jpg");
-    SDL_Surface * img = IMG_Load("./img/RobotWalkFront.png");
+    SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotFront2.png");
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
@@ -575,44 +539,34 @@ void personWalkDown(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
-
-    rect.x = app->Robot.Position.x;
-    rect.y = app->Robot.Position.y;
-    rect.h = img->h;
-    rect.w = img->w/8;
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<8; i++)
+    for (i = 0; i<4; i++)
     {
-        walks[i].w = img->w/8;
-        walks[i].h = img->h;
-        walks[i].x = rect.x - i*walks[i].w;
-        walks[i].y = 0;
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.y < 594) {
+            app->Robot.Position.y += 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
+
     }
 
-    int isRunning = 1;
-    SDL_Event event;
-    while (isRunning == 1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_KEYDOWN) {
-                SDL_RenderClear(app->Game.renderer);
-                SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
-                SDL_RenderCopy(app->Game.renderer, texture, &walks[i], &rect);
-                i = (i + 1) % 8;
-                if (rect.y < 594) {
-                    rect.y += 5;
-                }
-                app->Robot.Position.x=rect.x;
-                app->Robot.Position.y=rect.y;
-                SDL_RenderPresent(app->Game.renderer); // situation state
-                SDL_Delay(SPEED);
-            }else{
-                isRunning = 0;
-            }
-        }
-    }
 }
 
 
