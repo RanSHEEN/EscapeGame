@@ -3,6 +3,7 @@
 //
 
 #include "../Model/model.h"
+#include "math.h"
 
 //Object
 Object * createObject(char * id, int j, int i, char * file_name, enum obj_type type){
@@ -203,6 +204,22 @@ void addDoor(Room *R, char * id, int i, int j,char *file_name){
     }
 }
 
-int isInteractionPossible(Personage *p, Room * R){
+Object * isInteractionPossible_object(Personage *p, Room * R){
+    /**
+     * Vérfie que le personnage peut interragir avec un objet
+     * et retourne le pointeur de l'objet
+     */
+    int j= floor(p->x_position/R->w);
+    int i= floor(p->y_position/R->h);
+    return R->framing[i][j].o;
+}
 
+Door * isInteractionPossible_door(Personage *p, Room * R){
+    /**
+     * Vérfie que le personnage peut interragir avec une porte
+     * et retourne le pointeur de la porte
+     */
+    int j= floor(p->x_position/R->w);
+    int i= floor(p->y_position/R->h);
+    return R->framing[i][j].d;
 }
