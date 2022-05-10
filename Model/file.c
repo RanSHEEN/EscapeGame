@@ -52,7 +52,11 @@ Room * readRoomFile(char * PATH){
     char * file_name = (char *) malloc(sizeof(char)*20);
     sscanf(tampon,"file_Name : %s",file_name);
 
-    Room * R= CreateRoom(file_name,name);
+    readFileLine(f,tampon);
+    int n;
+    sscanf(tampon,"nb_obj : %d",&n);
+
+    Room * R= CreateRoom(file_name,name,n);
 
     while(readFileLine(f,tampon)!=NULL){
         cppt ++;

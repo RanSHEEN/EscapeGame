@@ -37,6 +37,7 @@ typedef struct {
 typedef struct {
     int h;
     int w; //taille de la case
+    int nb_obj;
     int nb_j;
     int nb_i;
     char * name;
@@ -70,9 +71,9 @@ void freeDoor(Door * D);
  */
 
 //Create Room
-Room * CreateRoom();
+Room * CreateRoom(char * filename, char * name,int nb_obj);
 //Create Framing
-frame ** CreateFraming();
+frame ** CreateFraming(int nb_j, int nb_i, int w, int h);
 void printRoom(Room *R);
 
 //delete Framing

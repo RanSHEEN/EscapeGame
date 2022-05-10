@@ -72,7 +72,7 @@ void freeDoor(Door * D){
  * struct case : position (x,y); objet (=NULL si il n'y a pas d'objet); taille (X,Y)
 */
 
-Room * CreateRoom(char * filename, char * name){
+Room * CreateRoom(char * filename, char * name,int nb_obj){
     /**
      * crée et alloue une Room
      * elle contient le cadrillage qui décrit ce qu'il y a dans la pièce
@@ -93,6 +93,7 @@ Room * CreateRoom(char * filename, char * name){
     R->framing= CreateFraming(nb_j,nb_i,w,h);
     R->filename= filename;
     R->name=name;
+    R->nb_obj =nb_obj;
     R->h=h;
     R->w=w;
     return R;
@@ -133,6 +134,7 @@ void printRoom(Room *R){
      */
     printf("%s\n",R->name);
     printf("%s\n",R->filename);
+    printf("%d\n",R->nb_obj);
 
     int i,j;
     for(i=0;i<R->nb_i;i++){
@@ -181,8 +183,7 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
         printf( "there is a door here\n");
     }else if(R->framing[i][j].o!=NULL){
         printf("there is an other object here\n");
-    }else if(i<0||j<0){
-        printf( "you are out of the room\n");
+
     }else{
         R->framing[i][j].o= createObject(id,j,i,file_name,type);
     }

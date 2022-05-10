@@ -68,7 +68,7 @@ static void test_readGraphFile(void **state){
 static void test_readRoomFileLine(void **state){
     char * filename = "PATH";
     char * name = "NAME";
-    Room * R =CreateRoom(filename,name);
+    Room * R =CreateRoom(filename,name,2);
     char * tampon1="Door - id : door1 - Position : (2;0) - filename : Path";
     char * tampon2="Door - id : door2 - Position : (2;8) - filename : Path";
 

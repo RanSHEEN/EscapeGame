@@ -111,11 +111,12 @@ static void test_CreateFraming(void **state){
 static void test_CreateRoom(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,2);
     assert_int_equal(4,R->nb_i);
     assert_int_equal(9,R->nb_j);
     assert_int_equal(140,R->w);
     assert_int_equal(140,R->h);
+    assert_int_equal(2,R->nb_obj);
     assert_string_equal(filename,R->filename);
     assert_string_equal(name,R->name);
     assert_true(R->framing!=NULL);
@@ -124,31 +125,29 @@ static void test_CreateRoom(void **state){
 void Test_Empty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,2);
     printRoom(R);
     deleteRoom(R);
 }
 static void test_addObject(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,5);
     char * id ="obj";
     addObject(R, id, 0, 0,filename, 1);
     addObject(R, id, 3, 8,filename, 1);
     addObject(R, id, 2, 0,filename, 1);
     addObject(R, id, 2, 8,filename, 1);
-    addObject(R, id, -2, -6,filename, 1);
     assert_true(R->framing[0][0].o!=NULL);
     assert_true(R->framing[3][8].o!=NULL);
     assert_true(R->framing[2][0].o==NULL);
     assert_true(R->framing[2][8].o==NULL);
-    assert_true(R->framing[-2][-6].o==NULL);
     deleteRoom(R);
 }
 static void test_addDoor(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,0);
     char * id ="door";
     addDoor(R,id,2, 0,filename);
     addDoor(R,id,2, 8,filename);
@@ -161,7 +160,7 @@ static void test_addDoor(void **state){
 static void test_addDoorOnDoor(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,0);
     char * id_d1="door1";
     char * id_d2="door2";
     addDoor(R,id_d1,2,0,filename);
@@ -172,7 +171,7 @@ static void test_addDoorOnDoor(void **state){
 static void test_addObjectOnObject(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,2);
     char * id_o1="obj1";
     char * id_o2="obj2";
     addObject(R, id_o1, 0, 0,filename, 1);
@@ -183,7 +182,7 @@ static void test_addObjectOnObject(void **state){
 void Test_notEmpty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name);
+    Room * R = CreateRoom(filename,name,4);
     char * id_d="door";
     char * id_o ="obj";
     addDoor(R,id_d,2, 0,filename);
@@ -197,7 +196,7 @@ void Test_notEmpty_PrintRoom(){
 }
 static void test_isInteractionPossible(void **state){
     Personage * p =CreatePersonage();
-    Room * R =CreateRoom("filename","name");
+    Room * R =CreateRoom("filename","name",1);
     addObject(R,"obj",1,2,"filename",1);
     addDoor(R,"door",2,0,"filename");
 
