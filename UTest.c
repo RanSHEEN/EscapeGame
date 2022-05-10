@@ -195,6 +195,67 @@ void Test_notEmpty_PrintRoom(){
     printRoom(R);
     deleteRoom(R);
 }
+static void test_isInteractionPossible(void **state){
+    Personage * p =CreatePersonage();
+    Room * R =CreateRoom("filename","name");
+    addObject(R,"obj",1,2,"filename",1);
+    addDoor(R,"door",2,0,"filename");
+
+    //personnage sur l'objet
+    p->x_position=315;
+    p->y_position=160;
+    int * res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],1);
+    assert_int_equal(res[1],2);
+    assert_int_equal(res[2],1);
+
+    //personnage sur la porte
+    p->x_position=35;
+    p->y_position=300;
+    res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],2);
+    assert_int_equal(res[1],0);
+    assert_int_equal(res[2],2);
+
+    //personnage à gauche de l'objet
+    p->x_position=245;
+    p->y_position=210;
+    res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],1);
+    assert_int_equal(res[1],2);
+    assert_int_equal(res[2],1);
+
+    //personnage à droite de la porte
+    p->x_position=105;
+    p->y_position=350;
+    res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],2);
+    assert_int_equal(res[1],1);
+    assert_int_equal(res[2],0);
+
+    //personnage en bas de l'objet
+    p->x_position=315;
+    p->y_position=230;
+    res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],1);
+    assert_int_equal(res[1],2);
+    assert_int_equal(res[2],1);
+
+    //personnage en haut de la porte
+    p->x_position=35;
+    p->y_position=230;
+    res = isInteractionPossible(p,R);
+    //printf("%d,%d,%d\n",res[0],res[1],res[2]);
+    assert_int_equal(res[0],1);
+    assert_int_equal(res[1],0);
+    assert_int_equal(res[2],0);
+}
+
 int main(void){
    /**
     * Test Personnage and Object
@@ -212,7 +273,8 @@ int main(void){
             cmocka_unit_test(test_addObject),
             cmocka_unit_test(test_addDoor),
             cmocka_unit_test(test_addDoorOnDoor),
-            cmocka_unit_test(test_addObjectOnObject)
+            cmocka_unit_test(test_addObjectOnObject),
+            cmocka_unit_test(test_isInteractionPossible)
     };
     Test_notEmpty_PrintRoom();
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);

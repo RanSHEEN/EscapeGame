@@ -213,18 +213,20 @@ int * isInteractionPossible(Personage *p, Room * R){
      * t= 1 si interraction avec un objet
      * t= 2 si interraction avec une porte
      */
-    int i= floor(p->y_position/R->h);
-    int j= floor((p->x_position + 35)/R->w);
-    int t;
+    int * res = (int *)malloc(sizeof(int)*3);
 
-    if (R->framing[i][j].o){
-        t=1;
-    }else if(R->framing[i][j].o){
-        t=2;
+    res[0] = floor(p->y_position/R->h);
+    res[1]= floor((p->x_position + 35)/R->w);
+
+    if (R->framing[res[0]][res[1]].o){
+        res[2]=1;
+    }else if(R->framing[res[0]][res[1]].d){
+        res[2]=2;
     }else{
-        t=0;
+        res[2]=0;
     }
-    int res ={i,j,t};
+
+    return res;
 }
 
 
