@@ -83,7 +83,7 @@ void deleteRoom(Room * R);
 void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type);
 void addDoor(Room *R, char * id, int i, int j,char *file_name);
 
-int isInteractionPossible(Personage *p, Room * R);
+int * isInteractionPossible(Personage *p, Room * R);
 /**
  * definition Personnage
  */

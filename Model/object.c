@@ -204,22 +204,27 @@ void addDoor(Room *R, char * id, int i, int j,char *file_name){
     }
 }
 
-Object * isInteractionPossible_object(Personage *p, Room * R){
+int * isInteractionPossible(Personage *p, Room * R){
     /**
      * Vérfie que le personnage peut interragir avec un objet
-     * et retourne le pointeur de l'objet
+     * et retourne un poiteur vers un tableau de int:
+     * [i ; j ; t]
+     * t = 0 si pas d'interraction
+     * t= 1 si interraction avec un objet
+     * t= 2 si interraction avec une porte
      */
-    int j= floor(p->x_position/R->w);
     int i= floor(p->y_position/R->h);
-    return R->framing[i][j].o;
+    int j= floor((p->x_position + 35)/R->w);
+    int t;
+
+    if (R->framing[i][j].o){
+        t=1;
+    }else if(R->framing[i][j].o){
+        t=2;
+    }else{
+        t=0;
+    }
+    int res ={i,j,t};
 }
 
-Door * isInteractionPossible_door(Personage *p, Room * R){
-    /**
-     * Vérfie que le personnage peut interragir avec une porte
-     * et retourne le pointeur de la porte
-     */
-    int j= floor(p->x_position/R->w);
-    int i= floor(p->y_position/R->h);
-    return R->framing[i][j].d;
-}
+
