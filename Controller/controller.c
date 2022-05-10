@@ -18,6 +18,13 @@ int move_robot(View_app *view_app) {
     }
 
     Personage * p= CreatePersonage();
+    char filename [30];
+    strcpy(filename,"./img/coffee.png") ;
+    SDL_Rect temp = {420,140,140,140};
+    view_app->object[1].position = temp;
+    init_object(view_app,1,filename);
+    personWalkDown(view_app);
+    move_down(p, 5);
 
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {

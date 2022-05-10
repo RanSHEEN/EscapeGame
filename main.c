@@ -7,7 +7,7 @@ int main(void){
     //declaring our windows
     View_app app;
 
-    if (init_View(&app)!=EXIT_SUCCESS){
+    if (init_View()!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         SDL_Quit();
         IMG_Quit();

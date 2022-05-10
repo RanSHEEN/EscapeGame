@@ -351,6 +351,10 @@ int init_character(View_app * app){
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
+
+    Uint32 color_key = SDL_MapRGB(surface2->format,0,255,0);
+    SDL_SetColorKey(surface2,SDL_TRUE,color_key);
+
     texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
     SDL_FreeSurface((SDL_Surface *) surface2);
     if (NULL == texture2) {
@@ -362,6 +366,7 @@ int init_character(View_app * app){
     SDL_SetRenderTarget(app->Game.renderer,app->Robot.texture);
     SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
     SDL_DestroyTexture(texture2);
+    SDL_SetTextureBlendMode(app->Robot.texture,SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(app->Game.renderer,NULL);
 
     SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
@@ -385,21 +390,29 @@ int init_object(View_app * app, int nb, char * filename){
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
+
+    Uint32 color_key = SDL_MapRGB(surface2->format,255,255,255);
+    SDL_SetColorKey(surface2,SDL_TRUE,color_key);
     texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
-    SDL_FreeSurface((SDL_Surface *) surface2);
     if (NULL == texture2) {
         fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
         SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
         SDL_DestroyTexture(texture2);
         return EXIT_FAILURE;
     }
+
+
     SDL_SetRenderTarget(app->Game.renderer,app->object[nb].texture);
     SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
     SDL_DestroyTexture(texture2);
-    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_FreeSurface((SDL_Surface *) surface2);
 
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+    SDL_SetTextureBlendMode(app->object[nb].texture,SDL_BLENDMODE_BLEND);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_SetRenderTarget(app->Game.renderer,app->Game.texture);
     SDL_RenderCopy(app->Game.renderer,app->object[nb].texture,NULL,&app->object[nb].position);
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_RenderCopy(app->Game.renderer,app->Game.texture,NULL,NULL);
     SDL_RenderPresent(app->Game.renderer);
     return EXIT_SUCCESS;
 }
@@ -433,7 +446,7 @@ void personWalkDown(View_app * app){
     SDL_RenderPresent(app->Game.renderer);
 }
 
-int init_View(View_app *view_app){
+int init_View(){
     //executing SDL initialisation and checking it worked
     if (init_SDL()!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());

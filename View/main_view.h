@@ -209,6 +209,6 @@ void free_view (View_app *view_app);
  * @param view_app
  * @return 0 if no problem during SDL initializing, 1 if goes wrong
  */
-int init_View(View_app *view_app);
+int init_View();
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
