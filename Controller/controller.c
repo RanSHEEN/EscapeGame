@@ -34,14 +34,12 @@ int move_robot(View_app *view_app) {
                             //Play move sound
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkLeft(view_app);
-
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
                         if (view_app->Robot.Position.x <= 1164) {
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkRight(view_app);
-
                         }
 
                     }
@@ -49,21 +47,19 @@ int move_robot(View_app *view_app) {
                         if (view_app->Robot.Position.y >= 0) {
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkUp(view_app);
-
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
                         if (view_app->Robot.Position.y <= 594) {
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkDown(view_app);
-
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
-                        printf("SDLK_SPACE...read the information");
-                        printf("display the information");
+                        create_messageBox(view_app, "Robot" , "Look !");
                     }
                 break;
+
                 case SDL_MOUSEBUTTONDOWN:
                     if (ev.button.button == SDL_BUTTON_LEFT) {
                         //check if release & get coordinates
@@ -91,6 +87,7 @@ int main_controller(View_app *view_app){
     SDL_Event ev;
     SDL_Point point;
     view_app->Actual=Menu;
+    
     //initialise the SDL mixer
     Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
     //load bgm
@@ -103,19 +100,21 @@ int main_controller(View_app *view_app){
     }
     //play BGM in all process
     Mix_PlayMusic(bgm,-1);
+
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    //boucle faisant tourner le menu
-    while(isRunning==SDL_TRUE){
+
+    // Boucle faisant tourner le menu
+    while(isRunning == SDL_TRUE){
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
                 case SDL_KEYDOWN:
                     //Click 'm' to pause or replay the bgm IN MENU/RULES/CREDITS.
                     if (ev.key.keysym.sym == SDLK_m) {
-                        if (Mix_PausedMusic()==1) {
-                                Mix_ResumeMusic();
+                        if (Mix_PausedMusic() == 1) {
+                            Mix_ResumeMusic();
                         }else{
                                 Mix_PauseMusic();
                         }
@@ -136,18 +135,18 @@ int main_controller(View_app *view_app){
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    //check if left click
+                    // Check if left click
                     if (ev.button.button == SDL_BUTTON_LEFT) {
                         //check if release & get coordinates
                         point.x = ev.button.x;
                         point.y = ev.button.y;
-                        //switch nowhere,return,rules,credits,play
+                        // Switch nowhere,return,rules,credits,play
                         switch (view_app->Actual) {
                             case Menu :
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Menu.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[0])) {
-                                        //play
 
+                                        //play
                                         free_Windows(&view_app->Menu);
                                         //Click Sound
                                         Mix_PlayChannel(1,CSound,0);
@@ -172,8 +171,10 @@ int main_controller(View_app *view_app){
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[1])) {
                                         //credits
                                         free_Windows(&view_app->Menu);
+
                                         //Click Sound
                                         Mix_PlayChannel(1,CSound,0);
+
                                         //executing menu window initialisation and checking it worked
                                         if (init_credits(&view_app->Credits) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -185,8 +186,10 @@ int main_controller(View_app *view_app){
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[2])) {
                                         //rules
                                         free_Windows(&view_app->Menu);
+
                                         //Click Sound
                                         Mix_PlayChannel(1,CSound,0);
+
                                         //executing menu window initialisation and checking it worked
                                         if (init_rules(&view_app->Rules) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -207,8 +210,10 @@ int main_controller(View_app *view_app){
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Rules.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Rules.Return_b)) {
                                         free_Windows(&view_app->Rules);
+
                                         //Click Sound
                                         Mix_PlayChannel(1,CSound,0);
+
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -224,8 +229,10 @@ int main_controller(View_app *view_app){
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Credits.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Credits.Return_b)) {
                                         free_Windows(&view_app->Credits);
+
                                         //Click Sound
                                         Mix_PlayChannel(1,CSound,0);
+
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -252,6 +259,7 @@ int main_controller(View_app *view_app){
     //close mixer audio
     Mix_CloseAudio();
     status=EXIT_SUCCESS;
+
     return status;
 }
 

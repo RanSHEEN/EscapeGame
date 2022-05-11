@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "SDL2/SDL_events.h"
 
 
 enum type {
@@ -31,30 +32,30 @@ typedef struct {
 typedef struct {
     int SPEED;
     SDL_Texture * texture;
-    SDL_Rect Position ;
+    SDL_Rect Position;
 } Character;
 
 typedef struct {
-   Windows Menu;
-   Windows Rules;
-   Windows Game;
-   Windows Credits;
-   Character Robot;
-   enum type Actual;
+    Windows Menu;
+    Windows Rules;
+    Windows Game;
+    Windows Credits;
+    Character Robot;
+    enum type Actual;
 }View_app;
 
 
 int init_SDL();
-void get_Tittle(enum type Type , char* title);
-//windows
+void get_Tittle(enum type Type, char* title);
+
+// windows
 int init_menu(Windows * escape_menu);
 int init_credits(Windows * credits_window);
 int init_rules(Windows * rules_window);
 int init_game(Windows *game_window);
 
-//personnage
-
-int init_character (View_app * app);
+// personnage
+int init_character(View_app * app);
 void personWalkRight(View_app * app);
 void personWalkLeft(View_app * app);
 void personWalkUp(View_app * app);
@@ -65,5 +66,7 @@ void free_Windows(Windows * window);
 void free_view (View_app *view_app);
 
 int init_View(View_app *view_app);
+//messageBox
+int create_messageBox(View_app *view_app, char *title, char *message);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H

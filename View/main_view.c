@@ -1,7 +1,11 @@
 #include "main_view.h"
 
+const int SCREEN_WIDTH = 1746;
+const int SCREEN_HEIGHT = 984;
+const int SPEED = 60;
 
-/* initializes the SDL library +sub libraries */
+
+/* initializes the SDL library + sub libraries */
 int init_SDL(){
     if(0 != SDL_Init(SDL_INIT_VIDEO)){
         fprintf(stderr, "error SDL_Init : %s", SDL_GetError());
@@ -15,7 +19,7 @@ int init_SDL(){
 }
 
 /* links window title to its type */
-void get_Tittle(enum type Type , char* title){
+void get_Tittle(enum type Type , char *title){
     switch (Type) {
         case Menu:
             strcpy(title,"Menu Launcher");
@@ -37,6 +41,7 @@ void free_Windows(Windows * window){
     SDL_DestroyWindow(window->window);
     SDL_DestroyTexture(window->texture);
 }
+
 void free_character(Character * Robot){
     SDL_DestroyTexture(Robot->texture);
 }
@@ -59,6 +64,51 @@ void free_view (View_app *view_app){
     IMG_Quit();
 }
 
+int create_messageBox(View_app *view_app, char *title, char *message)
+{
+    //Set button of the message box (official example)
+    const SDL_MessageBoxButtonData buttons[] = {
+            { /* .flags, .buttonid, .text */        0, 0, "NO" },
+            { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "YES" },
+    //        { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, "cancel" },
+    };
+    //Set the color of the message box (official example)
+    const SDL_MessageBoxColorScheme colorScheme = {
+            { /* .colors (.r, .g, .b) */
+                    /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+                    { 255,   0,   0 },
+                    /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+                    {   0, 255,   0 },
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+                    { 255, 255,   0 },
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+                    {   0,   0, 255 },
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+                    { 255,   0, 255 }
+            }
+    };
+    //init SDL_MessageBoxData
+    const SDL_MessageBoxData messageboxdata = {
+            SDL_MESSAGEBOX_INFORMATION,
+            NULL,
+            title,
+            message,
+            2, //numbre of buttons
+            buttons,
+            NULL
+    };
+    //Load the messageBox
+    int buttonid;
+    if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
+        SDL_Log("error displaying message box");
+        return 1;
+    }
+    if (buttonid == -1) {
+        SDL_Log("no selection");
+    } else {
+        return buttonid;
+    }
+}
 
 /* those functions initialise the windows and create their texture/renderer*/
 int init_menu(Windows * escape_menu)
@@ -67,18 +117,18 @@ int init_menu(Windows * escape_menu)
 
     if (0 != SDL_CreateWindowAndRenderer(873,492,SDL_RENDERER_ACCELERATED,&escape_menu->window,&escape_menu->renderer))
     {
-        fprintf(stderr, "error SDL_CreateWindowAndRenderer : %s", SDL_GetError());
+        fprintf(stderr, "error SDL_CreateWindowAndRenderer: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(escape_menu->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    escape_menu->texture=SDL_CreateTexture(escape_menu->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,873,492);
+    escape_menu->texture = SDL_CreateTexture(escape_menu->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,873,492);
 
-    if(NULL== escape_menu->texture){
-        fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
+    if(NULL == escape_menu->texture){
+        fprintf(stderr, "error SDL_CreateTexture: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
 
-    escape_menu->Type=Menu;
+    escape_menu->Type = Menu;
     get_Tittle (escape_menu->Type , escape_menu->title);
     SDL_SetWindowTitle(escape_menu->window, escape_menu->title);
 
@@ -97,7 +147,7 @@ int init_menu(Windows * escape_menu)
     texture = SDL_CreateTextureFromSurface(escape_menu->renderer, surface);
     SDL_FreeSurface((SDL_Surface *) surface); /* On libère la surface, on n’en a plus besoin */
     if (NULL == texture) {
-        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface: %s", SDL_GetError());
         SDL_FreeSurface(surface); /* On libère la surface, on n’en a plus besoin */
         SDL_DestroyTexture(texture);
 
@@ -113,7 +163,7 @@ int init_menu(Windows * escape_menu)
     SDL_DestroyTexture(texture);
     SDL_SetRenderTarget(escape_menu->renderer,NULL);
     // link btw window's renderer and texture
-    //copy texture onto windows' one
+    // copy texture onto windows' one
     // free texture
     // renderer doesn't point on anything anymore
     SDL_RenderCopy(escape_menu->renderer,escape_menu->texture,NULL,NULL);
@@ -141,6 +191,7 @@ int init_menu(Windows * escape_menu)
     status = EXIT_SUCCESS;
     return status;
 }
+
 int init_credits(Windows * credits_window)
 {
     int status = EXIT_FAILURE;
@@ -150,20 +201,20 @@ int init_credits(Windows * credits_window)
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(credits_window->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    credits_window->texture=SDL_CreateTexture(credits_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
+    credits_window->texture = SDL_CreateTexture(credits_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
 
-    if(NULL== credits_window->texture){
+    if(NULL == credits_window->texture){
         fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    credits_window->Type=Credits;
+    credits_window->Type = Credits;
     get_Tittle (credits_window->Type , credits_window->title);
     SDL_SetWindowTitle(credits_window->window, credits_window->title);
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
     tmp = IMG_Load("img/credits.jpg");
     if (NULL == tmp) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr, "Error IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(credits_window->renderer);
         SDL_DestroyWindow(credits_window->window);
         SDL_DestroyTexture(credits_window->texture);
@@ -174,8 +225,8 @@ int init_credits(Windows * credits_window)
     texture = SDL_CreateTextureFromSurface(credits_window->renderer, tmp);
     SDL_FreeSurface(tmp); /* On libère la surface, on n’en a plus besoin */
     if (NULL == texture) {
-        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        fprintf(stderr, "Error IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(credits_window->renderer);
         SDL_DestroyWindow(credits_window->window);
         SDL_DestroyTexture(credits_window->texture);
@@ -204,6 +255,7 @@ int init_credits(Windows * credits_window)
     status = EXIT_SUCCESS;
     return status;
 }
+
 int init_rules(Windows * rules_window)
 {
     int status = EXIT_FAILURE;
@@ -213,20 +265,20 @@ int init_rules(Windows * rules_window)
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(rules_window->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    rules_window->texture=SDL_CreateTexture(rules_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
+    rules_window->texture = SDL_CreateTexture(rules_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
 
-    if(NULL== rules_window->texture){
+    if(NULL == rules_window->texture){
         fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    rules_window->Type=Rules;
-    get_Tittle (rules_window->Type , rules_window->title);
+    rules_window->Type = Rules;
+    get_Tittle(rules_window->Type , rules_window->title);
     SDL_SetWindowTitle(rules_window->window, rules_window->title);
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
     tmp = IMG_Load("img/rules.jpg");
     if (NULL == tmp) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr, "Error IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(rules_window->renderer);
         SDL_DestroyWindow(rules_window->window);
         SDL_DestroyTexture(rules_window->texture);
@@ -237,7 +289,7 @@ int init_rules(Windows * rules_window)
     texture = SDL_CreateTextureFromSurface(rules_window->renderer, tmp);
     SDL_FreeSurface(tmp); /* On libère la surface, on n’en a plus besoin */
     if (NULL == texture) {
-        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_CreateTextureFromSurface : %s", SDL_GetError());
         SDL_DestroyRenderer(rules_window->renderer);
         SDL_DestroyWindow(rules_window->window);
         SDL_DestroyTexture(rules_window->texture);
@@ -262,27 +314,28 @@ int init_rules(Windows * rules_window)
     // x=1516 y=4 w=170 h=70
     SDL_Rect return_but = {1128,1,106,51};    rules_window->Return_b = return_but;
 
-
     status = EXIT_SUCCESS;
     return status;
 }
-int init_game(Windows  * game_window){
 
+
+
+int init_game(Windows  * game_window){
     int status = EXIT_FAILURE;
 
     if (0 != SDL_CreateWindowAndRenderer(1234,694,SDL_RENDERER_ACCELERATED,&game_window->window,&game_window->renderer))
     {
-        fprintf(stderr, "error SDL_CreateWindowAndRenderer : %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_CreateWindowAndRenderer : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     SDL_SetWindowPosition(game_window->window,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED);
-    game_window->texture=SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
+    game_window->texture = SDL_CreateTexture(game_window->renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,1234,694);
 
-    if(NULL== game_window->texture){
-        fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
+    if(NULL == game_window->texture){
+        fprintf(stderr, "Error SDL_CreateTexture : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    game_window->Type=Rules;
+    game_window->Type = Rules;
     get_Tittle (game_window->Type , game_window->title);
     SDL_SetWindowTitle(game_window->window, game_window->title);
 
@@ -290,7 +343,7 @@ int init_game(Windows  * game_window){
     SDL_Texture *texture = NULL;
     tmp = IMG_Load("img/background.jpg");
     if (NULL == tmp) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr, "Error IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(game_window->renderer);
         SDL_DestroyWindow(game_window->window);
         SDL_DestroyTexture(game_window->texture);
@@ -301,7 +354,7 @@ int init_game(Windows  * game_window){
     texture = SDL_CreateTextureFromSurface(game_window->renderer, tmp);
     SDL_FreeSurface(tmp); /* On libère la surface, on n’en a plus besoin */
     if (NULL == texture) {
-        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_CreateTextureFromSurface : %s", SDL_GetError());
         SDL_DestroyRenderer(game_window->renderer);
         SDL_DestroyWindow(game_window->window);
         SDL_DestroyTexture(game_window->texture);
@@ -319,38 +372,41 @@ int init_game(Windows  * game_window){
 
     //initialize the button
     // x=1516 y=4 w=170 h=70
-    SDL_Rect return_but = {1128,1,106,51};
+    SDL_Rect return_but = {1128,1,106,106};
     game_window->Return_b = return_but;
 
     status = EXIT_SUCCESS;
     return status;
 }
+
+
+
 int init_character(View_app * app){
     app->Robot.SPEED = 60;
-    SDL_Rect temp = {900,500,70,100 };
+    SDL_Rect temp = {900,500,100,100 };
     app->Robot.Position = temp;
 
-    app->Robot.texture =SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 70, 100);
-    if(NULL== app->Robot.texture)
+    app->Robot.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 100, 100);
+    if(NULL == app->Robot.texture)
     {
-        fprintf(stderr, "Erreur SDL_CreateTexture : %s", SDL_GetError());
+        fprintf(stderr, "Error SDL_CreateTexture : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
     SDL_Surface *surface2 = NULL;
     SDL_Texture *texture2 = NULL;
-    surface2 = IMG_Load("img/Robot.png");
-    if (NULL == surface2) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
-        return EXIT_FAILURE;
-    }
-    texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
-    SDL_FreeSurface((SDL_Surface *) surface2);
+    texture2 = IMG_LoadTexture(app->Game.renderer, "img/RobotFront1.png");
     if (NULL == texture2) {
-        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
-        SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
-        SDL_DestroyTexture(texture2);
+        fprintf(stderr, "Error IMG_LoadPNG_RW: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
+//    texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
+//    SDL_FreeSurface((SDL_Surface *) surface2);
+//    if (NULL == texture2) {
+//        fprintf(stderr, "Error SDL_CreateTextureFromSurface : %s", SDL_GetError());
+//        SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
+//        SDL_DestroyTexture(texture2);
+//        return EXIT_FAILURE;
+//    }
     SDL_SetRenderTarget(app->Game.renderer,app->Robot.texture);
     SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
     SDL_DestroyTexture(texture2);
@@ -364,39 +420,204 @@ int init_character(View_app * app){
 
 
 void personWalkRight(View_app * app){
-    app->Robot.Position.x+= 5;
-    /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    app->Robot.Position.x += 5;
+/* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
+
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotRightSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotRightSide2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+    int i;
+    for (i = 0; i<4; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.x < 1164) {
+            app->Robot.Position.x += 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
+    }
 }
+
 void personWalkLeft(View_app * app) {
-    app->Robot.Position.x-= 5;
+//    app->Robot.Position.x -= 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
+
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotLeftSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotLeftSide2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+    int i;
+    for (i = 0; i<4; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.x > 0) {
+            app->Robot.Position.x -= 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
+    }
 }
+
 void personWalkUp(View_app * app){
-    app->Robot.Position.y-= 5;
+//    app->Robot.Position.y -= 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
+
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotBack1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotBack2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+    int i;
+    for (i = 0; i<4; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.y >= 0) {
+            app->Robot.Position.y -= 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
+    }
+
 }
+
 void personWalkDown(View_app * app){
-    app->Robot.Position.y+= 5;
+//    app->Robot.Position.y += 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+//    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+//    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+//    SDL_RenderPresent(app->Game.renderer);
+
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotFront2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+    int i;
+    for (i = 0; i<4; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        if (app->Robot.Position.y < 594) {
+            app->Robot.Position.y += 5;
+        }
+        SDL_Delay(SPEED);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, tex, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(SPEED);
+
+    }
+
 }
 
 
 
-int init_View(View_app *view_app){
+int init_View(View_app * view_app) {
     //executing SDL initialisation and checking it worked
-    if (init_SDL()!=EXIT_SUCCESS){
+    if (init_SDL() != EXIT_SUCCESS) {
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         SDL_Quit();
         IMG_Quit();
@@ -405,4 +626,3 @@ int init_View(View_app *view_app){
     //ici on pourra initialiser le personnage et les objets aussi par exemple
     return EXIT_SUCCESS;
 }
-
