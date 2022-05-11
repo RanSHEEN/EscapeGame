@@ -28,6 +28,11 @@ int move_robot(View_app *view_app) {
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
+                //Make the game can be close when playing in PLAY
+                case SDL_WINDOWEVENT:
+                    if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
+                        isRunning = SDL_FALSE;
+                    break;
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
                         if (view_app->Robot.Position.x >= 0) {
@@ -41,7 +46,6 @@ int move_robot(View_app *view_app) {
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkRight(view_app);
                         }
-
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
                         if (view_app->Robot.Position.y >= 0) {
@@ -56,6 +60,7 @@ int move_robot(View_app *view_app) {
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
+                        //this fonction can return 0 if you click button1 and 1 for button2
                         create_messageBox(view_app, "Robot" , "Look !","Yes","NO");
                     }
                 break;

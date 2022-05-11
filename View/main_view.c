@@ -64,15 +64,18 @@ void free_view (View_app *view_app){
     IMG_Quit();
 }
 
+//Create a message windows with 2 button. and it will return 0/1 after you click button.
+//
 int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2)
 {
     //Set button of the message box (official example)
     const SDL_MessageBoxButtonData buttons[] = {
             { /* .flags, .buttonid, .text */        0, 0, button1 },
             { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, button2 },
-    //        { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, "cancel" },
+    //      This is for the 3rd button
+    //      { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, button3 },
     };
-    //Set the color of the message box (official example)
+    //Set the color of the message box (official example), you can change it to your favorite color.
     const SDL_MessageBoxColorScheme colorScheme = {
             { /* .colors (.r, .g, .b) */
                     /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
@@ -93,12 +96,11 @@ int create_messageBox(View_app *view_app, char *title, char *message, char *butt
             NULL,
             title,
             message,
-            2, //numbre of buttons
+            2, //number of buttons
             buttons,
             NULL
     };
     //Load the messageBox
-    //Attention, return 1 is always the Exit.
     int buttonid;
     if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
         SDL_Log("error displaying message box");
@@ -386,8 +388,8 @@ int init_character(View_app * app){
     app->Robot.SPEED = 60;
     SDL_Rect temp = {900,500,100,100 };
     app->Robot.Position = temp;
-
     app->Robot.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 100, 100);
+
     if(NULL == app->Robot.texture)
     {
         fprintf(stderr, "Error SDL_CreateTexture : %s", SDL_GetError());
