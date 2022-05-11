@@ -38,5 +38,4 @@ clean:
 	rm -f *.gc*
 	rm -f Test_*
 
-
 include $(wildcart .d)

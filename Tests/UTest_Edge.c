@@ -14,6 +14,7 @@ static Vertex * CreateVertex(){
     v->enigma_number=1;
     v->enigma_solved=0;
     v->next_v=NULL;
+    return v;
 }
 
 /*
@@ -25,12 +26,14 @@ static void test_EdgeList_Init(){
     assert_false(c->first!=NULL);
     assert_false(c->last!=NULL);
     assert_true(c->current==NULL);
+    deleteEdgeList(c);
 }
 static void test_EdgeList_Empty_true(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
     assert_true(isEmptyEdgeList(c));
     assert_false(!isEmptyEdgeList(c));
+    deleteEdgeList(c);
 }
 static void test_EdgeList_add_Empty1(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -41,6 +44,7 @@ static void test_EdgeList_add_Empty1(){
     assert_int_equal(c->last,c->first);
     assert_string_equal(c->first->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object2");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_add_Empty2(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -51,6 +55,7 @@ static void test_EdgeList_add_Empty2(){
     assert_int_equal(c->last,c->first);
     assert_string_equal(c->first->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object2");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_Empty_false(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -60,6 +65,7 @@ static void test_EdgeList_Empty_false(){
     insertLastEdge(c,obj,v);
     assert_false(isEmptyEdgeList(c));
     assert_true(!isEmptyEdgeList(c));
+    deleteEdgeList(c);
 }
 static void test_EdgeList_addFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -71,6 +77,7 @@ static void test_EdgeList_addFirst(){
     insertFirstEdge(c,obj1,v);
     assert_string_equal(c->first->obj_label,"Object1");
     assert_string_equal(c->last->obj_label,"Object2");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_addLast(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -85,6 +92,7 @@ static void test_EdgeList_addLast(){
     assert_string_equal(c->first->obj_label,"Object1");
     assert_string_equal(c->first->next_e->obj_label,"Object2");
     assert_string_equal(c->last->obj_label,"Object3");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_setFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -98,6 +106,7 @@ static void test_EdgeList_setFirst(){
     insertLastEdge(c,obj3,v);
     setOnFirstEdge(c);
     assert_string_equal(c->current->obj_label,"Object1");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_setNext(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -112,6 +121,7 @@ static void test_EdgeList_setNext(){
     setOnFirstEdge(c);
     setOnNextEdge(c);
     assert_string_equal(c->current->obj_label,"Object2");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_setLast(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -125,7 +135,7 @@ static void test_EdgeList_setLast(){
     insertLastEdge(c,obj3,v);
     setOnLastEdge(c);
     assert_string_equal(c->current->obj_label,"Object3");
-
+    deleteEdgeList(c);
 }
 static void test_EdgeList_find(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -143,6 +153,7 @@ static void test_EdgeList_find(){
     assert_string_equal(e->obj_label,"Object1");
     e= findEdge(c,obj3);
     assert_string_equal(e->obj_label,"Object3");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_deleteFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -156,6 +167,7 @@ static void test_EdgeList_deleteFirst(){
     insertLastEdge(c,obj3,v);
     deleteFirstEdge(c);
     assert_string_not_equal(c->first->obj_label,"Object1");
+    deleteEdgeList(c);
 }
 static void test_EdgeList_deleteFirst_toAnEmpty(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
@@ -181,6 +193,7 @@ static void test_print(){
     insertFirstEdge(c,obj1,v);
     insertLastEdge(c,obj3,v);
     printEdgeList(c);
+    deleteEdgeList(c);
 }
 
 

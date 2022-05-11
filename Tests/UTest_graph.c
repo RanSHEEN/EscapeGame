@@ -17,11 +17,13 @@ static void test_VertexList_Init(){
     assert_true(g->current==NULL);
     assert_true(g->first==NULL);
     assert_true(g->last==NULL);
+    deleteGraph(g);
 }
 static void test_VertexList_EmptyTrue(){
     VertexList * g= initGraph();
     assert_true(isEmptyVertexList(g));
     assert_false(!isEmptyVertexList(g));
+    deleteGraph(g);
 }
 static void test_VertexList_addEmpty1(){
     VertexList * g= initGraph();
@@ -35,6 +37,7 @@ static void test_VertexList_addEmpty1(){
     assert_true(g->first->connect->first==NULL);
     assert_true(g->first->connect->current==NULL);
     assert_true(g->first->connect->last==NULL);
+    deleteGraph(g);
 }
 static void test_VertexList_addEmpty2(){
     VertexList * g= initGraph();
@@ -48,6 +51,7 @@ static void test_VertexList_addEmpty2(){
     assert_true(g->first->connect->first==NULL);
     assert_true(g->first->connect->current==NULL);
     assert_true(g->first->connect->last==NULL);
+    deleteGraph(g);
 }
 static void test_VertexList_EmptyFalse(){
     VertexList * g= initGraph();
@@ -55,6 +59,7 @@ static void test_VertexList_EmptyFalse(){
     insertLastVertex(g,label,2);
     assert_true(!isEmptyVertexList(g));
     assert_false(isEmptyVertexList(g));
+    deleteGraph(g);
 }
 static void test_VertexList_addFirst(){
     VertexList * g= initGraph();
@@ -64,6 +69,7 @@ static void test_VertexList_addFirst(){
     insertFirstVertex(g,label1,2);
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex2");
+    deleteGraph(g);
 }
 static void test_VertexList_addLast(){
     VertexList * g= initGraph();
@@ -75,6 +81,7 @@ static void test_VertexList_addLast(){
     insertLastVertex(g,label3,2);
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex3");
+    deleteGraph(g);
 }
 static void test_VertexList_setFirst(){
     VertexList * g= initGraph();
@@ -86,6 +93,7 @@ static void test_VertexList_setFirst(){
     insertLastVertex(g,label3,2);
     setOnFirstVertex(g);
     assert_string_equal(g->current->label,"Vertex1");
+    deleteGraph(g);
 }
 static void test_VertexList_setNext(){
     VertexList * g= initGraph();
@@ -98,6 +106,7 @@ static void test_VertexList_setNext(){
     setOnFirstVertex(g);
     setOnNextVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
+    deleteGraph(g);
 }
 static void test_VertexList_setLast(){
     VertexList * g= initGraph();
@@ -109,6 +118,7 @@ static void test_VertexList_setLast(){
     insertLastVertex(g,label3,2);
     setOnLastVertex(g);
     assert_string_equal(g->current->label,"Vertex3");
+    deleteGraph(g);
 }
 static void test_VertexList_setPrevious(){
     VertexList * g= initGraph();
@@ -121,6 +131,7 @@ static void test_VertexList_setPrevious(){
     setOnLastVertex(g);
     setOnPreviousVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
+    deleteGraph(g);
 }
 
 static void test_VertexList_find(){
@@ -137,6 +148,7 @@ static void test_VertexList_find(){
     assert_string_equal(v->label,"Vertex1");
     v= findVertex(g,label3);
     assert_string_equal(v->label,"Vertex3");
+    deleteGraph(g);
 }
 static void test_VertexList_addLink(){
     VertexList * g= initGraph();
@@ -155,6 +167,7 @@ static void test_VertexList_addLink(){
     assert_string_equal(v->connect->last->obj_label,"Object2");
     assert_string_equal(v->connect->first->v_next->label,"Vertex2");
     assert_string_equal(v->connect->last->v_next->label,"Vertex3");
+    deleteGraph(g);
 }
 static void test_VertexList_deleteFirst(){
     VertexList * g= initGraph();
@@ -167,6 +180,7 @@ static void test_VertexList_deleteFirst(){
     deleteFirstVertex(g);
     assert_string_equal(g->first->label,"Vertex2");
     assert_string_equal(g->last->label,"Vertex3");
+    deleteGraph(g);
 }
 static void test_VertexList_delete_toAnEmpty(){
     VertexList * g= initGraph();
@@ -199,6 +213,7 @@ static void Test_Print(){
     addLink(findVertex(g,label3),findVertex(g,label3),obj5);
     addLink(findVertex(g,label1),findVertex(g,label1),obj6);
     printGraph(g);
+    deleteGraph(g);
 }
 
 
