@@ -2,7 +2,7 @@
 // Created by Marie on 04/05/22.
 //
 
-#include "./Controller/controller.h"
+#include "../Model/model.h"
 
 #include <stddef.h>
 #include <setjmp.h>
@@ -46,7 +46,7 @@ static void Test_ChangeAccess_sup() {
 }
 static void Test_ChangeAccess_equal() {
     VertexList *g = ForTest();
-    g->first->R=CreateRoom("PATH","name");
+    g->first->R=CreateRoom("PATH","name",0);
     addDoor(g->first->R,"Door1",2,0,"file_name");
     addDoor(g->first->R,"Door2",2,8,"file_name");
     setOnFirstVertex(g);
@@ -58,7 +58,7 @@ static void Test_ChangeAccess_equal() {
 
 static void Test_Change_Room() {
     VertexList *g = ForTest();
-    g->first->R=CreateRoom("PATH","name");
+    g->first->R=CreateRoom("PATH","name",0);
     addDoor(g->first->R,"Door1",2,0,"file_name");
     addDoor(g->first->R,"Door2",2,8,"file_name");
     //printRoom(g->first->R);

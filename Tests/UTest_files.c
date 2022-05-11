@@ -1,15 +1,15 @@
 //
 // Created by Marie on 06/05/22.
 //
-#include "./Controller/controller.h"
+#include "../Model/model.h"
 
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
 
 static void test_OpenCloseFiles(void **state){
-    char * path = "./Files_descriptors/ForTests.txt";
-    char * wrong_path = "./Files_descriptors/non_existent.txt";
+    char * path = "../Files_descriptors/ForTests.txt";
+    char * wrong_path = "../Files_descriptors/non_existent.txt";
     FILE * f1 = openFileRead(path);
     FILE * f2 = openFileRead(wrong_path);
     assert_true(f1!=NULL);
@@ -17,7 +17,7 @@ static void test_OpenCloseFiles(void **state){
     closeFile(f1);
 }
 static void test_readLine(void **state){
-    char * path = "./Files_descriptors/ForTests.txt";
+    char * path = "../Files_descriptors/ForTests.txt";
     FILE * f1 = openFileRead(path);
     char * tampon = (char *) malloc(sizeof(char)*TMAX);
     readFileLine(f1,tampon);
@@ -61,7 +61,7 @@ static void test_readLineGraph(void **state){
     printGraph(g);
 }
 static void test_readGraphFile(void **state){
-    char * PATH = "./Files_descriptors/Graph_Tests.txt";
+    char * PATH = "../Files_descriptors/Graph_Tests.txt";
     VertexList * g =readGraphFile(PATH);
     printGraph(g);
 }
@@ -88,7 +88,7 @@ static void test_readRoomFileLine(void **state){
     printRoom(R);
 }
 static void test_readRoomFile(void **state){
-    char * PATH = "./Files_descriptors/Room_Tests.txt";
+    char * PATH = "../Files_descriptors/Room_Tests.txt";
     Room * R =readRoomFile(PATH);
     printRoom(R);
 }

@@ -2,7 +2,7 @@
 // Created by Marie on 12/04/2022.
 //
 
-#include "./Controller/controller.h"
+#include "../Model/model.h"
 
 #include <stddef.h>
 #include <setjmp.h>

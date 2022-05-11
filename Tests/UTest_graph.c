@@ -1,7 +1,7 @@
 //
 // Created by Marie on 16/04/22.
 //
-#include "./Controller/controller.h"
+#include "../Model/model.h"
 
 #include <stddef.h>
 #include <setjmp.h>
