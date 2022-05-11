@@ -67,6 +67,6 @@ void free_view (View_app *view_app);
 
 int init_View(View_app *view_app);
 //messageBox
-int create_messageBox(View_app *view_app, char *title, char *message);
+int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H

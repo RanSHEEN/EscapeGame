@@ -64,12 +64,12 @@ void free_view (View_app *view_app){
     IMG_Quit();
 }
 
-int create_messageBox(View_app *view_app, char *title, char *message)
+int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2)
 {
     //Set button of the message box (official example)
     const SDL_MessageBoxButtonData buttons[] = {
-            { /* .flags, .buttonid, .text */        0, 0, "NO" },
-            { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "YES" },
+            { /* .flags, .buttonid, .text */        0, 0, button1 },
+            { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, button2 },
     //        { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, "cancel" },
     };
     //Set the color of the message box (official example)
@@ -98,6 +98,7 @@ int create_messageBox(View_app *view_app, char *title, char *message)
             NULL
     };
     //Load the messageBox
+    //Attention, return 1 is always the Exit.
     int buttonid;
     if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
         SDL_Log("error displaying message box");

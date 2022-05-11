@@ -56,7 +56,7 @@ int move_robot(View_app *view_app) {
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
-                        create_messageBox(view_app, "Robot" , "Look !");
+                        create_messageBox(view_app, "Robot" , "Look !","Yes","NO");
                     }
                 break;
 
@@ -113,10 +113,12 @@ int main_controller(View_app *view_app){
                 case SDL_KEYDOWN:
                     //Click 'm' to pause or replay the bgm IN MENU/RULES/CREDITS.
                     if (ev.key.keysym.sym == SDLK_m) {
-                        if (Mix_PausedMusic() == 1) {
-                            Mix_ResumeMusic();
-                        }else{
+                        if (create_messageBox(view_app, "BGM controller" , "Do you want to turn on/off the music ?","YES","NO") == 0) {
+                            if (Mix_PausedMusic() == 1) {
+                                Mix_ResumeMusic();
+                            }else{
                                 Mix_PauseMusic();
+                            }
                         }
                     }
                     //'k' for volume DOWN
