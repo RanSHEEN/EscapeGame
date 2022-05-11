@@ -12,6 +12,11 @@ libmodel.a : model.o graph.o object.o file.o
 model: model.o graph.o object.o file.o
 	$(CC) $^  $(LDFLAGS) -o $@
 
+get_coverage_infos:
+	lcov --capture --directory . --output-file ../Tests/Coverage_Info/coverage.info
+	genhtml ../Tests/Coverage_Info/coverage.info --output-directory ../Tests/Coverage_Info
+
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
