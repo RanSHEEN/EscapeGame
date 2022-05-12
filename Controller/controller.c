@@ -39,7 +39,7 @@ void showRoom (View_app * view_app,Room * room){
     if (room->framing[2][0].d != NULL){
         fprintf(stdout, "im not supposed to be here right now ohoh\n");
         if (strcmp(room->framing[2][0].d->id, "BRB")==0){
-            SDL_Rect temp = {room->framing[2][0].Pos_x,room->framing[2][0].Pos_y,room->w,room->h};
+            SDL_Rect temp = {room->framing[2][0].Pos_x+140,room->framing[2][0].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
             init_object(view_app,obj_id,room->framing[2][0].d->file_name);
             obj_id ++;
@@ -48,26 +48,35 @@ void showRoom (View_app * view_app,Room * room){
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
             fprintf(stdout, "im not supposed to be here right now\n");
-            SDL_Rect temp = {room->framing[2][8].Pos_x,room->framing[2][8].Pos_y,room->w,room->h};
+            SDL_Rect temp = {room->framing[2][8].Pos_x+140,room->framing[2][8].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
             init_object(view_app,obj_id,room->framing[2][8].d->file_name);
             obj_id ++;
         }
     }
 }
-
-int move_robot(View_app *view_app,VertexList * graph) {
+Personage * initRobot(View_app *view_app,int flag){
+    if (init_character(view_app) != EXIT_SUCCESS) {
+        fprintf (stderr, "failed init character \n");
+    }
+    Personage * p= CreatePersonage();
+    if (flag==1){
+        p->y_position=320;
+        p->x_position=1190;
+        view_app->Robot.Position.y=320+140;
+        view_app->Robot.Position.x=1190+140;
+    }
+    return p;
+}
+int move_robot(View_app *view_app,VertexList * graph, int flag) {
     SDL_Point point;
 
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
 
-    if (init_character(view_app) != EXIT_SUCCESS) {
-        fprintf (stderr, "failed init character \n");
-        return EXIT_FAILURE;
-    }
-    Personage * p= CreatePersonage();
+    Personage * p= initRobot(view_app,flag);
+
     showRoom(view_app,graph->current->R);
     personWalkDown(view_app);
     move_down(p, 5);
@@ -119,11 +128,15 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             if(j==0){
                                 printf("porte fermée\n");
                             }else if (j==1){
-                                printf("porte ouverte\n");
-                                printf("%s \n",graph->current->label);
+                                int flag;
+                                if(k[1]==0){
+                                    flag=1;
+                                }else if(k[1]==8){
+                                    flag=0;
+                                }
                                 free(p);
                                 //free_objects()
-                                move_robot(view_app,graph);
+                                move_robot(view_app,graph,flag);
                             }
                         }
                     }
@@ -189,7 +202,7 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Play;
                                         VertexList * graph = init_game_engine();printf("ok\n");
                                         setOnFirstVertex(graph);
-                                        move_robot(view_app, graph);
+                                        move_robot(view_app, graph,0);
 
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
