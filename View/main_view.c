@@ -388,7 +388,7 @@ int init_object(View_app * app, int nb, char * filename){
     SDL_Texture *texture2 = NULL;
     surface2 = IMG_Load(filename);
     if (NULL == surface2) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr,"Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
 

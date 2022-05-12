@@ -2,6 +2,6 @@ ROOM
 Room_Name : Room2
 file_Name : img/Framing.png
 nb_obj : 2
-Door - id : door - Position : (2;0) - filename : Path;
-Door - id : BRB - Position : (2;8) - filename : img/big-red-button.png;
-Object - id : obj1 - Position : (3;8) - filename : img/plant.png - Type : 1;
+Door - id : door - Position : (2;0) - filename : Path
+Door - id : BRB - Position : (2;8) - filename : img/big-red-button.png
+Object - id : obj1 - Position : (3;8) - filename : img/plant.png - Type : 1
