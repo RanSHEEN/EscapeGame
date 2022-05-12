@@ -18,8 +18,8 @@
 VertexList * init_game_engine();
 
 void showRoom (View_app * view_app,Room * room);
-Personage * initRobot(View_app *view_app,int flag);
-int move_robot(View_app *view_app,VertexList * graph,int flag);
+void initRobot(View_app *view_app,int flag, Personage * p);
+int move_robot(View_app *view_app,VertexList * graph);
 int main_controller(View_app *view_app);
 
 

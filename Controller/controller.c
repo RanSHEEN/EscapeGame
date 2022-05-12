@@ -55,27 +55,31 @@ void showRoom (View_app * view_app,Room * room){
         }
     }
 }
-Personage * initRobot(View_app *view_app,int flag){
-    if (init_character(view_app) != EXIT_SUCCESS) {
-        fprintf (stderr, "failed init character \n");
-    }
-    Personage * p= CreatePersonage();
+void initRobot(View_app *view_app,int flag,Personage * p){
     if (flag==1){
         p->y_position=320;
         p->x_position=1190;
         view_app->Robot.Position.y=320+140;
         view_app->Robot.Position.x=1190+140;
+    }else if (flag==0){
+        p->x_position=0;
+        p->y_position=320;
+        view_app->Robot.Position.y=320+140;
+        view_app->Robot.Position.x=140;
     }
-    return p;
 }
-int move_robot(View_app *view_app,VertexList * graph, int flag) {
+int move_robot(View_app *view_app,VertexList * graph) {
     SDL_Point point;
 
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
+    if (init_character(view_app) != EXIT_SUCCESS) {
+        fprintf (stderr, "failed init character \n");
+    }
+    Personage * p= CreatePersonage();
 
-    Personage * p= initRobot(view_app,flag);
+    initRobot(view_app,0,p);
 
     showRoom(view_app,graph->current->R);
     personWalkDown(view_app);
@@ -124,20 +128,27 @@ int move_robot(View_app *view_app,VertexList * graph, int flag) {
                         }else if(k[2]==2){
                             printf("interaction with door\n");
                             graph->current->R->framing[k[0]][k[1]].d->access=1;
-                            int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
-                            if(j==0){
-                                printf("porte fermée\n");
-                            }else if (j==1){
-                                int flag;
-                                if(k[1]==0){
-                                    flag=1;
-                                }else if(k[1]==8){
-                                    flag=0;
+                            if(strcmp(graph->current->next_v->label,"win")==0){
+                                printf("you win\n");
+                            }else{
+                                int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
+                                if(j==0){
+                                    printf("porte fermée\n");
+                                }else if (j==1){
+                                    int flag;
+                                    if(k[1]==0){
+                                        flag=1;
+                                    }else if(k[1]==8){
+                                        flag=0;
+                                    }
+                                    //free_objects()
+                                    showRoom(view_app,graph->current->R);
+                                    initRobot(view_app,flag,p);
+                                    personWalkDown(view_app);
+                                    move_down(p, 5);
                                 }
-                                free(p);
-                                //free_objects()
-                                move_robot(view_app,graph,flag);
                             }
+
                         }
                     }
                 break;
@@ -202,7 +213,7 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Play;
                                         VertexList * graph = init_game_engine();printf("ok\n");
                                         setOnFirstVertex(graph);
-                                        move_robot(view_app, graph,0);
+                                        move_robot(view_app, graph);
 
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
