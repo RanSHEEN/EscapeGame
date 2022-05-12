@@ -27,10 +27,8 @@ void showRoom (View_app * view_app,Room * room){
     int obj_id = 0;
     for (int i = 0; i<=room->nb_i; i++){
         for (int j= 0; j<=room->nb_j; j++){
-            fprintf(stdout, "ok1\n");
-            if (room->framing[i][j].o != NULL){
-                fprintf(stdout, "ok2\n");
-                SDL_Rect temp = {room->framing[i][j].Pos_x,room->framing[i][j].Pos_y,room->w,room->h};
+             if (room->framing[i][j].o != NULL){
+                SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
                 view_app->object[obj_id].position = temp;
                 init_object(view_app,obj_id,room->framing[i][j].o->file_name);
                 obj_id ++;
