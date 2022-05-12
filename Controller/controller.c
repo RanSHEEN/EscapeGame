@@ -125,11 +125,14 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             printf("interaction impossible\n");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
+                            SolvedEnigma(graph); // quand l'enigme est résolue utiliser cette fonction pour changer les accès
                         }else if(k[2]==2){
                             printf("interaction with door\n");
-                            graph->current->R->framing[k[0]][k[1]].d->access=1;
-                            if(strcmp(graph->current->next_v->label,"win")==0){
+                            //graph->current->R->framing[k[0]][k[1]].d->access=1;
+                            Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
+                            if(strcmp(e->v_next->label,"win")==0){
                                 printf("you win\n");
+                                //TODO : fenetre GG + retour au menu
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
                                 if(j==0){
@@ -138,8 +141,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     int flag;
                                     if(k[1]==0){
                                         flag=1;
+                                        graph->current->R->framing[2][8].d->access=1;
                                     }else if(k[1]==8){
                                         flag=0;
+                                        graph->current->R->framing[2][0].d->access=1;
                                     }
                                     //free_objects()
                                     showRoom(view_app,graph->current->R);
@@ -148,7 +153,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     move_down(p, 5);
                                 }
                             }
-
                         }
                     }
                 break;
