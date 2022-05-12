@@ -155,6 +155,19 @@ static void test_EdgeList_find(){
     assert_string_equal(e->obj_label,"Object3");
     deleteEdgeList(c);
 }
+static void test_EdgeList_NotFound(){
+    EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
+    initEdgeList(c);
+    char obj2[]= "Object2";
+    char obj1[]= "Object1";
+    char obj3[]= "Object3";
+    Vertex * v=CreateVertex();
+    insertLastEdge(c,obj2,v);
+    insertFirstEdge(c,obj1,v);
+    Edge * e= findEdge(c,obj3);
+    assert_true(e==NULL);
+    deleteEdgeList(c);
+}
 static void test_EdgeList_deleteFirst(){
     EdgeList * c = (EdgeList *) malloc(sizeof(EdgeList));
     initEdgeList(c);
@@ -213,6 +226,7 @@ int main(void){
             cmocka_unit_test(test_EdgeList_setNext),
             cmocka_unit_test(test_EdgeList_setLast),
             cmocka_unit_test(test_EdgeList_find),
+            cmocka_unit_test(test_EdgeList_NotFound),
             cmocka_unit_test(test_EdgeList_deleteFirst),
             cmocka_unit_test(test_EdgeList_deleteFirst_toAnEmpty)
     };

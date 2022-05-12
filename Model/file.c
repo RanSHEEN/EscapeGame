@@ -40,7 +40,7 @@ Room * readRoomFile(char * PATH){
     rewind(f);
     readFileLine(f,tampon);
     if (strcmp(tampon,"ROOM\n")!=0){
-        printf("this document does not describe a Graph \n");
+        printf("this document does not describe a Room \n");
         return NULL;
     }
 

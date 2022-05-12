@@ -157,10 +157,22 @@ void printRoom(Room *R){
 //delete framing
 void deleteFraming(frame ** tab){
     /**
-     * libère la mémoire liée au cadrillage (framing)
+     * libère les objets
+     * et libère la mémoire liée au cadrillage (framing)
      */
+    int i,j;
     int y = 4;// nombre de ligne du tableau
-    for(int i = 0 ; i < y ; ++i)
+    for(i=0;i<y;i++){
+        for(j=0;j<9;j++){
+            if (tab[i][j].o==NULL){
+                freeObject(tab[i][j].o);
+            }
+            if (tab[i][j].d==NULL){
+                freeDoor(tab[i][j].d);
+            }
+        }
+    }
+    for(i = 0 ; i < y ; ++i)
         free((frame *)tab[i]);
     free((frame *)tab);
 }

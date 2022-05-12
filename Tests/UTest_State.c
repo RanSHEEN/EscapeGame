@@ -76,6 +76,7 @@ static void Test_Change_Room() {
     assert_int_equal(b,1);
 }
 
+
 int main(void){
     /**
      * Test Graph : EdgeList
