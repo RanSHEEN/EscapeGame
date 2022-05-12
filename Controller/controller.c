@@ -25,19 +25,20 @@ VertexList * init_game_engine(){
 void showRoom (View_app * view_app,Room * room){
     update_room(room->name,room->filename,view_app);
     int obj_id = 0;
-    for (int i = 0; i<=room->nb_i; i++){
-        for (int j= 0; j<=room->nb_j; j++){
+    for (int i = 0; i<room->nb_i; i++){
+        for (int j= 0; j<room->nb_j; j++){
              if (room->framing[i][j].o != NULL){
-                SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
+                 printf ("%d \n" , obj_id);
+                 SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
                 view_app->object[obj_id].position = temp;
                 init_object(view_app,obj_id,room->framing[i][j].o->file_name);
                 obj_id ++;
-            }
+             }
         }
     }
     if (room->framing[2][0].d != NULL){
+        fprintf(stdout, "im not supposed to be here right now ohoh\n");
         if (strcmp(room->framing[2][0].d->id, "BRB")==0){
-
             SDL_Rect temp = {room->framing[2][0].Pos_x,room->framing[2][0].Pos_y,room->w,room->h};
             view_app->object[obj_id].position = temp;
             init_object(view_app,obj_id,room->framing[2][0].d->file_name);
@@ -46,6 +47,7 @@ void showRoom (View_app * view_app,Room * room){
     }
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
+            fprintf(stdout, "im not supposed to be here right now\n");
             SDL_Rect temp = {room->framing[2][8].Pos_x,room->framing[2][8].Pos_y,room->w,room->h};
             view_app->object[obj_id].position = temp;
             init_object(view_app,obj_id,room->framing[2][8].d->file_name);
