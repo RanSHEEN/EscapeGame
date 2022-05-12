@@ -33,7 +33,7 @@ Room * readRoomFile(char * PATH){
      * Ouvre, lit le fichier au chemin PATH, et crée la Room
      * et appelle la fonction read line pour y ajouter des objets/des portes
      */
-    int cppt=3;
+    int cppt=4;
     char * tampon = (char *) malloc(sizeof(char)*TMAX);
     FILE * f= openFileRead(PATH);
 

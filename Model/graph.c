@@ -380,7 +380,6 @@ int changeRoom(VertexList *g,Door *d){
     if(d->access==1){
         Edge * e=findEdge(g->current->connect,d->id);
         g->current=e->v_next;
-        //si nouveau Vertex.label = win print "GG"
         return 1;
     }
     return 0;
