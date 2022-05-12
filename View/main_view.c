@@ -290,13 +290,13 @@ int init_game(Windows  * game_window){
         fprintf(stderr, "error SDL_CreateTexture : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-    game_window->Type=Rules;
+    game_window->Type = Play;
     get_Tittle (game_window->Type , game_window->title);
     SDL_SetWindowTitle(game_window->window, game_window->title);
 
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
-    tmp = IMG_Load("img/Framing.png");
+    tmp = IMG_Load("img/background.jpg");
     if (NULL == tmp) {
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         SDL_DestroyRenderer(game_window->renderer);
@@ -329,7 +329,8 @@ int init_game(Windows  * game_window){
     // x=1516 y=4 w=170 h=70
     SDL_Rect return_but = {1400,1,140,60};
     game_window->Return_b = return_but;
-
+    SDL_Rect play = {980,420,140,60};
+    game_window->my_buttons[1] = play;
     status = EXIT_SUCCESS;
     return status;
 }
@@ -391,7 +392,7 @@ int init_object(View_app * app, int nb, char * filename){
         return EXIT_FAILURE;
     }
 
-    Uint32 color_key = SDL_MapRGB(surface2->format,255,255,255);
+    Uint32 color_key = SDL_MapRGB(surface2->format,0,255,0);
     SDL_SetColorKey(surface2,SDL_TRUE,color_key);
     texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
     if (NULL == texture2) {
@@ -400,7 +401,6 @@ int init_object(View_app * app, int nb, char * filename){
         SDL_DestroyTexture(texture2);
         return EXIT_FAILURE;
     }
-
 
     SDL_SetRenderTarget(app->Game.renderer,app->object[nb].texture);
     SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
@@ -414,6 +414,41 @@ int init_object(View_app * app, int nb, char * filename){
     SDL_SetRenderTarget(app->Game.renderer,NULL);
     SDL_RenderCopy(app->Game.renderer,app->Game.texture,NULL,NULL);
     SDL_RenderPresent(app->Game.renderer);
+    return EXIT_SUCCESS;
+}
+
+int update_room(char * title, char * filename, View_app * view_app){
+    SDL_SetWindowTitle(view_app->Game.window, title);
+    SDL_Surface *surface_temp = NULL;
+    SDL_Texture *texture_temp = NULL;
+    surface_temp = IMG_Load(filename);
+    if (NULL == surface_temp) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(view_app->Game.renderer);
+        SDL_DestroyWindow(view_app->Game.window);
+        SDL_DestroyTexture(view_app->Game.texture);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+    texture_temp = SDL_CreateTextureFromSurface(view_app->Game.renderer, surface_temp);
+    if (NULL == texture_temp) {
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        SDL_DestroyRenderer(view_app->Game.renderer);
+        SDL_DestroyWindow(view_app->Game.window);
+        SDL_DestroyTexture(view_app->Game.texture);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+    SDL_SetRenderTarget(view_app->Game.renderer,view_app->Game.texture);
+    SDL_RenderCopy(view_app->Game.renderer,texture_temp,NULL,NULL);
+    SDL_DestroyTexture(texture_temp);
+    SDL_FreeSurface(surface_temp);
+    SDL_SetRenderTarget(view_app->Game.renderer,NULL);
+    SDL_RenderCopy(view_app->Game.renderer,view_app->Game.texture,NULL,NULL);
+    SDL_RenderPresent(view_app->Game.renderer);
+
     return EXIT_SUCCESS;
 }
 

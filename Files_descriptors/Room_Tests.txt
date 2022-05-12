@@ -1,8 +1,7 @@
 ROOM
-Room_Name : Room_1
-file_Name : Path
+Room_Name : Room1
+file_Name : img/Framing.png
 nb_obj : 2
-Door - id : door1 - Position : (2;0) - filename : Path;
-Door - id : door2 - Position : (2;8) - filename : Path;
-Object - id : obj1 - Position : (0;0) - filename : Path - Type : 1;
-Object - id : obj2 - Position : (2;5) - filename : Path - Type : 1;
+Door - id : door - Position : (2;8) - filename : Path;
+Object - id : obj1 - Position : (0;2) - filename : img/plant.png - Type : 1;
+Object - id : obj2 - Position : (0;1) - filename : img/coffee.png - Type : 1;

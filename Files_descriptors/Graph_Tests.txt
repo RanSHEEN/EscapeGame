@@ -1,9 +1,7 @@
 GRAPH
-Vertex - label:v1 - enigma_number:1
-Vertex - label:v2 - enigma_number:1
-Vertex - label:v3 - enigma_number:2
+Vertex - label:Room1 - enigma_number:1
+Vertex - label:Room2 - enigma_number:1
 Vertex - label:win - enigma_number:1
-Edge - v1 - v2 - obj_label:obj1
-Edge - v1 - win - obj_label:obj4
-Edge - v2 - v3 - obj_label:obj2
-Edge - v3 - win - obj_label:obj3
+Edge - Room1 - Room2 - obj_label:door
+Edge - Room2 - win - obj_label:BRB
+Edge - Room2 - Room1 - obj_label:door

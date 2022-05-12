@@ -13,9 +13,13 @@
  * @param r
  * @return 0 if can, 1 if can't
  */
-int hit_box(Personage * p, Room * r);
+//int hit_box(Personage * p, Room * r);
 
-int move_robot(View_app *view_app);
+VertexList * init_game_engine();
+
+void showRoom (View_app * view_app,Room * room);
+
+int move_robot(View_app *view_app,VertexList * graph);
 int main_controller(View_app *view_app);
 
 

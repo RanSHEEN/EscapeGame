@@ -5,7 +5,58 @@
 #include "../Controller/controller.h"
 
 
-int move_robot(View_app *view_app) {
+VertexList * init_game_engine(){
+    // creates room from file
+    VertexList * graph = readGraphFile("./Files_descriptors/Graph_Tests.txt");
+    Room * room1 = readRoomFile("./Files_descriptors/Room_Tests.txt");
+    Room * room2 = readRoomFile("./Files_descriptors/Room2.txt");
+
+    associateRoomWithVertexList(graph,room1);
+    associateRoomWithVertexList(graph, room2);
+/*
+    printGraph(graph);
+    setOnFirstVertex(graph);
+    printRoom(graph->current->R);
+    setOnNextVertex(graph);
+    printRoom(room2);*/
+    return graph;
+}
+
+void showRoom (View_app * view_app,Room * room){
+    update_room(room->name,room->filename,view_app);
+    int obj_id = 0;
+    for (int i = 0; i<=room->nb_i; i++){
+        for (int j= 0; j<=room->nb_j; j++){
+            fprintf(stdout, "ok1\n");
+            if (room->framing[i][j].o != NULL){
+                fprintf(stdout, "ok2\n");
+                SDL_Rect temp = {room->framing[i][j].Pos_x,room->framing[i][j].Pos_y,room->w,room->h};
+                view_app->object[obj_id].position = temp;
+                init_object(view_app,obj_id,room->framing[i][j].o->file_name);
+                obj_id ++;
+            }
+        }
+    }
+    if (room->framing[2][0].d != NULL){
+        if (strcmp(room->framing[2][0].d->id, "BRB")==0){
+
+            SDL_Rect temp = {room->framing[2][0].Pos_x,room->framing[2][0].Pos_y,room->w,room->h};
+            view_app->object[obj_id].position = temp;
+            init_object(view_app,obj_id,room->framing[2][0].d->file_name);
+            obj_id ++;
+        }
+    }
+    if (room->framing[2][8].d != NULL){
+        if (strcmp(room->framing[2][8].d->id, "BRB")==0){
+            SDL_Rect temp = {room->framing[2][8].Pos_x,room->framing[2][8].Pos_y,room->w,room->h};
+            view_app->object[obj_id].position = temp;
+            init_object(view_app,obj_id,room->framing[2][8].d->file_name);
+            obj_id ++;
+        }
+    }
+}
+
+int move_robot(View_app *view_app,VertexList * graph) {
     SDL_Point point;
 
     int isRunning = 1;
@@ -16,13 +67,8 @@ int move_robot(View_app *view_app) {
         fprintf (stderr, "failed init character \n");
         return EXIT_FAILURE;
     }
-
     Personage * p= CreatePersonage();
-    char filename [30];
-    strcpy(filename,"./img/coffee.png") ;
-    SDL_Rect temp = {420,140,140,140};
-    view_app->object[1].position = temp;
-    init_object(view_app,1,filename);
+    showRoom(view_app,graph->current->R);
     personWalkDown(view_app);
     move_down(p, 5);
 
@@ -124,7 +170,10 @@ int main_controller(View_app *view_app){
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Play;
-                                        move_robot(view_app);
+                                        VertexList * graph = init_game_engine();printf("ok\n");
+                                        setOnFirstVertex(graph);
+                                        move_robot(view_app, graph);
+
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {

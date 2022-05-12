@@ -4,7 +4,7 @@
 
 #ifndef PROJET_ESCAPE_MAIN_VIEW_H
 #define PROJET_ESCAPE_MAIN_VIEW_H
-#define NB_OF_OBJECTS 2
+#define NB_OF_OBJECTS 10
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
@@ -130,6 +130,15 @@ int init_rules(Windows * rules_window);
  * @return 0 if no problem during credits initializing, 1 if goes wrong
  */
 int init_game(Windows *game_window);
+
+/**
+ * used in the controller, this function updates the gaming window background to a defined room
+ * @param title
+ * @param filename
+ * @param view_app
+ * @return 0 if no problem during room updating, 1 if goes wrong
+ */
+int update_room(char * title, char * filename, View_app * view_app);
 
 //personnage
 /**

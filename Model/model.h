@@ -153,7 +153,7 @@ void deleteEdgeList(EdgeList * c);
 struct Vertex{
     char * label;
     EdgeList * connect;//vide de base
-    Room *R;
+    Room * R;
     int enigma_number;
     Vertex * previous_v;
     Vertex * next_v;
