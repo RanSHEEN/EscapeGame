@@ -246,6 +246,20 @@ int init_credits(Windows * credits_window)
         IMG_Quit();
         return EXIT_FAILURE;
     }
+
+    // Display window icon
+    SDL_Surface *surfaceIcon = NULL;
+    surfaceIcon = IMG_Load("img/exitIcon.png");
+    SDL_SetWindowIcon(credits_window->window,surfaceIcon);
+    if (NULL == surfaceIcon) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(credits_window->renderer);
+        SDL_DestroyWindow(credits_window->window);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+
     SDL_SetRenderTarget(credits_window->renderer,credits_window->texture);
     // link btw window's renderer and texture
     SDL_RenderCopy(credits_window->renderer,texture,NULL,NULL);
@@ -309,6 +323,20 @@ int init_rules(Windows * rules_window)
         IMG_Quit();
         return EXIT_FAILURE;
     }
+
+    // Display window icon
+    SDL_Surface *surfaceIcon = NULL;
+    surfaceIcon = IMG_Load("img/exitIcon.png");
+    SDL_SetWindowIcon(rules_window->window,surfaceIcon);
+    if (NULL == surfaceIcon) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(rules_window->renderer);
+        SDL_DestroyWindow(rules_window->window);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+
     SDL_SetRenderTarget(rules_window->renderer,rules_window->texture);
     // link btw window's renderer and texture
     SDL_RenderCopy(rules_window->renderer,texture,NULL,NULL);
@@ -376,6 +404,20 @@ int init_game(Windows  * game_window){
         IMG_Quit();
         return EXIT_FAILURE;
     }
+
+    // Display window icon
+    SDL_Surface *surfaceIcon = NULL;
+    surfaceIcon = IMG_Load("img/exitIcon.png");
+    SDL_SetWindowIcon(game_window->window,surfaceIcon);
+    if (NULL == surfaceIcon) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(game_window->renderer);
+        SDL_DestroyWindow(game_window->window);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+
     SDL_SetRenderTarget(game_window->renderer,game_window->texture);
     SDL_RenderCopy(game_window->renderer,texture,NULL,NULL);
     SDL_DestroyTexture(texture);
@@ -515,6 +557,20 @@ int update_room(char * title, char * filename, View_app * view_app){
         IMG_Quit();
         return EXIT_FAILURE;
     }
+
+    // Display window icon
+    SDL_Surface *surfaceIcon = NULL;
+    surfaceIcon = IMG_Load("img/exitIcon.png");
+    SDL_SetWindowIcon(view_app->Game.window,surfaceIcon);
+    if (NULL == surfaceIcon) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(view_app->Game.renderer);
+        SDL_DestroyWindow(view_app->Game.window);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+
     SDL_SetRenderTarget(view_app->Game.renderer,view_app->Game.texture);
     SDL_RenderCopy(view_app->Game.renderer,texture_temp,NULL,NULL);
     SDL_DestroyTexture(texture_temp);
