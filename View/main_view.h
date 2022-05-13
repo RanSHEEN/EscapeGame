@@ -223,6 +223,7 @@ void free_view (View_app *view_app);
  * @return 0 if no problem during SDL initializing, 1 if goes wrong
  */
 int init_View();
+
 //messageBox
 int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2);
 

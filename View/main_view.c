@@ -170,6 +170,19 @@ int init_menu(Windows * escape_menu)
     // final copy of windows' texture onto renderer
     // renderer is all pretty and ready :)
 
+    // Display window icon
+    SDL_Surface *surfaceIcon = NULL;
+    surfaceIcon = IMG_Load("img/exitIcon.png");
+    SDL_SetWindowIcon(escape_menu->window,surfaceIcon);
+    if (NULL == surfaceIcon) {
+        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        SDL_DestroyRenderer(escape_menu->renderer);
+        SDL_DestroyWindow(escape_menu->window);
+        SDL_Quit();
+        IMG_Quit();
+        return EXIT_FAILURE;
+    }
+
     //initialize the buttons
     // x=212 y=238 w=170 h=70
     SDL_Rect Play_but = {212,238,170,70};
