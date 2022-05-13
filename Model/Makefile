@@ -1,15 +1,21 @@
+
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD
+CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD
 LDFLAGS =
 DLIB = ../lib
 
 all: libmodel.a
 
-libmodel.a : object.o personnage.o graph.o
-	ar -rv $(DLIB)/$@ $^
+libmodel.a : model.o graph.o object.o file.o
+	ar -rcsv $(DLIB)/$@ $^
 
-model: object.o personnage.o graph.o
+model: model.o graph.o object.o file.o
 	$(CC) $^  $(LDFLAGS) -o $@
+
+get_coverage_infos:
+	lcov --capture --directory . --output-file ../Tests/Coverage_Info/coverage.info
+	genhtml ../Tests/Coverage_Info/coverage.info --output-directory ../Tests/Coverage_Info
+
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

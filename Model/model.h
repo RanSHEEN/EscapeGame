@@ -7,29 +7,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define SCREEN_W 1851
-#define SCREEN_H 1040
+#define SCREEN_W 1260
+#define SCREEN_H 560
+#define TMAX 100
 
-/**
- * definition des objets
- */
-typedef struct Object{
+enum obj_type { Button, clue, code };
+
+typedef struct {
     char * id;
-    int x;
-    int y;
+    int j;
+    int i;
     char * file_name;
+    enum obj_type type;
 }Object;
-
-
-typedef struct Door{
+typedef struct {
     char * id;
-    int x;
-    int y;
+    int i;
+    int j;
     char * file_name;
     int access;
 }Door;
 
-Object * createObject(char * id, int x, int y, char * file_name);
+typedef struct {
+    int Pos_x; //position height
+    int Pos_y; //position Width
+    Object * o; //=NULL par defaut
+    Door * d;
+}frame;
+typedef struct {
+    int h;
+    int w; //taille de la case
+    int nb_obj;
+    int nb_j;
+    int nb_i;
+    char * name;
+    char * filename;
+    frame ** framing;
+}Room;
+
+typedef struct {
+    int x_position;
+    int y_position;
+} Personage;
+
+typedef struct Edge Edge;
+typedef struct EdgeList EdgeList;
+typedef struct Vertex Vertex;
+typedef struct VertexList VertexList;
+/**
+ * definition des objets
+ */
+
+Object * createObject(char * id, int x, int y, char * file_name, enum obj_type type);
 Door * createDoor(char * id, int x, int y, char * file_name);
 void changeAccess(Door *D);
 
@@ -40,62 +69,38 @@ void freeDoor(Door * D);
 /***
  * definition Frame
  */
-typedef struct frame frame;
 
-struct frame{
-    int Pos_x; //position height
-    int Pos_y; //position Width
-    Object * o; //=NULL par defaut
-    int h;
-    int w; //taille de la case
-};
-
-
-int getDimension(int a,int b);
-
+//Create Room
+Room * CreateRoom(char * filename, char * name,int nb_obj);
 //Create Framing
-frame ** CreateFraming();
-void printFraming(frame ** tab);
+frame ** CreateFraming(int nb_j, int nb_i, int w, int h);
+void printRoom(Room *R);
 
 //delete Framing
 void deleteFraming(frame ** tab);
+void deleteRoom(Room * R);
 
+// ajouter un objet dans la pièce
+void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type);
+void addDoor(Room *R, char * id, int i, int j,char *file_name);
 
+int * isInteractionPossible(Personage *p, Room * R);
 /**
  * definition Personnage
  */
-typedef struct Personage {
-    int x_position;
-    int y_position;
-    //Face begin_face;
-}Personage;
 
-/* face of the personage in which direction */
-//typedef enum {UP,DOWN,LEFT,RIGHT} Face;
 
 Personage * CreatePersonage();
 void DeletePersonage(Personage * p);
 
-void move_up(Personage * p);
-void move_down(Personage * p);
-void move_left(Personage * p);
-void move_right(Personage * p);
+void move_up(Personage * p, int n);
+void move_down(Personage * p, int n);
+void move_left(Personage * p, int n);
+void move_right(Personage * p, int n);
 
 /**
  * definition des graph
- */
-/**
  * Graph : "Machine d'état" du scénario
- */
-
-//definitions des structures
-
-typedef struct Edge Edge;
-typedef struct EdgeList EdgeList;
-
-typedef struct Vertex Vertex;
-typedef struct VertexList VertexList;
-/**
  * EdgeList: liste de lien entre le Vertex et ses successeurs
  */
 /*
@@ -138,8 +143,6 @@ void printEdgeList(EdgeList *c);
 void deleteFirstEdge(EdgeList *c);
 void deleteEdgeList(EdgeList * c);
 
-
-
 /**
  * VertexList: liste de vertex
  */
@@ -150,7 +153,9 @@ void deleteEdgeList(EdgeList * c);
 struct Vertex{
     char * label;
     EdgeList * connect;//vide de base
+    Room * R;
     int enigma_number;
+    Vertex * previous_v;
     Vertex * next_v;
     int enigma_solved; //à 0 de base
 };
@@ -162,7 +167,7 @@ struct VertexList{
 /*
  * Fonction Gestion de Liste Edge List
  */
-void initGraph(VertexList * g);
+VertexList * initGraph();
 int isEmptyVertexList(VertexList * g);
 void insertFirstVertex(VertexList * g,char * label,int enigma_number);
 void insertLastVertex(VertexList * g,char * label,int enigma_number);
@@ -174,6 +179,7 @@ void addLink(Vertex * v1, Vertex * v2, char * obj_label);
 void setOnFirstVertex(VertexList * g);
 void setOnLastVertex(VertexList * g);
 void setOnNextVertex(VertexList * g);
+void setOnPreviousVertex(VertexList *g);
 Vertex * findVertex(VertexList * g,char * label);
 /*
  * Print Edge List
@@ -192,8 +198,24 @@ void deleteGraph(VertexList * g);
  * quand on résout les énigmes de l'étape on change d'état
  */
 
-int changeState(VertexList * g,Object * o);
-int SolvedEnigma(VertexList * g, Object *o);
+int changeStateAccess(VertexList * g);
+int changeRoom(VertexList *g,Door *d);
+int SolvedEnigma(VertexList * g);
 
+/**
+ * Lecture de fichiers
+ */
+//open close
+FILE *openFileRead(char *nom);
+void closeFile(FILE *f);
+//read line
+char * readFileLine(FILE *f, char *tampon);
+//read Room file
+Room * readRoomFile(char * PATH);
+void readRoomFileLine(char * tampon,Room *R);
+//read Graph File
+VertexList * readGraphFile(char * PATH);
+void readGraphFileLine(char * tampon, VertexList * g);
 
+void associateRoomWithVertexList(VertexList *g,Room *R);
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H
