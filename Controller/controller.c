@@ -40,13 +40,13 @@ void showRoom (View_app * view_app,Room * room){
                  printf ("%d \n" , obj_id);
                  SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
                 view_app->object[obj_id].position = temp;
-                init_object(view_app,obj_id,room->framing[i][j].o->file_name);
+                 printf("%s \n",room->framing[i][j].o->file_name);
+                 init_object(view_app,obj_id,room->framing[i][j].o->file_name);
                 obj_id ++;
              }
         }
     }
     if (room->framing[2][0].d != NULL){
-        fprintf(stdout, "im not supposed to be here right now ohoh\n");
         if (strcmp(room->framing[2][0].d->id, "BRB")==0){
             SDL_Rect temp = {room->framing[2][0].Pos_x+140,room->framing[2][0].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
@@ -54,11 +54,13 @@ void showRoom (View_app * view_app,Room * room){
             obj_id ++;
         }
     }
+    printf("%d \n", obj_id);
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
             fprintf(stdout, "im not supposed to be here right now\n");
             SDL_Rect temp = {room->framing[2][8].Pos_x+140,room->framing[2][8].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
+            printf("%s \n",room->framing[2][8].d->file_name);
             init_object(view_app,obj_id,room->framing[2][8].d->file_name);
             obj_id ++;
         }
@@ -110,7 +112,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     break;
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        if (view_app->Robot.Position.x >= 0) {
+                        if (view_app->Robot.Position.x >= 145) {
                             //Play move sound
                             Mix_PlayChannel(1,moveSound,0);
                             personWalkLeft(view_app);
@@ -282,8 +284,9 @@ int main_controller(View_app *view_app){
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Play;
-                                        VertexList * graph = init_game_engine();printf("ok\n");
+                                        VertexList * graph = init_game_engine();
                                         setOnFirstVertex(graph);
+                                        setOnNextVertex(graph);
                                         move_robot(view_app, graph);
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked

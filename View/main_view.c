@@ -449,7 +449,7 @@ int init_object(View_app * app, int nb, char * filename){
     SDL_Texture *texture2 = NULL;
     surface2 = IMG_Load(filename);
     if (NULL == surface2) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr,"Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
 
@@ -596,7 +596,7 @@ void personWalkLeft(View_app * app) {
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x > 0) {
+        if (app->Robot.Position.x > 145) {
             app->Robot.Position.x -= 5;
         }
         SDL_Delay(60);
@@ -644,7 +644,7 @@ void personWalkUp(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y >= 0) {
+        if (app->Robot.Position.y >= 195) {
             app->Robot.Position.y -= 5;
         }
         SDL_Delay(60);
@@ -693,7 +693,7 @@ void personWalkDown(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y < 594) {
+        if (app->Robot.Position.y < 605) {
             app->Robot.Position.y += 5;
         }
         SDL_Delay(60);
