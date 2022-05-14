@@ -144,6 +144,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
                             printf("interaction impossible\n");
+                            //this fonction can return 0 if you click button1 and 1 for button2
+                            create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
                             SolvedEnigma(graph); // quand l'enigme est résolue utiliser cette fonction pour changer les accès
@@ -157,7 +159,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
                                 printf("you win\n");
-                               
+                                //this fonction can return 0 if you click button1 and 1 for button2
+                            	 //create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
                                 //TODO : fenetre GG + retour au menu
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
