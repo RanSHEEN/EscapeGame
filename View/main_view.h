@@ -8,6 +8,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_events.h"
+#include "SDL2/SDL_mixer.h"
 
 
 
@@ -38,7 +39,7 @@ typedef struct {
 }Windows;
 
 /**
- * character structure : a speed, a rectangle indicating its position, and its specific texture
+ * character structure : a speed, a rectangle indicating its position, and its specific texture and it's move Sound
  */
 typedef struct {
     int SPEED;
@@ -62,6 +63,7 @@ typedef struct {
  * a character Robot
  * an object table size of the total nb of objects
  * type Actual, current window type (menu,rules,game,credits)
+ * the BGM : bgm
  */
 typedef struct {
    Windows Menu;
@@ -71,11 +73,12 @@ typedef struct {
    Character Robot;
    View_Object object [NB_OF_OBJECTS];
    enum type Actual;
+   Mix_Music *bgm;
 }View_app;
 
 
 /**
- * int init_SDL
+ * int init_SDL video and audio systems
  * deals with all sdl library initializing (here SDL and IMG)
  * @return 0 if no problem during initializing, 1 if goes wrong
  */
@@ -223,7 +226,21 @@ void free_view (View_app *view_app);
  * @return 0 if no problem during SDL initializing, 1 if goes wrong
  */
 int init_View();
-//messageBox
+
+int Play_Bgm(View_app * app);
+void Free_Bgm(View_app * app);
+int Play_CChunk();
+int Play_MChunk();
+
+/**
+ * int create_messageBox
+ * @param view_app
+ * @param title 
+ * @param message
+ * @param button1
+ * @param button2
+ * @return 0 if click button1, 1 if click button2
+ */
 int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2);
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
