@@ -229,8 +229,12 @@ int init_View();
 
 int Play_Bgm(View_app * app);
 void Free_Bgm(View_app * app);
-int Play_CChunk();
-int Play_MChunk();
+int Play_MChunk(Mix_Chunk *moveSound);
+int Play_CChunk(View_app * app);
+int Credits_CChunk(View_app * app);
+int Rules_CChunk(View_app * app);
+int Exit_CChunk(View_app * app);
+//int button_Play_Animation(View_app * app);
 
 /**
  * int create_messageBox
@@ -242,6 +246,7 @@ int Play_MChunk();
  * @return 0 if click button1, 1 if click button2
  */
 int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2);
+
 
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
 

@@ -112,50 +112,157 @@ int create_messageBox(View_app *view_app, char *title, char *message, char *butt
 int Play_Bgm(View_app * app){
 	int status = EXIT_FAILURE;
 	//initialise the SDL mixer
-    	Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
-    	//load bgm
-    	app->bgm = Mix_LoadMUS("music/bgm.mp3");
-    	 if (app->bgm == NULL) {
-        	fprintf (stderr, "failed load background music \n");
-        	return EXIT_FAILURE;
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
+    //load bgm
+    app->bgm = Mix_LoadMUS("music/bgm.mp3");
+    if (app->bgm == NULL) {
+        fprintf (stderr, "failed load background music \n");
+        return EXIT_FAILURE;
     }
-    	//play BGM
-    	Mix_PlayMusic(app->bgm,-1);
+    //play BGM
+    Mix_PlayMusic(app->bgm,-1);
 }
 
-int Play_CChunk(){
-	int status = EXIT_FAILURE;
-
-    	
-    	//Load Chunk of Click
-    	Mix_Chunk *clickchunk = Mix_LoadWAV("music/Click_Sound.wav");
-    	 if (clickchunk == NULL) {
-        	fprintf (stderr, "failed load chunk music \n");
-        	return EXIT_FAILURE;
+int Play_CChunk(View_app * app){
+    //Load clicking chunk
+    Mix_Chunk *clickChunk = Mix_LoadWAV("music/Click_Sound.wav");
+    if (clickChunk == NULL) {
+        fprintf (stderr, "failed load chunk music \n");
+        return EXIT_FAILURE;
     }
-    	//play Chunk
-    	Mix_PlayChannel(1,clickchunk,0);
-    	SDL_Delay(500);
-    	//free chunk of click
-    	Mix_FreeChunk(clickchunk);
+
+    //Animation of clicking button
+    SDL_Surface * darkButton = IMG_Load("./img/PlayButtonDark.png");
+    if (darkButton == NULL) {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Menu.renderer,darkButton);
+
+    SDL_RenderClear(app->Menu.renderer);
+    SDL_RenderCopy(app->Menu.renderer, app->Menu.texture, NULL, NULL);
+    SDL_RenderCopy(app->Menu.renderer, texture, NULL, NULL);
+    SDL_RenderPresent(app->Menu.renderer);
+    SDL_Delay(100);
+    //Play chunk
+    Mix_PlayChannel(1,clickChunk,0);
+    SDL_Delay(500);
+    //Free chunk of click
+    Mix_FreeChunk(clickChunk);
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(darkButton);
 }
 
-int Play_MChunk(Mix_Chunk *moveSound ){
+int Credits_CChunk(View_app * app){
+    //Load clicking chunk
+    Mix_Chunk *clickChunk = Mix_LoadWAV("music/Click_Sound.wav");
+    if (clickChunk == NULL) {
+        fprintf (stderr, "failed load chunk music \n");
+        return EXIT_FAILURE;
+    }
+
+    //Animation of clicking button
+    SDL_Surface * darkButton = IMG_Load("./img/CreditsButtonDark.png");
+    if (darkButton == NULL) {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Menu.renderer,darkButton);
+
+    SDL_RenderClear(app->Menu.renderer);
+    SDL_RenderCopy(app->Menu.renderer, app->Menu.texture, NULL, NULL);
+    SDL_RenderCopy(app->Menu.renderer, texture, NULL, NULL);
+    SDL_RenderPresent(app->Menu.renderer);
+    SDL_Delay(100);
+    //Play chunk
+    Mix_PlayChannel(1,clickChunk,0);
+    SDL_Delay(500);
+    //Free chunk of click
+    Mix_FreeChunk(clickChunk);
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(darkButton);
+}
+
+int Rules_CChunk(View_app * app){
+    //Load clicking chunk
+    Mix_Chunk *clickChunk = Mix_LoadWAV("music/Click_Sound.wav");
+    if (clickChunk == NULL) {
+        fprintf (stderr, "failed load chunk music \n");
+        return EXIT_FAILURE;
+    }
+
+    //Animation of clicking button
+    SDL_Surface * darkButton = IMG_Load("./img/RulesButtonDark.png");
+    if (darkButton == NULL) {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Menu.renderer,darkButton);
+
+    SDL_RenderClear(app->Menu.renderer);
+    SDL_RenderCopy(app->Menu.renderer, app->Menu.texture, NULL, NULL);
+    SDL_RenderCopy(app->Menu.renderer, texture, NULL, NULL);
+    SDL_RenderPresent(app->Menu.renderer);
+    SDL_Delay(100);
+    //Play chunk
+    Mix_PlayChannel(1,clickChunk,0);
+    SDL_Delay(500);
+    //Free chunk of click
+    Mix_FreeChunk(clickChunk);
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(darkButton);
+}
+
+int Exit_CChunk(View_app * app){
+    //Load clicking chunk
+    Mix_Chunk *clickChunk = Mix_LoadWAV("music/Click_Sound.wav");
+    if (clickChunk == NULL) {
+        fprintf (stderr, "failed load chunk music \n");
+        return EXIT_FAILURE;
+    }
+
+    //Animation of clicking button
+    SDL_Surface * darkButton = IMG_Load("./img/ExitButtonDark.png");
+    if (darkButton == NULL) {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Menu.renderer,darkButton);
+
+    SDL_RenderClear(app->Menu.renderer);
+    SDL_RenderCopy(app->Menu.renderer, app->Menu.texture, NULL, NULL);
+    SDL_RenderCopy(app->Menu.renderer, texture, NULL, NULL);
+    SDL_RenderPresent(app->Menu.renderer);
+    SDL_Delay(100);
+    //Play chunk
+    Mix_PlayChannel(1,clickChunk,0);
+    SDL_Delay(500);
+    //Free chunk of click
+    Mix_FreeChunk(clickChunk);
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(darkButton);
+}
+
+int Play_MChunk(Mix_Chunk *moveSound){
 	int status = EXIT_FAILURE;
 
-    	if (moveSound == NULL) {
+    if (moveSound == NULL) {
         fprintf (stderr, "failed load move Sound \n");
         return EXIT_FAILURE;
     }
-    	//play Chunk
-    	Mix_PlayChannel(1,moveSound,0);
+    //play Chunk
+    Mix_PlayChannel(1,moveSound,0);
 }
 
 void Free_Bgm(View_app * app){
 	//free music
-    	Mix_FreeMusic(app->bgm);
-    	//close mixer audio
-    	Mix_CloseAudio();
+    Mix_FreeMusic(app->bgm);
+    //close mixer audio
+    Mix_CloseAudio();
 }
 
 
@@ -705,7 +812,6 @@ void personWalkLeft(View_app * app) {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
     int i;
@@ -773,7 +879,6 @@ void personWalkUp(View_app * app){
         SDL_RenderPresent(app->Game.renderer);
         SDL_Delay(60);
     }
-
 }
 
 void personWalkDown(View_app * app){
@@ -821,9 +926,7 @@ void personWalkDown(View_app * app){
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
         SDL_Delay(60);
-
     }
-
 }
 
 int init_View(){
