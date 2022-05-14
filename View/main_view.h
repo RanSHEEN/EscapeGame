@@ -254,7 +254,7 @@ int Play_CChunk();
  * load and play the chunk of move
  * @return 0 if loading chunk successfully, 1 if not
  */
-int Play_MChunk();
+int Play_MChunk(Mix_Chunk *moveSound);
 
 /**
  * int create_messageBox

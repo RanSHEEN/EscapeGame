@@ -30,7 +30,7 @@ void move_up(Personage * p, int n){
      * (y_position décroissant)
      */
      if (p->y_position >= 195) {
-                            p->y_position = p->y_position - n;
+        p->y_position = p->y_position - n;
                         }
     
 }
@@ -40,7 +40,7 @@ void move_down(Personage * p, int n){
      * (y_position croissant)
      */
      if (p->y_position <= 605) {
-			     p->y_position = p->y_position + n;
+	p->y_position = p->y_position + n;
                         }
     
 }
@@ -50,7 +50,7 @@ void move_left(Personage * p, int n){
      * (x_position décroissant)
      */
      if (p->x_position >= 145) {
-                            p->x_position = p->x_position - n;
+       p->x_position = p->x_position - n;
                         }
     
 }
@@ -60,7 +60,7 @@ void move_right(Personage * p, int n){
      * (x_position croissant)
      */
      if (p->x_position <= 1330) {
-                             p->x_position = p->x_position + n;
+       p->x_position = p->x_position + n;
                            
                      }
    

@@ -433,7 +433,7 @@ int init_game(Windows  * game_window){
 int init_character(View_app * app){
     app->Robot.SPEED = 60;
 
-    SDL_Rect temp = {140,460,70,100 };
+    SDL_Rect temp = {0,320,70,100 };
     app->Robot.Position = temp;
     app->Robot.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 70, 100);
 
@@ -596,7 +596,7 @@ void personWalkRight(View_app * app){
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
         if (app->Robot.Position.x < 1330) {
-            app->Robot.Position.x += 5;
+            app->Robot.Position.x += 2.5;
         }
         SDL_Delay(60);
         SDL_RenderClear(app->Game.renderer);
@@ -643,7 +643,7 @@ void personWalkLeft(View_app * app) {
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
         if (app->Robot.Position.x > 145) {
-            app->Robot.Position.x -= 5;
+            app->Robot.Position.x -= 2.5;
         }
         SDL_Delay(60);
         SDL_RenderClear(app->Game.renderer);
@@ -690,8 +690,8 @@ void personWalkUp(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y >= 195) {
-            app->Robot.Position.y -= 5;
+        if (app->Robot.Position.y > 195) {
+            app->Robot.Position.y -= 2.5;
         }
         SDL_Delay(60);
         SDL_RenderClear(app->Game.renderer);
@@ -740,7 +740,7 @@ void personWalkDown(View_app * app){
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
         if (app->Robot.Position.y < 605) {
-            app->Robot.Position.y += 5;
+            app->Robot.Position.y += 2.5;
         }
         SDL_Delay(60);
         SDL_RenderClear(app->Game.renderer);
