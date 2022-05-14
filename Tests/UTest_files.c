@@ -30,22 +30,22 @@ static void test_readLine(void **state){
 static void test_readLineGraph(void **state){
     VertexList * g = initGraph();
 
-    char * tampon1 = "Vertex - label:v1 - enigma_number:1\n";
+    char * tampon1 = "Vertex - label:Room1 - enigma_number:1\n";
     char * tampon2 = "Vertex - label:v2 - enigma_number:2\n";
 
     readGraphFileLine(tampon1,g);
-    assert_string_equal("v1",g->first->label);
-    assert_string_equal("v1",g->last->label);
+    assert_string_equal("Room1",g->first->label);
+    assert_string_equal("Room1",g->last->label);
     assert_int_equal(1,g->first->enigma_number);
 
     readGraphFileLine(tampon2,g);
-    assert_string_equal("v1",g->first->label);
+    assert_string_equal("Room1",g->first->label);
     assert_string_equal("v2",g->last->label);
     assert_int_equal(1,g->first->enigma_number);
     assert_int_equal(2,g->last->enigma_number);
 
-    char * tampon3 = "Edge - v1 - v2 - obj_label:obj1";
-    char * tampon4 = "Edge - v1 - v2 - obj_label:obj2";
+    char * tampon3 = "Edge - Room1 - v2 - obj_label:obj1";
+    char * tampon4 = "Edge - Room1 - v2 - obj_label:obj2";
 
     readGraphFileLine(tampon3,g);
     assert_string_equal("obj1",g->first->connect->first->obj_label);
@@ -92,6 +92,21 @@ static void test_readRoomFile(void **state){
     Room * R =readRoomFile(PATH);
     printRoom(R);
 }
+static void test_readWrongFile(void **state){
+    char * PATH1= "../Files_descriptors/Room_Tests.txt";
+    char * PATH2= "../Files_descriptors/Graph_Tests.txt";
+    Room * R =readRoomFile(PATH2);
+    VertexList *g= readGraphFile(PATH1);
+}
+static void test_RoomWithVertex(void **state){
+    char * PATH1 = "../Files_descriptors/Room_Tests.txt";
+    Room * R =readRoomFile(PATH1);
+    char * PATH2 = "../Files_descriptors/Graph_Tests.txt";
+    VertexList * g =readGraphFile(PATH2);
+    associateRoomWithVertexList(g,R);
+    setOnFirstVertex(g);
+    assert_true(g->current->R==R);
+}
 
 int main(void){
 
@@ -101,7 +116,9 @@ int main(void){
             cmocka_unit_test(test_readLineGraph),
             cmocka_unit_test(test_readGraphFile),
             cmocka_unit_test(test_readRoomFileLine),
-            cmocka_unit_test(test_readRoomFile)
+            cmocka_unit_test(test_readRoomFile),
+            cmocka_unit_test(test_readWrongFile),
+            cmocka_unit_test(test_RoomWithVertex)
     };
     return cmocka_run_group_tests_name("test Objet",tests_file,NULL,NULL);
 

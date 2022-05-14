@@ -35,6 +35,20 @@ void get_Tittle(enum type Type , char* title){
     }
 }
 
+void get_filename (enum popType poptype, char  * filename){
+    switch (poptype) {
+        case Clue :
+            strcpy (filename, "img/clue.png");
+            break;
+        case Password :
+            strcpy (filename, "img/password.png");
+            break;
+        case Win :
+            strcpy (filename, "img/win.png");
+            break;
+    }
+}
+
 void free_Windows(Windows * window){
     SDL_DestroyRenderer(window->renderer);
     SDL_DestroyWindow(window->window);
@@ -46,6 +60,11 @@ void free_character(Character * Robot){
 void free_object (View_Object * object){
     SDL_DestroyTexture(object->texture);
 }
+
+void free_popup (popUp * popUp){
+    SDL_DestroyTexture(popUp->texture);
+}
+
 void free_view (View_app *view_app){
     if(view_app->Menu.window!=NULL){
         free_Windows(&view_app->Menu);
@@ -56,6 +75,7 @@ void free_view (View_app *view_app){
         for (int i=0 ; i<=NB_OF_OBJECTS; i++){
             free_object(&view_app->object[i]);
         }
+        free_popup(&view_app->popUp);
     }
     else if (view_app->Credits.window!=NULL){
         free_Windows(&view_app->Credits);
@@ -357,7 +377,7 @@ int init_character(View_app * app){
     SDL_SetColorKey(surface2,SDL_TRUE,color_key);
 
     texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
-    SDL_FreeSurface((SDL_Surface *) surface2);
+    SDL_FreeSurface( surface2);
     if (NULL == texture2) {
         fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
         SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
@@ -405,7 +425,7 @@ int init_object(View_app * app, int nb, char * filename){
     SDL_SetRenderTarget(app->Game.renderer,app->object[nb].texture);
     SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
     SDL_DestroyTexture(texture2);
-    SDL_FreeSurface((SDL_Surface *) surface2);
+    SDL_FreeSurface( surface2);
 
     SDL_SetTextureBlendMode(app->object[nb].texture,SDL_BLENDMODE_BLEND);
     SDL_SetRenderTarget(app->Game.renderer,NULL);
@@ -451,7 +471,52 @@ int update_room(char * title, char * filename, View_app * view_app){
 
     return EXIT_SUCCESS;
 }
+int display_popup(View_app * app, char * filename){
 
+    SDL_Rect temp = {3*140,140,560,420};
+    app->popUp.position = temp;
+
+    app->popUp.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, app->popUp.position.w, app->popUp.position.h);
+    if(NULL== app->popUp.texture)
+    {
+        fprintf(stderr, "Erreur SDL_CreateTexture : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+    SDL_Surface *surface2 = NULL;
+    SDL_Texture *texture2 = NULL;
+    surface2 = IMG_Load(filename);
+    if (NULL == surface2) {
+        fprintf(stderr,"Erreur IMG_load: %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+    texture2 = SDL_CreateTextureFromSurface(app->Game.renderer, surface2);
+    if (NULL == texture2) {
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        SDL_FreeSurface(surface2); /* On libère la surface, on n’en a plus besoin */
+        SDL_DestroyTexture(texture2);
+        return EXIT_FAILURE;
+    }
+
+    SDL_SetRenderTarget(app->Game.renderer,app->popUp.texture);
+    SDL_RenderCopy(app->Game.renderer,texture2,NULL,NULL);
+
+    SDL_DestroyTexture(texture2);
+    SDL_FreeSurface(surface2);
+
+    SDL_SetRenderTarget(app->Game.renderer,NULL);
+    SDL_RenderCopy(app->Game.renderer,app->popUp.texture,NULL,&app->popUp.position);
+    SDL_RenderPresent(app->Game.renderer);
+
+    SDL_Rect return_but = {828,152,140,60};
+    app->popUp.close_popUp = return_but;
+    return EXIT_SUCCESS;
+}
+void personStatic(View_app * app){
+    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+    SDL_RenderPresent(app->Game.renderer);
+}
 void personWalkRight(View_app * app){
     app->Robot.Position.x+= 5;
     /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */

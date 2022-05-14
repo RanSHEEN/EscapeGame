@@ -7,8 +7,7 @@
 #define NB_OF_OBJECTS 10
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-
-
+//enumerations and structures
 
 /**
  * enumeration of possible windows types
@@ -18,6 +17,15 @@ enum type {
     Rules,
     Credits,
     Play,
+};
+
+/**
+ * enumeration of possible pop-up types
+ */
+enum popType{
+    Clue,
+    Password,
+    Win,
 };
 
 /**
@@ -46,7 +54,7 @@ typedef struct {
 } Character;
 
 /**
- * object structure : and id, a rectangle indicating its position, and its specific texture
+ * object structure : a id, a rectangle indicating its position, and its specific texture
  */
 typedef struct {
     int id;
@@ -55,11 +63,22 @@ typedef struct {
 }View_Object;
 
 /**
+ * popUp structure : a type, a rectangle indicating its position, its specific texture and a button to close it
+ */
+typedef struct {
+    enum popType popType;
+    SDL_Rect position;
+    SDL_Texture *texture;
+    SDL_Rect  close_popUp;
+}popUp;
+
+/**
  * View_app structure
  * general view structure
  * 4 windows (Menu,Rules,Game,Credits)
  * a character Robot
  * an object table size of the total nb of objects
+ * a popup, SDL rectangle acting as a popup window with a button
  * type Actual, current window type (menu,rules,game,credits)
  */
 typedef struct {
@@ -68,6 +87,7 @@ typedef struct {
    Windows Game;
    Windows Credits;
    Character Robot;
+   popUp popUp;
    View_Object object [NB_OF_OBJECTS];
    enum type Actual;
 }View_app;
@@ -89,7 +109,13 @@ int init_SDL();
  * @param title
  */
 void get_Tittle(enum type Type , char* title);
-
+/**
+ * void get_filename
+ * gets the background picture's filename corresponding to a popup type
+ * @param poptype
+ * @param filename
+ */
+void get_filename (enum popType poptype, char  * filename);
 /**
  * int init_menu
  * initializes and displays the menu window,
@@ -140,6 +166,7 @@ int init_game(Windows *game_window);
  */
 int update_room(char * title, char * filename, View_app * view_app);
 
+int display_popup(View_app * view_app, char * filename);
 //personnage
 /**
  * int init_character
@@ -173,6 +200,8 @@ void personWalkUp(View_app * app);
  */
 void personWalkDown(View_app * app);
 
+void personStatic(View_app * app);
+
 //objects
 /**
  * initializes and displays an object
@@ -191,7 +220,7 @@ int init_object(View_app * app, int nb, char * filename);
 
 
 //freeing functions
-
+void free_popup (popUp * popUp);
 void free_objects (View_Object * object);
 /**
  * void free_character

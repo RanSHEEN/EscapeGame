@@ -380,10 +380,6 @@ int changeRoom(VertexList *g,Door *d){
     if(d->access==1){
         Edge * e=findEdge(g->current->connect,d->id);
         g->current=e->v_next;
-        //si nouveau Vertex.label = win print "GG"
-        if(strcmp(g->current->label,"win")==0){
-            printf("You Win\n");
-        }
         return 1;
     }
     return 0;
@@ -394,7 +390,8 @@ int SolvedEnigma(VertexList * g){
      * augmente de 1 le nombre d'énigme résolu et appelle la fonction state change pour vérifier si le changement d'état est possible
      */
     g->current->enigma_solved++;
-    return changeStateAccess(g);
+    int c = changeStateAccess(g);
+    return c;
 }
 
 

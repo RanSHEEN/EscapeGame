@@ -150,6 +150,17 @@ static void test_VertexList_find(){
     assert_string_equal(v->label,"Vertex3");
     deleteGraph(g);
 }
+static void test_VertexList_NotFound(){
+    VertexList * g= initGraph();
+    char * label2="Vertex2";
+    char * label1="Vertex1";
+    char * label3="Vertex3";
+    insertFirstVertex(g,label2,2);
+    insertFirstVertex(g,label1,2);
+    Vertex * v= findVertex(g,label3);
+    assert_true(v==NULL);
+    deleteGraph(g);
+}
 static void test_VertexList_addLink(){
     VertexList * g= initGraph();
     char * label2="Vertex2";
@@ -235,6 +246,7 @@ int main(void){
             cmocka_unit_test(test_VertexList_setNext),
             cmocka_unit_test(test_VertexList_setPrevious),
             cmocka_unit_test(test_VertexList_find),
+            cmocka_unit_test(test_VertexList_NotFound),
             cmocka_unit_test(test_VertexList_delete_toAnEmpty),
             cmocka_unit_test(test_VertexList_deleteFirst),
             cmocka_unit_test(test_VertexList_addLink)
