@@ -133,7 +133,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
                         if (view_app->Robot.Position.y <= 605) {
-			     //Play move sound
+                            //Play move sound
                             Play_MChunk(moveSound);
                             personWalkDown(view_app);
                             move_down(p, 5);
@@ -193,6 +193,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         point.y = ev.button.y;
                         if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
                             if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
+                                Back_CChunk_Game(view_app);
                                 isRunning=SDL_FALSE;
                             }
                         }
@@ -201,9 +202,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
-           //Free Chunk of move
-    	Mix_FreeChunk(moveSound);
-    status =EXIT_SUCCESS;
+    //Free Chunk of move
+    Mix_FreeChunk(moveSound);
+    status = EXIT_SUCCESS;
     return status;
 }
 
@@ -238,7 +239,7 @@ int main_controller(View_app *view_app){
                     }
                     //'k' for volume DOWN
                     if (ev.key.keysym.sym == SDLK_k) {
-                       Mix_VolumeMusic(Mix_VolumeMusic(-1)-5);
+                        Mix_VolumeMusic(Mix_VolumeMusic(-1)-5);
                     }
                     //'l' for volume UP
                     if (ev.key.keysym.sym == SDLK_l) {
@@ -327,11 +328,9 @@ int main_controller(View_app *view_app){
                             case Rules:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Rules.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Rules.Return_b)) {
-                                        free_Windows(&view_app->Rules);
-
                                         //Click Sound
-                                        Play_CChunk(view_app);
-
+                                        Back_CChunk_Rules(view_app);
+                                        free_Windows(&view_app->Rules);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -340,17 +339,14 @@ int main_controller(View_app *view_app){
                                         }
                                         view_app->Actual = Menu;
                                     }
-
                                 }
                                 break;
                             case Credits:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Credits.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Credits.Return_b)) {
-                                        free_Windows(&view_app->Credits);
-
                                         //Click Sound
-                                        Play_CChunk(view_app);
-
+                                        Back_CChunk_Credits(view_app);
+                                        free_Windows(&view_app->Credits);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());

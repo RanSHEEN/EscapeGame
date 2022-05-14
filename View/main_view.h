@@ -236,6 +236,10 @@ int Play_CChunk(View_app * app);
 int Credits_CChunk(View_app * app);
 int Rules_CChunk(View_app * app);
 int Exit_CChunk(View_app * app);
+//Animation & sound of back buttons
+int Back_CChunk_Rules(View_app * app);
+int Back_CChunk_Credits(View_app * app);
+int Back_CChunk_Game(View_app * app);
 
 /**
  * int create_messageBox
