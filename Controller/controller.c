@@ -96,7 +96,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
     showRoom(view_app,graph->current->R);
     personWalkRight(view_app);
-    move_right(p, 5);
+    move_right(p, 10);
 
 
     while (isRunning == SDL_TRUE) {
@@ -114,7 +114,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkLeft(view_app);
-                            move_left(p, 5);
+                            move_left(p, 10);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
@@ -122,7 +122,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkRight(view_app);
-                            move_right(p, 5);
+                            move_right(p,10);
                            
                      }
 
@@ -132,7 +132,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkUp(view_app);
-                            move_up(p, 5);
+                            move_up(p, 10);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
@@ -140,7 +140,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
 			     //Play move sound
                             Play_MChunk(moveSound);
                             personWalkDown(view_app);
-                            move_down(p, 5);
+                            move_down(p, 10);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
@@ -160,7 +160,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //graph->current->R->framing[k[0]][k[1]].d->access=1;
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
-                                printf("you win\n");
+                                
+                                if(create_messageBox(view_app, "Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
+                            		printf("you win\n");
+                            	}
                                
                                 //TODO : fenetre GG + retour au menu
                             }else{
@@ -180,7 +183,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     showRoom(view_app,graph->current->R);
                                     initRobot(view_app,flag,p);
                                     personWalkDown(view_app);
-                                    move_down(p, 5);
+                                    move_down(p, 10);
                                 }
                             }
                         }
@@ -240,11 +243,11 @@ int main_controller(View_app *view_app){
                     }
                     //'k' for volume DOWN
                     if (ev.key.keysym.sym == SDLK_k) {
-                       Mix_VolumeMusic(Mix_VolumeMusic(-1)-5);
+                       Mix_VolumeMusic(Mix_VolumeMusic(-1)-10);
                     }
                     //'l' for volume UP
                     if (ev.key.keysym.sym == SDLK_l) {
-                        Mix_VolumeMusic(Mix_VolumeMusic(-1)+5);
+                        Mix_VolumeMusic(Mix_VolumeMusic(-1)+10);
                     }
                     break;
 

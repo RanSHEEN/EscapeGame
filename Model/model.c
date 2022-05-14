@@ -29,26 +29,41 @@ void move_up(Personage * p, int n){
      * Le personnage se déplace vers le haut de n pixels
      * (y_position décroissant)
      */
-    p->y_position = p->y_position - n;
+     if (p->y_position >= 195) {
+                            p->y_position = p->y_position - n;
+                        }
+    
 }
 void move_down(Personage * p, int n){
     /**
      * Le personnage se déplace vers le bas de n pixels
      * (y_position croissant)
      */
-    p->y_position = p->y_position + n;
+     if (p->y_position <= 605) {
+			     p->y_position = p->y_position + n;
+                        }
+    
 }
 void move_left(Personage * p, int n){
     /**
      * Le personnage se déplace vers la gauche de n pixels
      * (x_position décroissant)
      */
-    p->x_position = p->x_position - n;
+     if (p->x_position >= 145) {
+                            p->x_position = p->x_position - n;
+                        }
+    
 }
 void move_right(Personage * p, int n){
     /**
      * Le personnage se déplace vers la droite de n pixels
      * (x_position croissant)
      */
-    p->x_position = p->x_position + n;
+     if (p->x_position <= 1330) {
+                             p->x_position = p->x_position + n;
+                           
+                     }
+   
 }
+
+
