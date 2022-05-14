@@ -95,6 +95,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
     initRobot(view_app,0,p);
 
     showRoom(view_app,graph->current->R);
+    personWalkRight(view_app);
+    move_right(p, 5);
+
 
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
@@ -104,6 +107,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
                         isRunning = SDL_FALSE;
                     break;
+                
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
                         if (view_app->Robot.Position.x >= 145) {
@@ -195,11 +199,12 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         }
                     }
                 break;
+             
             }
         }
     }
-           //Free Chunk of move
-    	Mix_FreeChunk(moveSound);
+    //Free Chunk of move
+    Mix_FreeChunk(moveSound);
     status =EXIT_SUCCESS;
     return status;
 }
@@ -371,7 +376,7 @@ int main_controller(View_app *view_app){
     }
     }
 
-    //free music
+    //free bgm
     Free_Bgm(view_app);
     status=EXIT_SUCCESS;
 

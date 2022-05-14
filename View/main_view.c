@@ -133,9 +133,8 @@ int Play_CChunk(){
         	fprintf (stderr, "failed load chunk music \n");
         	return EXIT_FAILURE;
     }
-    	//play Chunk
     	Mix_PlayChannel(1,clickchunk,0);
-    	SDL_Delay(500);
+    	SDL_Delay(100);
     	//free chunk of click
     	Mix_FreeChunk(clickchunk);
 }
@@ -147,14 +146,11 @@ int Play_MChunk(Mix_Chunk *moveSound ){
         fprintf (stderr, "failed load move Sound \n");
         return EXIT_FAILURE;
     }
-    	//play Chunk
     	Mix_PlayChannel(1,moveSound,0);
 }
 
 void Free_Bgm(View_app * app){
-	//free music
     	Mix_FreeMusic(app->bgm);
-    	//close mixer audio
     	Mix_CloseAudio();
 }
 
@@ -588,7 +584,7 @@ void personWalkRight(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
@@ -636,7 +632,7 @@ void personWalkLeft(View_app * app) {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
     int i;
@@ -683,7 +679,7 @@ void personWalkUp(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
@@ -732,7 +728,7 @@ void personWalkDown(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
