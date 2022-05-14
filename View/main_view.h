@@ -230,11 +230,12 @@ int init_View();
 int Play_Bgm(View_app * app);
 void Free_Bgm(View_app * app);
 int Play_MChunk(Mix_Chunk *moveSound);
+
+//Animation & sound of menu buttons
 int Play_CChunk(View_app * app);
 int Credits_CChunk(View_app * app);
 int Rules_CChunk(View_app * app);
 int Exit_CChunk(View_app * app);
-//int button_Play_Animation(View_app * app);
 
 /**
  * int create_messageBox
