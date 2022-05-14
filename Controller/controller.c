@@ -143,6 +143,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
                             printf("interaction impossible\n");
+                            //this fonction can return 0 if you click button1 and 1 for button2
+                            create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
                             SolvedEnigma(graph);
