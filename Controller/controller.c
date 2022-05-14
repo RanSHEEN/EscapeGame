@@ -40,13 +40,13 @@ void showRoom (View_app * view_app,Room * room){
                  printf ("%d \n" , obj_id);
                  SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
                 view_app->object[obj_id].position = temp;
-                init_object(view_app,obj_id,room->framing[i][j].o->file_name);
+                 printf("%s \n",room->framing[i][j].o->file_name);
+                 init_object(view_app,obj_id,room->framing[i][j].o->file_name);
                 obj_id ++;
              }
         }
     }
     if (room->framing[2][0].d != NULL){
-        fprintf(stdout, "im not supposed to be here right now ohoh\n");
         if (strcmp(room->framing[2][0].d->id, "BRB")==0){
             SDL_Rect temp = {room->framing[2][0].Pos_x+140,room->framing[2][0].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
@@ -54,11 +54,13 @@ void showRoom (View_app * view_app,Room * room){
             obj_id ++;
         }
     }
+    printf("%d \n", obj_id);
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
             fprintf(stdout, "im not supposed to be here right now\n");
             SDL_Rect temp = {room->framing[2][8].Pos_x+140,room->framing[2][8].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
+            printf("%s \n",room->framing[2][8].d->file_name);
             init_object(view_app,obj_id,room->framing[2][8].d->file_name);
             obj_id ++;
         }
@@ -82,13 +84,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
-    
     //Load Chunk of move
     Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_Sound.wav");
-    if (moveSound == NULL) {
-        fprintf (stderr, "failed load move Sound \n");
-        return EXIT_FAILURE;
-    }
+    
     if (init_character(view_app) != EXIT_SUCCESS) {
         fprintf (stderr, "failed init character \n");
     }
@@ -97,8 +95,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
     initRobot(view_app,0,p);
 
     showRoom(view_app,graph->current->R);
-    personWalkDown(view_app);
-    move_down(p, 5);
 
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
@@ -110,39 +106,40 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     break;
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        if (view_app->Robot.Position.x >= 0) {
+                        if (view_app->Robot.Position.x >= 145) {
                             //Play move sound
-                            Mix_PlayChannel(1,moveSound,0);
+                            Play_MChunk(moveSound);
                             personWalkLeft(view_app);
                             move_left(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
                         if (view_app->Robot.Position.x <= 1330) {
-                            Mix_PlayChannel(1,moveSound,0);
+                            //Play move sound
+                            Play_MChunk(moveSound);
                             personWalkRight(view_app);
                             move_right(p, 5);
+                           
                      }
 
                     }
                     else if (ev.key.keysym.sym == SDLK_UP) {
                         if (view_app->Robot.Position.y >= 195) {
-                            Mix_PlayChannel(1,moveSound,0);
+                            //Play move sound
+                            Play_MChunk(moveSound);
                             personWalkUp(view_app);
                             move_up(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
                         if (view_app->Robot.Position.y <= 605) {
-			                Mix_PlayChannel(1,moveSound,0);
+			     //Play move sound
+                            Play_MChunk(moveSound);
                             personWalkDown(view_app);
                             move_down(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
-                        //this fonction can return 0 if you click button1 and 1 for button2
-                        //create_messageBox(view_app, "Robot" , "Look !","Yes","NO");
-
                         int * k = isInteractionPossible(p,graph->current->R);
                         printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
@@ -154,6 +151,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             SolvedEnigma(graph); // quand l'enigme est résolue utiliser cette fonction pour changer les accès
                         }else if(k[2]==2){
                             printf("interaction with door\n");
+                            //this fonction can return 0 if you click button1 and 1 for button2
+                            	if(create_messageBox(view_app, "Robot" , "You want to pass this door ?","Yes","NO")==0){
+                            	printf("pass the door! \n");
+                            	}
                             //graph->current->R->framing[k[0]][k[1]].d->access=1;
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
@@ -200,8 +201,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
-    //Free Chunk of move
-    Mix_FreeChunk(moveSound);
+           //Free Chunk of move
+    	Mix_FreeChunk(moveSound);
     status =EXIT_SUCCESS;
     return status;
 }
@@ -212,19 +213,8 @@ int main_controller(View_app *view_app){
     SDL_Event ev;
     SDL_Point point;
     view_app->Actual=Menu;
+    Play_Bgm(view_app);
     
-    //initialise the SDL mixer
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
-    //load bgm
-    Mix_Music *bgm = Mix_LoadMUS("music/bgm.mp3");
-    //Load Chunk of Click
-    Mix_Chunk *CSound = Mix_LoadWAV("music/Click_Sound.wav");
-    if (bgm == NULL) {
-        fprintf (stderr, "failed load background music \n");
-        return EXIT_FAILURE;
-    }
-    //play BGM in all process
-    Mix_PlayMusic(bgm,-1);
 
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -277,15 +267,16 @@ int main_controller(View_app *view_app){
                                         //play
                                         free_Windows(&view_app->Menu);
                                         //Click Sound
-                                        Mix_PlayChannel(1,CSound,0);
+                                        Play_CChunk();
                                         if (init_game(&view_app->Game) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
                                             free_Windows(&view_app->Game);
                                             return EXIT_FAILURE;
                                         }
                                         view_app->Actual = Play;
-                                        VertexList * graph = init_game_engine();printf("ok\n");
+                                        VertexList * graph = init_game_engine();
                                         setOnFirstVertex(graph);
+                                        setOnNextVertex(graph);
                                         move_robot(view_app, graph);
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
@@ -301,7 +292,7 @@ int main_controller(View_app *view_app){
                                         free_Windows(&view_app->Menu);
 
                                         //Click Sound
-                                        Mix_PlayChannel(1,CSound,0);
+                                        Play_CChunk();
 
                                         //executing menu window initialisation and checking it worked
                                         if (init_credits(&view_app->Credits) != EXIT_SUCCESS) {
@@ -316,7 +307,7 @@ int main_controller(View_app *view_app){
                                         free_Windows(&view_app->Menu);
 
                                         //Click Sound
-                                        Mix_PlayChannel(1,CSound,0);
+                                        Play_CChunk();
 
                                         //executing menu window initialisation and checking it worked
                                         if (init_rules(&view_app->Rules) != EXIT_SUCCESS) {
@@ -328,6 +319,8 @@ int main_controller(View_app *view_app){
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[3])) {
                                         //exit
+                                        //Click Sound
+                                        Play_CChunk();
                                         isRunning = 0;
                                         free_Windows(&view_app->Menu);
                                         return status = EXIT_SUCCESS;
@@ -340,7 +333,7 @@ int main_controller(View_app *view_app){
                                         free_Windows(&view_app->Rules);
 
                                         //Click Sound
-                                        Mix_PlayChannel(1,CSound,0);
+                                        Play_CChunk();
 
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -359,7 +352,7 @@ int main_controller(View_app *view_app){
                                         free_Windows(&view_app->Credits);
 
                                         //Click Sound
-                                        Mix_PlayChannel(1,CSound,0);
+                                        Play_CChunk();
 
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -382,10 +375,7 @@ int main_controller(View_app *view_app){
     }
 
     //free music
-    Mix_FreeMusic(bgm);
-    Mix_FreeChunk(CSound);
-    //close mixer audio
-    Mix_CloseAudio();
+    Free_Bgm(view_app);
     status=EXIT_SUCCESS;
 
     return status;

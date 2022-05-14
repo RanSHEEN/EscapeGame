@@ -12,7 +12,7 @@
 
 /* initializes the SDL library + sub libraries */
 int init_SDL(){
-    if(0 != SDL_Init(SDL_INIT_VIDEO)){
+    if(0 != SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)){
         fprintf(stderr, "error SDL_Init : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
@@ -108,6 +108,56 @@ int create_messageBox(View_app *view_app, char *title, char *message, char *butt
         return buttonid;
     }
 }
+
+int Play_Bgm(View_app * app){
+	int status = EXIT_FAILURE;
+	//initialise the SDL mixer
+    	Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
+    	//load bgm
+    	app->bgm = Mix_LoadMUS("music/bgm.mp3");
+    	 if (app->bgm == NULL) {
+        	fprintf (stderr, "failed load background music \n");
+        	return EXIT_FAILURE;
+    }
+    	//play BGM
+    	Mix_PlayMusic(app->bgm,-1);
+}
+
+int Play_CChunk(){
+	int status = EXIT_FAILURE;
+
+    	
+    	//Load Chunk of Click
+    	Mix_Chunk *clickchunk = Mix_LoadWAV("music/Click_Sound.wav");
+    	 if (clickchunk == NULL) {
+        	fprintf (stderr, "failed load chunk music \n");
+        	return EXIT_FAILURE;
+    }
+    	//play Chunk
+    	Mix_PlayChannel(1,clickchunk,0);
+    	SDL_Delay(500);
+    	//free chunk of click
+    	Mix_FreeChunk(clickchunk);
+}
+
+int Play_MChunk(Mix_Chunk *moveSound ){
+	int status = EXIT_FAILURE;
+
+    	if (moveSound == NULL) {
+        fprintf (stderr, "failed load move Sound \n");
+        return EXIT_FAILURE;
+    }
+    	//play Chunk
+    	Mix_PlayChannel(1,moveSound,0);
+}
+
+void Free_Bgm(View_app * app){
+	//free music
+    	Mix_FreeMusic(app->bgm);
+    	//close mixer audio
+    	Mix_CloseAudio();
+}
+
 
 /* those functions initialise the windows and create their texture/renderer*/
 int init_menu(Windows * escape_menu)
@@ -504,7 +554,7 @@ int init_object(View_app * app, int nb, char * filename){
     SDL_Texture *texture2 = NULL;
     surface2 = IMG_Load(filename);
     if (NULL == surface2) {
-        fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
+        fprintf(stderr,"Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;
     }
 
@@ -607,12 +657,12 @@ void personWalkRight(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<4; i++)
+    for (i = 0; i<2; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
@@ -655,17 +705,17 @@ void personWalkLeft(View_app * app) {
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
     int i;
-    for (i = 0; i<4; i++)
+    for (i = 0; i<2; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x > 0) {
+        if (app->Robot.Position.x > 145) {
             app->Robot.Position.x -= 5;
         }
         SDL_Delay(60);
@@ -702,18 +752,18 @@ void personWalkUp(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<4; i++)
+    for (i = 0; i<2; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y >= 0) {
+        if (app->Robot.Position.y >= 195) {
             app->Robot.Position.y -= 5;
         }
         SDL_Delay(60);
@@ -751,18 +801,18 @@ void personWalkDown(View_app * app){
         printf("Error IMG_load: %s\n",SDL_GetError());
         SDL_Quit();
     }
-    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
+//    SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<4; i++)
+    for (i = 0; i<2; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y < 594) {
+        if (app->Robot.Position.y < 605) {
             app->Robot.Position.y += 5;
         }
         SDL_Delay(60);
