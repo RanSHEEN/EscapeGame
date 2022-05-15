@@ -153,11 +153,11 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             if(create_messageBox(view_app, "Robot" , "You want to pass this door ?","Yes","NO")==0){
                             	printf("pass the door! \n");
                             	}
-                            //graph->current->R->framing[k[0]][k[1]].d->access=1;
+			     //graph->current->R->framing[k[0]][k[1]].d->access=1;
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
                                 if(create_messageBox(view_app, "Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
-                            		printf("you win\n");
+                            		printf("you won !\n");
                             	}
                                 //TODO : fenetre GG + retour au menu
                             }else{

@@ -56,6 +56,8 @@ void move_right(Personage * p, int n){
    p->x_position = p->x_position + n;
 
    
+
+   
 }
 
 

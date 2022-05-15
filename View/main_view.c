@@ -75,7 +75,6 @@ void free_view (View_app *view_app){
 }
 
 //Create a message windows with 2 button. and it will return 0/1 after you click button.
-//
 int create_messageBox(View_app *view_app, char *title, char *message, char *button1, char *button2)
 {
     //Set button of the message box (official example)
@@ -859,15 +858,15 @@ void personWalkRight(View_app * app){
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
-   
+
     int i;
-    for (i = 0; i<2; i++)
+    for (i = 0; i<1; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        app->Robot.Position.x += 2.5;
+        app->Robot.Position.x += 5;
         SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
@@ -906,13 +905,13 @@ void personWalkLeft(View_app * app) {
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
     int i;
-    for (i = 0; i<2; i++)
+    for (i = 0; i<1; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-	app->Robot.Position.x -= 2.5;
+        app->Robot.Position.x -= 5;
         SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
@@ -952,13 +951,13 @@ void personWalkUp(View_app * app){
 
        
     int i;
-    for (i = 0; i<2; i++)
+    for (i = 0; i<1; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        app->Robot.Position.y -= 2.5;
+        app->Robot.Position.y -= 5;
         SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
@@ -998,19 +997,19 @@ void personWalkDown(View_app * app){
     
   
     int i;
-    for (i = 0; i<2; i++)
+    for (i = 0; i<1; i++)
     {
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
         SDL_Delay(30);
-        app->Robot.Position.y += 2.5;
+        app->Robot.Position.y += 5;
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
     SDL_DestroyTexture(texture);

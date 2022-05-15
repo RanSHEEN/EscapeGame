@@ -156,25 +156,25 @@ int update_room(char * title, char * filename, View_app * view_app);
 int init_character (View_app * app);
 /**
  * void personWalkRight
- * updates the window with new character position right
+ * updates the window with new character position right for 5 pixels
  * @param app
  */
 void personWalkRight(View_app * app);
 /**
  * void personWalkLeft
- * updates the window with new character position left
+ * updates the window with new character position left for 5 pixels
  * @param app
  */
 void personWalkLeft(View_app * app);
 /**
  * void personWalkUp
- * updates the window with new character position up
+ * updates the window with new character position up for 5 pixels
  * @param app
  */
 void personWalkUp(View_app * app);
 /**
  * void personWalkDown
- * updates the window with new character position down
+ * updates the window with new character position down for 5 pixels
  * @param app
  */
 void personWalkDown(View_app * app);
