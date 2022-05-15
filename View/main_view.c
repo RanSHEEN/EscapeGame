@@ -151,6 +151,7 @@ int Play_CChunk(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Credits_CChunk(View_app * app){
@@ -182,6 +183,7 @@ int Credits_CChunk(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Rules_CChunk(View_app * app){
@@ -213,6 +215,7 @@ int Rules_CChunk(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Exit_CChunk(View_app * app){
@@ -244,6 +247,7 @@ int Exit_CChunk(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Back_CChunk_Rules(View_app * app){
@@ -275,6 +279,7 @@ int Back_CChunk_Rules(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Back_CChunk_Credits(View_app * app){
@@ -306,6 +311,7 @@ int Back_CChunk_Credits(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Back_CChunk_Game(View_app * app){
@@ -337,6 +343,7 @@ int Back_CChunk_Game(View_app * app){
     Mix_FreeChunk(clickChunk);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(darkButton);
+    return EXIT_SUCCESS;
 }
 
 int Play_MChunk(Mix_Chunk *moveSound){
@@ -348,6 +355,7 @@ int Play_MChunk(Mix_Chunk *moveSound){
     }
     //play Chunk
     Mix_PlayChannel(1,moveSound,0);
+    return EXIT_SUCCESS;
 }
 
 void Free_Bgm(View_app * app){
@@ -601,7 +609,8 @@ int init_rules(Windows * rules_window)
 
     //initialize the button
     // x=1516 y=4 w=170 h=70
-    SDL_Rect return_but = {1128,1,106,51};    rules_window->Return_b = return_but;
+    SDL_Rect return_but = {1128,1,106,51};
+    rules_window->Return_b = return_but;
 
     status = EXIT_SUCCESS;
     return status;

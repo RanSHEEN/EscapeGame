@@ -85,7 +85,6 @@ typedef struct {
 int init_SDL();
 
 
-//windows
 
 /**
  * void get_Tittle
@@ -147,7 +146,7 @@ int init_game(Windows *game_window);
  */
 int update_room(char * title, char * filename, View_app * view_app);
 
-//personnage
+
 /**
  * int init_character
  * initializes and displays the robot character, defines its position through a SDl rectangle as well as its speed and texture
@@ -180,7 +179,7 @@ void personWalkUp(View_app * app);
  */
 void personWalkDown(View_app * app);
 
-//objects
+
 /**
  * initializes and displays an object
  * only works in controller after linking object_view and object_model
@@ -195,10 +194,6 @@ int init_object(View_app * app, int nb, char * filename);
  * frees object (destroy its texture)
  * @param object
  */
-
-
-//freeing functions
-
 void free_objects (View_Object * object);
 /**
  * void free_character
@@ -231,14 +226,54 @@ int Play_Bgm(View_app * app);
 void Free_Bgm(View_app * app);
 int Play_MChunk(Mix_Chunk *moveSound);
 
-//Animation & sound of menu buttons
+/**
+ * int Play_CChunk
+ * do animation and play sounds of 'Play' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Play_CChunk(View_app * app);
+/**
+ * int Credits_CChunk
+ * do animation and play sounds of 'Credits' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Credits_CChunk(View_app * app);
+/**
+ * int Rules_CChunk
+ * do animation and play sounds of 'Rules' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Rules_CChunk(View_app * app);
+/**
+ * int Exit_CChunk
+ * do animation and play sounds of 'Exit' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Exit_CChunk(View_app * app);
-//Animation & sound of back buttons
+/**
+ * int Back_CChunk_Rules
+ * do animation and play sounds of 'Back' button in 'Rules'
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Back_CChunk_Rules(View_app * app);
+/**
+ * int Back_CChunk_Credits
+ * do animation and play sounds of 'Back' button in 'Credits'
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Back_CChunk_Credits(View_app * app);
+/**
+ * int Back_CChunk_Game
+ * do animation and play sounds of 'Back' button in main game
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
 int Back_CChunk_Game(View_app * app);
 
 /**
