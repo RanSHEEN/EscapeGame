@@ -10,9 +10,14 @@
 #define SCREEN_W 1260
 #define SCREEN_H 560
 #define TMAX 100
-
+/**
+ * object Type enumération
+ */
 enum obj_type { Button, clue, code };
-
+/**
+ * object Type structure
+ * an id, his position in the framing, a file name (Path to the .png for the view)
+ */
 typedef struct {
     char * id;
     int j;
@@ -20,6 +25,11 @@ typedef struct {
     char * file_name;
     enum obj_type type;
 }Object;
+/**
+ * door Type structure
+ * an id, his position in the framing, a file name (Path to the .png for the view)
+ * la variable access indique si la porte peut être traversée
+ */
 typedef struct {
     char * id;
     int i;
@@ -27,13 +37,25 @@ typedef struct {
     char * file_name;
     int access;
 }Door;
-
+/**
+ * Frame structure
+ * is a partition of the framing :
+ * framing is a table of objects (table ==NULL if no object)
+ */
 typedef struct {
     int Pos_x; //position height
     int Pos_y; //position Width
     Object * o; //=NULL par defaut
     Door * d;
 }frame;
+/**
+ * struct room describe the room :
+ * the height and the width of each frame and their number in line and column of the framing
+ * the number of objects present in the room
+ * the name of the room
+ * the path to the background
+ * a pointer to the table framing
+ */
 typedef struct {
     int h;
     int w; //taille de la case
@@ -44,7 +66,10 @@ typedef struct {
     char * filename;
     frame ** framing;
 }Room;
-
+/**
+ * struct personage describe the character in the model :
+ * is position (x,y)
+ */
 typedef struct {
     int x_position;
     int y_position;
@@ -54,19 +79,30 @@ typedef struct Edge Edge;
 typedef struct EdgeList EdgeList;
 typedef struct Vertex Vertex;
 typedef struct VertexList VertexList;
-/**
+/*
  * definition des objets
  */
-
+/**
+    * Crée et alloue un objet
+    * @param id : indicateur de l'objet
+    * @param j: colonne dans le cadrillage de la Room
+     * @param i: ligne dans le cadrillage de la Room
+     * @param filename : chemin vers l'image de l'objet
+     * @param type : type d'objet
+     * @return pointer to the object
+     */
 Object * createObject(char * id, int x, int y, char * file_name, enum obj_type type);
+
 Door * createDoor(char * id, int x, int y, char * file_name);
 void changeAccess(Door *D);
-
+/**
+     * libère la mémoire liée à l'objet o
+     */
 void freeObject(Object *o);
 void freeDoor(Door * D);
 
 
-/***
+/*
  * definition Frame
  */
 
@@ -85,7 +121,7 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type);
 void addDoor(Room *R, char * id, int i, int j,char *file_name);
 
 int * isInteractionPossible(Personage *p, Room * R);
-/**
+/*
  * definition Personnage
  */
 
@@ -98,12 +134,10 @@ void move_down(Personage * p, int n);
 void move_left(Personage * p, int n);
 void move_right(Personage * p, int n);
 
-/**
+/*
  * definition des graph
  * Graph : "Machine d'état" du scénario
  * EdgeList: liste de lien entre le Vertex et ses successeurs
- */
-/*
  * Structures
  */
 struct Edge{
@@ -143,7 +177,7 @@ void printEdgeList(EdgeList *c);
 void deleteFirstEdge(EdgeList *c);
 void deleteEdgeList(EdgeList * c);
 
-/**
+/*
  * VertexList: liste de vertex
  */
 
@@ -192,7 +226,7 @@ void printGraph(VertexList * g);
 void deleteFirstVertex(VertexList * g);
 void deleteGraph(VertexList * g);
 
-/**
+/*
  * State Change
  * Notre graph s'apparente à uns machine d'état
  * quand on résout les énigmes de l'étape on change d'état
@@ -202,7 +236,7 @@ int changeStateAccess(VertexList * g);
 int changeRoom(VertexList *g,Door *d);
 int SolvedEnigma(VertexList * g);
 
-/**
+/*
  * Lecture de fichiers
  */
 //open close

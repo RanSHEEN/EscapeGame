@@ -7,15 +7,6 @@
 
 //Object
 Object * createObject(char * id, int j, int i, char * file_name, enum obj_type type){
-    /**
-     * Crée et alloue un objet
-     * id : indicateur de l'objet
-     * j: colonne dans le cadrillage de la Room
-     * i: ligne dans le cadrillage de la Room
-     * filename : chemin vers l'image de l'objet
-     * type : type d'objet
-     * la fonction retourne un pointeur vers l'objet
-     */
     Object * o= (Object *) malloc(sizeof(Object));
     o->id=id;
     o->file_name=file_name; //nom du png correspondant à l'image
@@ -25,9 +16,6 @@ Object * createObject(char * id, int j, int i, char * file_name, enum obj_type t
     return o;
 }
 void freeObject(Object *o){
-    /**
-     * libère la mémoire liée à l'objet o
-     */
     free(o);
 }
 
