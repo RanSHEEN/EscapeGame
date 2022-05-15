@@ -488,7 +488,7 @@ int init_game(Windows  * game_window){
 int init_character(View_app * app){
     app->Robot.SPEED = 60;
 
-    SDL_Rect temp = {0,320,70,100 };
+    SDL_Rect temp = {140,460,70,100 };
     app->Robot.Position = temp;
     app->Robot.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 70, 100);
 
@@ -628,6 +628,13 @@ int update_room(char * title, char * filename, View_app * view_app){
     return EXIT_SUCCESS;
 }
 
+void personStatic(View_app * app){
+    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+    SDL_RenderPresent(app->Game.renderer);
+}
+
+
 void personWalkRight(View_app * app){
 //    app->Robot.Position.x += 5;
 /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
@@ -656,7 +663,7 @@ void personWalkRight(View_app * app){
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
-
+   
     int i;
     for (i = 0; i<2; i++)
     {
@@ -664,15 +671,13 @@ void personWalkRight(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x < 1330) {
-            app->Robot.Position.x += 2.5;
-        }
-        SDL_Delay(60);
+        app->Robot.Position.x += 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 }
 
@@ -704,6 +709,8 @@ void personWalkLeft(View_app * app) {
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+    
+    
     int i;
     for (i = 0; i<2; i++)
     {
@@ -711,15 +718,13 @@ void personWalkLeft(View_app * app) {
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x > 145) {
-            app->Robot.Position.x -= 2.5;
-        }
-        SDL_Delay(60);
+	app->Robot.Position.x -= 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 }
 
@@ -752,6 +757,7 @@ void personWalkUp(View_app * app){
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
+       
     int i;
     for (i = 0; i<2; i++)
     {
@@ -759,15 +765,13 @@ void personWalkUp(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y > 195) {
-            app->Robot.Position.y -= 2.5;
-        }
-        SDL_Delay(60);
+        app->Robot.Position.y -= 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
 }
@@ -800,7 +804,8 @@ void personWalkDown(View_app * app){
     SDL_Texture *tex = SDL_CreateTextureFromSurface(app->Game.renderer,map);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
-
+    
+  
     int i;
     for (i = 0; i<2; i++)
     {
@@ -808,15 +813,13 @@ void personWalkDown(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y < 605) {
-            app->Robot.Position.y += 2.5;
-        }
-        SDL_Delay(60);
+        SDL_Delay(30);
+        app->Robot.Position.y += 2.5;
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
 
     }
 

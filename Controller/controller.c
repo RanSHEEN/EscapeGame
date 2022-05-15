@@ -95,8 +95,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
     showRoom(view_app,graph->current->R);
     personWalkDown(view_app);
-    move_down(p, 10);
-
+    move_down(p, 5);
+    
+    
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
@@ -106,11 +107,11 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        if (view_app->Robot.Position.x >= 145) {
+                        if(view_app->Robot.Position.x >= 145) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkLeft(view_app);
-                            move_left(p, 10);
+                            move_left(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
@@ -118,7 +119,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkRight(view_app);
-                            move_right(p, 10);
+                            move_right(p, 5);
                      }
 
                     }
@@ -127,7 +128,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkUp(view_app);
-                            move_up(p, 10);
+                            move_up(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
@@ -135,7 +136,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkDown(view_app);
-                            move_down(p, 10);
+                            move_down(p, 5);
                         }
                     }
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
@@ -143,8 +144,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
                             printf("interaction impossible\n");
-                            //this fonction can return 0 if you click button1 and 1 for button2
-                            create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
                             SolvedEnigma(graph);
@@ -178,7 +177,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     showRoom(view_app,graph->current->R);
                                     initRobot(view_app,flag,p);
                                     personWalkRight(view_app);
-                                    move_right(p, 10);
+                                    move_right(p, 5);
                                 }
                             }
                         }
