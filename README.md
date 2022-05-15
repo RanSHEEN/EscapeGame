@@ -1,23 +1,29 @@
-#Escape Game
+Escape Game
+=
 
-##Languages
+Languages
+-
 `C` `Makefile`
 
-##Commands
+Commands
+-
 To build the project : `make`   
 To execute the menu launcher : `./main`   
 To clean it all : `make clean`
 
-##Comments
+Comments
+-
 Tests unitaires ne fonctionnent pas encore sur tous les PC
 
-##Authors
+Authors
+-
 Marie QUELO     
 Margot BEDAT    
 Ran XIN     
 Kuilong LI
 
-##Special Thanks To
+Special Thanks To
+-
 Karol DESNOS (Academic Adviser)     
 Huichun ZHEN (Character Designer)   
 Robin DESPLANQUES   
