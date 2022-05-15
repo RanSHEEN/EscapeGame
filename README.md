@@ -1,16 +1,22 @@
 Escape Game
-Marie Margot Ran Kuilong
+=
+Authors
+-
+Marie QUELO     
+Margot BEDAT    
+Ran XIN     
+Kuilong LI
 
-To build the project :
-`make all
-`
+Languages
+-
+`C` `Makefile`
 
-To execute the menu launcher
-`./main
-`
+Commands
+-
+To build the project : `make`   
+To execute the menu launcher : `./main`   
+To clean it all : `make clean`
 
-To clean it all :
-`make clean`
-
-
+Comments
+-
 Tests unitaires ne fonctionnent pas encore sur tous les PC
