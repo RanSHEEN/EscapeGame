@@ -37,12 +37,10 @@ void showRoom (View_app * view_app,Room * room){
     for (int i = 0; i<room->nb_i; i++){
         for (int j= 0; j<room->nb_j; j++){
              if (room->framing[i][j].o != NULL){
-                 printf ("%d \n" , obj_id);
                  SDL_Rect temp = {room->framing[i][j].Pos_x+140,room->framing[i][j].Pos_y+140,room->w,room->h};
-                view_app->object[obj_id].position = temp;
-                 printf("%s \n",room->framing[i][j].o->file_name);
+                 view_app->object[obj_id].position = temp;
                  init_object(view_app,obj_id,room->framing[i][j].o->file_name);
-                obj_id ++;
+                 obj_id ++;
              }
         }
     }
@@ -57,15 +55,14 @@ void showRoom (View_app * view_app,Room * room){
     printf("%d \n", obj_id);
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
-            fprintf(stdout, "im not supposed to be here right now\n");
             SDL_Rect temp = {room->framing[2][8].Pos_x+140,room->framing[2][8].Pos_y+140,room->w,room->h};
             view_app->object[obj_id].position = temp;
-            printf("%s \n",room->framing[2][8].d->file_name);
             init_object(view_app,obj_id,room->framing[2][8].d->file_name);
             obj_id ++;
         }
     }
 }
+
 void initRobot(View_app *view_app,int flag,Personage * p){
     if (flag==1){
         p->y_position=320;
@@ -79,14 +76,16 @@ void initRobot(View_app *view_app,int flag,Personage * p){
         view_app->Robot.Position.x=140;
     }
 }
+
+
 int move_robot(View_app *view_app,VertexList * graph) {
     SDL_Point point;
+
     int isRunning = 1;
     int status = EXIT_FAILURE;
     SDL_Event ev;
     //Load Chunk of move
     Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_Sound.wav");
-    
     if (init_character(view_app) != EXIT_SUCCESS) {
         fprintf (stderr, "failed init character \n");
     }
@@ -95,18 +94,20 @@ int move_robot(View_app *view_app,VertexList * graph) {
     initRobot(view_app,0,p);
 
     showRoom(view_app,graph->current->R);
-
+    personWalkDown(view_app);
+    move_down(p, 5);
+    
+    
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
-                //Make the game can be close when playing in PLAY
-                case SDL_WINDOWEVENT:
-                    if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
-                        isRunning = SDL_FALSE;
-                    break;
+                case SDL_QUIT:
+                    isRunning = SDL_FALSE;
+                break;
+
                 case SDL_KEYDOWN:
                     if (ev.key.keysym.sym == SDLK_LEFT) {
-                        if (view_app->Robot.Position.x >= 145) {
+                        if(view_app->Robot.Position.x >= 145) {
                             //Play move sound
                             Play_MChunk(moveSound);
                             personWalkLeft(view_app);
@@ -119,7 +120,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             Play_MChunk(moveSound);
                             personWalkRight(view_app);
                             move_right(p, 5);
-                           
                      }
 
                     }
@@ -144,23 +144,21 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
                             printf("interaction impossible\n");
-                            //this fonction can return 0 if you click button1 and 1 for button2
-                            create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
-                            SolvedEnigma(graph); // quand l'enigme est résolue utiliser cette fonction pour changer les accès
+                            SolvedEnigma(graph);
+                            // quand l'enigme est résolue utiliser cette fonction pour changer les accès
                         }else if(k[2]==2){
                             printf("interaction with door\n");
-                            //this fonction can return 0 if you click button1 and 1 for button2
-                            	if(create_messageBox(view_app, "Robot" , "You want to pass this door ?","Yes","NO")==0){
+                            if(create_messageBox(view_app, "Robot" , "You want to pass this door ?","Yes","NO")==0){
                             	printf("pass the door! \n");
                             	}
                             //graph->current->R->framing[k[0]][k[1]].d->access=1;
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
-                                printf("you win\n");
-                                //this fonction can return 0 if you click button1 and 1 for button2
-                            	 //create_messageBox(view_app, "Robot" , "Look, there are something!","Yes","NO");
+                                if(create_messageBox(view_app, "Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
+                            		printf("you win\n");
+                            	}
                                 //TODO : fenetre GG + retour au menu
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
@@ -178,14 +176,13 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     //free_objects()
                                     showRoom(view_app,graph->current->R);
                                     initRobot(view_app,flag,p);
-                                    personWalkDown(view_app);
-                                    move_down(p, 5);
+                                    personWalkRight(view_app);
+                                    move_right(p, 5);
                                 }
                             }
                         }
                     }
                 break;
-
                 case SDL_MOUSEBUTTONDOWN:
                     if (ev.button.button == SDL_BUTTON_LEFT) {
                         //check if release & get coordinates
@@ -215,18 +212,15 @@ int main_controller(View_app *view_app){
     SDL_Point point;
     view_app->Actual=Menu;
     Play_Bgm(view_app);
-    
-
     if (init_menu(&view_app->Menu)!=EXIT_SUCCESS){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
-
-    // Boucle faisant tourner le menu
-    while(isRunning == SDL_TRUE){
+    //boucle faisant tourner le menu
+    while(isRunning==SDL_TRUE){
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
-                case SDL_KEYDOWN:
+            case SDL_KEYDOWN:
                     //Click 'm' to pause or replay the bgm IN MENU/RULES/CREDITS.
                     if (ev.key.keysym.sym == SDLK_m) {
                         if (create_messageBox(view_app, "BGM controller" , "Do you want to turn on/off the music ?","YES","NO") == 0){
@@ -239,27 +233,26 @@ int main_controller(View_app *view_app){
                     }
                     //'k' for volume DOWN
                     if (ev.key.keysym.sym == SDLK_k) {
-                        Mix_VolumeMusic(Mix_VolumeMusic(-1)-5);
+                       Mix_VolumeMusic(Mix_VolumeMusic(-1)-10);
                     }
                     //'l' for volume UP
                     if (ev.key.keysym.sym == SDLK_l) {
-                        Mix_VolumeMusic(Mix_VolumeMusic(-1)+5);
+                        Mix_VolumeMusic(Mix_VolumeMusic(-1)+10);
                     }
                     break;
 
-                    //make windows can be close
                 case SDL_WINDOWEVENT:
                     if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
                         isRunning = SDL_FALSE;
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    // Check if left click
+                    //check if left click
                     if (ev.button.button == SDL_BUTTON_LEFT) {
                         //check if release & get coordinates
                         point.x = ev.button.x;
                         point.y = ev.button.y;
-                        // Switch nowhere,return,rules,credits,play
+                        //switch nowhere,return,rules,credits,play
                         switch (view_app->Actual) {
                             case Menu :
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Menu.window)) {
@@ -267,6 +260,7 @@ int main_controller(View_app *view_app){
                                         //Click Sound
                                         Play_CChunk(view_app);
                                         //play
+
                                         free_Windows(&view_app->Menu);
                                         if (init_game(&view_app->Game) != EXIT_SUCCESS) {
                                             fprintf(stderr, "error init_Window : %s", SDL_GetError());
@@ -275,9 +269,10 @@ int main_controller(View_app *view_app){
                                         }
                                         view_app->Actual = Play;
                                         VertexList * graph = init_game_engine();
+                                        printf("ok\n");
                                         setOnFirstVertex(graph);
-                                        setOnNextVertex(graph);
                                         move_robot(view_app, graph);
+
                                         free_Windows(&view_app->Game);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -366,13 +361,10 @@ int main_controller(View_app *view_app){
         status=EXIT_FAILURE;
     }
     }
-
-    //free music
+    //free bgm
     Free_Bgm(view_app);
     status=EXIT_SUCCESS;
-
     return status;
 }
-
 
 

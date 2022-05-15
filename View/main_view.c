@@ -831,6 +831,13 @@ int update_room(char * title, char * filename, View_app * view_app){
     return EXIT_SUCCESS;
 }
 
+void personStatic(View_app * app){
+    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+    SDL_RenderPresent(app->Game.renderer);
+}
+
+
 void personWalkRight(View_app * app){
     SDL_Surface * map = IMG_Load("./img/background.jpg");
     SDL_Surface * img = IMG_Load("./img/RobotRightSide1.png");
@@ -852,7 +859,7 @@ void personWalkRight(View_app * app){
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
-
+   
     int i;
     for (i = 0; i<2; i++)
     {
@@ -860,15 +867,13 @@ void personWalkRight(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x < 1330) {
-            app->Robot.Position.x += 5;
-        }
-        SDL_Delay(60);
+        app->Robot.Position.x += 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
     SDL_DestroyTexture(texture);
@@ -907,15 +912,13 @@ void personWalkLeft(View_app * app) {
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.x > 145) {
-            app->Robot.Position.x -= 5;
-        }
-        SDL_Delay(60);
+	app->Robot.Position.x -= 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
     SDL_DestroyTexture(texture);
@@ -947,6 +950,7 @@ void personWalkUp(View_app * app){
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
 
+       
     int i;
     for (i = 0; i<2; i++)
     {
@@ -954,15 +958,13 @@ void personWalkUp(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y >= 195) {
-            app->Robot.Position.y -= 5;
-        }
-        SDL_Delay(60);
+        app->Robot.Position.y -= 2.5;
+        SDL_Delay(30);
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        SDL_Delay(60);
+        SDL_Delay(30);
     }
 
     SDL_DestroyTexture(texture);
@@ -993,7 +995,8 @@ void personWalkDown(View_app * app){
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
     SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
-
+    
+  
     int i;
     for (i = 0; i<2; i++)
     {
@@ -1001,10 +1004,8 @@ void personWalkDown(View_app * app){
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
         SDL_RenderPresent(app->Game.renderer);
-        if (app->Robot.Position.y < 605) {
-            app->Robot.Position.y += 5;
-        }
-        SDL_Delay(60);
+        SDL_Delay(30);
+        app->Robot.Position.y += 2.5;
         SDL_RenderClear(app->Game.renderer);
         SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
         SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);

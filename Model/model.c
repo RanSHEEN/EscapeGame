@@ -30,6 +30,7 @@ void move_up(Personage * p, int n){
      * (y_position décroissant)
      */
     p->y_position = p->y_position - n;
+    
 }
 void move_down(Personage * p, int n){
     /**
@@ -37,18 +38,24 @@ void move_down(Personage * p, int n){
      * (y_position croissant)
      */
     p->y_position = p->y_position + n;
+    
 }
 void move_left(Personage * p, int n){
     /**
      * Le personnage se déplace vers la gauche de n pixels
      * (x_position décroissant)
      */
-    p->x_position = p->x_position - n;
+   p->x_position = p->x_position - n;
+    
 }
 void move_right(Personage * p, int n){
     /**
      * Le personnage se déplace vers la droite de n pixels
      * (x_position croissant)
      */
-    p->x_position = p->x_position + n;
+   p->x_position = p->x_position + n;
+
+   
 }
+
+

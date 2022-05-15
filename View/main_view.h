@@ -222,7 +222,19 @@ void free_view (View_app *view_app);
  */
 int init_View();
 
+/**
+ * int Play_Bgm
+ * initialise, load and play the bgm
+ * @param View_app
+ * @return 0 if loading bgm successfully, 1 if not
+ */
 int Play_Bgm(View_app * app);
+
+/**
+ * void Free_Bgm
+ * free music and close mixer audio
+ * @param View_app
+ */
 void Free_Bgm(View_app * app);
 int Play_MChunk(Mix_Chunk *moveSound);
 

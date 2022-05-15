@@ -8,6 +8,7 @@
 #include "../View/main_view.h"
 #include "../Model/model.h"
 #include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL.h"
 
 /**
  * check le passage possible du personnage en fonction des cases occupées par les objtes (i*room.h -75))
