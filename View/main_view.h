@@ -7,7 +7,9 @@
 #define NB_OF_OBJECTS 10
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-//enumerations and structures
+#include "SDL2/SDL_events.h"
+#include "SDL2/SDL_mixer.h"
+
 
 /**
  * enumeration of possible windows types
@@ -45,12 +47,12 @@ typedef struct {
 }Windows;
 
 /**
- * character structure : a speed, a rectangle indicating its position, and its specific texture
+ * character structure : a speed, a rectangle indicating its position, and its specific texture and it's move Sound
  */
 typedef struct {
     int SPEED;
     SDL_Texture * texture;
-    SDL_Rect Position ;
+    SDL_Rect Position;
 } Character;
 
 /**
@@ -80,6 +82,7 @@ typedef struct {
  * an object table size of the total nb of objects
  * a popup, SDL rectangle acting as a popup window with a button
  * type Actual, current window type (menu,rules,game,credits)
+ * the BGM : bgm
  */
 typedef struct {
    Windows Menu;
@@ -90,17 +93,18 @@ typedef struct {
    popUp popUp;
    View_Object object [NB_OF_OBJECTS];
    enum type Actual;
+   Mix_Music *bgm;
 }View_app;
 
+
 /**
- * int init_SDL
+ * int init_SDL video and audio systems
  * deals with all sdl library initializing (here SDL and IMG)
  * @return 0 if no problem during initializing, 1 if goes wrong
  */
 int init_SDL();
 
 
-//windows
 
 /**
  * void get_Tittle
@@ -128,6 +132,7 @@ void get_filename (enum popType poptype, char  * filename);
  * @param app
  * @return 0 if no problem during menu initializing, 1 if goes wrong
  */
+ 
 int init_menu(Windows * escape_menu);
 /**
  * int init_credits
@@ -157,6 +162,7 @@ int init_rules(Windows * rules_window);
  */
 int init_game(Windows *game_window);
 
+
 /**
  * used in the controller, this function updates the gaming window background to a defined room
  * @param title
@@ -166,8 +172,12 @@ int init_game(Windows *game_window);
  */
 int update_room(char * title, char * filename, View_app * view_app);
 
+
 int display_popup(View_app * view_app, char * filename);
+
+
 //personnage
+
 /**
  * int init_character
  * initializes and displays the robot character, defines its position through a SDl rectangle as well as its speed and texture
@@ -195,7 +205,7 @@ void personWalkLeft(View_app * app);
 void personWalkUp(View_app * app);
 /**
  * void personWalkDown
- * updates the window with new character position down
+ * updates the window with new character position +5pxl down
  * @param app
  */
 void personWalkDown(View_app * app);
@@ -203,6 +213,7 @@ void personWalkDown(View_app * app);
 void personStatic(View_app * app);
 
 //objects
+
 /**
  * initializes and displays an object
  * only works in controller after linking object_view and object_model
@@ -219,8 +230,21 @@ int init_object(View_app * app, int nb, char * filename);
  */
 
 
+
 //freeing functions
+/**
+ * frees popup window texture
+ */
 void free_popup (popUp * popUp);
+
+/**
+ * void Free_Bgm
+ * free music and close mixer audio
+ * @param View_app
+ */
+void Free_Bgm(View_app * app);
+
+
 void free_objects (View_Object * object);
 /**
  * void free_character
@@ -249,4 +273,42 @@ void free_view (View_app *view_app);
  */
 int init_View();
 
+
+/**
+ * int Play_Bgm
+ * initialise, load and play the background music
+ * @param View_app
+ * @return 0 if loading bgm successfully, 1 if not
+ */
+int Play_Bgm(View_app * app);
+
+/**
+ * TODO
+ * @param moveSound
+ * @return
+ */
+int Play_MChunk(Mix_Chunk *moveSound);
+
+/**
+ * int Play_CChunk
+ * do animation and play sounds of 'Play' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Button_CChunk();
+
+
+/**
+ * int create_messageBox
+ * @param view_app
+ * @param title 
+ * @param message
+ * @param button1
+ * @param button2
+ * @return 0 if click button1, 1 if click button2
+ */
+int create_messageBox(char *title, char *message, char *button1, char *button2);
+
+
 #endif //PROJET_ESCAPE_MAIN_VIEW_H
+

@@ -7,6 +7,9 @@
 
 #include "../View/main_view.h"
 #include "../Model/model.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL.h"
+
 /**
  * check le passage possible du personnage en fonction des cases occupées par les objtes (i*room.h -75))
  * @param p
@@ -21,6 +24,7 @@ void showRoom (View_app * view_app,Room * room);
 void initRobot(View_app *view_app,int flag, Personage * p);
 int showPopUp (View_app * view_app, char * filename);
 int move_robot(View_app *view_app,VertexList * graph);
+
 int main_controller(View_app *view_app);
 
 

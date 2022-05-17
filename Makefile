@@ -1,7 +1,8 @@
 CC = gcc
 CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
-LDFLAGS= -L./lib -lAll -lSDL2 -lSDL2_image
+LDFLAGS= -L./lib -lAll -lSDL2 -lSDL2_image -lSDL2_mixer
 LDFLAGS_UT= -lcmocka
+
 
 all: make_model make_view make_controller main
 

@@ -13,12 +13,6 @@ VertexList * init_game_engine(){
 
     associateRoomWithVertexList(graph,room1);
     associateRoomWithVertexList(graph, room2);
-/*
-    printGraph(graph);
-    setOnFirstVertex(graph);
-    printRoom(graph->current->R);
-    setOnNextVertex(graph);
-    printRoom(room2);*/
     return graph;
 }
 
@@ -43,7 +37,6 @@ void showRoom (View_app * view_app,Room * room){
             obj_id ++;
         }
     }
-    printf("%d \n", obj_id);
     if (room->framing[2][8].d != NULL){
         if (strcmp(room->framing[2][8].d->id, "BRB")==0){
             SDL_Rect temp = {room->framing[2][8].Pos_x+140,room->framing[2][8].Pos_y+140,room->w,room->h};
@@ -74,7 +67,7 @@ int showPopUp (View_app * view_app, char * filename) {
     int isRunning = SDL_TRUE;
     int status = EXIT_FAILURE;
     char password[50];
-    char entry[50];
+    char entry[10];
     int i=0;
     strcpy(password, "WhatElse?");
 
@@ -107,17 +100,18 @@ int showPopUp (View_app * view_app, char * filename) {
                         i++;
                         if (i==9){
                             SDL_StopTextInput();
+                            printf ("%s \n", entry);
                             char log_password [9];
-                            for (int j = 1; j<10; j++){
-                                log_password[j-1]=entry[j];
-
-
+                            for (int j = 0; j<10; j++){
+                                log_password[j]=entry[j];
                             }
+                            printf("%s \n",log_password);
                             if (strncmp(log_password,password,9) != 0){
                                 //wrong
                                 char filename[50];
                                 strcpy(filename, "img/passwordWrong.png");
                                 display_popup(view_app,filename);
+                                status = EXIT_SUCCESS;
                             }else {
                                 //right
                                 char filename[50];
@@ -159,6 +153,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
             switch (ev.type) {
                 case SDL_QUIT:
                     isRunning = SDL_FALSE;
+                    status = EXIT_SUCCESS;
                 break;
 
                 case SDL_KEYDOWN:
@@ -190,12 +185,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     else if (ev.key.keysym.sym == SDLK_SPACE) {
                         SDL_StopTextInput();
                         int * k = isInteractionPossible(p,graph->current->R);
-                        printf("position : (%d;%d) \n",k[0],k[1]);
                         if (k[2]==0){
                             printf("interaction impossible\n");
                         }else if(k[2]==1){
                             printf("interaction with object\n");
-                            printf("object type %u", graph->current->R->framing[k[0]][k[1]].o->type);
                             switch (graph->current->R->framing[k[0]][k[1]].o->type){
                                 case clue :
                                     view_app->popUp.popType = Clue;
@@ -211,10 +204,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     get_filename(view_app->popUp.popType,filename2);
                                     if (showPopUp(view_app,filename2) == 2 ){
                                         personStatic(view_app);
-                                        SolvedEnigma(graph); // quand l'enigme est résolue utiliser cette fonction pour changer les accès
+                                        SolvedEnigma(graph); // quand l'enigme est résolue, cette fonction change les accès
                                     } else {
                                         personStatic(view_app);
-                                    };
+                                    }
                                     break;
 
                                 case Button :
@@ -223,14 +216,21 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             }
                         }else if(k[2]==2){
                             printf("interaction with door\n");
-                            //graph->current->R->framing[k[0]][k[1]].d->access=1;
+                            if(create_messageBox("Robot" , "You want to pass this door ?","Yes","NO")==0){
+                                printf("pass the door! \n");
+                            }
                             Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
                             if(strcmp(e->v_next->label,"win")==0){
                                 view_app->popUp.popType = Win;
                                 char filename2[50];
                                 get_filename(view_app->popUp.popType,filename2);
-                                showPopUp(view_app,filename2);
-                                isRunning= SDL_FALSE;
+                                if(create_messageBox("Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
+                                    showPopUp(view_app,filename2);
+                                    isRunning= SDL_FALSE;
+                                }else{
+                                    personStatic(view_app);
+                                }
+
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
                                 if(j==0){
@@ -260,7 +260,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         point.y = ev.button.y;
                         if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
                             if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
+                                Button_CChunk();
                                 isRunning=SDL_FALSE;
+                                status = EXIT_SUCCESS;
                             }
                         }
                     }
@@ -268,7 +270,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
-    status =EXIT_SUCCESS;
     return status;
 }
 
@@ -282,28 +283,52 @@ int main_controller(View_app *view_app){
         fprintf(stderr, "error init_Window : %s", SDL_GetError());
         return EXIT_FAILURE;
     }
+    Play_Bgm(view_app);
     //boucle faisant tourner le menu
     while(isRunning==SDL_TRUE){
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
+                case SDL_KEYDOWN:
+                    //Click 'm' to pause or replay the bgm IN MENU/RULES/CREDITS.
+                    if (ev.key.keysym.sym == SDLK_m) {
+                        if (create_messageBox("BGM controller" , "Do you want to turn on/off the music ?","YES","NO") == 0){
+                            if (Mix_PausedMusic() == 1) {
+                                Mix_ResumeMusic();
+                            }else{
+                                Mix_PauseMusic();
+                            }
+                        }
+                    }
+                    //'k' for volume DOWN
+                    if (ev.key.keysym.sym == SDLK_k) {
+                        Mix_VolumeMusic(Mix_VolumeMusic(-1)-10);
+                    }
+                    //'l' for volume UP
+                    if (ev.key.keysym.sym == SDLK_l) {
+                        Mix_VolumeMusic(Mix_VolumeMusic(-1)+10);
+                    }
+                    break;
+
                 case SDL_WINDOWEVENT:
                     if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
                         isRunning = SDL_FALSE;
+                    status = EXIT_SUCCESS;
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
                     //check if left click
                     if (ev.button.button == SDL_BUTTON_LEFT) {
-                        //check if release & get coordinates
+                        //get coordinates
                         point.x = ev.button.x;
                         point.y = ev.button.y;
-                        //switch nowhere,return,rules,credits,play
+                        //switch return,rules,credits,play,exit
                         switch (view_app->Actual) {
                             case Menu :
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Menu.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[0])) {
+                                        //button sound
+                                        Button_CChunk();
                                         //play
-
                                         free_Windows(&view_app->Menu);
 
                                         if (init_game(&view_app->Game) != EXIT_SUCCESS) {
@@ -326,6 +351,8 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Menu;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[1])) {
+                                        //button sound
+                                        Button_CChunk();
                                         //credits
                                         free_Windows(&view_app->Menu);
                                         //executing menu window initialisation and checking it worked
@@ -337,6 +364,8 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Credits;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[2])) {
+                                        //button sound
+                                        Button_CChunk();
                                         //rules
                                         free_Windows(&view_app->Menu);
                                         //executing menu window initialisation and checking it worked
@@ -348,16 +377,20 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Rules;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[3])) {
+                                        //button sound
+                                        Button_CChunk();
                                         //exit
                                         isRunning = 0;
+                                        status = EXIT_SUCCESS;
                                         free_Windows(&view_app->Menu);
-                                        return status = EXIT_SUCCESS;
                                     }
                                 }
                                 break;
                             case Rules:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Rules.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Rules.Return_b)) {
+                                        //button sound
+                                        Button_CChunk();
                                         free_Windows(&view_app->Rules);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -373,6 +406,9 @@ int main_controller(View_app *view_app){
                             case Credits:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Credits.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Credits.Return_b)) {
+                                        //button sound
+                                        Button_CChunk();
+
                                         free_Windows(&view_app->Credits);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {

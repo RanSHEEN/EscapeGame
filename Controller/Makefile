@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -pedantic-errors -g -MMD -I./Model -I./View
-LDFLAGS = -L../lib -lmodel -lview -lSDL2 -lSDL2_image
+LDFLAGS = -L./lib -lmodel -lview -lSDL2 -lSDL2_image -lSDL2_mixer
 DLIB = ../lib
 
 all: libcontroller.a
