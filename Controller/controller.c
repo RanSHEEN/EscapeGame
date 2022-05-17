@@ -132,7 +132,6 @@ int showPopUp (View_app * view_app, char * filename) {
     return status;
 }
 
-
 int move_robot(View_app *view_app,VertexList * graph) {
     SDL_Point point;
 
@@ -193,7 +192,13 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                 case clue :
                                     view_app->popUp.popType = Clue;
                                     char filename[50];
-                                    get_filename(view_app->popUp.popType,filename);
+                                    int i;
+                                    if (strcmp(graph->current->R->name, "Room1")==0 ){
+                                        i=1;
+                                    }else {
+                                        i=2;
+                                    }
+                                    get_filename(view_app->popUp.popType,filename,i);
                                     showPopUp(view_app,filename);
                                     personStatic(view_app);
                                     break;
@@ -201,7 +206,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                 case code :
                                     view_app->popUp.popType = Password;
                                     char filename2[50];
-                                    get_filename(view_app->popUp.popType,filename2);
+                                    get_filename(view_app->popUp.popType,filename2,0);
                                     if (showPopUp(view_app,filename2) == 2 ){
                                         personStatic(view_app);
                                         SolvedEnigma(graph); // quand l'enigme est résolue, cette fonction change les accès
@@ -223,7 +228,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             if(strcmp(e->v_next->label,"win")==0){
                                 view_app->popUp.popType = Win;
                                 char filename2[50];
-                                get_filename(view_app->popUp.popType,filename2);
+                                get_filename(view_app->popUp.popType,filename2,0);
                                 if(create_messageBox("Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
                                     showPopUp(view_app,filename2);
                                     isRunning= SDL_FALSE;
@@ -233,6 +238,9 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
+                                for (int i =0; i<graph->current->R->nb_obj; i++){
+                                    free_objects(view_app->object[i]);
+                                }
                                 if(j==0){
                                     printf("porte fermée\n");
                                 }else if (j==1){
@@ -245,6 +253,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                         graph->current->R->framing[2][0].d->access=1;
                                     }
                                     showRoom(view_app,graph->current->R);
+                                    initRobot(view_app,flag,p);
                                     initRobot(view_app,flag,p);
                                     personStatic(view_app);
                                 }
@@ -429,6 +438,7 @@ int main_controller(View_app *view_app){
         status=EXIT_FAILURE;
     }
     }
+    Free_Bgm(view_app);
     status=EXIT_SUCCESS;
     return status;
 }

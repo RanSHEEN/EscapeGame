@@ -119,7 +119,7 @@ void get_Tittle(enum type Type , char* title);
  * @param poptype
  * @param filename
  */
-void get_filename (enum popType poptype, char  * filename);
+void get_filename (enum popType poptype, char  * filename, int room);
 /**
  * int init_menu
  * initializes and displays the menu window,

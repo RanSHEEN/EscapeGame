@@ -44,7 +44,11 @@ void get_Tittle(enum type Type , char *title){
 void get_filename (enum popType poptype, char  * filename, int room){
     switch (poptype) {
         case Clue :
-            strcpy (filename, "img/clue.png");
+            if (room ==1){
+                strcpy (filename, "img/clue.png");
+            }else {
+                strcpy (filename, "img/clue2.png");
+            }
             break;
         case Password :
             strcpy (filename, "img/password.png");
