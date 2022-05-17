@@ -269,7 +269,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
-    //free model
+    freeStateMachine( graph);
     return status;
 }
 

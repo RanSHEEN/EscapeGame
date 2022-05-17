@@ -395,7 +395,7 @@ int SolvedEnigma(VertexList * g){
 }
 
 
-void freeGameEngine(VertexList * g){
+void freeStateMachine(VertexList * g){
     if (g!=NULL && !isEmptyVertexList(g)){
         setOnFirstVertex(g);
         while(g->current!=NULL){

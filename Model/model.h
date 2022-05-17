@@ -359,7 +359,7 @@ int changeStateAccess(VertexList * g);
 int changeRoom(VertexList *g,Door *d);
 int SolvedEnigma(VertexList * g);
 
-void freeGameEngine(VertexList * g);
+void freeStateMachine(VertexList * g);
 
 /*
  * Lecture de fichiers
