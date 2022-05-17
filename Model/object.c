@@ -7,15 +7,6 @@
 
 //Object
 Object * createObject(char * id, int j, int i, char * file_name, enum obj_type type){
-    /**
-     * Crée et alloue un objet
-     * id : indicateur de l'objet
-     * j: colonne dans le cadrillage de la Room
-     * i: ligne dans le cadrillage de la Room
-     * filename : chemin vers l'image de l'objet
-     * type : type d'objet
-     * la fonction retourne un pointeur vers l'objet
-     */
     Object * o= (Object *) malloc(sizeof(Object));
     o->id=id;
     o->file_name=file_name; //nom du png correspondant à l'image
@@ -25,23 +16,11 @@ Object * createObject(char * id, int j, int i, char * file_name, enum obj_type t
     return o;
 }
 void freeObject(Object *o){
-    /**
-     * libère la mémoire liée à l'objet o
-     */
     free(o);
 }
 
 //Door
 Door * createDoor(char * id, int j, int i, char * file_name){
-    /**
-     * Crée et alloue une porte
-     * id : indicateur de la porte
-     * j: colonne dans le cadrillage de la Room
-     * i: ligne dans le cadrillage de la Room
-     * filename : chemin vers l'image de la porte
-     * access : est par défaut initié à 0 (porte fermée)
-     * la fonction retourne un pointeur vers la porte
-     */
     Door* d= (Door *) malloc(sizeof(Door));
     d->id=id;
     d->file_name=file_name;
@@ -51,9 +30,6 @@ Door * createDoor(char * id, int j, int i, char * file_name){
     return d;
 }
 void changeAccess(Door *D){
-    /**
-     * passe le paramète access de la porte à 1 (porte ouverte)
-     */
     if (D->access==0){
         D->access=1;
     }else{
@@ -61,9 +37,6 @@ void changeAccess(Door *D){
     }
 }
 void freeDoor(Door * D){
-    /**
-     * libère la mémoire liée à la porte D
-     */
     free(D);
 }
 /*
@@ -73,16 +46,6 @@ void freeDoor(Door * D){
 */
 
 Room * CreateRoom(char * filename, char * name,int nb_obj){
-    /**
-     * crée et alloue une Room
-     * elle contient le cadrillage qui décrit ce qu'il y a dans la pièce
-     * name est le nom de la room
-     * filename est le chemin vers l'image de la pièce
-     * h est la hauteur d'une case du cadrillage
-     * w est la largeur d'une case du cadrillage
-     * nb_j est le nombre de case en largeur
-     * nb_i est le nombre de case en hauteur
-     */
     int nb_j = 9; //nombre de case en largeur
     int nb_i = 4;// nombre de case en hauteur
     int w=SCREEN_W/nb_j;//taille d'une case en largeur
@@ -99,15 +62,6 @@ Room * CreateRoom(char * filename, char * name,int nb_obj){
     return R;
 }
 frame ** CreateFraming(int nb_j, int nb_i, int w, int h){
-    /**
-     * Crée le cadrillage framing
-     * h est la hauteur d'une case du cadrillage
-     * w est la largeur d'une case du cadrillage
-     * nb_j est le nombre de case en largeur
-     * nb_i est le nombre de case en hauteur
-     * l'objet et la porte sont null par défaut
-     * Pos_x et Pos_Y sont les coordonées en haut à gauche en pixel d'une case (frame)
-     */
     frame ** tab=(frame **) malloc(sizeof(frame)*2);
     int i,j;
     for(i=0;i<nb_i;i++){
@@ -123,15 +77,6 @@ frame ** CreateFraming(int nb_j, int nb_i, int w, int h){
 }
 
 void printRoom(Room *R){
-    /**
-     * "print" le cadrillage de la room :
-     * Name
-     * Filename
-     * (x1,y1):door ou object id or vide ; (x2;y1):door ou object id or vide ; ... (xn;y1):door ou object id or vide
-     * (x1;y2):door ou object id or vide ; ...
-     * ...
-     * (x1;ym):door ou object id or vide ; (x2;ym):door ou object id or vide ; ... (xn;ym):door ou object id or vide
-     */
     printf("%s\n",R->name);
     printf("%s\n",R->filename);
     printf("%d\n",R->nb_obj);
@@ -156,10 +101,6 @@ void printRoom(Room *R){
 
 //delete framing
 void deleteFraming(frame ** tab){
-    /**
-     * libère les objets
-     * et libère la mémoire liée au cadrillage (framing)
-     */
     int i,j;
     int y = 4;// nombre de ligne du tableau
     for(i=0;i<y;i++){
@@ -177,20 +118,12 @@ void deleteFraming(frame ** tab){
     free((frame *)tab);
 }
 void deleteRoom(Room * R){
-    /**
-     * libère la mémoire liée à la Room
-     */
     deleteFraming(R->framing);
     free(R);
 }
 
 // ajouter un objet dans la pièce
 void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type type){
-    /**
-     * Ajout d'un objet (d'identifiant id, d'obj_type type et d'image file_name) dans la room (R) à la position (i,j)
-     * Un objet ne peut pas être créé là où il y a déjà une porte ou un objet
-     * Un objet ne peut pas être créé à l'extérieur de la pièce
-     */
     if(i==2 && (j==0 || j==8)){
         printf( "there is a door here\n");
     }else if(R->framing[i][j].o!=NULL){
@@ -202,10 +135,7 @@ void addObject(Room *R, char * id, int i, int j,char *file_name, enum obj_type t
 }
 
 void addDoor(Room *R, char * id, int i, int j,char *file_name){
-    /**
-     * Ajout d'une porte (d'identifiant id et d'image file_name) dans la room (R) à la position (i,j)
-     * Une porte ne peut pas être créé qu'en (2,0) ou en (2,8)
-     */
+
     if (i==2 && (j==0 || j==8)) {
         if(R->framing[i][j].d!=NULL) {
             printf("there is already a door here\n");
@@ -218,14 +148,6 @@ void addDoor(Room *R, char * id, int i, int j,char *file_name){
 }
 
 int * isInteractionPossible(Personage *p, Room * R){
-    /**
-     * Vérfie que le personnage peut interragir avec un objet
-     * et retourne un poiteur vers un tableau de int:
-     * [i ; j ; t]
-     * t = 0 si pas d'interraction
-     * t= 1 si interraction avec un objet
-     * t= 2 si interraction avec une porte
-     */
     int * res = (int *)malloc(sizeof(int)*3);
 
     res[0] = floor(p->y_position/R->h);
