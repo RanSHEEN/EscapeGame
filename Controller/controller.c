@@ -244,7 +244,6 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                         flag=0;
                                         graph->current->R->framing[2][0].d->access=1;
                                     }
-                                    //free_objects()
                                     showRoom(view_app,graph->current->R);
                                     initRobot(view_app,flag,p);
                                     personStatic(view_app);
@@ -270,6 +269,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
+    //free model
     return status;
 }
 

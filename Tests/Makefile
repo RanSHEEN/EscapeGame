@@ -38,4 +38,13 @@ clean:
 	rm -f *.gc*
 	rm -f Test_*
 
+
+clean_Test :
+	rm -f ../Tests/Coverage_Info/Model/*
+	rm -f ../Tests/Coverage_Info/*.png
+	rm -f ../Tests/Coverage_Info/*.html
+	rm -f ../Tests/Coverage_Info/*.css
+	rm -f ../Tests/Coverage_Info/*.info
+
+
 include $(wildcart .d)

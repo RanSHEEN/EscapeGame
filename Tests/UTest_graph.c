@@ -227,7 +227,22 @@ static void Test_Print(){
     deleteGraph(g);
 }
 
+static void Test_free(){
+    VertexList * graph = readGraphFile("../Files_descriptors/Graph.txt");
+    Room * room1 = readRoomFile("../Files_descriptors/Room1.txt");
+    Room * room2 = readRoomFile("../Files_descriptors/Room2.txt");
 
+    associateRoomWithVertexList(graph,room1);
+    associateRoomWithVertexList(graph, room2);
+
+    printGraph(graph);
+    setOnFirstVertex(graph);
+    printRoom(graph->current->R);
+    setOnNextVertex(graph);
+    printRoom(room2);
+
+    freeGameEngine(graph);
+}
 
 int main(void){
     /**
@@ -249,7 +264,8 @@ int main(void){
             cmocka_unit_test(test_VertexList_NotFound),
             cmocka_unit_test(test_VertexList_delete_toAnEmpty),
             cmocka_unit_test(test_VertexList_deleteFirst),
-            cmocka_unit_test(test_VertexList_addLink)
+            cmocka_unit_test(test_VertexList_addLink),
+            cmocka_unit_test(Test_free)
     };
     Test_Print();
     return cmocka_run_group_tests_name("test Graph",tests,NULL,NULL);
