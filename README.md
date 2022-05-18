@@ -3,13 +3,22 @@ Escape Game
 
 Program Languages
 -
-`C` `Makefile`
+`C` `Makefile` `SDL2`
 
 Commands
 -
-To build the project : `make`   
-To execute the menu launcher : `./main`   
-To clean it all : `make clean`
+To build the project : 
+```//Shell
+make
+```
+To execute the menu launcher : 
+```//Shell
+./main
+```
+To clean it all : 
+```//Shell
+make clean
+```
 
 Description
 -
@@ -19,9 +28,21 @@ The **game engine** follows the functioning of a state's machine and the **graph
 Coding files are seperated in **4 categories** : Model, View, Controller and Test (for the "tests unitaires") according to the **MVC program structure**.
 Compiling creates all the `.a` files of a static library in a specific `'lib'` file that is then called in the `main.c` file when launching the program.
 
-Installing SDL et Cmocka libraries
+Installing SDL and Cmocka Libraries
 -
-Ici, décrire comment installer la SDL sur un pc et Cmocka 
+###SDL
+System environment : `Ubuntu 16.04 x64`  
+To install `SDL2` in Linux/Unix, use the following commands in terminal :
+```//Shell  
+sudo apt-get install libsdl2-dev
+```     
+```//Shell
+sudo apt-get install libsdl2-image-dev
+``` 
+```//Shell
+sudo apt-get install libsdl2-mixer-dev
+```
+###CMocka
 
 
 Authors
@@ -31,7 +52,7 @@ Margot BEDAT
 Ran XIN     
 Kuilong LI
 
-Special Thanks To
+Special Thanks to
 -
 Karol DESNOS (Academic Adviser)     
 Huichun ZHEN (Character Designer)   
