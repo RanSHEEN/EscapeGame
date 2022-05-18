@@ -43,7 +43,22 @@ sudo apt-get install libsdl2-image-dev
 sudo apt-get install libsdl2-mixer-dev
 ```
 ###CMocka
-
+Install `CMocka` from official website : [Click Here To Download CMocka](https://cmocka.org/files/)         
+To uncompress the package : 
+```//Shell
+xz -d cmocka-1.1.1.tar.xz
+tar -xvf cmocka-1.1.1.tar
+```
+To install :    
+```//Shell
+cd cmocka-1.1.1
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+ldconfig
+```
 
 Authors
 -
