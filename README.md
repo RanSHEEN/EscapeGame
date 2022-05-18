@@ -28,21 +28,24 @@ The **game engine** follows the functioning of a state's machine and the **graph
 Coding files are seperated in **4 categories** : Model, View, Controller and Test (for the "tests unitaires") according to the **MVC program structure**.
 Compiling creates all the `.a` files of a static library in a specific `'lib'` file that is then called in the `main.c` file when launching the program.
 
-Installing SDL and Cmocka Libraries
+Installing SDL Libraries
 -
-###SDL
 System environment : `Ubuntu 16.04 x64`  
 To install `SDL2` in Linux/Unix, use the following commands in terminal :
 ```//Shell  
 sudo apt-get install libsdl2-dev
 ```     
+To install `SDL2-image` : 
 ```//Shell
 sudo apt-get install libsdl2-image-dev
 ``` 
+To install `SDL2-mixer` : 
 ```//Shell
 sudo apt-get install libsdl2-mixer-dev
 ```
-###CMocka
+
+Installing Cmocka Libraries
+-
 Install `CMocka` from official website : [Click Here To Download CMocka](https://cmocka.org/files/)         
 To uncompress the package : 
 ```//Shell
