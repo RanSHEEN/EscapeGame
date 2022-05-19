@@ -6,13 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controller.c" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/controller.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UTest.c" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UTest.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UTest_graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UTest_graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/main_view.c" beforeDir="false" afterPath="$PROJECT_DIR$/View/main_view.c" afterDir="false" />
-    </list>
+    <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +50,7 @@
       <force-push-target remote-path="origin" branch="develop" />
     </force-push-targets>
   </component>
-  <component name="RunManager" selected="Makefile Target.Run_Tests">
+  <component name="RunManager" selected="Makefile Target.clean_Test">
     <configuration name="Run_Tests" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Tests/Makefile" target="Run_Tests" workingDirectory="" arguments="">
         <envs />
@@ -89,8 +83,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.Run_Tests" />
         <item itemvalue="Makefile Target.clean_Test" />
+        <item itemvalue="Makefile Target.Run_Tests" />
         <item itemvalue="Makefile Target.clean (1)" />
         <item itemvalue="Makefile Target.clean" />
         <item itemvalue="Makefile Target.main" />
@@ -113,7 +107,7 @@
       <workItem from="1652804171452" duration="144000" />
       <workItem from="1652804321294" duration="1147000" />
       <workItem from="1652805843519" duration="591000" />
-      <workItem from="1652944669238" duration="2621000" />
+      <workItem from="1652944669238" duration="3202000" />
     </task>
     <servers />
   </component>

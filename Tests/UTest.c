@@ -8,6 +8,12 @@
 #include <setjmp.h>
 #include <cmocka.h>
 
+char * mem(char * in){
+    char * out = malloc((sizeof(char))*TMAX);
+    strcpy(out,in);
+    return out;
+}
+
 /*
  * Definitions des tests Personnages
  */
@@ -55,7 +61,7 @@ static void test_Object_Create(void **state){
     int x = 5;
     int y = 1;
     char * file_name = "file_Test";
-    Object * o = createObject( id, x, y, file_name,1);
+    Object * o = createObject( mem(id), x, y, mem(file_name),1);
     assert_int_equal(5,o->j);
     assert_int_equal(1,o->i);
     assert_string_equal("Object_1",o->id);
@@ -70,7 +76,7 @@ static void test_Door_Create(void **state){
     int x = 3;
     int y = 30;
     char * file_name = "file_Test_Door";
-    Door * D =createDoor( id, x, y, file_name);
+    Door * D =createDoor( mem(id), x, y, mem(file_name));
     assert_int_equal(3,D->j);
     assert_int_equal(30,D->i);
     assert_string_equal("Porte_1",D->id);
@@ -83,7 +89,7 @@ static void test_Door_Change_Access(void **state){
     int x = 3;
     int y = 30;
     char * file_name ="file_Test_Door";
-    Door * D =createDoor( id, x, y, file_name);
+    Door * D =createDoor( mem(id), x, y, mem(file_name));
     changeAccess(D);
     assert_int_equal(1,D->access);
     changeAccess(D);
@@ -111,7 +117,7 @@ static void test_CreateFraming(void **state){
 static void test_CreateRoom(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,2);
+    Room * R = CreateRoom(mem(filename),mem(name),2);
     assert_int_equal(4,R->nb_i);
     assert_int_equal(9,R->nb_j);
     assert_int_equal(140,R->w);
@@ -120,85 +126,85 @@ static void test_CreateRoom(void **state){
     assert_string_equal(filename,R->filename);
     assert_string_equal(name,R->name);
     assert_true(R->framing!=NULL);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 void Test_Empty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,2);
+    Room * R = CreateRoom(mem(filename),mem(name),2);
     printRoom(R);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 static void test_addObject(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,5);
+    Room * R = CreateRoom(mem(filename),mem(name),5);
     char * id ="obj";
-    addObject(R, id, 0, 0,filename, 1);
-    addObject(R, id, 3, 8,filename, 1);
-    addObject(R, id, 2, 0,filename, 1);
-    addObject(R, id, 2, 8,filename, 1);
+    addObject(R, mem(id), 0, 0,mem(filename), 1);
+    addObject(R, mem(id), 3, 8,mem(filename), 1);
+    addObject(R, mem(id), 2, 0,mem(filename), 1);
+    addObject(R, mem(id), 2, 8,mem(filename), 1);
     assert_true(R->framing[0][0].o!=NULL);
     assert_true(R->framing[3][8].o!=NULL);
     assert_true(R->framing[2][0].o==NULL);
     assert_true(R->framing[2][8].o==NULL);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 static void test_addDoor(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,0);
+    Room * R = CreateRoom(mem(filename),mem(name),0);
     char * id ="door";
-    addDoor(R,id,2, 0,filename);
-    addDoor(R,id,2, 8,filename);
-    addDoor(R,id,2, 2,filename);
+    addDoor(R,mem(id),2, 0,mem(filename));
+    addDoor(R,mem(id),2, 8,mem(filename));
+    addDoor(R,mem(id),2, 2,mem(filename));
     assert_true(R->framing[2][0].d!=NULL);
     assert_true(R->framing[2][8].d!=NULL);
     assert_true(R->framing[2][2].d==NULL);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 static void test_addDoorOnDoor(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,0);
+    Room * R = CreateRoom(mem(filename),mem(name),0);
     char * id_d1="door1";
     char * id_d2="door2";
-    addDoor(R,id_d1,2,0,filename);
-    addDoor(R,id_d2,2,0,filename);
+    addDoor(R,mem(id_d1),2,0,mem(filename));
+    addDoor(R,mem(id_d2),2,0,mem(filename));
     assert_string_equal(R->framing[2][0].d->id,id_d1);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 static void test_addObjectOnObject(void **state){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,2);
+    Room * R = CreateRoom(mem(filename),mem(name),2);
     char * id_o1="obj1";
     char * id_o2="obj2";
-    addObject(R, id_o1, 0, 0,filename, 1);
-    addObject(R, id_o2, 0, 0,filename, 1);
+    addObject(R, mem(id_o1), 0, 0,mem(filename), 1);
+    addObject(R, mem(id_o2), 0, 0,mem(filename), 1);
     assert_string_equal(R->framing[0][0].o->id,id_o1);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 void Test_notEmpty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
-    Room * R = CreateRoom(filename,name,4);
+    Room * R = CreateRoom(mem(filename),mem(name),4);
     char * id_d="door";
     char * id_o ="obj";
-    addDoor(R,id_d,2, 0,filename);
-    addDoor(R,id_d,2, 8,filename);
-    addObject(R, id_o, 0, 0,filename, 1);
-    addObject(R, id_o, 3, 8,filename, 1);
-    addObject(R, id_o, 3, 4,filename, 1);
-    addObject(R, id_o, 2, 2,filename, 1);
+    addDoor(R,mem(id_d),2, 0,mem(filename));
+    addDoor(R,mem(id_d),2, 8,mem(filename));
+    addObject(R, mem(id_o), 0, 0,mem(filename), 1);
+    addObject(R, mem(id_o), 3, 8,mem(filename), 1);
+    addObject(R, mem(id_o), 3, 4,mem(filename), 1);
+    addObject(R, mem(id_o), 2, 2,mem(filename), 1);
     printRoom(R);
-    deleteRoom(R);
+    //deleteRoom(R);
 }
 static void test_isInteractionPossible(void **state){
     Personage * p =CreatePersonage();
-    Room * R =CreateRoom("filename","name",1);
-    addObject(R,"obj",1,2,"filename",1);
-    addDoor(R,"door",2,0,"filename");
+    Room * R =CreateRoom(mem("filename"),mem("name"),1);
+    addObject(R,mem("obj"),1,2,mem("filename"),1);
+    addDoor(R,mem("door"),2,0,mem("filename"));
 
     //personnage sur l'objet
     p->x_position=315;
@@ -275,7 +281,7 @@ int main(void){
             cmocka_unit_test(test_addObjectOnObject),
             cmocka_unit_test(test_isInteractionPossible)
     };
-    //Test_notEmpty_PrintRoom();
+    Test_notEmpty_PrintRoom();
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
 
 }

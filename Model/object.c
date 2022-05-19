@@ -16,6 +16,8 @@ Object * createObject(char * id, int j, int i, char * file_name, enum obj_type t
     return o;
 }
 void freeObject(Object *o){
+    free(o->id);
+    free(o->file_name);
     free(o);
 }
 
@@ -37,6 +39,8 @@ void changeAccess(Door *D){
     }
 }
 void freeDoor(Door * D){
+    free(D->id);
+    free(D->file_name);
     free(D);
 }
 /*
@@ -105,10 +109,10 @@ void deleteFraming(frame ** tab){
     int y = 4;// nombre de ligne du tableau
     for(i=0;i<y;i++){
         for(j=0;j<9;j++){
-            if (tab[i][j].o==NULL){
+            if (tab[i][j].o!=NULL){
                 freeObject(tab[i][j].o);
             }
-            if (tab[i][j].d==NULL){
+            if (tab[i][j].d!=NULL){
                 freeDoor(tab[i][j].d);
             }
         }
