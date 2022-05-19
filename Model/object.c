@@ -122,6 +122,8 @@ void deleteFraming(frame ** tab){
     free((frame *)tab);
 }
 void deleteRoom(Room * R){
+    free(R->name);
+    free(R->filename);
     deleteFraming(R->framing);
     free(R);
 }

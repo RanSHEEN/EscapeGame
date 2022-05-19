@@ -7,7 +7,11 @@
 #include <setjmp.h>
 #include <cmocka.h>
 
-
+char * mem(char * in){
+    char * out = malloc((sizeof(char))*TMAX);
+    strcpy(out,in);
+    return out;
+}
 
 /*
  * def test Vertex List
@@ -28,7 +32,7 @@ static void test_VertexList_EmptyTrue(){
 static void test_VertexList_addEmpty1(){
     VertexList * g= initGraph();
     char * label="Vertex2";
-    insertFirstVertex(g,label,2);
+    insertFirstVertex(g,mem(label),2);
     assert_int_equal(g->first,g->last);
     assert_string_equal(g->first->label,"Vertex2");
     assert_string_equal(g->last->label,"Vertex2");
@@ -42,7 +46,7 @@ static void test_VertexList_addEmpty1(){
 static void test_VertexList_addEmpty2(){
     VertexList * g= initGraph();
     char * label="Vertex2";
-    insertLastVertex(g,label,2);
+    insertLastVertex(g,mem(label),2);
     assert_int_equal(g->first,g->last);
     assert_string_equal(g->first->label,"Vertex2");
     assert_string_equal(g->last->label,"Vertex2");
@@ -56,7 +60,7 @@ static void test_VertexList_addEmpty2(){
 static void test_VertexList_EmptyFalse(){
     VertexList * g= initGraph();
     char * label="Vertex2";
-    insertLastVertex(g,label,2);
+    insertLastVertex(g,mem(label),2);
     assert_true(!isEmptyVertexList(g));
     assert_false(isEmptyVertexList(g));
     deleteGraph(g);
@@ -65,8 +69,8 @@ static void test_VertexList_addFirst(){
     VertexList * g= initGraph();
     char * label2="Vertex2";
     char * label1="Vertex1";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex2");
     deleteGraph(g);
@@ -76,9 +80,9 @@ static void test_VertexList_addLast(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     assert_string_equal(g->first->label,"Vertex1");
     assert_string_equal(g->last->label,"Vertex3");
     deleteGraph(g);
@@ -88,9 +92,9 @@ static void test_VertexList_setFirst(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     setOnFirstVertex(g);
     assert_string_equal(g->current->label,"Vertex1");
     deleteGraph(g);
@@ -100,9 +104,9 @@ static void test_VertexList_setNext(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     setOnFirstVertex(g);
     setOnNextVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
@@ -113,9 +117,9 @@ static void test_VertexList_setLast(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     setOnLastVertex(g);
     assert_string_equal(g->current->label,"Vertex3");
     deleteGraph(g);
@@ -125,9 +129,9 @@ static void test_VertexList_setPrevious(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     setOnLastVertex(g);
     setOnPreviousVertex(g);
     assert_string_equal(g->current->label,"Vertex2");
@@ -139,9 +143,9 @@ static void test_VertexList_find(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     Vertex * v= findVertex(g,label2);
     assert_string_equal(v->label,"Vertex2");
     v= findVertex(g,label1);
@@ -155,8 +159,8 @@ static void test_VertexList_NotFound(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
     Vertex * v= findVertex(g,label3);
     assert_true(v==NULL);
     deleteGraph(g);
@@ -166,14 +170,14 @@ static void test_VertexList_addLink(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     char * obj1="Object1";
     char * obj2="Object2";
     Vertex * v =findVertex(g,label1);
-    addLink(v,findVertex(g,label2),obj1);
-    addLink(v,findVertex(g,label3),obj2);
+    addLink(v,findVertex(g,label2),mem(obj1));
+    addLink(v,findVertex(g,label3),mem(obj2));
     assert_string_equal(v->connect->first->obj_label,"Object1");
     assert_string_equal(v->connect->last->obj_label,"Object2");
     assert_string_equal(v->connect->first->v_next->label,"Vertex2");
@@ -185,9 +189,9 @@ static void test_VertexList_deleteFirst(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     deleteFirstVertex(g);
     assert_string_equal(g->first->label,"Vertex2");
     assert_string_equal(g->last->label,"Vertex3");
@@ -196,7 +200,7 @@ static void test_VertexList_deleteFirst(){
 static void test_VertexList_delete_toAnEmpty(){
     VertexList * g= initGraph();
     char * label="Vertex2";
-    insertLastVertex(g,label,2);
+    insertLastVertex(g,mem(label),2);
     deleteFirstVertex(g);
     assert_true(isEmptyVertexList);
     assert_true(g->first==NULL);
@@ -208,21 +212,21 @@ static void Test_Print(){
     char * label2="Vertex2";
     char * label1="Vertex1";
     char * label3="Vertex3";
-    insertFirstVertex(g,label2,2);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,2);
+    insertFirstVertex(g,mem(label2),2);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),2);
     char * obj1="Object1";
     char * obj2="Object2";
     char * obj3="Object3";
     char * obj4="Object4";
     char * obj5="Object5";
     char * obj6="Object6";
-    addLink(findVertex(g,label1),findVertex(g,label2),obj1);
-    addLink(findVertex(g,label1),findVertex(g,label3),obj2);
-    addLink(findVertex(g,label3),findVertex(g,label2),obj3);
-    addLink(findVertex(g,label3),findVertex(g,label1),obj4);
-    addLink(findVertex(g,label3),findVertex(g,label3),obj5);
-    addLink(findVertex(g,label1),findVertex(g,label1),obj6);
+    addLink(findVertex(g,label1),findVertex(g,label2),mem(obj1));
+    addLink(findVertex(g,label1),findVertex(g,label3),mem(obj2));
+    addLink(findVertex(g,label3),findVertex(g,label2),mem(obj3));
+    addLink(findVertex(g,label3),findVertex(g,label1),mem(obj4));
+    addLink(findVertex(g,label3),findVertex(g,label3),mem(obj5));
+    addLink(findVertex(g,label1),findVertex(g,label1),mem(obj6));
     printGraph(g);
     deleteGraph(g);
 }

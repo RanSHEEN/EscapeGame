@@ -126,14 +126,14 @@ static void test_CreateRoom(void **state){
     assert_string_equal(filename,R->filename);
     assert_string_equal(name,R->name);
     assert_true(R->framing!=NULL);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 void Test_Empty_PrintRoom(){
     char * filename= "file";
     char * name="room 1";
     Room * R = CreateRoom(mem(filename),mem(name),2);
     printRoom(R);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 static void test_addObject(void **state){
     char * filename= "file";
@@ -148,7 +148,7 @@ static void test_addObject(void **state){
     assert_true(R->framing[3][8].o!=NULL);
     assert_true(R->framing[2][0].o==NULL);
     assert_true(R->framing[2][8].o==NULL);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 static void test_addDoor(void **state){
     char * filename= "file";
@@ -161,7 +161,7 @@ static void test_addDoor(void **state){
     assert_true(R->framing[2][0].d!=NULL);
     assert_true(R->framing[2][8].d!=NULL);
     assert_true(R->framing[2][2].d==NULL);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 static void test_addDoorOnDoor(void **state){
     char * filename= "file";
@@ -172,7 +172,7 @@ static void test_addDoorOnDoor(void **state){
     addDoor(R,mem(id_d1),2,0,mem(filename));
     addDoor(R,mem(id_d2),2,0,mem(filename));
     assert_string_equal(R->framing[2][0].d->id,id_d1);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 static void test_addObjectOnObject(void **state){
     char * filename= "file";
@@ -183,7 +183,7 @@ static void test_addObjectOnObject(void **state){
     addObject(R, mem(id_o1), 0, 0,mem(filename), 1);
     addObject(R, mem(id_o2), 0, 0,mem(filename), 1);
     assert_string_equal(R->framing[0][0].o->id,id_o1);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 void Test_notEmpty_PrintRoom(){
     char * filename= "file";
@@ -198,7 +198,7 @@ void Test_notEmpty_PrintRoom(){
     addObject(R, mem(id_o), 3, 4,mem(filename), 1);
     addObject(R, mem(id_o), 2, 2,mem(filename), 1);
     printRoom(R);
-    //deleteRoom(R);
+    deleteRoom(R);
 }
 static void test_isInteractionPossible(void **state){
     Personage * p =CreatePersonage();
@@ -259,6 +259,8 @@ static void test_isInteractionPossible(void **state){
     assert_int_equal(res[0],1);
     assert_int_equal(res[1],0);
     assert_int_equal(res[2],0);
+
+    deleteRoom(R);
 }
 
 int main(void){

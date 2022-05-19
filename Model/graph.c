@@ -145,10 +145,12 @@ void deleteFirstEdge(EdgeList *c){
         c->first=NULL;
         c->current=NULL;
         c->last=NULL;
+        free(e->obj_label);
         free(e);
     }else{
         Edge * e = c->first;
         c->first=e->next_e;
+        free(e->obj_label);
         free(e);
     }
 }
@@ -329,11 +331,13 @@ void deleteFirstVertex(VertexList * g){
         g->first=NULL;
         g->current=NULL;
         g->last=NULL;
+        free(v->label);
         free(v);
     }else{
         Vertex *v  = g->first;
         g->first=v->next_v;
         g->first->previous_v=NULL;
+        free(v->label);
         free(v);
     }
 }

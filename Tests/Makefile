@@ -4,6 +4,10 @@ LDFLAGS= -lcmocka -coverage
 
 Run_Tests:Test_PDO Test_Edge Test_Graph Test_State Test_Files
 	./Test_PDO
+	./Test_State
+	./Test_Edge
+	./Test_Files
+	./Test_Graph
 	make -C ../Model get_coverage_infos
 	make clean
 

@@ -7,6 +7,11 @@
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
+char * mem(char * in){
+    char * out = malloc((sizeof(char))*TMAX);
+    strcpy(out,in);
+    return out;
+}
 
 /*
  * def change State tests
@@ -18,18 +23,18 @@ static VertexList * ForTest(){
     char * label1="Vertex1";
     char * label3="Vertex3";
     char * w="win";
-    insertFirstVertex(g,label2,1);
-    insertFirstVertex(g,label1,2);
-    insertLastVertex(g,label3,1);
-    insertLastVertex(g,w,0);
+    insertFirstVertex(g,mem(label2),1);
+    insertFirstVertex(g,mem(label1),2);
+    insertLastVertex(g,mem(label3),1);
+    insertLastVertex(g,mem(w),0);
     char * obj1="Door1";
     char * obj2="Door2";
     char * obj3="Door3";
     char * obj4="Door4";
-    addLink(findVertex(g,label1),findVertex(g,label2),obj1);
-    addLink(findVertex(g,label1),findVertex(g,label3),obj2);
-    addLink(findVertex(g,label3),findVertex(g,w),obj3);
-    addLink(findVertex(g,label2),findVertex(g,w),obj4);
+    addLink(findVertex(g,label1),findVertex(g,label2),mem(obj1));
+    addLink(findVertex(g,label1),findVertex(g,label3),mem(obj2));
+    addLink(findVertex(g,label3),findVertex(g,w),mem(obj3));
+    addLink(findVertex(g,label2),findVertex(g,w),mem(obj4));
     setOnFirstVertex(g);
     return g;
 }
@@ -46,9 +51,9 @@ static void Test_ChangeAccess_sup() {
 }
 static void Test_ChangeAccess_equal() {
     VertexList *g = ForTest();
-    g->first->R=CreateRoom("PATH","name",0);
-    addDoor(g->first->R,"Door1",2,0,"file_name");
-    addDoor(g->first->R,"Door2",2,8,"file_name");
+    g->first->R=CreateRoom(mem("PATH"),mem("name"),0);
+    addDoor(g->first->R,mem("Door1"),2,0,mem("file_name"));
+    addDoor(g->first->R,mem("Door2"),2,8,mem("file_name"));
     setOnFirstVertex(g);
     g->current->enigma_solved=1;
     SolvedEnigma(g);
@@ -58,9 +63,9 @@ static void Test_ChangeAccess_equal() {
 
 static void Test_Change_Room() {
     VertexList *g = ForTest();
-    g->first->R=CreateRoom("PATH","name",0);
-    addDoor(g->first->R,"Door1",2,0,"file_name");
-    addDoor(g->first->R,"Door2",2,8,"file_name");
+    g->first->R=CreateRoom(mem("PATH"),mem("name"),0);
+    addDoor(g->first->R,mem("Door1"),2,0,mem("file_name"));
+    addDoor(g->first->R,mem("Door2"),2,8,mem("file_name"));
     //printRoom(g->first->R);
     setOnFirstVertex(g);
     SolvedEnigma(g);
