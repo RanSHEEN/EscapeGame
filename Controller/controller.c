@@ -146,7 +146,10 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
     showRoom(view_app,graph->current->R);
     personStatic(view_app);
-
+    
+    //Load Chunk of move
+    Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_Sound.wav");
+    
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
             switch (ev.type) {
@@ -159,6 +162,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     if (ev.key.keysym.sym == SDLK_LEFT) {
                     	SDL_EventState(SDL_KEYDOWN,SDL_IGNORE);
                         if (view_app->Robot.Position.x >= 145) {
+                            //Play move sound
+                            Play_MChunk(moveSound);
                             personWalkLeft(view_app);
                             move_left(p, 5);
                         }
@@ -167,6 +172,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     else if (ev.key.keysym.sym == SDLK_RIGHT) {
                     	SDL_EventState(SDL_KEYDOWN,SDL_IGNORE);
                         if (view_app->Robot.Position.x <= 1330) {
+                            Play_MChunk(moveSound);
                             personWalkRight(view_app);
                             move_right(p, 5);
                      }
@@ -175,14 +181,16 @@ int move_robot(View_app *view_app,VertexList * graph) {
                     else if (ev.key.keysym.sym == SDLK_UP) {
                     	SDL_EventState(SDL_KEYDOWN,SDL_IGNORE);
                         if (view_app->Robot.Position.y >= 195) {
+                            Play_MChunk(moveSound);
                             personWalkUp(view_app);
                             move_up(p, 5);
                         }
                         SDL_EventState(SDL_KEYDOWN,SDL_ENABLE);
                     }
                     else if (ev.key.keysym.sym == SDLK_DOWN) {
-                        if (view_app->Robot.Position.y <= 605) {
                         SDL_EventState(SDL_KEYDOWN,SDL_IGNORE);
+                        if (view_app->Robot.Position.y <= 605) {
+                            Play_MChunk(moveSound);
                             personWalkDown(view_app);
                             move_down(p, 5);
                         }
@@ -275,7 +283,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         point.y = ev.button.y;
                         if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
                             if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
-                                Button_CChunk();
+                                Back_CChunk_Game(view_app);
                                 isRunning=SDL_FALSE;
                                 status = EXIT_SUCCESS;
                             }
@@ -343,8 +351,8 @@ int main_controller(View_app *view_app){
                             case Menu :
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Menu.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[0])) {
-                                        //button sound
-                                        Button_CChunk();
+                                        //Click Sound
+                                        Play_CChunk(view_app);
                                         //play
                                         free_Windows(&view_app->Menu);
 
@@ -368,8 +376,8 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Menu;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[1])) {
-                                        //button sound
-                                        Button_CChunk();
+                                        //Click Sound
+                                        Credits_CChunk(view_app);
                                         //credits
                                         free_Windows(&view_app->Menu);
                                         //executing menu window initialisation and checking it worked
@@ -381,8 +389,8 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Credits;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[2])) {
-                                        //button sound
-                                        Button_CChunk();
+                                        //Click Sound
+                                        Rules_CChunk(view_app);
                                         //rules
                                         free_Windows(&view_app->Menu);
                                         //executing menu window initialisation and checking it worked
@@ -394,8 +402,8 @@ int main_controller(View_app *view_app){
                                         view_app->Actual = Rules;
                                     }
                                     if (SDL_PointInRect(&point, &view_app->Menu.my_buttons[3])) {
-                                        //button sound
-                                        Button_CChunk();
+                                        //Click Sound
+                                        Exit_CChunk(view_app);
                                         //exit
                                         isRunning = 0;
                                         status = EXIT_SUCCESS;
@@ -406,8 +414,8 @@ int main_controller(View_app *view_app){
                             case Rules:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Rules.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Rules.Return_b)) {
-                                        //button sound
-                                        Button_CChunk();
+                                        //Click Sound
+                                        Back_CChunk_Rules(view_app);
                                         free_Windows(&view_app->Rules);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {
@@ -423,9 +431,8 @@ int main_controller(View_app *view_app){
                             case Credits:
                                 if (ev.window.windowID == SDL_GetWindowID(view_app->Credits.window)) {
                                     if (SDL_PointInRect(&point, &view_app->Credits.Return_b)) {
-                                        //button sound
-                                        Button_CChunk();
-
+                                        //Click Sound
+                                        Back_CChunk_Credits(view_app);
                                         free_Windows(&view_app->Credits);
                                         //executing menu window initialisation and checking it worked
                                         if (init_menu(&view_app->Menu) != EXIT_SUCCESS) {

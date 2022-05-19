@@ -245,6 +245,7 @@ void free_popup (popUp * popUp);
 void Free_Bgm(View_app * app);
 
 
+
 void free_objects (View_Object * object);
 /**
  * void free_character
@@ -283,11 +284,62 @@ int init_View();
 int Play_Bgm(View_app * app);
 
 /**
- * TODO
- * @param moveSound
- * @return
+ * int Play_MChunk
+ * play sounds when robot is moving
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
  */
 int Play_MChunk(Mix_Chunk *moveSound);
+
+/**
+ * int Play_CChunk
+ * do animation and play sounds of 'Play' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Play_CChunk(View_app * app);
+/**
+ * int Credits_CChunk
+ * do animation and play sounds of 'Credits' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Credits_CChunk(View_app * app);
+/**
+ * int Rules_CChunk
+ * do animation and play sounds of 'Rules' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Rules_CChunk(View_app * app);
+/**
+ * int Exit_CChunk
+ * do animation and play sounds of 'Exit' button
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Exit_CChunk(View_app * app);
+/**
+ * int Back_CChunk_Rules
+ * do animation and play sounds of 'Back' button in 'Rules'
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Back_CChunk_Rules(View_app * app);
+/**
+ * int Back_CChunk_Credits
+ * do animation and play sounds of 'Back' button in 'Credits'
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Back_CChunk_Credits(View_app * app);
+/**
+ * int Back_CChunk_Game
+ * do animation and play sounds of 'Back' button in main game
+ * @param view_app
+ * @return 0 if no problem during SDL initializing, 1 if goes wrong
+ */
+int Back_CChunk_Game(View_app * app);
 
 /**
  * int Play_CChunk
