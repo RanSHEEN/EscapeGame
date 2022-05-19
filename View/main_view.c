@@ -681,32 +681,182 @@ void personStatic(View_app * app){
     SDL_RenderPresent(app->Game.renderer);
 }
 void personWalkRight(View_app * app){
-    app->Robot.Position.x+= 5;
-    /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotRightSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotRightSide2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+    int i;
+    for (i = 0; i<1; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        app->Robot.Position.x += 5;
+        SDL_Delay(30);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(30);
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture2);
+    SDL_FreeSurface(map);
+    SDL_FreeSurface(img);
+    SDL_FreeSurface(img2);
 }
 void personWalkLeft(View_app * app) {
-    app->Robot.Position.x-= 5;
-    /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotLeftSide1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotLeftSide2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+    int i;
+    for (i = 0; i<1; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        app->Robot.Position.x -= 5;
+        SDL_Delay(30);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(30);
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture2);
+    SDL_FreeSurface(map);
+    SDL_FreeSurface(img);
+    SDL_FreeSurface(img2);
 }
 void personWalkUp(View_app * app){
-    app->Robot.Position.y-= 5;
-    /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotBack1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotBack2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+
+       
+    int i;
+    for (i = 0; i<1; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        app->Robot.Position.y -= 5;
+        SDL_Delay(30);
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(30);
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture2);
+    SDL_FreeSurface(map);
+    SDL_FreeSurface(img);
+    SDL_FreeSurface(img2);
 }
 void personWalkDown(View_app * app){
-    app->Robot.Position.y+= 5;
-    /* La texture est la cible de rendu, maintenant, on dessine sur la texture. */
-    SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
-    SDL_RenderPresent(app->Game.renderer);
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
+    SDL_Surface * img2 = IMG_Load("./img/RobotFront2.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    if (img2 == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_Quit();
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+    SDL_Texture *texture2 = SDL_CreateTextureFromSurface(app->Game.renderer,img2);
+    
+  
+    int i;
+    for (i = 0; i<1; i++)
+    {
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(30);
+        app->Robot.Position.y += 5;
+        SDL_RenderClear(app->Game.renderer);
+        SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
+        SDL_RenderCopy(app->Game.renderer, texture2, NULL, &app->Robot.Position);
+        SDL_RenderPresent(app->Game.renderer);
+        SDL_Delay(30);
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture2);
+    SDL_FreeSurface(map);
+    SDL_FreeSurface(img);
+    SDL_FreeSurface(img2);
 }
 int init_View(){
     //executing SDL initialisation and checking it worked
