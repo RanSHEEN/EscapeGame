@@ -239,7 +239,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                             }else{
                                 int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
                                 for (int i =0; i<graph->current->R->nb_obj; i++){
-                                    free_objects(view_app->object[i]);
+                                    free_objects(&view_app->object[i]);
                                 }
                                 if(j==0){
                                     printf("porte fermée\n");
@@ -278,7 +278,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
-    freeStateMachine( graph);
+    DeletePersonage(p);
+    freeStateMachine(graph);
     return status;
 }
 

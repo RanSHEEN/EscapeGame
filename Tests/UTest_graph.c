@@ -241,7 +241,7 @@ static void Test_free(){
     setOnNextVertex(graph);
     printRoom(room2);
 
-    freeGameEngine(graph);
+    freeStateMachine(graph);
 }
 
 int main(void){

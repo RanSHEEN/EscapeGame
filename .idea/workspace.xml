@@ -7,13 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/controller.c" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/controller.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UTest.c" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UTest.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/UTest_graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/UTest_graph.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/main_view.c" beforeDir="false" afterPath="$PROJECT_DIR$/View/main_view.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/main_view.h" beforeDir="false" afterPath="$PROJECT_DIR$/View/main_view.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,25 +40,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="cf.first.check.clang-format" value="false" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
   <component name="Push.Settings">
     <force-push-targets>
       <force-push-target remote-path="origin" branch="develop" />
     </force-push-targets>
   </component>
-  <component name="RunManager" selected="Makefile Target.clean">
+  <component name="RunManager" selected="Makefile Target.Run_Tests">
+    <configuration name="Run_Tests" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Tests/Makefile" target="Run_Tests" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="clean (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Tests/Makefile" target="clean" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/View/Makefile" target="clean" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="clean_Test" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Tests/Makefile" target="clean_Test" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -73,6 +89,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.Run_Tests" />
+        <item itemvalue="Makefile Target.clean_Test" />
+        <item itemvalue="Makefile Target.clean (1)" />
         <item itemvalue="Makefile Target.clean" />
         <item itemvalue="Makefile Target.main" />
       </list>
@@ -94,6 +113,7 @@
       <workItem from="1652804171452" duration="144000" />
       <workItem from="1652804321294" duration="1147000" />
       <workItem from="1652805843519" duration="591000" />
+      <workItem from="1652944669238" duration="2621000" />
     </task>
     <servers />
   </component>

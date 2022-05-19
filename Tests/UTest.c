@@ -51,10 +51,10 @@ static void test_Personnage_move_left(void **state){
  * def test object
  */
 static void test_Object_Create(void **state){
-    char id[] = "Object_1";
+    char * id = "Object_1";
     int x = 5;
     int y = 1;
-    char file_name[] = "file_Test";
+    char * file_name = "file_Test";
     Object * o = createObject( id, x, y, file_name,1);
     assert_int_equal(5,o->j);
     assert_int_equal(1,o->i);
@@ -66,10 +66,10 @@ static void test_Object_Create(void **state){
  * def test Door
  */
 static void test_Door_Create(void **state){
-    char id[] = "Porte_1";
+    char * id ="Porte_1";
     int x = 3;
     int y = 30;
-    char file_name[] = "file_Test_Door";
+    char * file_name = "file_Test_Door";
     Door * D =createDoor( id, x, y, file_name);
     assert_int_equal(3,D->j);
     assert_int_equal(30,D->i);
@@ -79,10 +79,10 @@ static void test_Door_Create(void **state){
     freeDoor(D);
 }
 static void test_Door_Change_Access(void **state){
-    char id[] = "Porte_1";
+    char * id = "Porte_1";
     int x = 3;
     int y = 30;
-    char file_name[] = "file_Test_Door";
+    char * file_name ="file_Test_Door";
     Door * D =createDoor( id, x, y, file_name);
     changeAccess(D);
     assert_int_equal(1,D->access);
@@ -275,7 +275,7 @@ int main(void){
             cmocka_unit_test(test_addObjectOnObject),
             cmocka_unit_test(test_isInteractionPossible)
     };
-    Test_notEmpty_PrintRoom();
+    //Test_notEmpty_PrintRoom();
     return cmocka_run_group_tests_name("test Objet",tests_object_Door_Personnage,NULL,NULL);
 
 }

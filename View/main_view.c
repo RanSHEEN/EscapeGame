@@ -68,7 +68,7 @@ void free_Windows(Windows * window){
 void free_character(Character * Robot){
     SDL_DestroyTexture(Robot->texture);
 }
-void free_object (View_Object * object){
+void free_objects (View_Object * object){
     SDL_DestroyTexture(object->texture);
 }
 
@@ -85,7 +85,7 @@ void free_view (View_app *view_app){
         free_character(&view_app->Robot);
         Free_Bgm(view_app);
         for (int i=0 ; i<=NB_OF_OBJECTS; i++){
-            free_object(&view_app->object[i]);
+            free_objects(&view_app->object[i]);
         }
         free_popup(&view_app->popUp);
     }
