@@ -6,10 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Model/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Model/graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/model.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/model.h" afterDir="false" />
-    </list>
+    <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
