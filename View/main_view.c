@@ -163,6 +163,7 @@ int Play_CChunk(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/PlayButtonDark.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -195,6 +196,7 @@ int Credits_CChunk(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/CreditsButtonDark.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -227,6 +229,7 @@ int Rules_CChunk(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/RulesButtonDark.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -259,6 +262,7 @@ int Exit_CChunk(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/ExitButtonDark.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -291,6 +295,7 @@ int Back_CChunk_Rules(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/BackButtonDark_Menu.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -323,6 +328,7 @@ int Back_CChunk_Credits(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/BackButtonDark_Menu.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -355,6 +361,7 @@ int Back_CChunk_Game(View_app * app){
     SDL_Surface * darkButton = IMG_Load("./img/BackButtonDark_Game.png");
     if (darkButton == NULL) {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(darkButton);
         SDL_Quit();
         return EXIT_FAILURE;
     }
@@ -890,8 +897,27 @@ int display_popup(View_app * app, char * filename){
     return EXIT_SUCCESS;
 }
 void personStatic(View_app * app){
+    SDL_Surface * map = IMG_Load("./img/background.jpg");
+    SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
+    if (map == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
+        SDL_Quit();
+    }
+    if (img == NULL)
+    {
+        printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
+        SDL_Quit();
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
+
+    SDL_RenderClear(app->Game.renderer);
     SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
+    SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
     SDL_RenderPresent(app->Game.renderer);
 }
 void personWalkRight(View_app * app){
@@ -901,16 +927,22 @@ void personWalkRight(View_app * app){
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img2 == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
@@ -945,16 +977,22 @@ void personWalkLeft(View_app * app) {
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img2 == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
@@ -989,16 +1027,22 @@ void personWalkUp(View_app * app){
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img2 == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
@@ -1034,16 +1078,22 @@ void personWalkDown(View_app * app){
     if (map == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     if (img2 == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
+        SDL_FreeSurface(map);
+        SDL_FreeSurface(img);
         SDL_Quit();
     }
     SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
