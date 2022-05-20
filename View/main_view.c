@@ -719,7 +719,7 @@ int init_game(Windows  * game_window){
 int init_character(View_app * app){
     app->Robot.SPEED = 60;
 
-    SDL_Rect temp = {140,460,70,100 };
+    SDL_Rect temp = {140,460,100,100 };
     app->Robot.Position = temp;
     app->Robot.texture = SDL_CreateTexture(app->Game.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 70, 100);
 
@@ -731,7 +731,7 @@ int init_character(View_app * app){
     SDL_Surface *surface2 = NULL;
     SDL_Texture *texture2 = NULL;
 
-    surface2 = IMG_Load("img/Robot.png");
+    surface2 = IMG_Load("img/RobotFront1.png");
     if (NULL == surface2) {
         fprintf(stderr, "Erreur IMG_load: %s", SDL_GetError());
         return EXIT_FAILURE;

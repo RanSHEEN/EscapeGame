@@ -446,12 +446,12 @@ int main_controller(View_app *view_app){
                                 break;
                             case Play:
                                 break;
+                        }
+                    break;
                     }
-                break;
-             }
-        }
+            }
         status=EXIT_FAILURE;
-    }
+        }
     }
     Free_Bgm(view_app);
     status=EXIT_SUCCESS;
