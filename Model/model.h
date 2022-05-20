@@ -380,7 +380,7 @@ struct VertexList{
     Vertex *last;
 };
 /*
- * Fonction Gestion de Liste Edge List
+ * Fonction Gestion de Liste Vertex
  */
 /**
      * crée et alloue un graph (VertexList)
@@ -445,7 +445,7 @@ void setOnPreviousVertex(VertexList *g);
  */
 Vertex * findVertex(VertexList * g,char * label);
 /*
- * Print Edge List
+ * Print Vertex List
  */
 /**print the graph:
      * label :
@@ -457,7 +457,7 @@ Vertex * findVertex(VertexList * g,char * label);
 void printGraph(VertexList * g);
 
 /*
- * Delete Edge
+ * Delete Vertex
  */
 /**
      * supprime le premier Vertex de la VertexList
@@ -471,16 +471,34 @@ void deleteFirstVertex(VertexList * g);
      */
 void deleteGraph(VertexList * g);
 
-/*
+/**
  * State Change
  * Notre graph s'apparente à uns machine d'état
  * quand on résout les énigmes de l'étape on change d'état
  */
 
+/**
+     * Vérifie que le changement de salle peut être autorisée,
+     * et si c'est le cas change les accès des porte de la salle
+     * @param g VertexList, graph du jeu dans lequel on évolue
+     */
 int changeStateAccess(VertexList * g);
+/**
+     * Si la porte est déverrouillée, change la salle (Vertex) actuel à la salle à laquele la porte est liée
+     * @param g VertexList, graph du jeu dans lequel on évolue
+     * @param d Porte avec laquelle on interragit
+     */
 int changeRoom(VertexList *g,Door *d);
+/**
+     * augmente de 1 le nombre d'énigme résolu et appelle la fonction state change pour vérifier si le changement d'état est possible
+     * @param g VertexList, graph du jeu dans lequel on évolue
+     */
 int SolvedEnigma(VertexList * g);
-
+/**
+ * Libère la mémoire liée au jeu
+ * en libérant les salle et le Graph
+ * @param g VertexList, graph du jeu dans lequel on évolue
+ */
 void freeStateMachine(VertexList * g);
 
 /*

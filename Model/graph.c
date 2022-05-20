@@ -72,10 +72,6 @@ void setOnNextEdge(EdgeList *c){
 }
 
 Edge * findEdge(EdgeList *c, char *obj){
-    /**
-     * cherche dans la liste d'edge et retourne l'edge de label donné en paramètre
-     * return NULL si elle n'a pas trouvé l'edge
-     */
     if (c!=NULL && !isEmptyEdgeList(c)){
         setOnFirstEdge(c);
         while(c->current!=NULL){
@@ -263,16 +259,13 @@ void deleteGraph(VertexList * g){
 }
 
 
-/**
+/*
  * State Change
  * Notre graph s'apparente à uns machine d'état dont les état sont des salles
  * quand on résout les énigmes de l'étape on change d'état
  */
 
 int changeStateAccess(VertexList * g){
-    /**
-     * Vérifie que le changement de salle peut être autorisée, et si c'est le cas change de salle
-     */
     //return 0 si état inchangé, 1 si il change, -1 si erreur
     //Changement d'état autorisé? (enigma nb==solved)
     if(g->current->enigma_solved<g->current->enigma_number){
@@ -300,9 +293,6 @@ int changeRoom(VertexList *g,Door *d){
 }
 
 int SolvedEnigma(VertexList * g){
-    /**
-     * augmente de 1 le nombre d'énigme résolu et appelle la fonction state change pour vérifier si le changement d'état est possible
-     */
     g->current->enigma_solved++;
     int c = changeStateAccess(g);
     return c;
