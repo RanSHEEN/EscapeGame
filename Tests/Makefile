@@ -39,7 +39,7 @@ clean:
 	rm -f Test_*
 
 
-clean_Test :
+clean_coverage :
 	rm -f ../Tests/Coverage_Info/Model/*
 	rm -f ../Tests/Coverage_Info/*.png
 	rm -f ../Tests/Coverage_Info/*.html

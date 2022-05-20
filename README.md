@@ -9,7 +9,7 @@ Commands
 -
 To build the project : 
 ```//Shell
-make
+make all
 ```
 To execute the menu launcher : 
 ```//Shell
@@ -61,6 +61,22 @@ cmake ..
 make
 sudo make install
 ldconfig
+```
+
+Code Test
+-
+Before running Test, install CMocka library (refer to the precedent subsection).
+
+Open Terminal in the folder Tests and run the unit Tests:
+```//Shell
+make Run_Tests
+```
+
+When the tests are run, you can find the coverage infos in the folder Coverage_Info in the index.html document.
+
+To clean the coverages-info :
+```//Shell
+make clean_coverage 
 ```
 
 Authors
