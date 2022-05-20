@@ -505,16 +505,55 @@ void freeStateMachine(VertexList * g);
  * Lecture de fichiers
  */
 //open close
+/**
+     * ouvre un fichier en mode lecture
+     * @param nom chemin vers le fichier à lire
+     */
 FILE *openFileRead(char *nom);
+/**
+     * ferme un fichier
+     * @param f fichier à fermer
+     */
 void closeFile(FILE *f);
 //read line
+/**
+     * lit une ligne et la stock dans le tableau tampon
+     * @param f fichier lu
+     * @param tampon chaine de caractères qui contient la ligne lu
+     */
 char * readFileLine(FILE *f, char *tampon);
 //read Room file
+/**
+     * Ouvre, lit le fichier au chemin PATH, et crée la Room
+     * et appelle la fonction read line pour y ajouter des objets/des portes
+     * @param PATH chemin vers le fichier
+     */
 Room * readRoomFile(char * PATH);
+/**
+     * Traite une ligne d'un fichier Room
+     * pour ajouter des objets/portes dans la Room (R)
+     * @param tampon chaine contenant la ligne à traiter
+     * @param R Salle dans laquelle sont ajoutées les objets/portes
+     */
 void readRoomFileLine(char * tampon,Room *R);
 //read Graph File
+/**
+     * Ouvre, lit le fichier au chemin PATH, et crée le Graph
+     * et appelle la fonction read line pour y ajouter des Vertex/liens.
+     * @param PATH chemin vers le fichier
+     */
 VertexList * readGraphFile(char * PATH);
+/**
+    * Traite une ligne d'un fichier Graph
+    * pour ajouter des Vertex/liens dans le Graph (g)
+    * @param tampon chaine contenant la ligne à traiter
+    * @param g graph où sont ajoutées les Vertex/ les Edges
+    */
 void readGraphFileLine(char * tampon, VertexList * g);
-
+/**
+    * Ajoute le pointeur vers la room R au vertex du même nom
+    * @param g graph où est ajoutée la salle
+    * @param R room liée
+    */
 void associateRoomWithVertexList(VertexList *g,Room *R);
 #endif //ESCAPEGAMEPROJECT_MAIN_MODEL_H

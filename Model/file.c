@@ -4,9 +4,6 @@
 #include "../Model/model.h"
 
 FILE *openFileRead(char *PATH){
-    /**
-     * ouvre un fichier en mode lecture
-     */
     FILE * pFile=NULL; /* Descripteur du fichier */
     pFile = fopen (PATH,"r");
     if (pFile==NULL) {
@@ -15,24 +12,14 @@ FILE *openFileRead(char *PATH){
     return pFile;
 }
 void closeFile(FILE *f){
-    /**
-     * ferme un fichier
-     */
     fclose(f);
 }
 
 char * readFileLine(FILE *f, char *tampon){
-    /**
-     * lit une ligne et la stock dans le tableau tampon
-     */
     return fgets(tampon,TMAX,f);
 }
 //read Room file
 Room * readRoomFile(char * PATH){
-    /**
-     * Ouvre, lit le fichier au chemin PATH, et crée la Room
-     * et appelle la fonction read line pour y ajouter des objets/des portes
-     */
     int cppt=4;
     char * tampon = (char *) malloc(sizeof(char)*TMAX);
     FILE * f= openFileRead(PATH);
@@ -69,10 +56,6 @@ Room * readRoomFile(char * PATH){
 
 }
 void readRoomFileLine(char *tampon, Room *R){
-    /**
-     * Lit une ligne du fichier Room (f) et la traite
-     * pour ajouter des objets/portes dans la Room (R)
-     */
     char * type = (char *) malloc(sizeof(char)*20);
 
     sscanf(tampon,"%s -\n",type);
@@ -100,10 +83,6 @@ void readRoomFileLine(char *tampon, Room *R){
 }
 //read Graph File
 VertexList * readGraphFile(char * PATH){
-    /**
-     * Ouvre, lit le fichier au chemin PATH, et crée le Graph
-     * et appelle la fonction read line pour y ajouter des Vertex/liens.
-     */
     int cppt=1;
     char * tampon = (char *) malloc(sizeof(char)*TMAX);
     VertexList * g = initGraph();
@@ -125,10 +104,6 @@ VertexList * readGraphFile(char * PATH){
     return g;
 }
 void readGraphFileLine(char * tampon , VertexList * g){
-    /**
-    * Lit une ligne du fichier Graph (f) et la traite
-    * pour ajouter des Vertex/liens dans le Graph (g)
-    */
     char * type = (char *) malloc(sizeof(char)*20);
 
     sscanf(tampon,"%s -\n",type);
