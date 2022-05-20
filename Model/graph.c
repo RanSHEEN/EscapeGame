@@ -3,20 +3,12 @@
 //
 
 #include "../Model/model.h"
-/**
- * Graph : VertexList représentant la machine d'état du jeu
- */
-/**
- * EdgeList: liste de lien entre le Vertex et ses successeurs
- */
+
 
 /*
  * Fonction Gestion de Liste Edge List
  */
 void initEdgeList(EdgeList * c){
-    /**
-     * initialise l'EdgeList en mettant tous les pointeurs (current, first, last) à NULL
-     */
     if (c!=NULL){
         c->current=NULL;
         c->first=NULL;
@@ -24,15 +16,9 @@ void initEdgeList(EdgeList * c){
     }
 }
 int isEmptyEdgeList(EdgeList * c){
-    /**
-     * Nous dit si la liste de liens est vide
-     */
     return (c->first==NULL)&&(c->last==NULL);
 }
 void insertFirstEdge(EdgeList *c, char *obj, Vertex * v){
-    /**
-     * ajoute un edge en premier dans la liste d'Edge
-     */
     //create edge
     Edge * e= (Edge *) malloc(sizeof(Edge));
     e->obj_label=obj;
@@ -49,9 +35,6 @@ void insertFirstEdge(EdgeList *c, char *obj, Vertex * v){
     }
 }
 void insertLastEdge(EdgeList *c, char *obj, Vertex * v){
-    /**
-    * ajoute un edge en dernier dans la liste d'Edge
-    */
     //create edge
     Edge * e= (Edge *) malloc(sizeof(Edge));
     e->obj_label=obj;
@@ -73,25 +56,16 @@ void insertLastEdge(EdgeList *c, char *obj, Vertex * v){
  * "travel in the functions"
  */
 void setOnFirstEdge(EdgeList *c){
-    /**
-     * met le pointeur "current" sur le premier Edge de la Liste
-     */
     if (c!=NULL){
         c->current=c->first;
     }
 }
 void setOnLastEdge(EdgeList *c){
-    /**
-    * met le pointeur "current" sur le dernier Edge de la Liste
-    */
     if (c!=NULL){
         c->current=c->last;
     }
 }
 void setOnNextEdge(EdgeList *c){
-    /**
-     * met le pointeur "current" sur l'Edge suivant de la Liste
-     */
     if (c!=NULL){
         c->current=c->current->next_e;
     }
@@ -118,11 +92,6 @@ Edge * findEdge(EdgeList *c, char *obj){
  * Print Edge List
  */
 void printEdgeList(EdgeList *c){
-    /**print the EdgeList:
-    *    --obj_label--> label
-    *    --obj_label--> label
-    *    --obj_label--> label
-   */
     if (c!=NULL && !isEmptyEdgeList(c)){
         setOnFirstEdge(c);
         while(c->current!=NULL){
@@ -136,10 +105,6 @@ void printEdgeList(EdgeList *c){
  * Delete Edge
  */
 void deleteFirstEdge(EdgeList *c){
-    /**
-     * supprime le premier Edge de l'EdgeList
-     * et en libère la mémoire
-     */
     if (c->first==c->last){
         Edge * e = c->first;
         c->first=NULL;
@@ -155,29 +120,16 @@ void deleteFirstEdge(EdgeList *c){
     }
 }
 void deleteEdgeList(EdgeList * c){
-    /**
-     * supprime tous les Edges de l'Edge list et en libère la mémoire
-     */
     while(!isEmptyEdgeList(c)){
         deleteFirstEdge(c);
     }
     free(c);
 }
 
-
-
-/**
- * VertexList: liste de vertex
- */
-
 /*
  * Fonction Gestion de Liste Edge List
  */
 VertexList * initGraph(){
-    /**
-     * crée et alloue un graph (VertexList)
-     * ET l'initialise en mettant tous les pointeurs (current, first, last) à NULL
-     */
     VertexList * g=(VertexList *) malloc(sizeof(VertexList));
     if (g!=NULL){
         g->current=NULL;
@@ -187,15 +139,9 @@ VertexList * initGraph(){
     return g;
 }
 int isEmptyVertexList(VertexList * g){
-    /**
-     * Nous dit si le graph est vide
-     */
     return (g->first==NULL)&&(g->last==NULL);
 }
 void insertFirstVertex(VertexList * g,char * label,int enigma_number){
-    /**
-     * ajoute un vertex en premier dans la liste de Vertex
-     */
     //Create Vertex
     Vertex * v= (Vertex *) malloc(sizeof(Vertex));
     v->label=label;
@@ -216,9 +162,6 @@ void insertFirstVertex(VertexList * g,char * label,int enigma_number){
     }
 }
 void insertLastVertex(VertexList * g,char * label,int enigma_number){
-    /**
-     * ajoute un vertex en dernier dans la liste de Vertex
-     */
     //Create Vertex
     Vertex * v= (Vertex *) malloc(sizeof(Vertex));
     v->label=label;
@@ -240,9 +183,6 @@ void insertLastVertex(VertexList * g,char * label,int enigma_number){
     }
 }
 void addLink(Vertex * v1, Vertex * v2, char * obj_label){
-    /**
-     * add an edge from the Vretex v1 to the vertex v2
-    */
     //Add into v1.connect (EdgeList) using (addLast)
     insertLastEdge(v1->connect, obj_label, v2);
 }
@@ -251,42 +191,26 @@ void addLink(Vertex * v1, Vertex * v2, char * obj_label){
  * "travel in the List"
  */
 void setOnFirstVertex(VertexList * g){
-    /**
-     * mets le pointeur Current sur le premier vertex de la liste
-     */
     if(g!=NULL){
         g->current=g->first;
     }
 }
 void setOnLastVertex(VertexList * g){
-    /**
-     * mets le pointeur Current sur le dernier vertex de la liste
-     */
     if(g!=NULL){
         g->current=g->last;
     }
 }
 void setOnNextVertex(VertexList * g){
-    /**
-    * mets le pointeur Current sur le vertex suivant de la liste
-    */
     if(g!=NULL){
         g->current=g->current->next_v;
     }
 }
 void setOnPreviousVertex(VertexList *g){
-    /**
-    * mets le pointeur Current sur le vertex précédent de la liste
-    */
     if(g!=NULL){
         g->current=g->current->previous_v;
     }
 }
 Vertex * findVertex(VertexList * g,char * label){
-    /**
-     * cherche dans la liste de vertex et retourne le vertex de label donné en paramètre
-     * return NULL si elle n'a pas trouvé le Vertex
-     */
     if (g!=NULL && !isEmptyVertexList(g)){
         setOnFirstVertex(g);
         while(g->current!=NULL){
@@ -302,12 +226,6 @@ Vertex * findVertex(VertexList * g,char * label){
  * Print Edge List
  */
 void printGraph(VertexList * g){
-    /**print the graph:
-     * label :
-     *    --obj_label--> label
-     *    --obj_label--> label
-     *    --obj_label--> label
-    */
     if (g!=NULL && !isEmptyVertexList(g)){
         setOnFirstVertex(g);
         while(g->current!=NULL){
@@ -322,10 +240,6 @@ void printGraph(VertexList * g){
  * Delete Vertex
  */
 void deleteFirstVertex(VertexList * g){
-    /**
-     * supprime le premier Vertex de la VertexList
-     * et en libère la mémoire
-     */
     if (g->first==g->last){
         Vertex *v  = g->first;
         g->first=NULL;
@@ -342,9 +256,6 @@ void deleteFirstVertex(VertexList * g){
     }
 }
 void deleteGraph(VertexList * g){
-    /**
-     * supprime tous les Vertex de la Vertex list et en libère la mémoire
-     */
     while(!isEmptyVertexList(g)){
         deleteFirstVertex(g);
     }
@@ -369,7 +280,6 @@ int changeStateAccess(VertexList * g){
     }else if(g->current->enigma_solved>g->current->enigma_number){
         return -1;
     }else {
-        //plusieurs Edges possibles
         if(g->current->R->framing[2][0].d!=NULL){
             g->current->R->framing[2][0].d->access=1;
         }

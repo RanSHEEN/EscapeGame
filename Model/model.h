@@ -273,31 +273,89 @@ struct EdgeList{
     Edge *current;
     Edge *last;
 };
-
+/**
+ * Graph : VertexList représentant la machine d'état du jeu
+ * VertexList: liste de vertex
+ * EdgeList: liste de lien entre le Vertex et ses successeurs
+ *
+ */
 /*
  * Fonction Gestion de Liste Edge List
  */
+/**
+     * initialise l'EdgeList en mettant tous les pointeurs (current, first, last) à NULL
+     * @param c EdgeList à initialiser
+     */
 void initEdgeList(EdgeList * c);
+/**
+     * Teste si la liste est vide
+     * @param c EdgeList à tester
+     */
 int isEmptyEdgeList(EdgeList * c);
+/**
+     * ajoute un edge en premier dans la liste d'Edge
+     * @param c la liste dans laquelle il est ajouté
+     * @param obj non de l'objet qui lui est lié (porte)
+     * @param v pointeur vers le vertex qu'il pointe
+     */
 void insertFirstEdge(EdgeList *c, char *obj, Vertex * v);
+/**
+     * ajoute un edge en dernier dans la liste d'Edge
+     * @param c la liste dans laquelle il est ajouté
+     * @param obj non de l'objet qui lui est lié (porte)
+     * @param v pointeur vers le vertex qu'il pointe
+     */
 void insertLastEdge(EdgeList *c, char *obj, Vertex * v);
 
 /*
  * "travel in the List"
  */
+/**
+     * met le pointeur "current" sur le premier Edge de la Liste
+     * @param c EdgeList
+     */
 void setOnFirstEdge(EdgeList *c);
+/**
+     * met le pointeur "current" sur le dernier Edge de la Liste
+     * @param c EdgeList
+     */
 void setOnLastEdge(EdgeList *c);
+/**
+     * met le pointeur "current" sur l'Edge suivant de la Liste
+     * @param c EdgeList
+     */
 void setOnNextEdge(EdgeList *c);
+/**
+     * cherche dans la liste d'edge et retourne l'edge de label donné en paramètre
+     * return NULL si elle n'a pas trouvé l'edge
+     * @param c EdgeList dans laquelle on cherche l'Edge
+     * @param obj nom de l'objet lié à l'Edge cherché
+     */
 Edge * findEdge(EdgeList *c, char *obj);
 /*
  * Print Edge List
  */
+/**print the EdgeList:
+   *    --obj_label--> label
+   *    --obj_label--> label
+   *    --obj_label--> label
+   * @param c EdgeList affichée
+  */
 void printEdgeList(EdgeList *c);
 
 /*
  * Delete Edge
  */
+/**
+     * supprime le premier Edge de l'EdgeList
+     * et en libère la mémoire
+     * @param c EdgeList dont on supprime le premier Edge
+     */
 void deleteFirstEdge(EdgeList *c);
+/**
+     * supprime tous les Edges de l'Edge list et en libère la mémoire
+     * @param c EdgeList supprimée
+     */
 void deleteEdgeList(EdgeList * c);
 
 /*
@@ -324,29 +382,93 @@ struct VertexList{
 /*
  * Fonction Gestion de Liste Edge List
  */
+/**
+     * crée et alloue un graph (VertexList)
+     * Et l'initialise en mettant tous les pointeurs (current, first, last) à NULL
+     */
 VertexList * initGraph();
+/**
+     * Teste si le graph est vide
+     * @param g VertexList à tester
+     */
 int isEmptyVertexList(VertexList * g);
+/**
+     * ajoute un vertex en premier dans la liste de Vertex
+     * @param g la liste dans laquelle il est ajouté
+     * @param label non de la salle qui lui est lié
+     * @param enigma_number nombre d'enigme dans la salle
+     */
 void insertFirstVertex(VertexList * g,char * label,int enigma_number);
+/**
+     * ajoute un vertex en dernier dans la liste de Vertex
+     * @param g la liste dans laquelle il est ajouté
+     * @param label non de la salle qui lui est lié
+     * @param enigma_number nombre d'enigme dans la salle
+     */
 void insertLastVertex(VertexList * g,char * label,int enigma_number);
+/**
+     * add an edge from the Vretex v1 to the vertex v2
+     * @param v1 Vertex dont part l'Edge
+     * @param v2 Vertex où va l'Edge
+     * @param obj_label nom de l'objet  lié à l'edge (porte)
+    */
 void addLink(Vertex * v1, Vertex * v2, char * obj_label);
 
 /*
  * "travel in the List"
  */
+/**
+     * met le pointeur "current" sur le premier Vertex de la Liste
+     * @param g VertexList
+     */
 void setOnFirstVertex(VertexList * g);
+/**
+     * met le pointeur "current" sur le dernier Vertex de la Liste
+     * @param g VertexList
+     */
 void setOnLastVertex(VertexList * g);
+/**
+     * met le pointeur "current" sur le Vertex suivant de la Liste
+     * @param g VertexList
+     */
 void setOnNextVertex(VertexList * g);
+/**
+     * met le pointeur "current" sur le Vertex précédent de la Liste
+     * @param g VertexList
+     */
 void setOnPreviousVertex(VertexList *g);
+/**
+ * cherche dans la liste de vertex et retourne le vertex de label donné en paramètre
+ * return NULL si elle n'a pas trouvé le Vertex
+ * @param g nom de la VertexList où on cherche
+ * @param label nom de la salle liée au vertex
+ */
 Vertex * findVertex(VertexList * g,char * label);
 /*
  * Print Edge List
  */
+/**print the graph:
+     * label :
+     *    --obj_label--> label
+     *    --obj_label--> label
+     *    --obj_label--> label
+     * @param g VertexList qu'on affiche
+    */
 void printGraph(VertexList * g);
 
 /*
  * Delete Edge
  */
+/**
+     * supprime le premier Vertex de la VertexList
+     * et en libère la mémoire
+     * @param g VertexList dont on supprime le premier Edge
+     */
 void deleteFirstVertex(VertexList * g);
+/**
+     * supprime tous les Vertex de la Vertex list et en libère la mémoire
+     * @param g VertexList supprimée
+     */
 void deleteGraph(VertexList * g);
 
 /*
