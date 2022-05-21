@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['link_2etxt_760',['link.txt',['../example_2_c_make_files_2allocate__module__test_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2_c_make_files_2assert__macro__test_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2_c_make_files_2assert__module__test_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2_c_make_files_2simple__test_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2mock_2chef__wrap_2_c_make_files_2waiter__test__wrap_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2mock_2uptime_2_c_make_files_2proc__uptime_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2mock_2uptime_2_c_make_files_2test__uptime_8dir_2link_8txt.html',1,'(Global Namespace)'],['../example_2mock_2uptime_2_c_make_files_2uptime_8dir_2link_8txt.html',1,'(Global Namespace)'],['../src_2_c_make_files_2cmocka_8dir_2link_8txt.html',1,'(Global Namespace)']]]
-];
