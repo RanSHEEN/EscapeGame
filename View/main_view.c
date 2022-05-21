@@ -83,7 +83,6 @@ void free_view (View_app *view_app){
     else if (view_app->Game.window!=NULL){
         free_Windows(&view_app->Game);
         free_character(&view_app->Robot);
-        Free_Bgm(view_app);
         for (int i=0 ; i<=NB_OF_OBJECTS; i++){
             free_objects(&view_app->object[i]);
         }
@@ -97,7 +96,7 @@ void free_view (View_app *view_app){
     }
     SDL_Quit();
     IMG_Quit();
-    Free_Bgm(view_app);
+
 }
 
 //Create a message windows with 2 button. and it will return 0/1 after you click button.
@@ -896,20 +895,12 @@ int display_popup(View_app * app, char * filename){
     app->popUp.close_popUp = return_but;
     return EXIT_SUCCESS;
 }
+
 void personStatic(View_app * app){
-    SDL_Surface * map = IMG_Load("./img/background.jpg");
     SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
-    if (map == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_FreeSurface(map);
-        SDL_FreeSurface(img);
-        SDL_Quit();
-    }
     if (img == NULL)
     {
         printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_FreeSurface(map);
         SDL_FreeSurface(img);
         SDL_Quit();
     }
