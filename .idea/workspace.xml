@@ -9,12 +9,7 @@
     <list default="true" id="029f541e-6b3a-438a-94ad-aa65e893c52a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/controller.c" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/controller.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/Model/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Model/graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/model.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/model.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/object.c" beforeDir="false" afterPath="$PROJECT_DIR$/Model/object.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mem.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mem.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mem2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mem2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +115,7 @@
       <workItem from="1653061391789" duration="1998000" />
       <workItem from="1653119320230" duration="6273000" />
       <workItem from="1653125845622" duration="2520000" />
-      <workItem from="1653135902230" duration="4078000" />
+      <workItem from="1653135902230" duration="5718000" />
     </task>
     <servers />
   </component>

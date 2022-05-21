@@ -98,7 +98,9 @@ int showPopUp (View_app * view_app, char * filename) {
 
                 case SDL_TEXTINPUT :
                     if (view_app->popUp.popType == Password) {
-                        strncat(entry, ev.text.text,1);
+                        strcpy(&entry[i],ev.text.text);
+                        //&entry[i]=ev.text.text;
+                        //strncat(entry, ev.text.text,1);
                         i++;
                         if (i==9){
                             SDL_StopTextInput();
