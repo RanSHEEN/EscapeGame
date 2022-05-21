@@ -10,14 +10,14 @@
 #include "SDL2/SDL_mixer.h"
 #include "SDL2/SDL.h"
 
-/**
- * check le passage possible du personnage en fonction des cases occupées par les objtes (i*room.h -75))
- * @param p
- * @param r
- * @return 0 if can, 1 if can't
- */
 //int hit_box(Personage * p, Room * r);
-
+/**
+ * \fn VertexList * init_game_engine()
+ * \author Marie
+ * \details
+ * Initialise le graph en lisant les fichiers du niveau
+ * @return Pointeur vers le graph du niveau
+ */
 VertexList * init_game_engine();
 
 void showRoom (View_app * view_app,Room * room);
