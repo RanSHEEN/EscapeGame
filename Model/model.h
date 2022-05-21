@@ -208,13 +208,21 @@ void addDoor(Room *R, char * id, int i, int j,char *file_name);
      * Vérfie que le personnage peut interragir avec un objet
      * @param p le personage
      * @param R la room dans laquelle il est
-     * @return un poiteur vers un tableau de int:
+     * @return un pointeur vers un tableau de int:
      * [i ; j ; t]
      * t = 0 si pas d'interraction
      * t= 1 si interraction avec un objet
      * t= 2 si interraction avec une porte
      */
 int * isInteractionPossible(Personage *p, Room * R);
+/**
+ * \fn void freeTabMemory(int * tab)
+ * \author Marie
+ * \details
+ * libère la mémoire d'un tableau
+ * @param tab tableau à libérer
+ */
+void freeTabMemory(int * tab);
 /*
  * definition Personnage
  */

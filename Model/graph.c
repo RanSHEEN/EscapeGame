@@ -143,6 +143,7 @@ void insertFirstVertex(VertexList * g,char * label,int enigma_number){
     v->label=label;
     v->enigma_number=enigma_number;
     v->enigma_solved=0;
+    v->R=NULL;
     //EdgeList vide de base
     v->connect=(EdgeList *)malloc(sizeof(EdgeList));
     initEdgeList(v->connect);
@@ -163,6 +164,7 @@ void insertLastVertex(VertexList * g,char * label,int enigma_number){
     v->label=label;
     v->enigma_number=enigma_number;
     v->enigma_solved=0;
+    v->R=NULL;
     //EdgeList vide de base
     v->connect=(EdgeList *)malloc(sizeof(EdgeList));
     initEdgeList(v->connect);
@@ -241,12 +243,14 @@ void deleteFirstVertex(VertexList * g){
         g->first=NULL;
         g->current=NULL;
         g->last=NULL;
+        deleteEdgeList(v->connect);
         free(v->label);
         free(v);
     }else{
         Vertex *v  = g->first;
         g->first=v->next_v;
         g->first->previous_v=NULL;
+        deleteEdgeList(v->connect);
         free(v->label);
         free(v);
     }

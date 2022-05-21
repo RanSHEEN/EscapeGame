@@ -256,11 +256,11 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     }
                                     showRoom(view_app,graph->current->R);
                                     initRobot(view_app,flag,p);
-                                    initRobot(view_app,flag,p);
                                     personStatic(view_app);
                                 }
                             }
                         }
+                        freeTabMemory(k);
                     }
                 break;
                 case SDL_MOUSEBUTTONDOWN:

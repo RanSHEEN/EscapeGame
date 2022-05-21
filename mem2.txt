@@ -1,100 +1,45 @@
-204 (72 direct, 132 indirect) bytes in 3 blocks are definitely lost in loss record 2,763 of 2,842
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10E6B7: insertLastVertex (graph.c:167)
-    by 0x10FC0E: readGraphFileLine (file.c:118)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
 
- 60 bytes in 3 blocks are definitely lost in loss record 2,284 of 2,842
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10FC38: readGraphFileLine (file.c:121)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
- 
- 60 bytes in 3 blocks are definitely lost in loss record 2,285 of 2,842
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10FC46: readGraphFileLine (file.c:122)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
+==5903== Conditional jump or move depends on uninitialised value(s)
+==5903==    at 0x483EDED: strncat (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5903==    by 0x10CBF6: showPopUp (controller.c:101)
+==5903==    by 0x10D1C2: move_robot (controller.c:212)
+==5903==    by 0x10DA0A: main_controller (controller.c:355)
+==5903==    by 0x10A917: main (main.c:16)
 
+==5969== 12 bytes in 1 blocks are definitely lost in loss record 211 of 33,141
+==5969==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5969==    by 0x10F5D5: isInteractionPossible (object.c:157)
+==5969==    by 0x10D026: move_robot (controller.c:188)
+==5969==    by 0x10DA0A: main_controller (controller.c:355)
+==5969==    by 0x10A917: main (main.c:16)
 
-==2811== Invalid write of size 1
-    at 0x4A67251: __vfscanf_internal (vfscanf-internal.c:1100)
-    by 0x4A65381: __isoc99_sscanf (isoc99_sscanf.c:31)
-    by 0x10F990: readRoomFileLine (file.c:68)
-    by 0x10F898: readRoomFile (file.c:50)
-    by 0x10C596: init_game_engine (controller.c:12)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-  Address 0x1395b9c4 is 0 bytes after a block of size 20 alloc'd
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10F95E: readRoomFileLine (file.c:65)
-    by 0x10F898: readRoomFile (file.c:50)
-    by 0x10C596: init_game_engine (controller.c:12)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
+24 bytes in 2 blocks are definitely lost in loss record 764 of 33,150
+==6000==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6000==    by 0x10F5D5: isInteractionPossible (object.c:157)
+==6000==    by 0x10D026: move_robot (controller.c:188)
+==6000==    by 0x10DA0A: main_controller (controller.c:355)
+==6000==    by 0x10A917: main (main.c:16)
+
+24 bytes in 2 blocks are definitely lost in loss record 765 of 33,153
+==6001==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6001==    by 0x10F5D5: isInteractionPossible (object.c:157)
+==6001==    by 0x10D026: move_robot (controller.c:188)
+==6001==    by 0x10DA0A: main_controller (controller.c:355)
+==6001==    by 0x10A917: main (main.c:16)
 
 
-==2811== Invalid write of size 1
-    at 0x4A67F12: __vfscanf_internal (vfscanf-internal.c:1185)
-    by 0x4A65381: __isoc99_sscanf (isoc99_sscanf.c:31)
-    by 0x10F990: readRoomFileLine (file.c:68)
-    by 0x10F898: readRoomFile (file.c:50)
-    by 0x10C596: init_game_engine (controller.c:12)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-
-
-==2811==  Address 0x1395b9c6 is 2 bytes after a block of size 20 alloc'd
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10F95E: readRoomFileLine (file.c:65)
-    by 0x10F898: readRoomFile (file.c:50)
-    by 0x10C596: init_game_engine (controller.c:12)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-
-
-==2811== Conditional jump or move depends on uninitialised value(s)
-    at 0x10EBE0: freeStateMachine (graph.c:306)
-    by 0x10D698: move_robot (controller.c:285)
-    by 0x10DA0A: main_controller (controller.c:355)
-    by 0x10A917: main (main.c:16)
-
-
-HEAP SUMMARY:
-     in use at exit: 500,255 bytes in 3,522 blocks
-   total heap usage: 523,112 allocs, 519,590 frees, 798,876,503 bytes allocated
-
-==2811== 60 bytes in 3 blocks are definitely lost in loss record 2,286 of 2,840
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10FC38: readGraphFileLine (file.c:121)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-
-
-==2811== 60 bytes in 3 blocks are definitely lost in loss record 2,287 of 2,840
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10FC46: readGraphFileLine (file.c:122)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-
-==2811== 204 (72 direct, 132 indirect) bytes in 3 blocks are definitely lost in loss record 2,765 of 2,840
-    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    by 0x10E6B7: insertLastVertex (graph.c:167)
-    by 0x10FC0E: readGraphFileLine (file.c:118)
-    by 0x10FB1A: readGraphFile (file.c:99)
-    by 0x10C576: init_game_engine (controller.c:10)
-    by 0x10D9DB: main_controller (controller.c:353)
-    by 0x10A917: main (main.c:16)
-
-
+TO KEEP
+LEAK SUMMARY:
+==5903==    definitely lost: 821 bytes in 12 blocks
+==5903==    indirectly lost: 132,416 bytes in 16 blocks
+==5903==      possibly lost: 1,656 bytes in 20 blocks
+==5903==    still reachable: 317,679 bytes in 3,269 blocks
+==5903==                       of which reachable via heuristic:
+==5903==                         newarray           : 1,536 bytes in 16 blocks
+==5903==         suppressed: 0 bytes in 0 blocks
+==5903== Reachable blocks (those to which a pointer was found) are not shown.
+==5903== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==5903==
+==5903== Use --track-origins=yes to see where uninitialised values come from
+==5903== For lists of detected and suppressed errors, rerun with: -s
+==5903== ERROR SUMMARY: 35 errors from 32 contexts (suppressed: 0 from 0)
