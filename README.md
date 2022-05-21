@@ -79,6 +79,17 @@ To clean the coverages-info :
 make clean_coverage 
 ```
 
+Memory leak
+-
+To Analyse the Memory leaks of the code :
+```//Shell
+ valgrind --leak-check=yes ./main 2> mem.txt
+```
+The Memory Leaks infos will be written in the document mem.txt.
+
+/!\ SDL create Memory leaks that cannot be resolved
+
+
 Authors
 -
 Marie QUELO     
