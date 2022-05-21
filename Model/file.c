@@ -51,7 +51,7 @@ Room * readRoomFile(char * PATH){
     }
     closeFile(f);
     free(tampon);
-    //printf("%d\n",cppt);
+
     return R;
 
 }
@@ -100,14 +100,12 @@ VertexList * readGraphFile(char * PATH){
     }
     closeFile(f);
     free(tampon);
-    printf("%d\n",cppt);
     return g;
 }
 void readGraphFileLine(char * tampon , VertexList * g){
     char * type = (char *) malloc(sizeof(char)*TMAX);
 
     sscanf(tampon,"%s -\n",type);
-    //printf("%s\n",type);
 
     if(strcmp(type,"Vertex")==0){
         char * label = (char *) malloc(sizeof(char)*TMAX);

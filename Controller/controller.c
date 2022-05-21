@@ -99,17 +99,13 @@ int showPopUp (View_app * view_app, char * filename) {
                 case SDL_TEXTINPUT :
                     if (view_app->popUp.popType == Password) {
                         strcpy(&entry[i],ev.text.text);
-                        //&entry[i]=ev.text.text;
-                        //strncat(entry, ev.text.text,1);
                         i++;
                         if (i==9){
                             SDL_StopTextInput();
-                            printf ("%s \n", entry);
                             char log_password [9];
                             for (int j = 0; j<10; j++){
                                 log_password[j]=entry[j];
                             }
-                            printf("%s \n",log_password);
                             if (strncmp(log_password,password,9) != 0){
                                 //wrong
                                 char filename[50];
@@ -124,8 +120,6 @@ int showPopUp (View_app * view_app, char * filename) {
                                 status =2;
                             }
                         }
-                        printf("%d \n", i);
-
                     }
                 break;
             }
@@ -189,9 +183,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         SDL_StopTextInput();
                         int * k = isInteractionPossible(p,graph->current->R);
                         if (k[2]==0){
-                            printf("interaction impossible\n");
                         }else if(k[2]==1){
-                            printf("interaction with object\n");
                             switch (graph->current->R->framing[k[0]][k[1]].o->type){
                                 case clue :
                                     view_app->popUp.popType = Clue;
@@ -224,41 +216,39 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                     break;
                             }
                         }else if(k[2]==2){
-                            printf("interaction with door\n");
                             if(create_messageBox("Robot" , "You want to pass this door ?","Yes","NO")==0){
-                                printf("pass the door! \n");
-                            }
-                            Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
-                            if(strcmp(e->v_next->label,"win")==0){
-                                view_app->popUp.popType = Win;
-                                char filename2[50];
-                                get_filename(view_app->popUp.popType,filename2,0);
-                                if(create_messageBox("Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
-                                    showPopUp(view_app,filename2);
-                                    isRunning= SDL_FALSE;
-                                }else{
-                                    personStatic(view_app);
-                                }
-
-                            }else{
-                                int j = changeRoom(graph,graph->current->R->framing[k[0]][k[1]].d);
-                                for (int i =0; i<graph->current->R->nb_obj; i++){
-                                    free_objects(&view_app->object[i]);
-                                }
-                                if(j==0){
-                                    printf("porte fermée\n");
-                                }else if (j==1){
-                                    int flag;
-                                    if(k[1]==0){
-                                        flag=1;
-                                        graph->current->R->framing[2][8].d->access=1;
-                                    }else if(k[1]==8){
-                                        flag=0;
-                                        graph->current->R->framing[2][0].d->access=1;
+                                Edge * e = findEdge(graph->current->connect,graph->current->R->framing[k[0]][k[1]].d->id);
+                                if(strcmp(e->v_next->label,"win")==0){
+                                    view_app->popUp.popType = Win;
+                                    char filename2[50];
+                                    get_filename(view_app->popUp.popType,filename2,0);
+                                    if(create_messageBox("Robot" , "Are you sure you want to do this ? ","Yes","NO")==0){
+                                        showPopUp(view_app,filename2);
+                                        isRunning= SDL_FALSE;
+                                    }else{
+                                        personStatic(view_app);
                                     }
-                                    showRoom(view_app,graph->current->R);
-                                    initRobot(view_app,flag,p);
-                                    personStatic(view_app);
+
+                                }else {
+                                    int j = changeRoom(graph, graph->current->R->framing[k[0]][k[1]].d);
+                                    for (int i = 0; i < graph->current->R->nb_obj; i++) {
+                                        free_objects(&view_app->object[i]);
+                                    }
+                                    if (j == 0) {
+                                        create_messageBox("Robot", "This door is closed", "Ah...", "OK...");
+                                    } else if (j == 1) {
+                                        int flag;
+                                        if (k[1] == 0) {
+                                            flag = 1;
+                                            graph->current->R->framing[2][8].d->access = 1;
+                                        } else if (k[1] == 8) {
+                                            flag = 0;
+                                            graph->current->R->framing[2][0].d->access = 1;
+                                        }
+                                        showRoom(view_app, graph->current->R);
+                                        initRobot(view_app, flag, p);
+                                        personStatic(view_app);
+                                    }
                                 }
                             }
                         }

@@ -308,10 +308,8 @@ void freeStateMachine(VertexList * g){
         setOnFirstVertex(g);
         while(g->current!=NULL){
             if (g->current->R!=NULL){
-                printf("ok1\n");
                 deleteRoom(g->current->R);
             }
-            printf("ok2\n");
             setOnNextVertex(g);
         }
     }
