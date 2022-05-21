@@ -1,0 +1,21 @@
+digraph "The CMocka API"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=box];
+  rankdir=LR;
+  Node1 [label="The CMocka API",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="These headers or their equivalents MUST be included prior to including this header file."];
+  Node6 [label="Running Tests",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__exec.html",tooltip=" "];
+  Node8 [label="Standard Assertions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__mock__assert.html",tooltip=" "];
+  Node3 [label="Checking Parameters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__param.html",tooltip=" "];
+  Node7 [label="Dynamic Memory Allocation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__alloc.html",tooltip=" "];
+  Node2 [label="Mock Objects",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__mock.html",tooltip=" "];
+  Node4 [label="Assert Macros",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__asserts.html",tooltip=" "];
+  Node5 [label="Call Ordering",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__cmocka__call__order.html",tooltip=" "];
+  Node1->Node2 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node3 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node4 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node5 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node6 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node7 [shape=plaintext, dir="back", style="solid"];
+  Node1->Node8 [shape=plaintext, dir="back", style="solid"];
+}

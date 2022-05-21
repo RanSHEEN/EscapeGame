@@ -1,0 +1,18 @@
+digraph "free_view"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="free_view",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Free_Bgm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__view_8c.html#a012bfd1fad05d414a880377573e73419",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="free_character",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__view_8c.html#a9ae50d5d40358a506e2c414d606dcaa2",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="free_objects",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__view_8c.html#a381036562fe7cbc2b1566abf4a2b1f54",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="free_popup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__view_8c.html#a04a2b35ed3b1ebdf76d3c1e00c2d4fb6",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="free_Windows",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__view_8c.html#a6b20eaf0a901ee2c13c48ae73620fc66",tooltip=" "];
+}

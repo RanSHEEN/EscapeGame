@@ -121,6 +121,17 @@ void get_Tittle(enum type Type , char* title);
  */
 void get_filename (enum popType poptype, char  * filename, int room);
 /**
+ * \fn int createWindow(int width, int height, Windows * windows, char * filename)
+ * \author Margot
+ * This function creates a SDL window and renderer and opens the image corresponding to the background + the game's icon
+ * @param width
+ * @param height
+ * @param windows
+ * @param filename
+ * @return 0 if no problem during initializing, 1 if goes wrong
+ */
+int createWindow(int width, int height, Windows * windows, char * filename);
+/**
  * int init_menu
  * initializes and displays the menu window,
  * defines its renderer, texture, window (sized 873x492)
@@ -132,7 +143,6 @@ void get_filename (enum popType poptype, char  * filename, int room);
  * @param app
  * @return 0 if no problem during menu initializing, 1 if goes wrong
  */
- 
 int init_menu(Windows * escape_menu);
 /**
  * int init_credits

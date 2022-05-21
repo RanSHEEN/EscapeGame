@@ -1,0 +1,9 @@
+digraph "CMocka/cmocka-1.1.5/include/cmockery" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ce428ad40d9783629b840846d25dbdfb {
+    graph [ bgcolor="#ddddee", pencolor="black", label="include" fontname="Helvetica", fontsize="10", URL="dir_ce428ad40d9783629b840846d25dbdfb.html"]
+  dir_0fc31dd236acc46634b9d5f63e17dd04 [shape=box, label="cmockery", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0fc31dd236acc46634b9d5f63e17dd04.html"];
+  }
+}

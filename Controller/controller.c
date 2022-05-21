@@ -88,6 +88,8 @@ int showPopUp (View_app * view_app, char * filename) {
                         point.y = ev.button.y;
                         if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
                             if (SDL_PointInRect(&point, &view_app->popUp.close_popUp)) {
+                                //button sound
+                                Button_CChunk();
                                 isRunning=SDL_FALSE;
                             }
                         }
@@ -268,6 +270,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                         point.y = ev.button.y;
                         if (ev.window.windowID == SDL_GetWindowID(view_app->Game.window)) {
                             if (SDL_PointInRect(&point, &view_app->Game.Return_b)) {
+                                // button sound
                                 Button_CChunk();
                                 isRunning=SDL_FALSE;
                                 status = EXIT_SUCCESS;
@@ -432,14 +435,13 @@ int main_controller(View_app *view_app){
                                 break;
                             case Play:
                                 break;
-                    }
-                break;
+                        }
+                    break;
+                }
              }
-        }
         status=EXIT_FAILURE;
+        }
     }
-    }
-    Free_Bgm(view_app);
     status=EXIT_SUCCESS;
     return status;
 }

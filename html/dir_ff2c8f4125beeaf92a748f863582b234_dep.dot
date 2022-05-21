@@ -1,0 +1,15 @@
+digraph "CMocka/cmocka-1.1.5/example" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_41df525925d1430602165512686fe4f6 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="cmocka-1.1.5" fontname="Helvetica", fontsize="10", URL="dir_41df525925d1430602165512686fe4f6.html"]
+  subgraph clusterdir_ff2c8f4125beeaf92a748f863582b234 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_ff2c8f4125beeaf92a748f863582b234.html"];
+    dir_ff2c8f4125beeaf92a748f863582b234 [shape=plaintext label="example"];
+    dir_8f94e1c4b2919b4968c8c74e975d346f [shape=box label="mock" color="red" fillcolor="white" style="filled" URL="dir_8f94e1c4b2919b4968c8c74e975d346f.html"];
+  }
+  }
+  dir_ce428ad40d9783629b840846d25dbdfb [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_ce428ad40d9783629b840846d25dbdfb.html"];
+  dir_8f94e1c4b2919b4968c8c74e975d346f->dir_ce428ad40d9783629b840846d25dbdfb [headlabel="3", labeldistance=1.5 headhref="dir_000004_000007.html"];
+}

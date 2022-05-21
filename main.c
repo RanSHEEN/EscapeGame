@@ -16,7 +16,6 @@ int main(void){
     main_controller(&app);
 
     free_view (&app);
-
     return EXIT_SUCCESS;
 }
 

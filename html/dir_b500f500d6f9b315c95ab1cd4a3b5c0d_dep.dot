@@ -1,0 +1,10 @@
+digraph "Controller" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  dir_b500f500d6f9b315c95ab1cd4a3b5c0d [shape=box, label="Controller", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_b500f500d6f9b315c95ab1cd4a3b5c0d.html"];
+  dir_f2ee84e8e3a17eaa7015d788fa443c27 [shape=box label="View" URL="dir_f2ee84e8e3a17eaa7015d788fa443c27.html"];
+  dir_312950da3f243a51cc00f4a947545131 [shape=box label="Model" URL="dir_312950da3f243a51cc00f4a947545131.html"];
+  dir_b500f500d6f9b315c95ab1cd4a3b5c0d->dir_f2ee84e8e3a17eaa7015d788fa443c27 [headlabel="1", labeldistance=1.5 headhref="dir_000036_000042.html"];
+  dir_b500f500d6f9b315c95ab1cd4a3b5c0d->dir_312950da3f243a51cc00f4a947545131 [headlabel="1", labeldistance=1.5 headhref="dir_000036_000041.html"];
+}
