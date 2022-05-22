@@ -148,7 +148,8 @@ int move_robot(View_app *view_app,VertexList * graph) {
     personStatic(view_app);
     
     //Load Chunk of move
-    Mix_Chunk *moveSound = Mix_LoadWAV("music/Move_Sound.wav");
+    Mix_Chunk *moveSound = NULL;
+    moveSound = Mix_LoadWAV("music/Move_Sound.wav");
     
     while (isRunning == SDL_TRUE) {
         while (SDL_PollEvent(&ev)) {
@@ -293,6 +294,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
             }
         }
     }
+    Mix_FreeChunk(moveSound);
     DeletePersonage(p);
     freeStateMachine(graph);
     return status;
