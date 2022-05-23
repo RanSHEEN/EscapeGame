@@ -1,0 +1,594 @@
+==18107== Memcheck, a memory error detector
+==18107== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==18107== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==18107== Command: ./main
+==18107== 
+==18107== Conditional jump or move depends on uninitialised value(s)
+==18107==    at 0x601D565: pa_shm_cleanup (in /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so)
+==18107==    by 0x601D7A1: pa_shm_create_rw (in /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so)
+==18107==    by 0x600D4B6: pa_mempool_new (in /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so)
+==18107==    by 0x5F909B1: pa_context_new_with_proplist (in /usr/lib/x86_64-linux-gnu/libpulse.so.0.21.2)
+==18107==    by 0x49898D0: ConnectToPulseServer_Internal (SDL_pulseaudio.c:314)
+==18107==    by 0x4989D9B: ConnectToPulseServer (SDL_pulseaudio.c:350)
+==18107==    by 0x4989D9B: PULSEAUDIO_Init (SDL_pulseaudio.c:838)
+==18107==    by 0x4889558: SDL_AudioInit_REAL (SDL_audio.c:981)
+==18107==    by 0x4884DEE: SDL_InitSubSystem_REAL.part.0 (SDL.c:244)
+==18107==    by 0x10A973: init_SDL (main_view.c:15)
+==18107==    by 0x10DFC6: init_View (main_view.c:1108)
+==18107==    by 0x10A8F0: main (main.c:10)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F7FD: main_controller (controller.c:397)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x206db700 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F7FD: main_controller (controller.c:397)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BA9D: init_menu (main_view.c:413)
+==18107==    by 0x10F29D: main_controller (controller.c:309)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F9F2: main_controller (controller.c:421)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x67c0820 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F9F2: main_controller (controller.c:421)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10C2AC: init_rules (main_view.c:582)
+==18107==    by 0x10F810: main_controller (controller.c:399)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F6CE: main_controller (controller.c:384)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x2015fe50 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F6CE: main_controller (controller.c:384)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BA9D: init_menu (main_view.c:413)
+==18107==    by 0x10FA01: main_controller (controller.c:423)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10FB20: main_controller (controller.c:438)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x319c4be0 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10FB20: main_controller (controller.c:438)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BEE5: init_credits (main_view.c:505)
+==18107==    by 0x10F6E3: main_controller (controller.c:386)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F4F1: main_controller (controller.c:359)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x204e5d90 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F4F1: main_controller (controller.c:359)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BA9D: init_menu (main_view.c:413)
+==18107==    by 0x10FB2F: main_controller (controller.c:440)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F5AB: main_controller (controller.c:371)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x31d2d940 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F5AB: main_controller (controller.c:371)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10C64C: init_game (main_view.c:658)
+==18107==    by 0x10F506: main_controller (controller.c:361)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10F929: main_controller (controller.c:412)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Address 0x1fca6480 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F929: main_controller (controller.c:412)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BA9D: init_menu (main_view.c:413)
+==18107==    by 0x10F5BA: main_controller (controller.c:373)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D88D7: SDL_DestroyRenderer_REAL (SDL_render.c:4323)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10AC1A: free_view (main_view.c:81)
+==18107==    by 0x10A946: main (main.c:18)
+==18107==  Address 0x1fcc7490 is 0 bytes inside a block of size 624 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F929: main_controller (controller.c:412)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48DEBE9: GL_CreateRenderer (SDL_render_gl.c:1750)
+==18107==    by 0x48CDC5F: SDL_CreateRenderer_REAL (SDL_render.c:974)
+==18107==    by 0x48CDC5F: SDL_CreateRenderer_REAL (SDL_render.c:920)
+==18107==    by 0x48CDD5F: SDL_CreateWindowAndRenderer_REAL (SDL_render.c:877)
+==18107==    by 0x10BA2E: init_menu (main_view.c:407)
+==18107==    by 0x10F5BA: main_controller (controller.c:373)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x495FDFF: SDL_DestroyWindow_REAL (SDL_video.c:3065)
+==18107==    by 0x10AB76: free_Windows (main_view.c:64)
+==18107==    by 0x10AC1A: free_view (main_view.c:81)
+==18107==    by 0x10A946: main (main.c:18)
+==18107==  Address 0x1fff0a10 is 0 bytes inside a block of size 240 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x10AB76: free_Windows (main_view.c:64)
+==18107==    by 0x10F929: main_controller (controller.c:412)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x49603B6: SDL_CreateWindow_REAL (SDL_video.c:1564)
+==18107==    by 0x48CDD48: SDL_CreateWindowAndRenderer_REAL (SDL_render.c:869)
+==18107==    by 0x10BA2E: init_menu (main_view.c:407)
+==18107==    by 0x10F5BA: main_controller (controller.c:373)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== Invalid read of size 8
+==18107==    at 0x48D8890: SDL_DestroyTexture_REAL (SDL_render.c:4280)
+==18107==    by 0x10AB86: free_Windows (main_view.c:65)
+==18107==    by 0x10AC1A: free_view (main_view.c:81)
+==18107==    by 0x10A946: main (main.c:18)
+==18107==  Address 0x1fca6480 is 0 bytes inside a block of size 144 free'd
+==18107==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E612: SDL_free_REAL (SDL_malloc.c:5432)
+==18107==    by 0x48D8A04: SDL_DestroyTexture_REAL (SDL_render.c:4331)
+==18107==    by 0x48D8A04: SDL_DestroyRenderer_REAL (SDL_render.c:4349)
+==18107==    by 0x10AB67: free_Windows (main_view.c:63)
+==18107==    by 0x10F929: main_controller (controller.c:412)
+==18107==    by 0x10A937: main (main.c:16)
+==18107==  Block was alloc'd at
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x48CFE9A: SDL_CreateTexture_REAL.part.0 (SDL_render.c:1235)
+==18107==    by 0x10BA9D: init_menu (main_view.c:413)
+==18107==    by 0x10F5BA: main_controller (controller.c:373)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 
+==18107== HEAP SUMMARY:
+==18107==     in use at exit: 429,558 bytes in 3,182 blocks
+==18107==   total heap usage: 340,630 allocs, 337,448 frees, 479,710,671 bytes allocated
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 99 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22DDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01EDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 100 of 2,469
+==18107==    at 0x483B723: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x483E017: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAF3F: g_realloc (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22D57: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01EDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 101 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22DDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01F41: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 102 of 2,469
+==18107==    at 0x483B723: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x483E017: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAF3F: g_realloc (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22D57: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01F41: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 103 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22DDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E0BFFF: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C1: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 104 of 2,469
+==18107==    at 0x483B723: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x483E017: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAF3F: g_realloc (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22D57: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E0BFFF: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C1: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 105 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22DDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E06CC3: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C6: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16 bytes in 1 blocks are possibly lost in loss record 106 of 2,469
+==18107==    at 0x483B723: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x483E017: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAF3F: g_realloc (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22D57: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260D6: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E06CC3: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C6: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 18 bytes in 1 blocks are definitely lost in loss record 111 of 2,469
+==18107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x6A6B756: _XlcDefaultMapModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==18107==    by 0x6A6BB2A: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==18107==    by 0x4992A74: X11_InitKeyboard (SDL_x11keyboard.c:326)
+==18107==    by 0x499AF36: X11_VideoInit (SDL_x11video.c:467)
+==18107==    by 0x4960ED1: SDL_VideoInit_REAL (SDL_video.c:479)
+==18107==    by 0x4884DCE: SDL_InitSubSystem_REAL.part.0 (SDL.c:228)
+==18107==    by 0x10A973: init_SDL (main_view.c:15)
+==18107==    by 0x10DFC6: init_View (main_view.c:1108)
+==18107==    by 0x10A8F0: main (main.c:10)
+==18107== 
+==18107== 96 bytes in 1 blocks are possibly lost in loss record 2,351 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E220E7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E2228A: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFAFDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 96 bytes in 1 blocks are possibly lost in loss record 2,352 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E220E7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E2228A: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260C8: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01EDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 96 bytes in 1 blocks are possibly lost in loss record 2,353 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E220E7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E2228A: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260C8: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01F41: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 96 bytes in 1 blocks are possibly lost in loss record 2,354 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E220E7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E2228A: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260C8: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E0BFFF: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C1: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 96 bytes in 1 blocks are possibly lost in loss record 2,355 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E220E7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E2228A: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E260C8: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E06CC3: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C6: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 128 bytes in 1 blocks are possibly lost in loss record 2,359 of 2,469
+==18107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x17DE9174: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DE6847: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x189011B4: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DDB15A: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x184CCA99: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DDDF2B: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x183BF529: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17934EB4: ???
+==18107==    by 0x179265F8: ???
+==18107==    by 0x17921DD3: ???
+==18107==    by 0x17922908: ???
+==18107== 
+==18107== 132 bytes in 1 blocks are possibly lost in loss record 2,370 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E230F4: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E26159: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01EDE: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 132 bytes in 1 blocks are possibly lost in loss record 2,371 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E230F4: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E26159: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E01F41: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0B7: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 148 bytes in 1 blocks are possibly lost in loss record 2,373 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22F08: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E26159: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E0BFFF: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C1: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 148 bytes in 1 blocks are possibly lost in loss record 2,374 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAEF0: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22F08: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E26159: g_type_register_fundamental (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E06CC3: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0C6: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 176 bytes in 1 blocks are possibly lost in loss record 2,387 of 2,469
+==18107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x17DE9174: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DE923D: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DE68A1: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x189011B4: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DDB15A: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x184CCA99: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17DDDF2B: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x183BF529: ??? (in /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_dri.so)
+==18107==    by 0x17934EB4: ???
+==18107==    by 0x179265F8: ???
+==18107==    by 0x17921DD3: ???
+==18107== 
+==18107== 184 bytes in 1 blocks are possibly lost in loss record 2,391 of 2,469
+==18107==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x59EAF3F: g_realloc (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.6)
+==18107==    by 0x5E22063: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E26324: g_type_register_static (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E0DD12: g_param_type_register_static (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5E107EA: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x5DFB0CB: ??? (in /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.6400.6)
+==18107==    by 0x4011B89: call_init.part.0 (dl-init.c:72)
+==18107==    by 0x4011C90: call_init (dl-init.c:30)
+==18107==    by 0x4011C90: _dl_init (dl-init.c:119)
+==18107==    by 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,461 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10BCF6: init_menu (main_view.c:465)
+==18107==    by 0x10F29D: main_controller (controller.c:309)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,462 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10C461: init_rules (main_view.c:617)
+==18107==    by 0x10F810: main_controller (controller.c:399)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,463 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10BCF6: init_menu (main_view.c:465)
+==18107==    by 0x10FA01: main_controller (controller.c:423)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,464 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10C0C1: init_credits (main_view.c:541)
+==18107==    by 0x10F6E3: main_controller (controller.c:386)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,465 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10BCF6: init_menu (main_view.c:465)
+==18107==    by 0x10FB2F: main_controller (controller.c:440)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,466 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10C801: init_game (main_view.c:696)
+==18107==    by 0x10F506: main_controller (controller.c:361)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,467 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10D0EA: update_room (main_view.c:836)
+==18107==    by 0x10E0A0: showRoom (controller.c:20)
+==18107==    by 0x10E90D: move_robot (controller.c:147)
+==18107==    by 0x10F596: main_controller (controller.c:369)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== 16,648 (96 direct, 16,552 indirect) bytes in 1 blocks are definitely lost in loss record 2,468 of 2,469
+==18107==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18107==    by 0x490E565: SDL_calloc_REAL (SDL_malloc.c:5404)
+==18107==    by 0x4957950: SDL_CreateRGBSurfaceWithFormat_REAL (SDL_surface.c:77)
+==18107==    by 0x4A4E01F: IMG_LoadPNG_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x4A45AAA: IMG_LoadTyped_RW (in /usr/lib/x86_64-linux-gnu/libSDL2_image-2.0.so.0.2.3)
+==18107==    by 0x10BCF6: init_menu (main_view.c:465)
+==18107==    by 0x10F5BA: main_controller (controller.c:373)
+==18107==    by 0x10A937: main (main.c:16)
+==18107== 
+==18107== LEAK SUMMARY:
+==18107==    definitely lost: 786 bytes in 9 blocks
+==18107==    indirectly lost: 132,416 bytes in 16 blocks
+==18107==      possibly lost: 1,656 bytes in 20 blocks
+==18107==    still reachable: 294,700 bytes in 3,137 blocks
+==18107==                       of which reachable via heuristic:
+==18107==                         newarray           : 1,536 bytes in 16 blocks
+==18107==         suppressed: 0 bytes in 0 blocks
+==18107== Reachable blocks (those to which a pointer was found) are not shown.
+==18107== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==18107== 
+==18107== Use --track-origins=yes to see where uninitialised values come from
+==18107== For lists of detected and suppressed errors, rerun with: -s
+==18107== ERROR SUMMARY: 41 errors from 40 contexts (suppressed: 2 from 2)

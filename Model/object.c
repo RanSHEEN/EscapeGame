@@ -170,4 +170,8 @@ int * isInteractionPossible(Personage *p, Room * R){
     return res;
 }
 
+void freeTabMemory(int * tab){
+    free(tab);
+}
+
 

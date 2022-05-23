@@ -897,18 +897,8 @@ int display_popup(View_app * app, char * filename){
 }
 
 void personStatic(View_app * app){
-    SDL_Surface * img = IMG_Load("./img/RobotFront1.png");
-    if (img == NULL)
-    {
-        printf("Error IMG_load: %s\n",SDL_GetError());
-        SDL_FreeSurface(img);
-        SDL_Quit();
-    }
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(app->Game.renderer,img);
-
-    SDL_RenderClear(app->Game.renderer);
     SDL_RenderCopy(app->Game.renderer, app->Game.texture, NULL, NULL);
-    SDL_RenderCopy(app->Game.renderer, texture, NULL, &app->Robot.Position);
+    SDL_RenderCopy(app->Game.renderer, app->Robot.texture, NULL, &app->Robot.Position);
     SDL_RenderPresent(app->Game.renderer);
 }
 void personWalkRight(View_app * app){

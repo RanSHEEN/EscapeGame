@@ -3,7 +3,6 @@ CFLAGS =-Wall -Wextra -pedantic-errors -g -MMD -I./View -I./Model -I./Controller
 LDFLAGS= -L./lib -lAll -lSDL2 -lSDL2_image -lSDL2_mixer
 LDFLAGS_UT= -lcmocka
 
-
 all: make_model make_view make_controller main
 
 make_model:
@@ -24,7 +23,7 @@ main: main.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 clean: distclean
 	rm -f *.o *.d
 	rm -f main
