@@ -11,14 +11,20 @@
 #define SCREEN_H 560
 #define TMAX 100
 /**
- * \fn object type enum
+ * \enum enum obj_type { Button, clue, code }
  * \author Marie
  * \details
  * describe the object type
  */
 enum obj_type { Button, clue, code };
 /**
- * \fn object struct
+ * \struct typedef struct {
+    char * id;
+    int j;
+    int i;
+    char * file_name;
+    enum obj_type type;
+}Object
  * \author Marie
  * \details
  * an id, his position in the framing, a file name (Path to the .png for the view)
@@ -31,7 +37,13 @@ typedef struct {
     enum obj_type type;
 }Object;
 /**
- * \fn door struct
+ * \struct typedef struct {
+    char * id;
+    int i;
+    int j;
+    char * file_name;
+    int access;
+}Door
  * \author Marie
  * \details
  * an id, his position in the framing, a file name (Path to the .png for the view)
@@ -45,7 +57,12 @@ typedef struct {
     int access;
 }Door;
 /**
- * \fn Frame struct
+ * \fn typedef struct {
+    int Pos_x; //position height
+    int Pos_y; //position Width
+    Object * o; //=NULL par defaut
+    Door * d;
+}frame
  * \author Marie
  * \details
  * is a partition of the framing :
@@ -58,7 +75,16 @@ typedef struct {
     Door * d;
 }frame;
 /**
- * \fn room struct
+ * \fn typedef struct {
+    int h;
+    int w; //taille de la case
+    int nb_obj;
+    int nb_j;
+    int nb_i;
+    char * name;
+    char * filename;
+    frame ** framing;
+}Room
  * \author Marie
  * \details
  * the height and the width of each frame and their number in line and column of the framing
@@ -78,7 +104,10 @@ typedef struct {
     frame ** framing;
 }Room;
 /**
- * \fn Personage struct
+ * \fn typedef struct {
+    int x_position;
+    int y_position;
+} Personage
  * \author Marie
  * \details
  * describe the character in the model :
@@ -457,7 +486,15 @@ void deleteEdgeList(EdgeList * c);
  * Structures
  */
 /**
-* \fn Vertex struct
+* \struct Vertex{
+    char * label;
+    EdgeList * connect;//vide de base
+    Room * R;
+    int enigma_number;
+    int enigma_solved; //à 0 de base
+    Vertex * previous_v;
+    Vertex * next_v;
+}
 * \author Marie
 * \details
 * Etat du jeu, chaque état correspond à une salle du jeu
@@ -473,7 +510,11 @@ struct Vertex{
     Vertex * next_v;
 };
 /**
-* \fn VertexList struct
+* \struct VertexList{
+    Vertex *first;
+    Vertex *current;
+    Vertex *last;
+}
 * \author Marie
 * \details
 * Liste de Vertex

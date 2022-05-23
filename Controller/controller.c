@@ -231,12 +231,15 @@ int move_robot(View_app *view_app,VertexList * graph) {
 
                                 }else {
                                     int j = changeRoom(graph, graph->current->R->framing[k[0]][k[1]].d);
-                                    for (int i = 0; i < graph->current->R->nb_obj; i++) {
-                                        free_objects(&view_app->object[i]);
-                                    }
+
                                     if (j == 0) {
                                         create_messageBox("Robot", "This door is closed", "Ah...", "OK...");
                                     } else if (j == 1) {
+                                        //free objects
+                                        for (int i = 0; i < graph->current->R->nb_obj; i++) {
+                                            free_objects(&view_app->object[i]);
+                                        }
+
                                         int flag;
                                         if (k[1] == 0) {
                                             flag = 1;
@@ -245,6 +248,7 @@ int move_robot(View_app *view_app,VertexList * graph) {
                                             flag = 0;
                                             graph->current->R->framing[2][0].d->access = 1;
                                         }
+
                                         showRoom(view_app, graph->current->R);
                                         initRobot(view_app, flag, p);
                                         personStatic(view_app);
